@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bigdata.dao.system.RoleMapper">
+
+    <resultMap type="com.bigdata.model.system.Role" id="roleResultMap">
+        <id column="id" property="id"/>
+        <result column="state" property="state"/>
+        <result column="name" property="name"/>
+        <result column="roleKey" property="roleKey"/>
+        <result column="description" property="description"/>
+    </resultMap>
+
+    <sql id="selectId">
+		id,
+		state,
+		name,
+		roleKey,
+		description
+	</sql>
+
+    <select id="seletUserRole" resultMap="roleResultMap">
+        select t1.id,
+			   t1.state,
+			   t1.name,
+		       t1.roleKey,
+		       t1.description
+        from t_role t1,
+             t_user_role t2
+        where t1.id = t2.roleId
+          and t2.userId=#{userId}
+    </select>
+
+    <select id="findByPage" resultMap="roleResultMap">
+        select
+        <include refid="selectId"/>
+        from t_role
+    </select>
+
+</mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bigdata.dao.system.UserMapper">
+
+	<resultMap type="com.bigdata.model.system.User" id="userResultMap">
+		<id column="id" property="id" />
+		<result column="userName" property="userName" />
+		<result column="accountName" property="accountName" />
+		<result column="password" property="password" />
+		<result column="credentialsSalt" property="credentialsSalt" />
+		<result column="depaId" property="depaId" />
+		<result column="roleId" property="roleId" />
+		<result column="locked" property="locked" />
+		<result column="useFlag" property="useFlag" />
+		<result column="remark" property="remark" />
+		<result column="createTime" property="createTime" />
+		<result column="updateTime" property="updateTime" />
+	</resultMap>
+
+	<select id="findUserByName" resultMap="userResultMap">
+		select t1.id,
+			   t1.userName,
+			   t1.accountName,
+			   t1.password,
+			   t1.credentialsSalt,
+			   t1.depaId,
+			   t1.locked,
+			   t1.useFlag,
+			   t1.remark,
+			   t1.createTime,
+			   t1.updateTime,
+		       t2.roleId
+		  from t_user t1
+		  join t_user_role t2
+		    on t1.id=t2.userId
+		   and t1.userName=#{userName}
+	</select>
+
+</mapper>

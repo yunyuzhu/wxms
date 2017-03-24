@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+	   http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+       http://www.springframework.org/schema/mvc 
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd   
+       http://www.springframework.org/schema/aop 
+       http://www.springframework.org/schema/aop/spring-aop-4.1.xsd"
+       default-lazy-init="true">
+	
+    <!-- 默认的注解映射的支持。 添加注解驱动 -->
+    <!--<mvc:annotation-driven/>-->
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="com.bigdata.common.filter.UTF8StringHttpMessageConverter" />
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+    <!--<mvc:annotation-driven>
+        &lt;!&ndash;解决返回String时乱码&ndash;&gt;
+        <mvc:message-converters register-defaults="true">
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/plain;charset=UTF-8</value>
+                        <value>text/html;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>-->
+    <!-- 对静态资源文件的访问，交给default servlet handler处理 -->
+    <mvc:default-servlet-handler/>
+	
+    <!-- 对静态资源文件的访问  restful-->
+    <mvc:resources mapping="/assets/**" location="/,/assets/"/>
+	
+    <!-- 扫描到有@Component @Controller@Service等这些注解的类，则把这些类注册为bean -->
+    <context:component-scan base-package="com.bigdata.controller.*"/>
+	
+    <!-- 会自动注册DefaultAnnotationHandlerMapping与AnnotationMethodHandlerAdapter 两个bean,是spring MVC为@Controllers分发请求所必须的 -->
+    <!-- 指定自己定义的validator -->
+    <!-- <mvc:annotation-driven validator="validator"/> -->
+    <!-- <mvc:annotation-driven /> -->
+	
+    <!-- 以下 validator ConversionService 在使用 mvc:annotation-driven 会 自动注册 -->
+    <!-- <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
+        如果不加默认到 使用classpath下的 ValidationMessages.properties
+        <property name="validationMessageSource" ref="messageSource"/>
+    </bean>
+	
+    国际化的消息资源文件（本系统中主要用于显示/错误消息定制）
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                在web环境中一定要定位到classpath 否则默认到当前web应用下找
+                <value>classpath:messages</value>
+                <value>classpath:org/hibernate/validator/ValidationMessages</value>
+            </list>
+        </property>
+        <property name="useCodeAsDefaultMessage" value="false"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="cacheSeconds" value="60"/>
+    </bean> -->
+	
+    <!-- 访问拦截  -->
+    <!-- <mvc:interceptors>
+      <mvc:interceptor>
+          <mvc:mapping path="/**/**"/>
+          <bean class="com.bigdata.interceptor.LoginHandlerInterceptor"/>
+      </mvc:interceptor>
+  	</mvc:interceptors> -->
+	
+    <mvc:interceptors>
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>
+    </mvc:interceptors>
+	
+    <!--避免IE执行AJAX时，返回JSON出现下载文件 -->
+    <bean id="mappingJackson2HttpMessageConverter"
+          class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>text/html;charset=UTF-8</value>
+                <value>text/json;charset=UTF-8</value>
+                <value>application/json;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
+	
+    <!-- 采用SpringMVC自带的JSON转换工具，支持@ResponseBody注解 -->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="mappingJackson2HttpMessageConverter"/>    <!-- JSON转换器 -->
+            </list>
+        </property>
+    </bean>
+	
+    <!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass"
+                  value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/pages/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+	
+    <!-- 配置文件上传，如果没有使用文件上传可以不用配置，当然如果不配，那么配置文件中也不必引入上传组件包 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 默认编码 -->
+        <property name="defaultEncoding" value="utf-8"/>
+        <!-- 文件大小最大值 -->
+        <property name="maxUploadSize" value="10485760000"/>
+        <!-- 内存中的最大值 -->
+        <property name="maxInMemorySize" value="40960"/>
+    </bean>
+	
+	<!-- swagger配置文件：部署时应注释以下配置，避免接口暴露 -->
+	<bean class="com.bigdata.common.util.MySwaggerConfig" />
+	
+	<!-- shiro配置文件 -->
+    <import resource="spring-mvc-shiro.xml"/>
+    
+</beans>

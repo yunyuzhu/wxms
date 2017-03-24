@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bigdata.dao.system.MenuMapper">
+
+	<resultMap type="com.bigdata.model.system.Menu" id="menuResultMap">
+		<id column="id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="parentId" property="parentId"/>
+		<result column="resKey" property="resKey"/>
+		<result column="type" property="type"/>
+		<result column="resUrl" property="resUrl"/>
+		<result column="level" property="level"/>
+		<result column="icon" property="icon"/>
+		<result column="ishide" property="ishide"/>
+		<result column="description" property="description"/>
+	</resultMap>
+	
+	<sql id="selectId">
+		id,
+		name,
+		parentId,
+		(select name from t_menu where id = parentId)
+		parentName,
+		resKey,
+		ishide,
+		type,
+		resUrl,
+		level,
+		icon,
+		description
+	</sql>
+	
+	<select id="findRoleResourcess" parameterType="String" resultMap="menuResultMap">
+		SELECT
+			t1.*
+		FROM
+			t_menu t1,
+			t_role_menu t2,
+			t_role t3
+		WHERE t1.id = t2.resId
+		  AND t2.roleId = t3.id
+		  AND t1.ishide = '0'
+		  AND t3.id = #{roleId}
+	</select>
+	
+	<!-- 获取该用户的权限 -->
+	<select id="findRes" parameterType="java.util.HashMap" resultMap="menuResultMap">
+		SELECT
+		<include refid="selectId" />
+		from t_menu where id in(
+		select resId from
+		t_menu_user where 1=1
+		<if test="userId != null and userId != '' and userId != 0">
+		and userId = #{userId}
+		</if>
+		<if test="roleId != null and roleId != '' and roleId != 0">
+		and userId in (
+		      select userId from t_user_role where roleId = #{roleId}
+		   )
+		</if>
+		)
+		<if test="parentId != null and parentId != '' and parentId != 0">
+			and parentId = #{parentId}
+		</if>
+		order by level asc
+	</select>
+	
+	<select id="findMenuByWhere" parameterType="String" resultMap="menuResultMap"> <!-- resultType="menuResultMap"> -->
+		SELECT
+			*
+		FROM
+			t_menu
+	</select>
+
+</mapper>
