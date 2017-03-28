@@ -63,6 +63,7 @@ form{padding:0 15px;}
 form .row{margin-top:10px;padding-bottom:10px;border-bottom:1px dashed #CCC;}
 form .row .form-group{margin-bottom:0;}
 .cthide{display:none;}
+.ct-nopadd{padding:0;}
 /*图标高度设置*/
 .ctview-h{height:380px;}
 .ctview-self-h{height:150px;}

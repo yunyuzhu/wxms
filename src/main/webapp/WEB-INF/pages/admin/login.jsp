@@ -23,43 +23,59 @@
 	</script>
 </head>
 <body>
-<div class="hxlogin">
+<div class="ctlogin">
+	<div class="loginlayer"></div>
 	<div class="hxlogin-body">
-		<div class="hxlogin-con" id="loginbox">
+		<div class="login-left">
 			<div class="hxlogin-title">
+				<div class="hxlogin-logo">
+					<img src="assets/img/dmsslogomax.png" alt="logo">
+				</div>
 				<h2>DRGs医疗服务评价系统</h2>
-				<div class="title-tria"></div>
-			</div>
-			<div class="hxlogin-main">
-				<form action="" method="post" name="loginForm" id="loginForm">
-					<div class="hxlogin-logo">
-						<img src="assets/img/dmsslogomax.png" alt="logo">
-					</div>
-					<div class="fill-frame">
-						<em class="fill-icon icon-user"></em>
-						<input type="text" name="loginname" id="loginname" class="fill-input input-size1" placeholder="用户名"/>
-					</div>
-					<div class="fill-frame">
-						<em class="fill-icon icon-passwd"></em>
-						<input type="password" name="password" id="password" class="fill-input input-size1" placeholder="密码"/>
-					</div>
-					<div class="fill-frame">
-						<input type="text" name="code" id="code" class="fill-input input-size2 input-code" placeholder="验证码"/>
-						<img src="" class="code-img" id="codeImg" alt="点击更换" title="点击更换">
-					</div>
-					<div class="login-handle">
-						<a href="javascript:void(0);" class="login-btn btn-sign" id="to-recover" onclick="login();">登&nbsp;录</a>
-						<a href="javascript:void(0);" class="login-btn btn-reset" onclick="cancel();">重&nbsp;置</a>
-					</div>
-				</form>
 			</div>
 		</div>
-		<div class="hxlogin-copy">
-			Copyright &copy; 2014-<span id="copyToYear">2016</span> 电科软信
+		<div class="login-right">
+			<div class="hxlogin-con" id="loginbox">
+				<h3>登&nbsp;录</h3>
+				<div class="hxlogin-main">
+					<div class="input-frame login-frame">
+						<div class="input-row">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user"></i></span>
+								<input type="text" class="form-control" id="loginname" name="loginname" placeholder="输入用户名" autocomplete="off">
+							</div>
+						</div>
+						<div class="input-row">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+								<input type="password" class="form-control" id="password" name="password" placeholder="输入密码" autocomplete="off">
+							</div>
+						</div>
+						<div class="input-row">
+							<div class="input-group">
+								<input type="text" class="form-control" id="code" name="code" placeholder="输入验证码">
+								<span class="input-group-addon ct-nopadd">
+									<img src="" class="code-img" id="codeImg" alt="点击更换" title="点击更换">
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="input-handle login-handle">
+					<a class="btn btn-block ctbtn" id="inSubmit" onclick="login();">登&nbsp;录</a>
+				</div>
+			</div>
+			<div class="hxlogin-copy">
+				Copyright &copy; 2014-<span id="copyToYear">2016</span> 电科软信
+			</div>
 		</div>
 	</div>
 </div>
-    <script  type="text/javascript">
+<script type="text/javascript">
+	//关闭提示信息
+	function tipHide(){
+		$(".jq_tips_box").hide();
+	}
   	//客户端校验
 	function check(){
 		var $loginname = $("#loginname");
@@ -104,6 +120,7 @@
 			$code.focus();
 			return false;
 		}
+		tipHide();
 		return true;
 	}
   
@@ -182,7 +199,7 @@
 	//键盘 enter 事件
 	$(document).keyup(function(event) {
 		if (event.keyCode == 13) {
-			$("#to-recover").trigger("click");
+			$("#inSubmit").trigger("click");
 		}
 	});
 
