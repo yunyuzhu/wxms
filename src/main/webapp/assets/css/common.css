@@ -192,7 +192,7 @@ form .row .form-group{margin-bottom:0;}
 /*左边栏*/
 .ctside-hd{margin-bottom:10px;background:#233646;}
 .ctside-logo{padding:30px 0;}
-.ctside-logo .logo-max{display:block;width:70%;margin:0 auto;}
+.ctside-logo .logo-max{display:block;max-width:70%;height:64px;margin:0 auto;}
 .ctside-logo .logo-min, .sidebar-collapse .ctside-logo .logo-max{display:none;}
 .sidebar-collapse .ctside-logo .logo-min{display:block;width:40px;margin:0 auto;}
 @-webkit-keyframes fadeInRight {

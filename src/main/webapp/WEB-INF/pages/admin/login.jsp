@@ -14,7 +14,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<title>DRGs医疗服务评价系统</title>
+	<title>首发创业平台</title>
     <base href="<%=basePath%>">
     <%@ include file="../common.jsp"%>
 	<link rel="stylesheet" href="${ctx}/assets/css/ctlogin.css"  type="text/css"/>
@@ -31,7 +31,7 @@
 				<div class="hxlogin-logo">
 					<img src="assets/img/dmsslogomax.png" alt="logo">
 				</div>
-				<h2>DRGs医疗服务评价系统</h2>
+				<h2>首发创业平台</h2>
 			</div>
 		</div>
 		<div class="login-right">
@@ -66,7 +66,7 @@
 				</div>
 			</div>
 			<div class="hxlogin-copy">
-				Copyright &copy; 2014-<span id="copyToYear">2016</span> 电科软信
+				Copyright &copy; 2014-<span id="copyToYear">2016</span> 首发创业平台
 			</div>
 		</div>
 	</div>

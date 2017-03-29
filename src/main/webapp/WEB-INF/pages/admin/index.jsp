@@ -11,20 +11,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>医保报销异常监测分析系统</title>
+	<title>首发创业平台</title>
 	<meta charset="UTF-8"/>
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<base href="<%=basePath%>">
 	<%@ include file="../common.jsp"%>
 	<script type="text/javascript">
 		var rootPath = "${ctx}";
-		var webPath = "${webPath}";
-		var sessionDepaId = ${sessionScope.userSession.depaId};//用户科室ID
-		var sessionRoleId = ${sessionScope.userSession.roleId};//用户角色ID
-		var depaRoleFlag = false;
-		if(sessionRoleId == "4"){//科室管理决策者角色
-			depaRoleFlag = true;
-		}
 	</script>
 	</head>
 	<body class="hold-transition skin-green sidebar-mini">

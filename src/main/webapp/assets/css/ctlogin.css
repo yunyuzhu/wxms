@@ -2,7 +2,7 @@
 html,body{width:100%!important;height:100%!important;}
 body{font-family: "Microsoft Yahei", "微软雅黑", SimHei, Tahoma, Arial, Helvetica, STHeiti;}
 .ctlogin{position:relative;width:100%;height:100%;background:#326588 url("../img/loginbg0.jpg") repeat center;background-size:cover;overflow:hidden;}
-.loginlayer{position:absolute;width:100%;height:100%;background:rgba(0,0,0,0.2);
+.loginlayer{position:absolute;width:100%;height:100%;background:rgba(0,0,0,0.1);
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endColorstr=#4C000000);}
 .hxlogin-body{position:absolute;z-index:10;left:50%;top:50%;width:900px;min-height:400px;margin:-200px 0 0 -450px;}
 .login-left{float:left;padding-top:5%;}
