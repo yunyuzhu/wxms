@@ -1,6 +1,8 @@
 package com.bigdata.controller.tenant;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -86,7 +88,10 @@ public class TenantManageController {
 		//获取待确认消费信息列表
 		List<GoldUserBean> list = tenantManageServiceImpl.getConfirmList(user.getId());
 		
-		return list;
+		Map<String, Object> map = new HashMap<String, Object>();
+    	map.put("total", list.size());
+    	map.put("rows", list);
+    	return map;
 	}
 	
 	/**
@@ -106,7 +111,10 @@ public class TenantManageController {
 		//获取消费流水列表
 		List<GoldUserBean> list = tenantManageServiceImpl.getConsumerList(user.getId());
 		
-		return list;
+		Map<String, Object> map = new HashMap<String, Object>();
+    	map.put("total", list.size());
+    	map.put("rows", list);
+    	return map;
 	}
 
 }
