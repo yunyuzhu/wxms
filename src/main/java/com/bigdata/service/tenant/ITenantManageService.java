@@ -1,6 +1,9 @@
 package com.bigdata.service.tenant;
 
+import java.util.List;
+
 import com.bigdata.model.system.User;
+import com.bigdata.model.tenant.GoldDetail;
 
 /**   
 * @Title: TenantManageService.java
@@ -23,5 +26,12 @@ public interface ITenantManageService {
 	 * @return
 	 */
 	String getTenantRule(Integer id);
+
+	/**
+	 * 获取待确认消费信息列表
+	 * @param id
+	 * @return
+	 */
+	List<GoldDetail> getConfirmList(Integer id);
 
 }

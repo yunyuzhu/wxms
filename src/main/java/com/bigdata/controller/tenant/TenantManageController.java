@@ -1,5 +1,7 @@
 package com.bigdata.controller.tenant;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bigdata.common.util.CommonTools;
 import com.bigdata.model.system.User;
+import com.bigdata.model.tenant.GoldDetail;
 import com.bigdata.service.tenant.ITenantManageService;
 
 /**   
@@ -81,9 +84,9 @@ public class TenantManageController {
 		User user = (User)CommonTools.findUserSession(request);
 		
 		//获取待确认消费信息列表
-		//String rule = tenantManageServiceImpl.getConfirmList(user.getId());
+		List<GoldDetail> list = tenantManageServiceImpl.getConfirmList(user.getId());
 		
-		return "";
+		return list;
 	}
 
 }
