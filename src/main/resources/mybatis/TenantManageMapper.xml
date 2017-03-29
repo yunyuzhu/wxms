@@ -60,7 +60,8 @@
 	
 	<select id="getConsumerList" parameterType="Integer" resultMap="goldMap">
 	
-		select t1.consumeMoney,
+		select t1.id,
+		       t1.consumeMoney,
 			   t1.confirmTime,
 		       t2.name,
 		       t2.phone
