@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bigdata.dao.tenant.TenantManageMapper">
+
+	<resultMap type="com.bigdata.model.system.User" id="userMap">
+		<id column="id" property="id"/>
+		<result column="tenantName" property="tenantName"/>
+		<result column="trade" property="trade"/>
+		<result column="address" property="address"/>
+		<result column="telephone" property="telephone"/>
+		<result column="linkName" property="linkName"/>
+		<result column="linkPhone" property="linkPhone"/>
+	</resultMap>
+	
+	<select id="getTenantInfo" parameterType="Integer" resultMap="userMap">
+	
+		select t1.tenantName,
+		       t2.name as trade,
+		       t1.address,
+		       t1.telephone,
+		       t1.linkName,
+		       t1.linkPhone
+		  from t_user t1,
+		       t_trade t2
+		 where id = #{id}
+		   and t1.trade = t2.id
+	</select>
+	
+	<select id="getTenantRule" parameterType="Integer" resultMap="userMap">
+	
+		select t2.rate
+		  from t_user t1,
+		       t_rule t2
+		 where id = #{id}
+		   and t1.rule = t2.id
+	</select>
+
+</mapper>
