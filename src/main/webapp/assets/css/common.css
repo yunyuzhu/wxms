@@ -119,6 +119,7 @@ form .row .form-group{margin-bottom:0;}
 .fixed-table-container thead th .sortable{padding-right:16px!important;background-position:right 11px!important;}
 .bstable-tool .btn{margin-right:15px;}
 .bootstrap-table .bs-checkbox{vertical-align:middle;}
+.table-striped>tbody>tr:nth-of-type(odd){background:#EDEDED;}
 /*页码*/
 .fixed-table-pagination div.pagination{margin-top:15px;}
 .fixed-table-pagination .pagination .active a{background:#1AB394;border-color:#1AB394;}

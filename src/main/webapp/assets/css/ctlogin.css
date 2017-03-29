@@ -23,7 +23,7 @@ body{font-family: "Microsoft Yahei", "微软雅黑", SimHei, Tahoma, Arial, Helv
 .login-frame .fa{font-size:20px;width:18px;max-height:100%;color:#FFF;}
 .input-group .input-group-addon,.input-group .form-control{background:transparent;color:#FFF;
     border:0 none;border-bottom:1px solid #DDD;}
-input:-webkit-autofill,input:focus:-webkit-autofill{-webkit-box-shadow:0 0 0 1000px #19293a inset;
+input:-webkit-autofill,input:focus:-webkit-autofill{-webkit-box-shadow:0 0 0 1000px #015484 inset;
     -webkit-text-fill-color:#FFF;background:transparent;outline:none;}
 .login-handle .btn{padding:8px 20px;font-size:17px;}
 .hxlogin-copy{margin-top:20px;text-align:center;font-size:12px;color:#FFF;}

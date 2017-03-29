@@ -2,6 +2,7 @@
  * Created by chun
  */
 var $tableElem = $("#checkCostTableDiv");
+var userIdArr;
 //加载页面
 function loadhtml(){
     checkCostTableFun();
@@ -22,14 +23,15 @@ function checkCostTableFun(){
     /************ 表格 **************/
     // 表格点击事件
     window.costTableEvents = {
-        'click .like': function (e, value, row, index) {}
+        'click .like': function (e, value, row, index) {
+        }
     };
     //格式化文本
     function linkTableFat(value, row, index) {
         var resTemp = '';
         resTemp = value;
         return [
-            '<a class="like" href="javascript:void(0);" title="请确认">'+resTemp+'</a>'
+            '<a class="like btn handlebtn" href="javascript:void(0);" title="请确认">'+resTemp+'</a>'
         ];
     }
     // 表格
@@ -47,24 +49,25 @@ function checkCostTableFun(){
                 for (var i = 0; i < pageSize; i++) {
                     var curObj = dataRows[i];
                     var curArr = [];
-                    curArr[0] = curObj['hisRank'];
-                    curArr[1] = curObj['hospitalName'];
-                    curArr[2] = curObj['timeNum'];
-                    curArr[3] = curObj['score'];
+                    curArr[0] = curObj['name'];
+                    curArr[1] = curObj['consumeMoney'];
+                    curArr[2] = curObj['phone'];
+                    curArr[3] = curObj['confirmTime'];
                     curArr[4] = "确认";
                     dataRows[i] = curArr;
                     //记录id
-                    idArr[i] = curObj['hospitalId'];
+                    idArr[i] = curObj['id'];
                 }
+                userIdArr = idArr;
                 dataObj = {"rows": dataRows, "total": dataTotal};
             }
             return dataObj;
         }
         $tableElem.bootstrapTable('destroy');
         $tableElem.bootstrapTable({
-            method: 'post',
+            method: 'get',
             contentType: "application/x-www-form-urlencoded",
-            url: "ability/qualityTb",
+            url: "tenant/ConfirmList",
             cache: false,
             dataType : 'json',
             queryParams: "",  //参数
@@ -86,11 +89,11 @@ function checkCostTableFun(){
             responseHandler: resHandler,    //在加载数据前，可以对返回的数据进行处理，参数包含：res: 返回的数据。
             columns: [
                 { field: 0, width: "15%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 1, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false},
+                { field: 1, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
                 { field: 2, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
                 { field: 3, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
                 { field: 4, width: "25%", align: 'center', valign: 'middle', halign: 'center', sortable: false,
-                    events: costTableEvents, formatter: linkTableFat }
+                    /*events: costTableEvents,*/ formatter: linkTableFat}
             ]
         });
     }

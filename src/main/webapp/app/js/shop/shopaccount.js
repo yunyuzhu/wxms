@@ -22,7 +22,7 @@ function loadhtml(){
     });
     $.ajax({
         type: "get",
-        url: "index/info",
+        url: "tenant/baseInfo",
         dataType:"json",
         data: "",
         async: false,
@@ -30,14 +30,14 @@ function loadhtml(){
         success:function(data){
             var jsonData = eval(data);
             appShopAccount.baseinfo = {
-                name: "COCO奶茶",
-                trade: "餐饮",
-                addr: "成都市xxx",
-                tel: "1511111111"
+                name:   jsonData['tenantName'],
+                trade:  jsonData['trade'],
+                addr:   jsonData['address'],
+                tel:    jsonData['telephone']
             };
             appShopAccount.linkman = {
-                name: "COCO奶茶",
-                tel: "1511111111"
+                name:   jsonData['linkName'],
+                tel:    jsonData['linkPhone']
             };
         },
         error:function(error){

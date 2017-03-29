@@ -6,20 +6,18 @@ function loadhtml(){
     //加载初始数据
     var appShConvertRule = new Vue({
         el: '#shConvertRule',
-        data: {
-            'rate': ""
-        }
+        data: { 'rate': "" }
     });
     $.ajax({
         type: "get",
-        url: "index/info",
+        url: "tenant/rule",
         dataType:"json",
         data: "",
         async: false,
         jsonp: "callback",
         success:function(data){
             var jsonData = eval(data);
-            appShConvertRule.rate = "1:1";
+            appShConvertRule.rate = jsonData;
         },
         error:function(error){
             console.log(error);

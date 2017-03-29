@@ -66,7 +66,7 @@
 				</div>
 			</div>
 			<div class="hxlogin-copy">
-				Copyright &copy; 2014-<span id="copyToYear">2016</span> 首发创业平台
+				Copyright &copy; 2016-<span id="copyToYear">2017</span> 首发创业平台
 			</div>
 		</div>
 	</div>

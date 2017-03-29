@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <div class="ctft-words">
-	Copyright &copy; 2014-<span id="copyToYear">2016</span>首发创业平台 版权所有
+	Copyright &copy; 2016-<span id="copyToYear">2017</span>首发创业平台 版权所有
 </div>
 <script type="text/javascript">
 	$(document).ready(function() {
