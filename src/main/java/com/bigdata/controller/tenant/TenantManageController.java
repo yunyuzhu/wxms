@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bigdata.common.util.CommonTools;
 import com.bigdata.model.system.User;
-import com.bigdata.model.tenant.GoldDetail;
+import com.bigdata.model.tenant.GoldUserBean;
 import com.bigdata.service.tenant.ITenantManageService;
 
 /**   
@@ -37,7 +37,7 @@ public class TenantManageController {
 	 * @throws Exception 
 	 */
 	@ResponseBody
-	@RequestMapping(value="/baseInfo", method = RequestMethod.POST)
+	@RequestMapping(value="/baseInfo", method = RequestMethod.GET)
 	public Object getTenantInfo(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		
 		//获取登录的用户信息
@@ -57,7 +57,7 @@ public class TenantManageController {
 	 * @throws Exception 
 	 */
 	@ResponseBody
-	@RequestMapping(value="/rule", method = RequestMethod.POST)
+	@RequestMapping(value="/rule", method = RequestMethod.GET)
 	public Object getTenantRule(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		
 		//获取登录的用户信息
@@ -77,14 +77,34 @@ public class TenantManageController {
 	 * @throws Exception 
 	 */
 	@ResponseBody
-	@RequestMapping(value="/ConfirmList", method = RequestMethod.POST)
+	@RequestMapping(value="/ConfirmList", method = RequestMethod.GET)
 	public Object getConfirmList(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		
 		//获取登录的用户信息
 		User user = (User)CommonTools.findUserSession(request);
 		
 		//获取待确认消费信息列表
-		List<GoldDetail> list = tenantManageServiceImpl.getConfirmList(user.getId());
+		List<GoldUserBean> list = tenantManageServiceImpl.getConfirmList(user.getId());
+		
+		return list;
+	}
+	
+	/**
+	 * 获取消费流水列表
+	 * @data 2016年3月31日 下午2:52:47
+	 * @param request
+	 * @param response
+	 * @throws Exception 
+	 */
+	@ResponseBody
+	@RequestMapping(value="/consumerList", method = RequestMethod.GET)
+	public Object getConsumerList(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		
+		//获取登录的用户信息
+		User user = (User)CommonTools.findUserSession(request);
+		
+		//获取消费流水列表
+		List<GoldUserBean> list = tenantManageServiceImpl.getConsumerList(user.getId());
 		
 		return list;
 	}

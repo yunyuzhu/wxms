@@ -1,5 +1,6 @@
 package com.bigdata.model.tenant;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**   
@@ -8,7 +9,8 @@ import java.sql.Timestamp;
 * @author zzc   
 * @date 2017年3月29日 下午5:28:11   
 */
-public class GoldDetail {
+@SuppressWarnings("serial")
+public class GoldDetail implements Serializable{
 	
 	/**
 	 * 主键

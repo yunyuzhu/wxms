@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.bigdata.dao.tenant.TenantManageMapper;
 import com.bigdata.model.system.User;
-import com.bigdata.model.tenant.GoldDetail;
+import com.bigdata.model.tenant.GoldUserBean;
 import com.bigdata.service.tenant.ITenantManageService;
 
 /**   
@@ -53,9 +53,21 @@ public class TenantManageServiceImpl implements ITenantManageService {
 	 * @return
 	 */
 	@Override
-	public List<GoldDetail> getConfirmList(Integer id) {
+	public List<GoldUserBean> getConfirmList(Integer id) {
 		//获取待确认消费信息列表
-		List<GoldDetail> list = tenantManageMapper.getConfirmList(id);
+		List<GoldUserBean> list = tenantManageMapper.getConfirmList(id);
+		return list;
+	}
+
+	/**
+	 * 获取消费流水列表
+	 * @param id
+	 * @return
+	 */
+	@Override
+	public List<GoldUserBean> getConsumerList(Integer id) {
+		//获取待确认消费信息列表
+		List<GoldUserBean> list = tenantManageMapper.getConsumerList(id);
 		return list;
 	}
 

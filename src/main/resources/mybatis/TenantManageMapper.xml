@@ -5,12 +5,21 @@
 
 	<resultMap type="com.bigdata.model.system.User" id="userMap">
 		<id column="id" property="id"/>
+		<result column="consumeMoney" property="consumeMoney"/>
+		<result column="name" property="name"/>
 		<result column="tenantName" property="tenantName"/>
 		<result column="trade" property="trade"/>
 		<result column="address" property="address"/>
-		<result column="telephone" property="telephone"/>
 		<result column="linkName" property="linkName"/>
 		<result column="linkPhone" property="linkPhone"/>
+	</resultMap>
+	
+	<resultMap type="com.bigdata.model.tenant.GoldUserBean" id="goldMap">
+		<id column="id" property="id"/>
+		<result column="tenantName" property="tenantName"/>
+		<result column="trade" property="trade"/>
+		<result column="address" property="address"/>
+		<result column="confirmTime" property="confirmTime"/>
 	</resultMap>
 	
 	<select id="getTenantInfo" parameterType="Integer" resultMap="userMap">
@@ -23,17 +32,43 @@
 		       t1.linkPhone
 		  from t_user t1,
 		       t_trade t2
-		 where id = #{id}
+		 where t1.id = #{id}
 		   and t1.trade = t2.id
 	</select>
 	
-	<select id="getTenantRule" parameterType="Integer" resultMap="userMap">
+	<select id="getTenantRule" parameterType="Integer" resultType="String">
 	
 		select t2.rate
 		  from t_user t1,
 		       t_rule t2
-		 where id = #{id}
+		 where t1.id = #{id}
 		   and t1.rule = t2.id
+	</select>
+	
+	<select id="getConfirmList" parameterType="Integer" resultMap="goldMap">
+	
+		select t1.id,
+			   t1.consumeMoney,
+		       t2.name,
+		       t2.phone
+		  from t_gold_detail t1,
+		       t_wx_user t2
+		 where t1.userId = #{id}
+		   and t1.wxId = t2.id
+		   and t1.flag = 0
+	</select>
+	
+	<select id="getConsumerList" parameterType="Integer" resultMap="goldMap">
+	
+		select t1.consumeMoney,
+			   t1.confirmTime,
+		       t2.name,
+		       t2.phone
+		  from t_gold_detail t1,
+		       t_wx_user t2
+		 where t1.userId = #{id}
+		   and t1.wxId = t2.id
+		   and t1.flag = 1
 	</select>
 
 </mapper>
