@@ -72,7 +72,7 @@
 		   and t1.flag = 1
 	</select>
 	
-	<select id="updateConsumer" parameterType="Integer">
+	<select id="updateConsumer" parameterType="String">
 	
 		update t_gold_detail
 		   set flag = '1'
