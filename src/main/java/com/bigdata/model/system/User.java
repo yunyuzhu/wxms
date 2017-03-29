@@ -64,6 +64,41 @@ public class User {
 	 */
 	private Date updateTime;
 
+	/**
+	 * 商户名称
+	 */
+	private String tenantName;
+	
+	/**
+	 * 行业
+	 */
+	private String trade;
+	
+	/**
+	 * 规则
+	 */
+	private String rule;
+	
+	/**
+	 * 地址
+	 */
+	private String address;
+	
+	/**
+	 * 商户电话
+	 */
+	private String telephone;
+	
+	/**
+	 * 联系人姓名
+	 */
+	private String linkName;
+	
+	/**
+	 * 联系人联系方式
+	 */
+	private String linkPhone;
+
 	public Integer getId() {
 		return id;
 	}
@@ -158,6 +193,62 @@ public class User {
 
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
+	}
+
+	public String getTenantName() {
+		return tenantName;
+	}
+
+	public void setTenantName(String tenantName) {
+		this.tenantName = tenantName;
+	}
+
+	public String getTrade() {
+		return trade;
+	}
+
+	public void setTrade(String trade) {
+		this.trade = trade;
+	}
+
+	public String getRule() {
+		return rule;
+	}
+
+	public void setRule(String rule) {
+		this.rule = rule;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
+	public String getLinkName() {
+		return linkName;
+	}
+
+	public void setLinkName(String linkName) {
+		this.linkName = linkName;
+	}
+
+	public String getLinkPhone() {
+		return linkPhone;
+	}
+
+	public void setLinkPhone(String linkPhone) {
+		this.linkPhone = linkPhone;
 	}
 	
 }
