@@ -2,10 +2,31 @@
 
 <script src="app/js/shop/shopaccount.js" type="text/javascript" charset="UTF-8"></script>
 
-<div class="ct-page">
+<div class="ct-page" id="shopAccount">
+    <!--商户基本信息 -->
     <div class="box no-border">
+        <div class="box-header with-border">
+            <h3 class="boxhd-title">基本信息</h3>
+        </div>
         <div class="box-body">
-            商户账户信息
+            <div class="info-list">
+                <p><span class="tag">名称：</span><span class="value">{{baseinfo.name}}</span></p>
+                <p><span class="tag">行业：</span><span class="value">{{baseinfo.trade}}</span></p>
+                <p><span class="tag">地址：</span><span class="value">{{baseinfo.addr}}</span></p>
+                <p><span class="tag">联系方式：</span><span class="value">{{baseinfo.tel}}</span></p>
+            </div>
+        </div>
+    </div>
+    <!--商户联系人 -->
+    <div class="box no-border">
+        <div class="box-header with-border">
+            <h3 class="boxhd-title">联系人</h3>
+        </div>
+        <div class="box-body">
+            <div class="info-list">
+                <p><span class="tag">姓名：</span><span class="value">{{linkman.name}}</span></p>
+                <p><span class="tag">联系方式：</span><span class="value">{{linkman.tel}}</span></p>
+            </div>
         </div>
     </div>
 </div>
