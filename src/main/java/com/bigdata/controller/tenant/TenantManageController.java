@@ -11,12 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bigdata.common.util.CommonTools;
 import com.bigdata.model.system.User;
 import com.bigdata.model.tenant.GoldUserBean;
 import com.bigdata.service.tenant.ITenantManageService;
+import com.wordnik.swagger.annotations.ApiParam;
 
 /**   
 * @Title: TenantManageController.java
@@ -115,6 +117,22 @@ public class TenantManageController {
     	map.put("total", list.size());
     	map.put("rows", list);
     	return map;
+	}
+	
+	/**
+	 * 确认消费
+	 * @data 2016年3月31日 下午2:52:47
+	 * @param request
+	 * @param response
+	 * @throws Exception 
+	 */
+	@ResponseBody
+	@RequestMapping(value="/update", method = RequestMethod.GET)
+	public void updateConsumer(@ApiParam(required = false, name = "id", value = "主键") @RequestParam(required = false, value = "id") String id,
+			HttpServletRequest request, HttpServletResponse response) throws Exception{
+		
+		//确认消费
+		tenantManageServiceImpl.updateConsumer(id);
 	}
 
 }

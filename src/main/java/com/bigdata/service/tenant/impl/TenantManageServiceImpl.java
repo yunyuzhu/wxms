@@ -71,4 +71,14 @@ public class TenantManageServiceImpl implements ITenantManageService {
 		return list;
 	}
 
+	/**
+	 * 确认消费
+	 * @param id
+	 */
+	@Override
+	public void updateConsumer(String id) {
+		//确认消费
+		tenantManageMapper.updateConsumer(id);
+	}
+
 }

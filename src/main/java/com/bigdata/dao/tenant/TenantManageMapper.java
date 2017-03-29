@@ -41,4 +41,10 @@ public interface TenantManageMapper {
 	 */
 	List<GoldUserBean> getConsumerList(Integer id);
 
+	/**
+	 * 确认消费
+	 * @param id
+	 */
+	void updateConsumer(String id);
+
 }
