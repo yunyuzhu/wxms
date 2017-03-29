@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.bigdata.dao.tenant.TenantManageMapper;
 import com.bigdata.model.system.User;
+import com.bigdata.model.tenant.GoldDetail;
 import com.bigdata.model.tenant.GoldUserBean;
 import com.bigdata.service.tenant.ITenantManageService;
 
@@ -77,8 +78,16 @@ public class TenantManageServiceImpl implements ITenantManageService {
 	 */
 	@Override
 	public void updateConsumer(String id) {
+		//获取该记录的消费信息和规则
+		GoldDetail gd = tenantManageMapper.getGoldDetailInfo(id);
+		
 		//确认消费
-		tenantManageMapper.updateConsumer(id);
+		GoldDetail goldDetail = new GoldDetail();
+		goldDetail.setId(id);
+		goldDetail.setRule(gd.getRule());
+		goldDetail.setGoldNum(String.valueOf(Math.floor(Double.parseDouble(gd.getConsumeMoney())  * goldDetail.getRate())));
+		
+		tenantManageMapper.updateConsumer(goldDetail);
 	}
 
 }

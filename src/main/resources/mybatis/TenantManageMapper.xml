@@ -22,6 +22,17 @@
 		<result column="confirmTime" property="confirmTime"/>
 	</resultMap>
 	
+	<resultMap type="com.bigdata.model.tenant.GoldDetail" id="goldDetailMap">
+		<id column="id" property="id"/>
+		<result column="tenantName" property="tenantName"/>
+		<result column="trade" property="trade"/>
+		<result column="address" property="address"/>
+		<result column="confirmTime" property="confirmTime"/>
+		<result column="rate" property="rate"/>
+		<result column="rule" property="rule"/>
+		<result column="consumeMoney" property="consumeMoney"/>
+	</resultMap>
+	
 	<select id="getTenantInfo" parameterType="Integer" resultMap="userMap">
 	
 		select t1.tenantName,
@@ -56,13 +67,14 @@
 		 where t1.userId = #{id}
 		   and t1.wxId = t2.id
 		   and t1.flag = 0
+		   
 	</select>
 	
 	<select id="getConsumerList" parameterType="Integer" resultMap="goldMap">
 	
 		select t1.id,
 		       t1.consumeMoney,
-			   t1.confirmTime,
+			   date_format(t1.createTime, '%Y-%m-%d %T') as confirmTime,
 		       t2.name,
 		       t2.phone
 		  from t_gold_detail t1,
@@ -70,12 +82,31 @@
 		 where t1.userId = #{id}
 		   and t1.wxId = t2.id
 		   and t1.flag = 1
+	  order by t1.confirmTime desc
+	  
 	</select>
 	
-	<select id="updateConsumer" parameterType="String">
+	<select id="getGoldDetailInfo" parameterType="Integer" resultMap="goldDetailMap">
+	
+		select t1.id,
+		       t1.consumeMoney,
+		       t2.rate,
+		       t3.rule
+		  from t_gold_detail t1,
+		       t_rule t2,
+		       t_user t3
+		 where t1.id = #{id}
+		   and t3.id = t1.userId
+		   and t3.rule = t2.id
+	  
+	</select>
+	
+	<select id="updateConsumer" parameterType="com.bigdata.model.tenant.GoldDetail">
 	
 		update t_gold_detail
-		   set flag = '1'
+		   set flag = '1',
+		       goldNum = #{goldNum},
+		       rule = #{rule}
 		 where id = #{id}
 		 
 	</select>

@@ -4,7 +4,6 @@
 package com.bigdata.model.tenant;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 /**
  * @author zzc
@@ -36,7 +35,7 @@ public class GoldUserBean implements Serializable {
 	/**
 	 * 消费时间
 	 */
-	private Timestamp confirmTime;
+	private String confirmTime;
 
 	public String getId() {
 		return id;
@@ -70,11 +69,11 @@ public class GoldUserBean implements Serializable {
 		this.name = name;
 	}
 
-	public Timestamp getConfirmTime() {
+	public String getConfirmTime() {
 		return confirmTime;
 	}
 
-	public void setConfirmTime(Timestamp confirmTime) {
+	public void setConfirmTime(String confirmTime) {
 		this.confirmTime = confirmTime;
 	}
 

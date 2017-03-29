@@ -1,7 +1,6 @@
 package com.bigdata.model.tenant;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 /**   
 * @Title: TenantManageServiceImpl.java
@@ -60,12 +59,12 @@ public class WxUser implements Serializable {
 	/**
 	 * 创建时间
 	 */
-	private Timestamp createTime;
+	private String createTime;
 	
 	/**
 	 * 修改时间
 	 */
-	private Timestamp updateTime;
+	private String updateTime;
 
 	public String getId() {
 		return id;
@@ -139,19 +138,19 @@ public class WxUser implements Serializable {
 		this.remark = remark;
 	}
 
-	public Timestamp getCreateTime() {
+	public String getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(Timestamp createTime) {
+	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
 	}
 
-	public Timestamp getUpdateTime() {
+	public String getUpdateTime() {
 		return updateTime;
 	}
 
-	public void setUpdateTime(Timestamp updateTime) {
+	public void setUpdateTime(String updateTime) {
 		this.updateTime = updateTime;
 	}
 
