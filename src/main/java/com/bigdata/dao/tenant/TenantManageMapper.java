@@ -3,6 +3,7 @@ package com.bigdata.dao.tenant;
 import java.util.List;
 
 import com.bigdata.model.system.User;
+import com.bigdata.model.tenant.GoldDetail;
 import com.bigdata.model.tenant.GoldUserBean;
 
 /**   
@@ -43,8 +44,15 @@ public interface TenantManageMapper {
 
 	/**
 	 * 确认消费
-	 * @param id
+	 * @param goldDetail
 	 */
-	void updateConsumer(String id);
+	void updateConsumer(GoldDetail goldDetail);
+
+	/**
+	 * 获取该记录的消费信息和规则
+	 * @param id
+	 * @return
+	 */
+	GoldDetail getGoldDetailInfo(String id);
 
 }

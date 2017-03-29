@@ -1,7 +1,6 @@
 package com.bigdata.model.tenant;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 /**   
 * @Title: GoldDetail.java
@@ -43,6 +42,11 @@ public class GoldDetail implements Serializable{
 	private String rule;
 	
 	/**
+	 * 规则比率
+	 */
+	private double rate;
+	
+	/**
 	 * 消费标识
 	 */
 	private String flag;
@@ -50,12 +54,12 @@ public class GoldDetail implements Serializable{
 	/**
 	 * 消费时间
 	 */
-	private Timestamp consumeTime;
+	private String consumeTime;
 	
 	/**
 	 * 确认时间
 	 */
-	private Timestamp confirmTime;
+	private String confirmTime;
 
 	public String getId() {
 		return id;
@@ -105,6 +109,14 @@ public class GoldDetail implements Serializable{
 		this.rule = rule;
 	}
 
+	public double getRate() {
+		return rate;
+	}
+
+	public void setRate(double rate) {
+		this.rate = rate;
+	}
+
 	public String getFlag() {
 		return flag;
 	}
@@ -113,19 +125,19 @@ public class GoldDetail implements Serializable{
 		this.flag = flag;
 	}
 
-	public Timestamp getConsumeTime() {
+	public String getConsumeTime() {
 		return consumeTime;
 	}
 
-	public void setConsumeTime(Timestamp consumeTime) {
+	public void setConsumeTime(String consumeTime) {
 		this.consumeTime = consumeTime;
 	}
 
-	public Timestamp getConfirmTime() {
+	public String getConfirmTime() {
 		return confirmTime;
 	}
 
-	public void setConfirmTime(Timestamp confirmTime) {
+	public void setConfirmTime(String confirmTime) {
 		this.confirmTime = confirmTime;
 	}
 	
