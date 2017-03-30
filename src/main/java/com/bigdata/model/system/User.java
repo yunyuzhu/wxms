@@ -5,6 +5,11 @@ import java.util.Date;
 public class User {
 	
 	/**
+	 * 序号
+	 */
+	private Integer orderId;
+	
+	/**
 	 * 主键
 	 */
 	private Integer id;
@@ -98,6 +103,14 @@ public class User {
 	 * 联系人联系方式
 	 */
 	private String linkPhone;
+
+	public Integer getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(Integer orderId) {
+		this.orderId = orderId;
+	}
 
 	public Integer getId() {
 		return id;

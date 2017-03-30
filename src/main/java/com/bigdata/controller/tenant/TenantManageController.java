@@ -105,7 +105,9 @@ public class TenantManageController {
 		ArrayList<GoldUserBean> listPage = new ArrayList<GoldUserBean>();
 		for(int i=pageStart;i<pageStart + pageSize;i++){
 			if(i<list.size()){
-				listPage.add(list.get(i));
+				GoldUserBean gub = list.get(i);
+				gub.setOrderId(i+1);
+				listPage.add(gub);
 			}
 		}
 		
@@ -145,7 +147,9 @@ public class TenantManageController {
 		ArrayList<GoldUserBean> listPage = new ArrayList<GoldUserBean>();
 		for(int i=pageStart;i<pageStart + pageSize;i++){
 			if(i<list.size()){
-				listPage.add(list.get(i));
+				GoldUserBean gub = list.get(i);
+				gub.setOrderId(i+1);
+				listPage.add(gub);
 			}
 		}
 		

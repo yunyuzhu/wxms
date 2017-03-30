@@ -15,6 +15,11 @@ public class GoldUserBean implements Serializable {
 	/**
 	 * 主键
 	 */
+	private Integer orderId;
+	
+	/**
+	 * 主键
+	 */
 	private String id;
 	
 	/**
@@ -41,6 +46,14 @@ public class GoldUserBean implements Serializable {
 	 * 确认消费消费时间
 	 */
 	private String confirmTime;
+
+	public Integer getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(Integer orderId) {
+		this.orderId = orderId;
+	}
 
 	public String getId() {
 		return id;

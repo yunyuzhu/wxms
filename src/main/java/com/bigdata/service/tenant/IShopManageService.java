@@ -1,6 +1,7 @@
 package com.bigdata.service.tenant;
 
 import com.bigdata.common.util.HttpResult;
+import com.bigdata.model.system.User;
 
 /**   
 * @Title: IShopManageService.java
@@ -12,14 +13,14 @@ public interface IShopManageService {
 	
 	public Object getUserPage(String tenantName, String trade, Integer pageStart, Integer pageSize);
 
-	public HttpResult saveUserAndRole(String userName, String accountName, String password, Integer roleId,
-			Integer depaId, String useFlag, String remark, String tenantName, String trade, String address, String telephone, String linkName, String linkPhone);
+	public HttpResult saveUserAndRole(String userName, String password, Integer roleId,
+			String useFlag, String remark, String tenantName, String trade, String address, String telephone, String linkName, String linkPhone);
 
-	public HttpResult updateUserAndRole(Integer userId, String accountName, Integer roleId, Integer depaId,
+	public HttpResult updateUserAndRole(Integer userId, Integer roleId,
 			String useFlag, String remark, String tenantName, String trade, String address, String telephone, String linkName, String linkPhone);
 
 	public Object delUserAndRole(String userIds);
 
-	public Object getUserAndRole(Integer userId);
+	public User getUserAndRole(Integer userId);
 
 }

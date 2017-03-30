@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import com.bigdata.common.util.HttpResult;
 import com.bigdata.dao.tenant.ShopManageMapper;
-import com.bigdata.model.manage.ManageUser;
 import com.bigdata.model.system.User;
 import com.bigdata.service.tenant.IShopManageService;
 
@@ -38,12 +37,12 @@ public class ShopManageServiceImpl implements IShopManageService {
 		//符合查询条件的数据总条数
 		int total = shopManageMapper.getUserCount(tenantName, trade);
 		resMap.put("total", total);
-		List<ManageUser> rows=null;
+		List<User> rows=null;
 		if (total > 0) {
 			rows = shopManageMapper.getUserPageList(tenantName,trade,pageStart,pageSize);
 			if(!rows.isEmpty()){
 				int i=1;
-				for(ManageUser user: rows){
+				for(User user: rows){
 					user.setOrderId(i);
 					i++;
 				}
@@ -59,7 +58,7 @@ public class ShopManageServiceImpl implements IShopManageService {
 	 * 
 	 * */
 	@Override
-	public HttpResult saveUserAndRole(String userName, String accountName, String password, Integer roleId, Integer depaId,
+	public HttpResult saveUserAndRole(String userName, String password, Integer roleId,
 			String useFlag,String remark, String tenantName, String trade, String address, String telephone, String linkName, String linkPhone) {
 		//用户密码明文加密
         //Preconditions.checkArgument(!Strings.isNullOrEmpty(userName),"username不能为空"); 
@@ -78,11 +77,9 @@ public class ShopManageServiceImpl implements IShopManageService {
         //保存用户
         User user=new User(); 
         user.setUserName(userName); //用户名
-        user.setAccountName(accountName);//昵称
         user.setPassword(password_cipherText); //加密后密码
         user.setCredentialsSalt(salt);//盐
 		user.setUseFlag(useFlag);//冻结状态
-		user.setDepaId(depaId);//部门科室Id
 		user.setRemark(remark);//备注
 		user.setTenantName(tenantName);
 		user.setTrade(trade);
@@ -105,14 +102,12 @@ public class ShopManageServiceImpl implements IShopManageService {
 	 * 
 	 * */
 	@Override
-	public HttpResult updateUserAndRole(Integer userId, String accountName, Integer roleId,
-			Integer depaId, String useFlag, String remark, String tenantName, String trade, String address, String telephone, String linkName, String linkPhone) {
+	public HttpResult updateUserAndRole(Integer userId, Integer roleId, String useFlag, String remark, 
+			String tenantName, String trade, String address, String telephone, String linkName, String linkPhone) {
 		//编辑用户
         User user=new User(); 
         user.setId(userId); //用户名
-        user.setAccountName(accountName);//昵称
 		user.setUseFlag(useFlag);//冻结状态
-		user.setDepaId(depaId);//部门科室Id
 		user.setRemark(remark);//备注
 		user.setTenantName(tenantName);
 		user.setTrade(trade);
@@ -138,9 +133,9 @@ public class ShopManageServiceImpl implements IShopManageService {
 	}
 
 	@Override
-	public Object getUserAndRole(Integer userId) {
+	public User getUserAndRole(Integer userId) {
 		//用户信息
-		Map<String, Object> resMap=shopManageMapper.getUserById(userId);
+		User resMap=shopManageMapper.getUserById(userId);
 		return resMap;
 	}
 

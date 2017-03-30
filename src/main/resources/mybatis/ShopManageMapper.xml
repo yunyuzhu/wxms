@@ -7,10 +7,11 @@
 	<!-- 用户管理分页 -->
 	<select id="getUserPageList" resultType="com.bigdata.model.system.User">
 		SELECT
-			u.id,u.userName,u.remark,DATE_FORMAT(u.createTime,'%Y-%m-%d %T') createTime,r.`name` roleName
+			u.id,u.tenantName,tr.name as trade,u.linkName,u.linkPhone
 		FROM
 			t_user u
-		LEFT JOIN t_user_role ur ON ur.userId = u.id and ur.roleId = 2
+		JOIN t_user_role ur ON ur.userId = u.id and ur.roleId = 2
+		JOIN t_trade tr ON tr.id = u.trade
 		WHERE
 			1 = 1
 			<if test="tenantName!=null and tenantName!=''">
@@ -32,11 +33,11 @@
 			count(*)
 		FROM
 			t_user u
-		LEFT JOIN t_user_role ur ON ur.userId = u.id and ur.roleId = 2
+	     JOIN t_user_role ur ON ur.userId = u.id and ur.roleId = 2
 		WHERE
 			1 = 1
-			<if test="userName!=null and userName!=''">
-				AND u.userName like '%${userName}%'
+			<if test="tenantName!=null and tenantName!=''">
+				AND u.tenantName like '%${tenantName}%'
 			</if>
 			<if test="trade!=null and trade!=''">
 				AND u.trade = #{trade}
@@ -44,17 +45,19 @@
 	</select>
 	
 	<!-- 根据userId查询用户 -->
-	<select id="getUserById" resultType="Map">
+	<select id="getUserById" resultType="com.bigdata.model.system.User">
 		SELECT
 			userName,
-			accountName,
-			depaId,
 			useFlag,
-			remark,
-			ur.roleId
+			tenantName,
+			trade,
+			address,
+			telephone,
+			linkName,
+			linkPhone,
+			remark
 		FROM
-			t_user u
-		LEFT JOIN t_user_role ur ON ur.userId = u.id
+			t_user
 		WHERE
 			id = #{userId}
 	</select>
@@ -72,8 +75,6 @@
 	<update id="updateUser" parameterType="com.bigdata.model.system.User">
 		UPDATE t_user
 		SET 
-			accountName = #{accountName},
-			depaId = #{depaId},
 			useFlag = #{useFlag},
 			tenantName = #{tenantName},
 			trade = #{trade},
@@ -118,10 +119,8 @@
 	<insert id="saveUser" parameterType="com.bigdata.model.system.User" keyProperty="id" useGeneratedKeys="true">
 		INSERT INTO t_user (
 			userName,
-			accountName,
 			password,
 			credentialsSalt,
-			depaId,
 			locked,
 			useFlag,
 			tenantName,
@@ -137,10 +136,8 @@
 		VALUES
 			(
 				#{userName},
-				#{accountName},
 				#{password},
 				#{credentialsSalt},
-				#{depaId},
 				#{locked},
 				#{useFlag},
 				#{tenantName},

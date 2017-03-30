@@ -1,11 +1,9 @@
 package com.bigdata.dao.tenant;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.bigdata.model.manage.ManageUser;
 import com.bigdata.model.system.User;
 
 /**   
@@ -18,7 +16,7 @@ public interface ShopManageMapper {
 	
 	int getUserCount(@Param(value = "tenantName") String tenantName, @Param(value = "trade") String trade);
 
-	List<ManageUser> getUserPageList(@Param(value = "tenantName") String tenantName, @Param(value = "trade") String trade,
+	List<User> getUserPageList(@Param(value = "tenantName") String tenantName, @Param(value = "trade") String trade,
 			@Param(value = "pageStart") Integer pageStart, @Param(value = "pageSize") Integer pageSize);
 
 	void saveUser(User user);
@@ -35,6 +33,6 @@ public interface ShopManageMapper {
 
 	void delUserRole(@Param(value = "userIds") String userIds);
 
-	Map<String, Object> getUserById(@Param(value = "userId") Integer userId);
+	User getUserById(@Param(value = "userId") Integer userId);
 
 }

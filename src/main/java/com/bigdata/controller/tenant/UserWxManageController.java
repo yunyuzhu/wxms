@@ -32,7 +32,7 @@ public class UserWxManageController {
 	 * @param pageSize
 	 * @return
 	 */
-	@RequestMapping(value = "/userPage", method = RequestMethod.POST)
+	@RequestMapping(value = "/userPage", method = RequestMethod.GET)
 	@ResponseBody
 	public Object userPage(
 			@ApiParam(required = false, name = "userName", value = "用户名查询参数") @RequestParam(value = "userName", required = false) String userName,
@@ -56,7 +56,7 @@ public class UserWxManageController {
 	 * @param remark
 	 * @return
 	 */
-	@RequestMapping(value = "/saveUser", method = RequestMethod.POST)
+	@RequestMapping(value = "/saveUser", method = RequestMethod.GET)
 	@ResponseBody
 	public Object saveUser(
 			@ApiParam(required = true, name = "userName", value = "用户名") @RequestParam(value = "userName", required = true) String userName,
@@ -91,7 +91,7 @@ public class UserWxManageController {
 	 * @param remark
 	 * @return
 	 */
-	@RequestMapping(value = "/updateUser", method = RequestMethod.POST)
+	@RequestMapping(value = "/updateUser", method = RequestMethod.GET)
 	@ResponseBody
 	public Object updateUser(
 			@ApiParam(required = true, name = "userId", value = "用户id") @RequestParam(value = "userId", required = true) String userId,
@@ -118,7 +118,7 @@ public class UserWxManageController {
 	 * @param userId
 	 * @return
 	 */
-	@RequestMapping(value = "/viewUser", method = RequestMethod.POST)
+	@RequestMapping(value = "/viewUser", method = RequestMethod.GET)
 	@ResponseBody
 	public Object viewUser(
 			@ApiParam(required = true, name = "userId", value = "用户id") @RequestParam(value = "userId", required = true) Integer userId) {
@@ -138,7 +138,7 @@ public class UserWxManageController {
 	 * @param userId
 	 * @return
 	 */
-	@RequestMapping(value = "/delUser", method = RequestMethod.POST)
+	@RequestMapping(value = "/delUser", method = RequestMethod.GET)
 	@ResponseBody
 	public Object delUser(
 			@ApiParam(required = true, name = "userIds", value = "用户id") @RequestParam(value = "userIds", required = true) String userIds) {

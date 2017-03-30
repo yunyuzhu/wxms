@@ -75,6 +75,7 @@
 		   <if test="endTime != null and endTime != ''">
 		   	<![CDATA[ and date_format(t1.consumeTime, '%Y-%m-%d') <= #{endTime} ]]>
 		   </if>
+		order by t1.consumeTime desc
 		   
 	</select>
 	

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.shiro.crypto.hash.Md5Hash;
+import org.springframework.stereotype.Service;
 
 import com.bigdata.common.util.HttpResult;
 import com.bigdata.dao.tenant.UserWxManageMapper;
@@ -18,6 +19,7 @@ import com.bigdata.service.tenant.IUserWxManageService;
 * @author zzc   
 * @date 2017年3月30日 下午2:15:01   
 */
+@Service
 public class UserWxManageServiceImpl implements IUserWxManageService {
 	
 	private UserWxManageMapper userWxManageMapper;
