@@ -12,9 +12,9 @@
                 <thead>
                 <tr>
                     <th class="col0">姓名</th>
-                    <th class="col1">金币</th>
+                    <th class="col1">消费金额(元)</th>
                     <th class="col2">电话</th>
-                    <th class="col3">时间</th>
+                    <th class="col3">消费时间</th>
                     <th class="col4">操作</th>
                 </tr>
                 </thead>

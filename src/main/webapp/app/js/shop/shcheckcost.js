@@ -19,11 +19,11 @@ $(document).ready(function(){
 
 // 表格
 function checkCostTableFun(){
-    drawTable();
     /************ 表格 **************/
     // 表格点击事件
-    window.costTableEvents = {
-        'click .like': function (e, value, row, index) {
+    window.clickEvents = {
+        'click .like': function(e, value, row, index) {
+            checkCostUpdate(userIdArr[index]);
         }
     };
     //格式化文本
@@ -52,8 +52,8 @@ function checkCostTableFun(){
                     curArr[0] = curObj['name'];
                     curArr[1] = curObj['consumeMoney'];
                     curArr[2] = curObj['phone'];
-                    curArr[3] = curObj['confirmTime'];
-                    curArr[4] = "确认";
+                    curArr[3] = curObj['consumeTime'];
+                    curArr[4] = "确认消费";
                     dataRows[i] = curArr;
                     //记录id
                     idArr[i] = curObj['id'];
@@ -93,8 +93,38 @@ function checkCostTableFun(){
                 { field: 2, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
                 { field: 3, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
                 { field: 4, width: "25%", align: 'center', valign: 'middle', halign: 'center', sortable: false,
-                    /*events: costTableEvents,*/ formatter: linkTableFat}
+                    events: clickEvents, formatter: linkTableFat}
             ]
         });
     }
+    //触发
+    drawTable();
+}
+
+//保存修改
+function checkCostUpdate(id){
+    //确认询问
+    layer.confirm('确认用户的消费？', {
+        title: ['提示'],
+        btn: ['确认','取消'] //按钮
+    }, function(){
+        var inData = {"id": id};
+        $.ajax({
+            type: "get",
+            url: "tenant/update",
+            dataType:"json",
+            data: inData,
+            async: false,
+            jsonp: "callback",
+            success:function(data){
+                layer.msg('确认消费成功！', {icon: 1, time: 1000});
+                //刷新消费列表
+                checkCostTableFun();
+            },
+            error:function(error){
+                console.log(error);
+                layer.msg('确认失败！', {icon: 2, time: 1000});
+            }
+        });
+    }, function(){ return ; });
 }
