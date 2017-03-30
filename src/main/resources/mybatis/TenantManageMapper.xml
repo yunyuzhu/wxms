@@ -19,6 +19,7 @@
 		<result column="tenantName" property="tenantName"/>
 		<result column="trade" property="trade"/>
 		<result column="address" property="address"/>
+		<result column="consumeTime" property="consumeTime"/>
 		<result column="confirmTime" property="confirmTime"/>
 	</resultMap>
 	
@@ -56,10 +57,11 @@
 		   and t1.rule = t2.id
 	</select>
 	
-	<select id="getConfirmList" parameterType="Integer" resultMap="goldMap">
+	<select id="getConfirmList" parameterType="com.bigdata.model.tenant.QueryBean" resultMap="goldMap">
 	
 		select t1.id,
 			   t1.consumeMoney,
+			   date_format(t1.consumeTime, '%Y-%m-%d %T') as consumeTime,
 		       t2.name,
 		       t2.phone
 		  from t_gold_detail t1,
@@ -67,14 +69,20 @@
 		 where t1.userId = #{id}
 		   and t1.wxId = t2.id
 		   and t1.flag = 0
+		   <if test="startTime != null and startTime != ''">
+		   	<![CDATA[ and date_format(t1.consumeTime, '%Y-%m-%d') >= #{startTime} ]]>
+		   </if>
+		   <if test="endTime != null and endTime != ''">
+		   	<![CDATA[ and date_format(t1.consumeTime, '%Y-%m-%d') <= #{endTime} ]]>
+		   </if>
 		   
 	</select>
 	
-	<select id="getConsumerList" parameterType="Integer" resultMap="goldMap">
+	<select id="getConsumerList" parameterType="com.bigdata.model.tenant.QueryBean" resultMap="goldMap">
 	
 		select t1.id,
 		       t1.consumeMoney,
-			   date_format(t1.createTime, '%Y-%m-%d %T') as confirmTime,
+			   date_format(t1.confirmTime, '%Y-%m-%d %T') as confirmTime,
 		       t2.name,
 		       t2.phone
 		  from t_gold_detail t1,
@@ -82,11 +90,17 @@
 		 where t1.userId = #{id}
 		   and t1.wxId = t2.id
 		   and t1.flag = 1
+		   <if test="startTime != null and startTime != ''">
+		   	<![CDATA[ and date_format(t1.confirmTime, '%Y-%m-%d') >= #{startTime} ]]>
+		   </if>
+		   <if test="endTime != null and endTime != ''">
+		   	<![CDATA[ and date_format(t1.confirmTime, '%Y-%m-%d') <= #{endTime} ]]>
+		   </if>
 	  order by t1.confirmTime desc
 	  
 	</select>
 	
-	<select id="getGoldDetailInfo" parameterType="Integer" resultMap="goldDetailMap">
+	<select id="getGoldDetailInfo" parameterType="String" resultMap="goldDetailMap">
 	
 		select t1.id,
 		       t1.consumeMoney,

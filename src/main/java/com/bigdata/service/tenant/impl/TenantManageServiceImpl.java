@@ -10,6 +10,7 @@ import com.bigdata.dao.tenant.TenantManageMapper;
 import com.bigdata.model.system.User;
 import com.bigdata.model.tenant.GoldDetail;
 import com.bigdata.model.tenant.GoldUserBean;
+import com.bigdata.model.tenant.QueryBean;
 import com.bigdata.service.tenant.ITenantManageService;
 
 /**   
@@ -54,21 +55,21 @@ public class TenantManageServiceImpl implements ITenantManageService {
 	 * @return
 	 */
 	@Override
-	public List<GoldUserBean> getConfirmList(Integer id) {
+	public List<GoldUserBean> getConfirmList(QueryBean queryBean) {
 		//获取待确认消费信息列表
-		List<GoldUserBean> list = tenantManageMapper.getConfirmList(id);
+		List<GoldUserBean> list = tenantManageMapper.getConfirmList(queryBean);
 		return list;
 	}
 
 	/**
 	 * 获取消费流水列表
-	 * @param id
+	 * @param queryBean
 	 * @return
 	 */
 	@Override
-	public List<GoldUserBean> getConsumerList(Integer id) {
+	public List<GoldUserBean> getConsumerList(QueryBean queryBean) {
 		//获取待确认消费信息列表
-		List<GoldUserBean> list = tenantManageMapper.getConsumerList(id);
+		List<GoldUserBean> list = tenantManageMapper.getConsumerList(queryBean);
 		return list;
 	}
 
@@ -85,7 +86,7 @@ public class TenantManageServiceImpl implements ITenantManageService {
 		GoldDetail goldDetail = new GoldDetail();
 		goldDetail.setId(id);
 		goldDetail.setRule(gd.getRule());
-		goldDetail.setGoldNum(String.valueOf(Math.floor(Double.parseDouble(gd.getConsumeMoney())  * goldDetail.getRate())));
+		goldDetail.setGoldNum(String.valueOf(Math.floor(Double.parseDouble(gd.getConsumeMoney())  * gd.getRate())));
 		
 		tenantManageMapper.updateConsumer(goldDetail);
 	}

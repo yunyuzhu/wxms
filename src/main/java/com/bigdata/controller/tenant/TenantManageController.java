@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.bigdata.common.util.CommonTools;
 import com.bigdata.model.system.User;
 import com.bigdata.model.tenant.GoldUserBean;
+import com.bigdata.model.tenant.QueryBean;
 import com.bigdata.service.tenant.ITenantManageService;
 import com.wordnik.swagger.annotations.ApiParam;
 
@@ -82,13 +83,20 @@ public class TenantManageController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/ConfirmList", method = RequestMethod.GET)
-	public Object getConfirmList(HttpServletRequest request, HttpServletResponse response) throws Exception{
+	public Object getConfirmList(@ApiParam(required = false, name = "startTime", value = "开始时间") @RequestParam(required = false, value = "startTime") String startTime,
+			                     @ApiParam(required = false, name = "endTime", value = "结束时间") @RequestParam(required = false, value = "endTime") String endTime,
+			HttpServletRequest request, HttpServletResponse response) throws Exception{
 		
 		//获取登录的用户信息
 		User user = (User)CommonTools.findUserSession(request);
 		
+		QueryBean queryBean = new QueryBean();
+		queryBean.setId(user.getId().toString());
+		queryBean.setStartTime(startTime);
+		queryBean.setEndTime(endTime);
+		
 		//获取待确认消费信息列表
-		List<GoldUserBean> list = tenantManageServiceImpl.getConfirmList(user.getId());
+		List<GoldUserBean> list = tenantManageServiceImpl.getConfirmList(queryBean);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
     	map.put("total", list.size());
@@ -105,13 +113,20 @@ public class TenantManageController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/consumerList", method = RequestMethod.GET)
-	public Object getConsumerList(HttpServletRequest request, HttpServletResponse response) throws Exception{
+	public Object getConsumerList(@ApiParam(required = false, name = "startTime", value = "开始时间") @RequestParam(required = false, value = "startTime") String startTime,
+            					  @ApiParam(required = false, name = "endTime", value = "结束时间") @RequestParam(required = false, value = "endTime") String endTime,
+            HttpServletRequest request, HttpServletResponse response) throws Exception{
 		
 		//获取登录的用户信息
 		User user = (User)CommonTools.findUserSession(request);
 		
+		QueryBean queryBean = new QueryBean();
+		queryBean.setId(user.getId().toString());
+		queryBean.setStartTime(startTime);
+		queryBean.setEndTime(endTime);
+		
 		//获取消费流水列表
-		List<GoldUserBean> list = tenantManageServiceImpl.getConsumerList(user.getId());
+		List<GoldUserBean> list = tenantManageServiceImpl.getConsumerList(queryBean);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
     	map.put("total", list.size());

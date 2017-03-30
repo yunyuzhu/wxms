@@ -35,6 +35,11 @@ public class GoldUserBean implements Serializable {
 	/**
 	 * 消费时间
 	 */
+	private String consumeTime;
+	
+	/**
+	 * 确认消费消费时间
+	 */
 	private String confirmTime;
 
 	public String getId() {
@@ -67,6 +72,14 @@ public class GoldUserBean implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getConsumeTime() {
+		return consumeTime;
+	}
+
+	public void setConsumeTime(String consumeTime) {
+		this.consumeTime = consumeTime;
 	}
 
 	public String getConfirmTime() {

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.bigdata.model.system.User;
 import com.bigdata.model.tenant.GoldUserBean;
+import com.bigdata.model.tenant.QueryBean;
 
 /**   
 * @Title: TenantManageService.java
@@ -29,17 +30,17 @@ public interface ITenantManageService {
 
 	/**
 	 * 获取待确认消费信息列表
-	 * @param id
+	 * @param queryBean
 	 * @return
 	 */
-	List<GoldUserBean> getConfirmList(Integer id);
+	List<GoldUserBean> getConfirmList(QueryBean queryBean);
 
 	/**
 	 * 获取消费流水列表
-	 * @param id
+	 * @param queryBean
 	 * @return
 	 */
-	List<GoldUserBean> getConsumerList(Integer id);
+	List<GoldUserBean> getConsumerList(QueryBean queryBean);
 
 	/**
 	 * 确认消费
