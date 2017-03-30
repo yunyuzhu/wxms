@@ -143,11 +143,14 @@ public class TenantManageController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/update", method = RequestMethod.GET)
-	public void updateConsumer(@ApiParam(required = false, name = "id", value = "主键") @RequestParam(required = false, value = "id") String id,
+	public Object updateConsumer(@ApiParam(required = false, name = "id", value = "主键") @RequestParam(required = false, value = "id") String id,
 			HttpServletRequest request, HttpServletResponse response) throws Exception{
 		
 		//确认消费
 		tenantManageServiceImpl.updateConsumer(id);
+		Map<String, Object> map = new HashMap<String, Object>();
+    	map.put("msg", "确认消费成功");
+    	return map;
 	}
 
 }

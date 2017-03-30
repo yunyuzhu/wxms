@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.bigdata.dao.tenant.ShopManageMapper">
+
+	<!-- 用户管理分页 -->
+	<select id="getUserPageList" resultType="com.bigdata.model.manage.ManageUser">
+		SELECT
+			u.id,u.userName,u.remark,DATE_FORMAT(u.createTime,'%Y-%m-%d %T') createTime,r.`name` roleName
+		FROM
+			t_user u
+		LEFT JOIN t_user_role ur ON ur.userId = u.id
+		LEFT JOIN t_role r on r.id=ur.roleId
+		WHERE
+			1 = 1
+			<if test="userName!=null and userName!=''">
+				AND u.userName like '%${userName}%'
+			</if>
+			<if test="roleId!=null and roleId!=''">
+				AND ur.roleId = #{roleId}
+			</if>
+		ORDER BY
+			createTime DESC
+			<if test="pageStart!=null and pageSize!=null">
+				limit #{pageStart},#{pageSize}
+			</if>
+	</select>
+	
+	<!-- 用户总条数 -->
+	<select id="getUserCount" resultType="Integer">
+		SELECT
+			count(*)
+		FROM
+			t_user u
+		LEFT JOIN t_user_role ur ON ur.userId = u.id
+		WHERE
+			1 = 1
+			<if test="userName!=null and userName!=''">
+				AND u.userName like '%${userName}%'
+			</if>
+			<if test="roleId!=null and roleId!=''">
+				AND ur.roleId = #{roleId}
+			</if>
+	</select>
+	
+	<!-- 根据userId查询用户 -->
+	<select id="getUserById" resultType="Map">
+		SELECT
+			userName,
+			accountName,
+			depaId,
+			useFlag,
+			remark,
+			ur.roleId
+		FROM
+			t_user u
+		LEFT JOIN t_user_role ur ON ur.userId = u.id
+		WHERE
+			id = #{userId}
+	</select>
+	
+	<!-- 根据用户名查找用户个数 -->
+	<select id="getUserByUserName" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			t_user
+		WHERE
+			userName = #{userName}
+	</select>
+	
+	<update id="updateUser" parameterType="com.bigdata.model.system.User">
+		UPDATE t_user
+		SET 
+			accountName = #{accountName},
+			depaId = #{depaId},
+			useFlag = #{useFlag},
+			tenantName = #{tenantName},
+			trade = #{trade},
+			address = #{address},
+			telephone = #{telephone},
+			linkName = #{linkName},
+			linkPhone = #{linkPhone},
+			remark = #{remark},
+			updateTime = NOW()
+		WHERE
+			id = #{id}
+	
+	</update>
+	
+	<update id="updateUserRole">
+		UPDATE t_user_role
+		SET 
+			roleId = #{roleId}
+		WHERE
+			userId = #{userId}
+	</update>
+	
+	<!-- 删除用户 -->
+	<delete id="delUser">
+		DELETE
+		FROM
+			t_user
+		WHERE
+			id in ${userIds}
+	</delete>
+	
+	<!-- 删除用户角色 -->
+	<delete id="delUserRole">
+		DELETE
+		FROM
+			t_user_role
+		WHERE
+			userId in ${userIds}
+	</delete>
+	
+	<!-- 新增用户 -->
+	<insert id="saveUser" parameterType="com.bigdata.model.system.User" keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO t_user (
+			userName,
+			accountName,
+			password,
+			credentialsSalt,
+			depaId,
+			locked,
+			useFlag,
+			tenantName,
+			trade,
+			address,
+			telephone,
+			linkName,
+			linkPhone,
+			remark,
+			createTime,
+			updateTime
+		)
+		VALUES
+			(
+				#{userName},
+				#{accountName},
+				#{password},
+				#{credentialsSalt},
+				#{depaId},
+				#{locked},
+				#{useFlag},
+				#{tenantName},
+				#{trade},
+				#{address},
+				#{telephone},
+				#{linkName},
+				#{linkPhone},
+				#{remark},
+				NOW(),
+				NOW()
+			);
+	</insert>
+	
+	<!-- 保存用户id和角色id -->
+	<insert id="saveUserRole"> 
+		INSERT into t_user_role (userId,roleId) VALUES(#{userId},#{roleId})
+	</insert>
+	
+</mapper>
