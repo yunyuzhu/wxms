@@ -2,8 +2,24 @@
  * Created by chun
  */
 var userIdArr;
+var emptyCheck = (new checkFun).isEmpty;
 //加载页面
 function loadhtml(){
+    //注册提交按钮
+    $("#inSubmit").on('click', function(){
+        inSubmit();
+    });
+    //提交查询
+    inSubmit();
+
+    //增加
+    $("#listAdd").on('click', function(){
+        listAddShow();
+    });
+    //删除
+    $("#listDel").on('click', function(){
+        listDelFun();
+    });
 
     //窗口大小调整
     $(window).on('resize', function(){
@@ -11,51 +27,35 @@ function loadhtml(){
             $("#listTable").bootstrapTable('resetView');
         }, 300);
     });
-    //注册提交按钮
-    $("#inSubmit").on('click', function(){
-        inSubmit();
-    });
-    //提交查询
-    inSubmit();
 }
 $(document).ready(function(){
     loadhtml();
 });
-
 //提交
 function inSubmit(){
     listTableFun();
+}
+//输入参数
+function getInData(params){
+    var inData = {};
+
+    inData.startTime = "2016-07-17";
+    inData.endTime = "2017-01-17";
+    //表格参数
+    if(typeof(params) != 'undefined'){
+        inData.pageSize  = params.limit;
+        inData.pageStart = params.offset;
+    }
+    return inData;
 }
 
 //列表
 function listTableFun(){
     /************ 表格 **************/
-    var layerPopOpt = {
-        type: 1,
-        title: ['商户信息',"padding-left:70px;font-size:16px;text-align:center;color:#FFF;background:#4376a7;"],
-        skin: 'layui-layer-rim', //加上边框
-        area: ['440px', 'auto'], //宽高
-        anim: 2,
-        shadeClose: false, //开启遮罩关闭
-        btn: ['保存', '取消'],
-        yes: function(){},
-        btn2: function(){layer.closeAll();},
-        btnAlign: 'c',
-        content: ''
-    };
-    function listEdit(id){
-        layerPopOpt.content = $("#editPop");
-        layerPopOpt.yes = function(){
-            layer.alert('确定要保存？', function(index){
-                layer.closeAll();
-            });
-        };
-        layer.open(layerPopOpt);
-    }
     // 表格点击事件
     window.clickEvents = {
         'click .like': function(e, value, row, index) {
-            listEdit(userIdArr[index]);
+            listEditShow(userIdArr[index]);
         }
     };
     //格式化文本
@@ -63,7 +63,7 @@ function listTableFun(){
         var resTemp = '';
         resTemp = value;
         return [
-            '<a class="like btn handlebtn" href="javascript:void(0);" title="请点击">'+resTemp+'</a>'
+            '<a class="like btn handlebtn" '+ ' data-id='+userIdArr[index]+ ' title="请点击">'+resTemp+'</a>'
         ];
     }
     // 表格
@@ -74,7 +74,6 @@ function listTableFun(){
         function resHandler(res) {
             var dataObj = {"rows": [], "total": 0};
             var jsonData = eval(res);
-
             jsonData = {
                 rows: [
                     { name: "COCO", trade: "餐饮", addr: "成都市", tel: "151213131313" , linkman: "李四", linktel: "152113131"},
@@ -85,7 +84,6 @@ function listTableFun(){
                 ],
                 total: 5
             };
-
             var dataRows  = jsonData['rows'];
             var dataTotal = jsonData['total'];
             if(dataTotal > 0) {
@@ -110,6 +108,11 @@ function listTableFun(){
             }
             return dataObj;
         }
+        //输入参数
+        function inParams(params) {
+            var inData = new getInData(params);
+            return inData;
+        }
         $tableElem.bootstrapTable('destroy');
         $tableElem.bootstrapTable({
             method: 'get',
@@ -117,7 +120,7 @@ function listTableFun(){
             url: "tenant/consumerList",
             cache: false,
             dataType : 'json',
-            queryParams: "",  //参数
+            queryParams: inParams,
             classes: classes,
             sortOrder: 'asc',
             striped: true,
@@ -151,9 +154,271 @@ function listTableFun(){
     drawTable();
 }
 
+function layerPopSet(){
+    layerPopOpt.title[0] = "商户信息";
+    layerPopOpt.content = $("#editPop");
+}
 
+//弹窗信息初始化加载
+function infoPopInit(options){
+    var defOption = {
+        name: '', trade: '', addr: '', tel: '', linkName: '',linkTel: ''
+    };
+    if (options === undefined){options = {};}
+    if (typeof(options) === "object") {
+        var setting = $.extend(false, {}, defOption, options);
+        defOption = setting;
+    }
+    var $namePop = $("#namePop");
+    var $tradePop = $("#tradePop");
+    var $addrPop = $("#addrPop");
+    var $telPop = $("#telPop");
+    var $linkNamePop = $("#linkNamePop");
+    var $linkTelPop = $("#linkTelPop");
 
+    $namePop.val(defOption.name);
+    $tradePop.val(defOption.trade);
+    $addrPop.val(defOption.addr);
+    $telPop.val(defOption.tel);
+    $linkNamePop.val(defOption.linkName);
+    $linkTelPop.val(defOption.linkTel);
+}
 
+/*************  编辑  ****************/
 
+//编辑保存
+function listEditSave(id){
+    var $namePop = $("#namePop");
+    var $tradePop = $("#tradePop");
+    var $addrPop = $("#addrPop");
+    var $telPop = $("#telPop");
+    var $linkNamePop = $("#linkNamePop");
+    var $linkTelPop = $("#linkTelPop");
 
+    var inData = {};
+    inData.id = id;
+    inData.name = $namePop.val();
+    inData.trade = $tradePop.val();
+    inData.addr = $addrPop.val();
+    inData.tel = $telPop.val();
+    inData.linkName = $linkNamePop.val();
+    inData.linkTel = $linkTelPop.val();
 
+    //删除前后的空白字符
+    for(var para in inData){
+        inData[para] = jQuery.trim(inData[para]);
+    }
+    // 输入校验
+    do{
+        if(!emptyCheck($namePop, inData.name, "名称不能为空")){
+            break;
+        }
+        if(!emptyCheck($tradePop, inData.trade, "行业不能为空")){
+            break;
+        }
+        if(!emptyCheck($namePop, inData.addr, "地址不能为空")){
+            break;
+        }
+        if(!emptyCheck($namePop, inData.tel, "联系方式不能为空")){
+            break;
+        }
+        if(!emptyCheck($namePop, inData.linkName, "联系人不能为空")){
+            break;
+        }
+        if(!emptyCheck($namePop, inData.linkTel, "联系人信息不能为空")){
+            break;
+        }
+        //发送服务器
+        $.ajax({
+            type: "post",
+            url: "manageUser/saveUser",
+            dataType:"json",
+            data: inData,
+            async: false,
+            jsonp: "callback",
+            success:function(data){
+                var jsonData = eval(data);
+                var res = jsonData['success'];
+                if(res){
+                    layer.msg('保存成功！', {icon: 1, time: 1000});
+                    layer.closeAll();
+                    //提交查询
+                    inSubmit();
+                }
+                else{
+                    var msg = jsonData['message'];
+                    layer.msg(msg, {icon: 2, time: 1000});
+                }
+            },
+            error:function(error){
+                console.log(error);
+                layer.msg('保存失败！', {icon: 2, time: 1000});
+            }
+        });
+    }while(0);
+}
+//编辑显示
+function listEditShow(id){
+    var inData = {id: id};
+    //发送服务器
+    $.ajax({
+        type: "get",
+        url: "manageUser/viewUser",
+        dataType:"json",
+        data: inData,
+        async: false,
+        jsonp: "callback",
+        success:function(data){
+            var jsonData = eval(data);
+            //更新信息
+            infoPopInit(jsonData);
+            //弹窗
+            layerPopSet();
+            layerPopOpt.yes = function(){
+                listEditSave(id);
+            };
+            layer.open(layerPopOpt);
+        },
+        error:function(error){
+            console.log(error);
+        }
+    });
+}
+
+/*************  增加  ****************/
+//增加保存
+function listAddSave(){
+    var $namePop = $("#namePop");
+    var $tradePop = $("#tradePop");
+    var $addrPop = $("#addrPop");
+    var $telPop = $("#telPop");
+    var $linkNamePop = $("#linkNamePop");
+    var $linkTelPop = $("#linkTelPop");
+
+    var inData = {};
+    inData.name = $namePop.val();
+    inData.trade = $tradePop.val();
+    inData.addr = $addrPop.val();
+    inData.tel = $telPop.val();
+    inData.linkName = $linkNamePop.val();
+    inData.linkTel = $linkTelPop.val();
+
+    //删除前后的空白字符
+    for(var para in inData){
+        inData[para] = jQuery.trim(inData[para]);
+    }
+    // 输入校验
+    do{
+        if(!emptyCheck($namePop, inData.name, "名称不能为空")){
+            break;
+        }
+        if(!emptyCheck($tradePop, inData.trade, "行业不能为空")){
+            break;
+        }
+        if(!emptyCheck($namePop, inData.addr, "地址不能为空")){
+            break;
+        }
+        if(!emptyCheck($namePop, inData.tel, "联系方式不能为空")){
+            break;
+        }
+        if(!emptyCheck($namePop, inData.linkName, "联系人不能为空")){
+            break;
+        }
+        if(!emptyCheck($namePop, inData.linkTel, "联系人信息不能为空")){
+            break;
+        }
+        //发送服务器
+        $.ajax({
+            type: "post",
+            url: "manageUser/saveUser",
+            dataType:"json",
+            data: inData,
+            async: false,
+            jsonp: "callback",
+            success:function(data){
+                var jsonData = eval(data);
+                var res = jsonData['success'];
+                if(res){
+                    layer.msg('保存成功！', {icon: 1, time: 1000});
+                    layer.closeAll();
+                    //提交查询
+                    inSubmit();
+                }
+                else{
+                    var msg = jsonData['message'];
+                    layer.msg(msg, {icon: 2, time: 1000});
+                }
+            },
+            error:function(error){
+                console.log(error);
+                layer.msg('保存失败！', {icon: 2, time: 1000});
+            }
+        });
+    }while(0);
+}
+//增加显示
+function listAddShow(){
+    infoPopInit();
+    layerPopSet();
+    layerPopOpt.yes = function(){
+        //增加保存
+        listAddSave();
+    };
+    layer.open(layerPopOpt);
+}
+
+/*************  删除  ****************/
+//删除
+function listDelFun(){
+    var $curTable = $("#listTable");
+    var $rowList = $curTable.find("tbody tr");
+    var idArr = [];
+    var rowListSize = $rowList.size();
+    for(var i=0;i<rowListSize; i++){
+        var $curRow = $rowList.eq(i);
+        var $checkbox = $curRow.find('input[type="checkbox"]');
+        if($checkbox.is(':checked')){
+            var curId = $curRow.find(".like").attr("data-id");
+            idArr.push(curId);
+        }
+    }
+    if(idArr.length == 0){
+        layer.msg('请选择要删除的用户！', {icon:0,skin:'layui-layer-lan',title:'提示',time: 1500});
+        return ;
+    }
+    layer.confirm('确定要删除选中的用户？', {
+        icon: 3,
+        title: ['提示',"color:#FFF;background:#4376a7;"],
+        btn: ['删除','取消']
+    }, function(){
+        //删除操作
+        var inData = {userIds: idArr.join(',')};
+        //发送服务器
+        $.ajax({
+            type: "post",
+            url: "manageUser/delUser",
+            dataType:"json",
+            data: inData,
+            async: false,
+            jsonp: "callback",
+            success:function(data){
+                var jsonData = eval(data);
+                var res = jsonData['success'];
+                if(res){
+                    layer.msg('删除用户成功！', {icon: 1, time: 1000});
+                    //提交查询
+                    inSubmit();
+                }
+                else{
+                    var msg = jsonData['message'];
+                    layer.msg(msg, {icon: 2});
+                }
+            },
+            error:function(error){
+                console.log(error);
+            }
+        });
+    }, function(){
+        return;
+    });
+}

@@ -8,21 +8,25 @@
         <div class="box-body">
             <form class="form-horizontal" role="form">
                 <div class="row">
-                    <div class="col-xs-4">
+                    <div class="col-xs-5">
                         <div class="form-group">
                             <label for="trade" class="col-sm-3 control-label">行业</label>
-                            <div class="col-sm-9">
-                                <select id="trade" class="form-control">
-                                    <option>全部</option>
-                                </select>
+                            <div class="col-sm-8">
+                                <div class="ct-input-frame">
+                                    <select id="trade" class="form-control">
+                                        <option value="">全部</option>
+                                        <option value="1">餐饮</option>
+                                        <option value="2">建筑</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-5">
+                    <div class="col-xs-6">
                         <div class="form-group">
-                            <label for="name" class="col-sm-2 control-label">商户名称</label>
+                            <label for="name" class="col-sm-3 control-label">商户名称</label>
                             <div class="col-sm-8">
-                                <div class="kh-icon-frame">
+                                <div class="ct-input-frame">
                                     <input type="text" class="form-control" id="name" value="" placeholder="输入商户名称">
                                 </div>
                             </div>
@@ -35,6 +39,7 @@
             <a class="btn ctbtn" id="inSubmit">查&nbsp;询</a>
         </div>
     </div>
+
     <!--列表-->
     <div class="box no-border">
         <div class="box-header with-border">
@@ -141,127 +146,6 @@
                         </div>
                     </div>
                 </form>
-            </div>
-            <%--<div class="box-footer no-border">
-                <a class="btn ctbtn" id="saveBtn">保存</a>
-                <a class="btn ctbtn" id="cancleBtn">取消</a>
-            </div>--%>
-        </div>
-    </div>
-
-    <!--弹窗-->
-    <div class="khpop-wrap fadeIn" id="khpopWrap">
-        <div class="khpop popsize1 fadeInDownBig" id="khpop">
-            <span class="popclose" id="khpopClose">&times;</span>
-            <div class="pophd">
-                <h5>商户信息</h5>
-            </div>
-            <div class="popbody">
-                <div class="popcon">
-                    <form class="form-horizontal" role="form">
-                        <div class="row">
-                            <div class="col-xs-8 col-xs-offset-2">
-                                <div class="form-group mustfill">
-                                    <label for="userPop" class="col-sm-2 control-label">名称</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="userPop" value="" placeholder="输入账户">
-                                    </div>
-                                    <span class="fillmark">*</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row" id="passwdRow">
-                            <div class="col-xs-8 col-xs-offset-2">
-                                <div class="form-group mustfill">
-                                    <label for="passwd" class="col-sm-2 control-label">密码</label>
-                                    <div class="col-sm-9">
-                                        <input type="password" class="form-control" id="passwd" value="" placeholder="输入密码">
-                                    </div>
-                                    <span class="fillmark">*</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-8 col-xs-offset-2">
-                                <div class="form-group mustfill">
-                                    <label for="accountPop" class="col-sm-2 control-label">昵称</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="accountPop" value="" placeholder="输入昵称">
-                                    </div>
-                                    <span class="fillmark">*</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-8 col-xs-offset-2">
-                                <div class="form-group mustfill">
-                                    <label for="rolePop" class="col-sm-2 control-label">角色</label>
-                                    <div class="col-sm-9">
-                                        <select id="rolePop" class="form-control">
-                                            <option>全部</option>
-                                        </select>
-                                    </div>
-                                    <span class="fillmark">*</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row" style="display:none;">
-                            <div class="col-xs-8 col-xs-offset-2">
-                                <div class="form-group mustfill">
-                                    <label for="depa" class="col-sm-2 control-label">部门</label>
-                                    <div class="col-sm-9">
-                                        <select id="depa" class="form-control">
-                                            <option value="">全部</option>
-                                        </select>
-                                    </div>
-                                    <span class="fillmark">*</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-8 col-xs-offset-2">
-                                <div class="form-group mustfill">
-                                    <label for="useflagPop" class="col-sm-2 control-label">状态</label>
-                                    <div class="col-sm-9">
-                                        <select id="useflagPop" class="form-control">
-                                            <option value="1">启用</option>
-                                            <option value="0">禁用</option>
-                                        </select>
-                                    </div>
-                                    <span class="fillmark">*</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-8 col-xs-offset-2">
-                                <div class="form-group">
-                                    <label for="remarkPop" class="col-sm-2 control-label">备注</label>
-                                    <div class="col-sm-9">
-                                        <textarea id="remarkPop" class="form-control remark-txt"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="pophandle">
-                    <div class="row">
-                        <div class="col-xs-8 col-xs-offset-2">
-                            <div class="row">
-                                <div class="col-xs-9 col-xs-offset-2">
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <a class="btn khbtn handle-save" id="savePop">保存</a>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <a class="btn khbtn handle-cancle" id="canclePop">取消</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
