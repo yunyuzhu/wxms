@@ -73,7 +73,26 @@ public class UrlRouteController {
 
 /*********************** 商户 end *********************/
 
+/*********************** 平台后台 start *********************/
+	/* 商户管理 */
+	@RequestMapping(value = "bkShopManage", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
+	public String BkShopManage(HttpServletRequest request) {
+		return "/back/bkShopManage";
+	}
 
+	/* 规则管理 */
+	@RequestMapping(value = "bkRuleManage", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
+	public String BkRuleManage(HttpServletRequest request) {
+		return "/back/bkRuleManage";
+	}
+
+	/* 应用规则 */
+	@RequestMapping(value = "bkRuleApply", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
+	public String BkRuleApply(HttpServletRequest request) {
+		return "/back/bkRuleApply";
+	}
+
+/*********************** 商户 end *********************/
 
 
 }
