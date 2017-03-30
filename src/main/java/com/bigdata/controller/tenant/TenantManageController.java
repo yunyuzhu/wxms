@@ -1,5 +1,6 @@
 package com.bigdata.controller.tenant;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -85,6 +86,8 @@ public class TenantManageController {
 	@RequestMapping(value="/ConfirmList", method = RequestMethod.GET)
 	public Object getConfirmList(@ApiParam(required = false, name = "startTime", value = "开始时间") @RequestParam(required = false, value = "startTime") String startTime,
 			                     @ApiParam(required = false, name = "endTime", value = "结束时间") @RequestParam(required = false, value = "endTime") String endTime,
+			                     @ApiParam(required = true, name = "pageStart", value = "分页查询起始条数") @RequestParam(value = "pageStart", required = true) Integer pageStart,
+			         			 @ApiParam(required = true, name = "pageSize", value = "分页查询每页显示条数") @RequestParam(value = "pageSize", required = true) Integer pageSize,
 			HttpServletRequest request, HttpServletResponse response) throws Exception{
 		
 		//获取登录的用户信息
@@ -98,9 +101,17 @@ public class TenantManageController {
 		//获取待确认消费信息列表
 		List<GoldUserBean> list = tenantManageServiceImpl.getConfirmList(queryBean);
 		
+		//分页
+		ArrayList<GoldUserBean> listPage = new ArrayList<GoldUserBean>();
+		for(int i=pageStart;i<pageStart + pageSize;i++){
+			if(i<list.size()){
+				listPage.add(list.get(i));
+			}
+		}
+		
 		Map<String, Object> map = new HashMap<String, Object>();
     	map.put("total", list.size());
-    	map.put("rows", list);
+    	map.put("rows", listPage);
     	return map;
 	}
 	
@@ -115,6 +126,8 @@ public class TenantManageController {
 	@RequestMapping(value="/consumerList", method = RequestMethod.GET)
 	public Object getConsumerList(@ApiParam(required = false, name = "startTime", value = "开始时间") @RequestParam(required = false, value = "startTime") String startTime,
             					  @ApiParam(required = false, name = "endTime", value = "结束时间") @RequestParam(required = false, value = "endTime") String endTime,
+            					  @ApiParam(required = true, name = "pageStart", value = "分页查询起始条数") @RequestParam(value = "pageStart", required = true) Integer pageStart,
+ 			         			  @ApiParam(required = true, name = "pageSize", value = "分页查询每页显示条数") @RequestParam(value = "pageSize", required = true) Integer pageSize,
             HttpServletRequest request, HttpServletResponse response) throws Exception{
 		
 		//获取登录的用户信息
@@ -127,10 +140,18 @@ public class TenantManageController {
 		
 		//获取消费流水列表
 		List<GoldUserBean> list = tenantManageServiceImpl.getConsumerList(queryBean);
+    	
+    	//分页
+		ArrayList<GoldUserBean> listPage = new ArrayList<GoldUserBean>();
+		for(int i=pageStart;i<pageStart + pageSize;i++){
+			if(i<list.size()){
+				listPage.add(list.get(i));
+			}
+		}
 		
 		Map<String, Object> map = new HashMap<String, Object>();
     	map.put("total", list.size());
-    	map.put("rows", list);
+    	map.put("rows", listPage);
     	return map;
 	}
 	

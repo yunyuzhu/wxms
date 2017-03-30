@@ -22,6 +22,16 @@ public class QueryBean {
 	 * 结束时间
 	 */
 	private String endTime;
+	
+	/**
+	 * 分页查询起始条数
+	 */
+	private Integer pageStart;
+	
+	/**
+	 * 分页查询每页显示条数
+	 */
+	private Integer pageSize;
 
 	public String getId() {
 		return id;
@@ -47,4 +57,20 @@ public class QueryBean {
 		this.endTime = endTime;
 	}
 
+	public Integer getPageStart() {
+		return pageStart;
+	}
+
+	public void setPageStart(Integer pageStart) {
+		this.pageStart = pageStart;
+	}
+
+	public Integer getPageSize() {
+		return pageSize;
+	}
+
+	public void setPageSize(Integer pageSize) {
+		this.pageSize = pageSize;
+	}
+	
 }

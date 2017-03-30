@@ -5,20 +5,19 @@
 <mapper namespace="com.bigdata.dao.tenant.ShopManageMapper">
 
 	<!-- 用户管理分页 -->
-	<select id="getUserPageList" resultType="com.bigdata.model.manage.ManageUser">
+	<select id="getUserPageList" resultType="com.bigdata.model.system.User">
 		SELECT
 			u.id,u.userName,u.remark,DATE_FORMAT(u.createTime,'%Y-%m-%d %T') createTime,r.`name` roleName
 		FROM
 			t_user u
-		LEFT JOIN t_user_role ur ON ur.userId = u.id
-		LEFT JOIN t_role r on r.id=ur.roleId
+		LEFT JOIN t_user_role ur ON ur.userId = u.id and ur.roleId = 2
 		WHERE
 			1 = 1
-			<if test="userName!=null and userName!=''">
-				AND u.userName like '%${userName}%'
+			<if test="tenantName!=null and tenantName!=''">
+				AND u.tenantName like '%${tenantName}%'
 			</if>
-			<if test="roleId!=null and roleId!=''">
-				AND ur.roleId = #{roleId}
+			<if test="trade!=null and trade!=''">
+				AND u.trade = #{trade}
 			</if>
 		ORDER BY
 			createTime DESC
@@ -33,14 +32,14 @@
 			count(*)
 		FROM
 			t_user u
-		LEFT JOIN t_user_role ur ON ur.userId = u.id
+		LEFT JOIN t_user_role ur ON ur.userId = u.id and ur.roleId = 2
 		WHERE
 			1 = 1
 			<if test="userName!=null and userName!=''">
 				AND u.userName like '%${userName}%'
 			</if>
-			<if test="roleId!=null and roleId!=''">
-				AND ur.roleId = #{roleId}
+			<if test="trade!=null and trade!=''">
+				AND u.trade = #{trade}
 			</if>
 	</select>
 	

@@ -10,7 +10,7 @@ import com.bigdata.common.util.HttpResult;
 */
 public interface IShopManageService {
 	
-	public Object getUserPage(String userName, Integer roleId, Integer pageStart, Integer pageSize);
+	public Object getUserPage(String tenantName, String trade, Integer pageStart, Integer pageSize);
 
 	public HttpResult saveUserAndRole(String userName, String accountName, String password, Integer roleId,
 			Integer depaId, String useFlag, String remark, String tenantName, String trade, String address, String telephone, String linkName, String linkPhone);

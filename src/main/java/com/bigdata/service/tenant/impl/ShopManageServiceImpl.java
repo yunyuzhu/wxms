@@ -32,15 +32,15 @@ public class ShopManageServiceImpl implements IShopManageService {
 	 * 查询用户列表
 	 * */
 	@Override
-	public Object getUserPage(String userName, Integer roleId, Integer pageStart, Integer pageSize) {
+	public Object getUserPage(String tenantName, String trade, Integer pageStart, Integer pageSize) {
 		Map<String, Object> resMap=new HashMap<>();
 		
 		//符合查询条件的数据总条数
-		int total = shopManageMapper.getUserCount(userName, roleId);
+		int total = shopManageMapper.getUserCount(tenantName, trade);
 		resMap.put("total", total);
 		List<ManageUser> rows=null;
 		if (total > 0) {
-			rows = shopManageMapper.getUserPageList(userName,roleId,pageStart,pageSize);
+			rows = shopManageMapper.getUserPageList(tenantName,trade,pageStart,pageSize);
 			if(!rows.isEmpty()){
 				int i=1;
 				for(ManageUser user: rows){
