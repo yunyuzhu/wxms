@@ -60,10 +60,12 @@ h3,h4,h5{font-family:"Microsoft Yahei", "微软雅黑";}
 .curdoc-tit{margin-bottom:10px;font-weight:bold;}
 .form-inline .form-control.input-limit{width:60px;margin:0 5px;text-align:center;}
 form{padding:0 15px;}
-form .row{margin-top:10px;padding-bottom:10px;border-bottom:1px dashed #CCC;}
+form .row{margin-top:10px;padding-bottom:10px;}
 form .row .form-group{margin-bottom:0;}
 .cthide{display:none;}
 .ct-nopadd{padding:0;}
+.boxpop label{padding-left:0;padding-right:0;}
+.boxpop.box{margin-bottom:0;box-shadow:none;padding:5px 20px;}
 /*图标高度设置*/
 .ctview-h{height:380px;}
 .ctview-self-h{height:150px;}
@@ -104,7 +106,7 @@ form .row .form-group{margin-bottom:0;}
 .box .box-body .view-table,.box.istable .box-body .view-chart{position:absolute;z-index:-10;left:0;top:0;width:100%;opacity:0;visibility:hidden;}
 .box .box-body .view-chart,.box.istable .box-body .view-table{position:relative;z-index:1;opacity:1;visibility:visible;}
 /*按钮*/
-.ctbtn{padding:4px 22px;font-size:15px;color:#FFF;background:#1AB394;border-color:#1AB394;border-radius:1px}
+.ctbtn{margin:0 5px;padding:4px 22px;font-size:15px;color:#FFF;background:#1AB394;border-color:#1AB394;border-radius:1px}
 .ctbtn:hover{color:#FFF;background:#00A480;border-color:#00A480;}
 .ctbtn:focus,.ctbtn:active,.ctbtn:active.active{color:#FFF;background:#396;border-color:#396;}
 .ctbtn.invalid,.ctbtn.invalid:hover{color:#AAA;background:#E2E2E2;border-color:#E2E2E2;text-decoration:none;cursor:default;}
@@ -117,6 +119,7 @@ form .row .form-group{margin-bottom:0;}
 .bootstrap-table .fixed-table-body{border-bottom:1px solid #1AB394;}
 .bootstrap-table .table thead>tr>th{border-radius:0;}
 .fixed-table-container thead th .sortable{padding-right:16px!important;background-position:right 11px!important;}
+.bstable-tool{margin-bottom:10px;}
 .bstable-tool .btn{margin-right:15px;}
 .bootstrap-table .bs-checkbox{vertical-align:middle;}
 .table-striped>tbody>tr:nth-of-type(odd){background:#EDEDED;}
