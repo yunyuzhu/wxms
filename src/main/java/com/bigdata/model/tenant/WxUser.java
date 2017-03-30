@@ -12,6 +12,11 @@ import java.io.Serializable;
 public class WxUser implements Serializable {
 	
 	/**
+	 * 序号
+	 */
+	private Integer orderId;
+	
+	/**
 	 * 主键
 	 */
 	private String id;
@@ -70,6 +75,14 @@ public class WxUser implements Serializable {
 	 * 修改时间
 	 */
 	private String updateTime;
+
+	public Integer getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(Integer orderId) {
+		this.orderId = orderId;
+	}
 
 	public String getId() {
 		return id;

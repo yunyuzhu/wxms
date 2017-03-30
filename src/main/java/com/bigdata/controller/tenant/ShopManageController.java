@@ -1,5 +1,7 @@
 package com.bigdata.controller.tenant;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bigdata.common.util.HttpResult;
+import com.bigdata.model.tenant.TradeBean;
 import com.bigdata.service.tenant.IShopManageService;
 import com.wordnik.swagger.annotations.ApiParam;
 
@@ -160,6 +163,19 @@ public class ShopManageController {
 		} catch (Exception e) {
 			return HttpResult.build(false, "1000", "删除失败！");
 		}
+	}
+	
+	/**
+	 * 获取行业列表
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/trade", method = RequestMethod.GET)
+	@ResponseBody
+	public Object getTradeList() {
+		//获取行业列表
+		List<TradeBean> list = shopManageServiceImpl.getTradeList();
+		return list;
 	}
 
 }

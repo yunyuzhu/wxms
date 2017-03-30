@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.bigdata.model.manage.ManageUser;
 import com.bigdata.model.tenant.WxUser;
 
 /**   
@@ -18,7 +17,7 @@ public interface UserWxManageMapper {
 	
 	int getUserCount(@Param(value = "userName") String userName);
 
-	List<ManageUser> getUserPageList(@Param(value = "userName") String userName,
+	List<WxUser> getUserPageList(@Param(value = "userName") String userName,
 			@Param(value = "pageStart") Integer pageStart, @Param(value = "pageSize") Integer pageSize);
 
 	void saveUser(WxUser user);

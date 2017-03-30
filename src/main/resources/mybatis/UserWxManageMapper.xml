@@ -5,20 +5,15 @@
 <mapper namespace="com.bigdata.dao.tenant.UserWxManageMapper">
 
 	<!-- 用户管理分页 -->
-	<select id="getUserPageList" resultType="com.bigdata.model.manage.ManageUser">
+	<select id="getUserPageList" resultType="com.bigdata.model.tenant.WxUser">
 		SELECT
-			u.id,u.userName,u.remark,DATE_FORMAT(u.createTime,'%Y-%m-%d %T') createTime,r.`name` roleName
+			id,userName,name,gold,phone,DATE_FORMAT(createTime,'%Y-%m-%d %T') createTime
 		FROM
-			t_user u
-		LEFT JOIN t_user_role ur ON ur.userId = u.id
-		LEFT JOIN t_role r on r.id=ur.roleId
+			t_wx_user
 		WHERE
 			1 = 1
 			<if test="userName!=null and userName!=''">
-				AND u.userName like '%${userName}%'
-			</if>
-			<if test="roleId!=null and roleId!=''">
-				AND ur.roleId = #{roleId}
+				AND userName like '%${userName}%'
 			</if>
 		ORDER BY
 			createTime DESC
@@ -32,15 +27,11 @@
 		SELECT
 			count(*)
 		FROM
-			t_user u
-		LEFT JOIN t_user_role ur ON ur.userId = u.id
+			t_wx_user
 		WHERE
 			1 = 1
 			<if test="userName!=null and userName!=''">
-				AND u.userName like '%${userName}%'
-			</if>
-			<if test="roleId!=null and roleId!=''">
-				AND ur.roleId = #{roleId}
+				AND userName like '%${userName}%'
 			</if>
 	</select>
 	
@@ -48,14 +39,12 @@
 	<select id="getUserById" resultType="Map">
 		SELECT
 			userName,
-			accountName,
-			depaId,
-			useFlag,
-			remark,
-			ur.roleId
+			name,
+			sex,
+			age,
+			phone
 		FROM
-			t_user u
-		LEFT JOIN t_user_role ur ON ur.userId = u.id
+			t_wx_user
 		WHERE
 			id = #{userId}
 	</select>
@@ -65,23 +54,19 @@
 		SELECT
 			COUNT(*)
 		FROM
-			t_user
+			t_wx_user
 		WHERE
 			userName = #{userName}
 	</select>
 	
-	<update id="updateUser" parameterType="com.bigdata.model.system.User">
-		UPDATE t_user
+	<update id="updateUser" parameterType="com.bigdata.model.tenant.WxUser">
+		UPDATE t_wx_user
 		SET 
-			accountName = #{accountName},
-			depaId = #{depaId},
-			useFlag = #{useFlag},
-			tenantName = #{tenantName},
-			trade = #{trade},
-			address = #{address},
-			telephone = #{telephone},
-			linkName = #{linkName},
-			linkPhone = #{linkPhone},
+			userName = #{userName},
+			name = #{name},
+			sex = #{sex},
+			age = #{age},
+			phone = #{phone},
 			remark = #{remark},
 			updateTime = NOW()
 		WHERE
@@ -93,35 +78,21 @@
 	<delete id="delUser">
 		DELETE
 		FROM
-			t_user
+			t_wx_user
 		WHERE
 			id in ${userIds}
 	</delete>
 	
-	<!-- 删除用户角色 -->
-	<delete id="delUserRole">
-		DELETE
-		FROM
-			t_user_role
-		WHERE
-			userId in ${userIds}
-	</delete>
-	
 	<!-- 新增用户 -->
 	<insert id="saveUser" parameterType="com.bigdata.model.tenant.WxUser" keyProperty="id" useGeneratedKeys="true">
-		INSERT INTO t_user (
+		INSERT INTO t_wx_user (
 			userName,
 			password,
-			credentialsSalt,
-			depaId,
-			locked,
 			useFlag,
-			tenantName,
-			trade,
-			address,
-			telephone,
-			linkName,
-			linkPhone,
+			name,
+			sex,
+			age,
+			phone,
 			remark,
 			createTime,
 			updateTime
@@ -130,16 +101,11 @@
 			(
 				#{userName},
 				#{password},
-				#{credentialsSalt},
-				#{depaId},
-				#{locked},
 				#{useFlag},
-				#{tenantName},
-				#{trade},
-				#{address},
-				#{telephone},
-				#{linkName},
-				#{linkPhone},
+				#{name},
+				#{sex},
+				#{age},
+				#{phone},
 				#{remark},
 				NOW(),
 				NOW()

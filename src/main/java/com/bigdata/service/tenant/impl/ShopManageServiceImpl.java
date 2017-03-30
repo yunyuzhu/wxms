@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.bigdata.common.util.HttpResult;
 import com.bigdata.dao.tenant.ShopManageMapper;
 import com.bigdata.model.system.User;
+import com.bigdata.model.tenant.TradeBean;
 import com.bigdata.service.tenant.IShopManageService;
 
 /**   
@@ -137,6 +138,17 @@ public class ShopManageServiceImpl implements IShopManageService {
 		//用户信息
 		User resMap=shopManageMapper.getUserById(userId);
 		return resMap;
+	}
+
+	/**
+	 * 获取行业列表
+	 * @return
+	 */
+	@Override
+	public List<TradeBean> getTradeList() {
+		//获取行业列表
+		List<TradeBean> list = shopManageMapper.getTradeList();
+		return list;
 	}
 
 }

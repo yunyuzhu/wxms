@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.bigdata.model.system.User;
+import com.bigdata.model.tenant.TradeBean;
 
 /**   
 * @Title: ShopManageMapper.java
@@ -34,5 +35,11 @@ public interface ShopManageMapper {
 	void delUserRole(@Param(value = "userIds") String userIds);
 
 	User getUserById(@Param(value = "userId") Integer userId);
+
+	/**
+	 * 获取行业列表
+	 * @return
+	 */
+	List<TradeBean> getTradeList();
 
 }

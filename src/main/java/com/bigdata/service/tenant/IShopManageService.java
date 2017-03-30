@@ -1,7 +1,10 @@
 package com.bigdata.service.tenant;
 
+import java.util.List;
+
 import com.bigdata.common.util.HttpResult;
 import com.bigdata.model.system.User;
+import com.bigdata.model.tenant.TradeBean;
 
 /**   
 * @Title: IShopManageService.java
@@ -22,5 +25,11 @@ public interface IShopManageService {
 	public Object delUserAndRole(String userIds);
 
 	public User getUserAndRole(Integer userId);
+
+	/**
+	 * 获取行业列表
+	 * @return
+	 */
+	public List<TradeBean> getTradeList();
 
 }

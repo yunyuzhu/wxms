@@ -4,12 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.stereotype.Service;
 
 import com.bigdata.common.util.HttpResult;
 import com.bigdata.dao.tenant.UserWxManageMapper;
-import com.bigdata.model.manage.ManageUser;
 import com.bigdata.model.tenant.WxUser;
 import com.bigdata.service.tenant.IUserWxManageService;
 
@@ -22,6 +23,7 @@ import com.bigdata.service.tenant.IUserWxManageService;
 @Service
 public class UserWxManageServiceImpl implements IUserWxManageService {
 	
+	@Resource
 	private UserWxManageMapper userWxManageMapper;
 
 	/*
@@ -34,12 +36,12 @@ public class UserWxManageServiceImpl implements IUserWxManageService {
 		//符合查询条件的数据总条数
 		int total = userWxManageMapper.getUserCount(userName);
 		resMap.put("total", total);
-		List<ManageUser> rows=null;
+		List<WxUser> rows=null;
 		if (total > 0) {
 			rows = userWxManageMapper.getUserPageList(userName,pageStart,pageSize);
 			if(!rows.isEmpty()){
 				int i=1;
-				for(ManageUser user: rows){
+				for(WxUser user: rows){
 					user.setOrderId(i);
 					i++;
 				}
@@ -102,8 +104,6 @@ public class UserWxManageServiceImpl implements IUserWxManageService {
 	public Object delUserAndRole(String userIds) {
 		//删除用户
 		userWxManageMapper.delUser(userIds);
-		//删除用户角色
-		userWxManageMapper.delUserRole(userIds);
 		return HttpResult.build(true, "0000", "用户删除成功！");
 	}
 

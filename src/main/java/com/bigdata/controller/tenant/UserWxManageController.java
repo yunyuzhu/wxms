@@ -1,6 +1,7 @@
 package com.bigdata.controller.tenant;
 
-import org.apache.commons.lang.StringUtils;
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +22,7 @@ import com.wordnik.swagger.annotations.ApiParam;
 @RequestMapping(value="/userWx")
 public class UserWxManageController {
 	
+	@Resource
 	private IUserWxManageService userWxManageServiceImpl;
 
 	/**
@@ -39,7 +41,9 @@ public class UserWxManageController {
 			@ApiParam(required = true, name = "pageStart", value = "分页查询起始条数") @RequestParam(value = "pageStart", required = true) Integer pageStart,
 			@ApiParam(required = true, name = "pageSize", value = "分页查询每页显示条数") @RequestParam(value = "pageSize", required = true) Integer pageSize) {
 
-		userName = userName.replace("'", "\\'");
+		if(null != userName){
+			userName = userName.replace("'", "\\'");
+		}
 
 		return userWxManageServiceImpl.getUserPage(userName, pageStart, pageSize);
 	}
@@ -68,10 +72,6 @@ public class UserWxManageController {
 			@ApiParam(required = false, name = "remark", value = "备注") @RequestParam(value = "remark", required = false) String remark) {
 		
 		try {
-			if (StringUtils.isBlank(userName) || StringUtils.isBlank(password)) {
-				return HttpResult.build(false, "1000", "非法参数，保存失败！");
-			}
-
 			return userWxManageServiceImpl.saveUser(userName, password, name, sex, age, phone, remark);
 		} catch (Exception e) {
 			return HttpResult.build(false, "1000", "保存失败！");
@@ -102,10 +102,6 @@ public class UserWxManageController {
 			@ApiParam(required = false, name = "remark", value = "备注") @RequestParam(value = "remark", required = false) String remark) {
 		
 		try {
-			if (userId == null) {
-				return HttpResult.build(false, "1000", "非法参数，保存失败！");
-			}
-
 			return userWxManageServiceImpl.updateUser(userId, name, sex, age, phone, remark);
 		} catch (Exception e) {
 			return HttpResult.build(false, "1000", "保存失败！");

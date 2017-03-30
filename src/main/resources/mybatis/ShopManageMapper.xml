@@ -157,4 +157,14 @@
 		INSERT into t_user_role (userId,roleId) VALUES(#{userId},#{roleId})
 	</insert>
 	
+	<!-- 获取行业列表 -->
+	<select id="getTradeList" resultType="com.bigdata.model.tenant.TradeBean">
+	
+		SELECT
+			id,name
+		FROM
+			t_trade
+			
+	</select>
+	
 </mapper>
