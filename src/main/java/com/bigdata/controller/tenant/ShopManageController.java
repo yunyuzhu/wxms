@@ -38,14 +38,14 @@ public class ShopManageController {
 	@RequestMapping(value = "/userPage", method = RequestMethod.POST)
 	@ResponseBody
 	public Object userPage(
-			@ApiParam(required = false, name = "userName", value = "用户名查询参数") @RequestParam(value = "userName", required = false) String userName,
-			@ApiParam(required = false, name = "roleId", value = "角色id") @RequestParam(value = "roleId", required = false) Integer roleId,
+			@ApiParam(required = false, name = "tenantName", value = "用户名查询参数") @RequestParam(value = "tenantName", required = false) String tenantName,
+			@ApiParam(required = false, name = "trade", value = "行业") @RequestParam(value = "trade", required = false) String trade,
 			@ApiParam(required = true, name = "pageStart", value = "分页查询起始条数") @RequestParam(value = "pageStart", required = true) Integer pageStart,
 			@ApiParam(required = true, name = "pageSize", value = "分页查询每页显示条数") @RequestParam(value = "pageSize", required = true) Integer pageSize) {
 
-		userName = userName.replace("'", "\\'");
+		tenantName = tenantName.replace("'", "\\'");
 
-		return shopManageServiceImpl.getUserPage(userName, roleId, pageStart, pageSize);
+		return shopManageServiceImpl.getUserPage(tenantName, trade, pageStart, pageSize);
 	}
 
 	/**

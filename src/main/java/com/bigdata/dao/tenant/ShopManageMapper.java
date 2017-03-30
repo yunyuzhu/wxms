@@ -16,9 +16,9 @@ import com.bigdata.model.system.User;
 */
 public interface ShopManageMapper {
 	
-	int getUserCount(@Param(value = "userName") String userName, @Param(value = "roleId") Integer roleId);
+	int getUserCount(@Param(value = "tenantName") String tenantName, @Param(value = "trade") String trade);
 
-	List<ManageUser> getUserPageList(@Param(value = "userName") String userName, @Param(value = "roleId") Integer roleId,
+	List<ManageUser> getUserPageList(@Param(value = "tenantName") String tenantName, @Param(value = "trade") String trade,
 			@Param(value = "pageStart") Integer pageStart, @Param(value = "pageSize") Integer pageSize);
 
 	void saveUser(User user);
