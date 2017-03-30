@@ -769,7 +769,7 @@ function getDate(time){
 //起始、结束时间 初始化
 function startEndTimeInit($timeStart, $timeEnd, callback, defVal){
 	var endDate = getDate();
-	var startData = getDate((new Date()).getTime() - 30*24*60*60*1000);
+	var startData = getDate((new Date()).getTime() - 1*24*60*60*1000);
 
 	//起始时间datapicker参数设置
 	var startTimeDPOpt = {
@@ -792,10 +792,6 @@ function startEndTimeInit($timeStart, $timeEnd, callback, defVal){
 	var defTime = {
 		startTime: startData.year+"年"+startData.month+"月"+startData.day+"日",
 		endTime: endDate.year+"年"+endDate.month+"月"+endDate.day+"日"
-	};
-	defTime = {
-		startTime: "2010-01-01",
-		endTime: "2016-12-31"
 	};
 	if(defVal){
 		defTime.startTime = defVal.startTime;

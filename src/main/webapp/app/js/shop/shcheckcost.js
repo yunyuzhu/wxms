@@ -1,22 +1,49 @@
 /**
  * Created by chun
  */
-var $tableElem = $("#checkCostTableDiv");
 var userIdArr;
 //加载页面
 function loadhtml(){
-    checkCostTableFun();
-}
-$(document).ready(function(){
-    loadhtml();
+    //时间输入
+    startEndTimeInit($("#startTime"), $("#endTime"));
+
+    //注册提交按钮
+    $("#inSubmit").on('click', function(){
+        inSubmit();
+    });
+    //提交查询
+    inSubmit();
+
     //窗口大小调整
     $(window).on('resize', function(){
         setTimeout(function(){
-            $tableElem.bootstrapTable('resetView');
+            $("#checkCostTableDiv").bootstrapTable('resetView');
         }, 300);
     });
+}
+$(document).ready(function(){
+    loadhtml();
 });
 
+//提交
+function inSubmit(){
+    checkCostTableFun();
+}
+
+//输入参数
+function getInData(params){
+    var inData = {};
+    var startDateObj = getDate($("#startTime").datepicker('getUTCDate'));
+    inData.startTime = startDateObj.year+'-'+startDateObj.month+'-'+startDateObj.day;
+    var endDateObj = getDate($("#endTime").datepicker('getUTCDate'));
+    inData.endTime = endDateObj.year+'-'+endDateObj.month+'-'+endDateObj.day;
+
+    if(typeof(params) != 'undefined'){
+        inData.pageSize  = params.limit;
+        inData.pageStart = params.offset;
+    }
+    return inData;
+}
 // 表格
 function checkCostTableFun(){
     /************ 表格 **************/
@@ -36,6 +63,7 @@ function checkCostTableFun(){
     }
     // 表格
     function drawTable(){
+        var $tableElem = $("#checkCostTableDiv");
         var classes = 'table table-hover tableStyle';
         //返回数据
         function resHandler(res) {
@@ -63,6 +91,11 @@ function checkCostTableFun(){
             }
             return dataObj;
         }
+        //输入参数
+        function inParams(params) {
+            var inData = new getInData(params);
+            return inData;
+        }
         $tableElem.bootstrapTable('destroy');
         $tableElem.bootstrapTable({
             method: 'get',
@@ -70,7 +103,7 @@ function checkCostTableFun(){
             url: "tenant/ConfirmList",
             cache: false,
             dataType : 'json',
-            queryParams: "",  //参数
+            queryParams: inParams,  //参数
             classes: classes,
             sortOrder: 'asc',
             striped: true,

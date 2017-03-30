@@ -3,6 +3,41 @@
 <script src="app/js/shop/shcheckcost.js" type="text/javascript" charset="UTF-8"></script>
 
 <div class="ct-page">
+    <!--输入部分-->
+    <div class="box no-border">
+        <div class="box-body">
+            <form class="form-horizontal" role="form">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label for="startTime" class="col-sm-3 control-label">开始时间</label>
+                            <div class="col-sm-8">
+                                <div class="ct-input-frame">
+                                    <input type="text" class="form-control" id="startTime" value="" placeholder="输入开始时间">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label for="endTime" class="col-sm-3 control-label">结束时间</label>
+                            <div class="col-sm-8">
+                                <div class="ct-input-frame">
+                                    <input type="text" class="form-control" id="endTime" value="" placeholder="输入结束时间">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="box-footer no-border">
+            <a class="btn ctbtn" id="inSubmit">查&nbsp;询</a>
+        </div>
+    </div>
+    <!--列表-->
     <div class="box no-border">
         <div class="box-header with-border">
             <h3 class="boxhd-title">确认消费用户列表</h3>

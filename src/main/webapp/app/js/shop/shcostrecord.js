@@ -1,26 +1,52 @@
 /**
  * Created by chun
  */
-var $tableElem = $("#costRecordTableDiv");
+
 //加载页面
 function loadhtml(){
-    costTableFun();
-}
-$(document).ready(function(){
-    loadhtml();
+    //时间输入
+    startEndTimeInit($("#startTime"), $("#endTime"));
+
+    //注册提交按钮
+    $("#inSubmit").on('click', function(){
+        inSubmit();
+    });
+    //提交查询
+    inSubmit();
+
     //窗口大小调整
     $(window).on('resize', function(){
         setTimeout(function(){
-            $tableElem.bootstrapTable('resetView');
+            $("#costRecordTableDiv").bootstrapTable('resetView');
         }, 300);
     });
+}
+$(document).ready(function(){
+    loadhtml();
 });
+//提交
+function inSubmit(){
+    costTableFun();
+}
+//输入参数
+function getInData(params){
+    var inData = {};
+    var startDateObj = getDate($("#startTime").datepicker('getUTCDate'));
+    inData.startTime = startDateObj.year+'-'+startDateObj.month+'-'+startDateObj.day;
+    var endDateObj = getDate($("#endTime").datepicker('getUTCDate'));
+    inData.endTime = endDateObj.year+'-'+endDateObj.month+'-'+endDateObj.day;
 
+    if(typeof(params) != 'undefined'){
+        inData.pageSize  = params.limit;
+        inData.pageStart = params.offset;
+    }
+    return inData;
+}
 // 表格
 function costTableFun(){
-    drawTable();
     /************ 表格 **************/
     function drawTable(){
+        var $tableElem = $("#costRecordTableDiv");
         var classes = 'table table-hover tableStyle';
         //返回数据
         function resHandler(res) {
@@ -46,6 +72,11 @@ function costTableFun(){
             }
             return dataObj;
         }
+        //输入参数
+        function inParams(params) {
+            var inData = new getInData(params);
+            return inData;
+        }
         $tableElem.bootstrapTable('destroy');
         $tableElem.bootstrapTable({
             method: 'get',
@@ -53,7 +84,7 @@ function costTableFun(){
             url: "tenant/consumerList",
             cache: false,
             dataType : 'json',
-            queryParams: "",  //参数
+            queryParams: inParams,  //参数
             classes: classes,
             sortOrder: 'asc',
             striped: true,
@@ -78,4 +109,6 @@ function costTableFun(){
             ]
         });
     }
+    //执行
+    drawTable();
 }
