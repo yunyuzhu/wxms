@@ -19,7 +19,12 @@ public class WxUser implements Serializable {
 	/**
 	 * 账户
 	 */
-	private String accountWx;
+	private String userName;
+	
+	/**
+	 * 密码
+	 */
+	private String password;
 	
 	/**
 	 * 姓名
@@ -74,12 +79,20 @@ public class WxUser implements Serializable {
 		this.id = id;
 	}
 
-	public String getAccountWx() {
-		return accountWx;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setAccountWx(String accountWx) {
-		this.accountWx = accountWx;
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getName() {
