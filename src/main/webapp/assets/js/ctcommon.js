@@ -217,78 +217,16 @@ function roleInit($role, setting){
 	});
 }
 
-//行业列表
-function TradeList(options){
-	var defOption = {
-		id: "#trade",
-		hasAll: true,
-		tailAll: false,
-		defVal: "",
-		data: [],
-		allOpt: [{"id": "", "name": "全部"}]
-	};
-	if (options === undefined){options = {};}
-	if (typeof(options) === "object") {
-		var setting = $.extend(false, {}, defOption, options);
-		$.ajax({
-			type: "get",
-			url: "shop/trade",
-			dataType:"json",
-			data: "",
-			async: false,
-			jsonp: "callback",
-			success:function(data){
-				var jsonData = eval(data);
-				var $elem = $(setting.id);
-				$elem.empty();
-				var optionElem = document.createElement("option");
-				var dataArr = [];
-				//组合数据
-				if(setting.hasAll){
-					if(setting.tailAll){
-						dataArr = dataArr.concat(jsonData, setting.allOpt);
-					}
-					else{
-						dataArr = dataArr.concat(setting.allOpt, jsonData);
-					}
-				}else{
-					dataArr = jsonData;
-				}
-				//列表
-				for(var i=0,dataSize=dataArr.length; i<dataSize; i++){
-					var curData = dataArr[i];
-					var optionElemClone = optionElem.cloneNode(true);
-					optionElemClone.value = curData.id;
-					optionElemClone.innerHTML = curData.name;
-					$elem.append(optionElemClone);
-				}
-				//默认值
-				if((!setting.hasAll)&&(setting.defVal == "")){
-					setting.defVal = null;
-				}
-				if(setting.defVal != null){
-					$elem.val(setting.defVal);
-				}
-				// $elem.select2({minimumResultsForSearch: -1})
-			},
-			error:function(error){
-				console.log(error);
-			}
-		});
-	}
-}
 
-//启用状态
-function UseFlagList(options){
+/*********** 下拉列表数据  *************/
+//选项加载
+function OptionList(options){
 	var defOption = {
-		id: "#useFlagPop",
+		id: "",
 		hasAll: false,
 		tailAll: false,
-		defVal: "1",
-		data: [
-			{"id": "0", "name": "禁用"},
-			{"id": "1", "name": "启用"}
-		],
+		defVal: null,
+		data: [],
 		allOpt: [{"id": "", "name": "全部"}]
 	};
 	if (options === undefined){options = {};}
@@ -324,7 +262,78 @@ function UseFlagList(options){
 		if(setting.defVal != null){
 			$elem.val(setting.defVal);
 		}
-		// $elem.select2({minimumResultsForSearch: -1})
+	}
+}
+
+//行业列表
+function TradeList(options){
+	var defOption = {
+		id: "#trade",
+		hasAll: true,
+		tailAll: false,
+		defVal: "",
+		data: [],
+		allOpt: [{"id": "", "name": "全部"}]
+	};
+	if (options === undefined){options = {};}
+	if (typeof(options) === "object") {
+		var setting = $.extend(false, {}, defOption, options);
+		$.ajax({
+			type: "get",
+			url: "shop/trade",
+			dataType:"json",
+			data: "",
+			async: false,
+			jsonp: "callback",
+			success:function(data){
+				var jsonData = eval(data);
+				setting.data = jsonData;
+				new OptionList(setting);
+			},
+			error:function(error){
+				console.log(error);
+			}
+		});
+	}
+}
+
+//启用状态
+function UseFlagList(options){
+	var defOption = {
+		id: "#useFlagPop",
+		hasAll: false,
+		tailAll: false,
+		defVal: "1",
+		data: [
+			{"id": "0", "name": "禁用"},
+			{"id": "1", "name": "启用"}
+		],
+		allOpt: [{"id": "", "name": "全部"}]
+	};
+	if (options === undefined){options = {};}
+	if (typeof(options) === "object") {
+		var setting = $.extend(false, {}, defOption, options);
+		new OptionList(setting);
+	}
+}
+
+//性别
+function SexList(options){
+	var defOption = {
+		id: "#sexPop",
+		hasAll: false,
+		tailAll: false,
+		defVal: "0",
+		data: [
+			{"id": "0", "name": "男"},
+			{"id": "1", "name": "女"}
+		],
+		allOpt: [{"id": "", "name": "全部"}]
+	};
+	if (options === undefined){options = {};}
+	if (typeof(options) === "object") {
+		var setting = $.extend(false, {}, defOption, options);
+		new OptionList(setting);
 	}
 }
 

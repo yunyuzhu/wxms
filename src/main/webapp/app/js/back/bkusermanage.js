@@ -4,8 +4,6 @@
 var tmpIdArr;
 //加载页面
 function loadhtml(){
-    //加载行业列表
-    TradeList();
 
     //注册提交按钮
     $("#inSubmit").on('click', function(){
@@ -14,10 +12,6 @@ function loadhtml(){
     //提交查询
     inSubmit();
 
-    //增加
-    $("#listAdd").on('click', function(){
-        listAddShow();
-    });
     //删除
     $("#listDel").on('click', function(){
         listDelFun();
@@ -40,8 +34,7 @@ function inSubmit(){
 //输入参数
 function getInData(params){
     var inData = {};
-    inData.tenantName = $("#name").val();
-    inData.trade = $("#trade").val();
+    inData.userName = $("#userName").val();
     //表格参数
     if(typeof(params) != 'undefined'){
         inData.pageSize  = params.limit;
@@ -84,10 +77,10 @@ function listTableFun(){
                     var curObj = dataRows[i];
                     var curArr = [];
                     curArr[1] = curObj['orderId'];
-                    curArr[2] = curObj['tenantName'];
-                    curArr[3] = curObj['trade'];
-                    curArr[4] = curObj['linkName'];
-                    curArr[5] = curObj['linkPhone'];
+                    curArr[2] = curObj['name'];
+                    curArr[3] = curObj['gold'];
+                    curArr[4] = curObj['phone'];
+                    curArr[5] = curObj['createTime'];
                     curArr[6] = "编辑";
                     dataRows[i] = curArr;
                     //记录id
@@ -107,7 +100,7 @@ function listTableFun(){
         $tableElem.bootstrapTable({
             method: 'get',
             contentType: "application/x-www-form-urlencoded",
-            url: "shop/userPage",
+            url: "userWx/userPage",
             cache: false,
             dataType : 'json',
             queryParams: inParams,
@@ -132,10 +125,8 @@ function listTableFun(){
                 { field: 1, width: "5%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
                 { field: 2, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
                 { field: 3, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 4, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 5, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 6, width: "10%", align: 'center', valign: 'middle', halign: 'center', sortable: false,
-                    events: clickEvents, formatter: linkTableFat}
+                { field: 4, width: "25%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
+                { field: 5, width: "25%", align: 'center', valign: 'middle', halign: 'center', sortable: false }
             ]
         });
     }
@@ -144,7 +135,7 @@ function listTableFun(){
 }
 
 function layerPopSet(){
-    layerPopOpt.title[0] = "商户信息";
+    layerPopOpt.title[0] = "用户信息";
     layerPopOpt.content = $("#editPop");
 }
 
@@ -152,7 +143,7 @@ function layerPopSet(){
 function infoPopInit(options){
     var defOption = {
         userName: '', password: '', useFlag: '1',
-        tenantName: '', trade: null, telephone: '', address: '', linkName: '',linkPhone: '', remark: ''
+        name: '', sex: '0', age: '',  telephone: '', remark: ''
     };
     if (options === undefined){options = {};}
     if (typeof(options) === "object") {
@@ -163,23 +154,19 @@ function infoPopInit(options){
     var $passwordPop = $("#passwordPop");
     var $useFlagPop = $("#useFlagPop");
     var $namePop = $("#namePop");
-    var $tradePop = $("#tradePop");
+    var $sexPop = $("#sexPop");
+    var $agePop = $("#agePop");
     var $telPop = $("#telPop");
-    var $addrPop = $("#addrPop");
-    var $linkNamePop = $("#linkNamePop");
-    var $linkTelPop = $("#linkTelPop");
     var $remarkPop = $("#remarkPop");
 
     $userPop.removeAttr('disabled').val(defOption.userName);
     $("#rowPasswordPop").show();
     $passwordPop.val(defOption.password);
     UseFlagList({defVal:defOption.useFlag});
-    $namePop.val(defOption.tenantName);
-    TradeList({id:"#tradePop", hasAll:false, defVal:defOption.trade});
+    $namePop.val(defOption.name);
+    SexList({defVal: defOption.sex});
+    $agePop.val(defOption.age);
     $telPop.val(defOption.telephone);
-    $addrPop.val(defOption.address);
-    $linkNamePop.val(defOption.linkName);
-    $linkTelPop.val(defOption.linkPhone);
     $remarkPop.val(defOption.remark);
 }
 
@@ -191,21 +178,17 @@ function listEditSave(id){
     var $passwordPop = $("#passwordPop");
     var $useFlagPop = $("#useFlagPop");
     var $namePop = $("#namePop");
-    var $tradePop = $("#tradePop");
+    var $sexPop = $("#sexPop");
+    var $agePop = $("#agePop");
     var $telPop = $("#telPop");
-    var $addrPop = $("#addrPop");
-    var $linkNamePop = $("#linkNamePop");
-    var $linkTelPop = $("#linkTelPop");
     var $remarkPop = $("#remarkPop");
     var inData = {
         userId: id,
         useFlag: $useFlagPop.val(),
-        tenantName: $namePop.val(),
-        trade: $tradePop.val(),
+        name: $namePop.val(),
+        sex: $sexPop.val(),
+        age: $agePop.val(),
         telephone: $telPop.val(),
-        address: $addrPop.val(),
-        linkName: $linkNamePop.val(),
-        linkPhone: $linkTelPop.val(),
         remark: $remarkPop.val()
     };
     //删除前后的空白字符
@@ -217,7 +200,7 @@ function listEditSave(id){
         //发送服务器
         $.ajax({
             type: "get",
-            url: "shop/updateUser",
+            url: "userWx/updateUser",
             dataType:"json",
             data: inData,
             async: false,
@@ -249,7 +232,7 @@ function listEditShow(id){
     //发送服务器
     $.ajax({
         type: "get",
-        url: "shop/viewUser",
+        url: "userWx/viewUser",
         dataType:"json",
         data: inData,
         async: false,
@@ -292,22 +275,18 @@ function listAddSave(){
     var $passwordPop = $("#passwordPop");
     var $useFlagPop = $("#useFlagPop");
     var $namePop = $("#namePop");
-    var $tradePop = $("#tradePop");
+    var $sexPop = $("#sexPop");
+    var $agePop = $("#agePop");
     var $telPop = $("#telPop");
-    var $addrPop = $("#addrPop");
-    var $linkNamePop = $("#linkNamePop");
-    var $linkTelPop = $("#linkTelPop");
     var $remarkPop = $("#remarkPop");
     var inData = {
         userName: $userPop.val(),
         password: $passwordPop.val(),
         useFlag: $useFlagPop.val(),
-        tenantName: $namePop.val(),
-        trade: $tradePop.val(),
+        name: $namePop.val(),
+        sex: $sexPop.val(),
+        age: $agePop.val(),
         telephone: $telPop.val(),
-        address: $addrPop.val(),
-        linkName: $linkNamePop.val(),
-        linkPhone: $linkTelPop.val(),
         remark: $remarkPop.val()
     };
     //删除前后的空白字符
@@ -325,7 +304,7 @@ function listAddSave(){
         //发送服务器
         $.ajax({
             type: "get",
-            url: "shop/saveUser",
+            url: "userWx/saveUser",
             dataType:"json",
             data: inData,
             async: false,
@@ -391,7 +370,7 @@ function listDelFun(){
         //发送服务器
         $.ajax({
             type: "get",
-            url: "shop/delUser",
+            url: "userWx/delUser",
             dataType:"json",
             data: inData,
             async: false,

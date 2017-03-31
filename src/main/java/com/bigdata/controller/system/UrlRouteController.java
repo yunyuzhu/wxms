@@ -92,6 +92,12 @@ public class UrlRouteController {
 		return "/back/bkRuleApply";
 	}
 
+	/* 用户管理 */
+	@RequestMapping(value = "bkUserManage", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
+	public String BkUserManage(HttpServletRequest request) {
+		return "/back/bkUserManage";
+	}
+
 /*********************** 商户 end *********************/
 
 

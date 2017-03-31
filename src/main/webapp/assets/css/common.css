@@ -70,7 +70,7 @@ form .row .form-group{margin-bottom:0;}
 .layui-layer-rim{z-index:1000!important;}
 .layui-layer-shade{z-index:999!important;opacity:0.5!important;}
 .layui-layer-content{max-height:560px!important;overflow-y:auto;}
-.layui-layer-content ~.layui-layer-btn{border-top:1px solid #D2D2D2;}
+.layui-layer-page .layui-layer-btn{border-top:1px solid #D2D2D2;}
 	/*图标高度设置*/
 .ctview-h{height:380px;}
 .ctview-self-h{height:150px;}
