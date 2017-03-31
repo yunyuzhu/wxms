@@ -2,6 +2,8 @@ package com.bigdata.dao.tenant;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.bigdata.model.system.User;
 import com.bigdata.model.tenant.GoldDetail;
 import com.bigdata.model.tenant.GoldUserBean;
@@ -55,5 +57,19 @@ public interface TenantManageMapper {
 	 * @return
 	 */
 	GoldDetail getGoldDetailInfo(String id);
+
+	/**
+	 * 获取微信用户id
+	 * @param id
+	 * @return
+	 */
+	String getWxUserId(String id);
+
+	/**
+	 * 更新用户金币余额
+	 * @param wxUserId
+	 * @param goldNum
+	 */
+	void updateWxUserGold(@Param(value = "wxUserId") String wxUserId, @Param(value = "goldNum") String goldNum);
 
 }

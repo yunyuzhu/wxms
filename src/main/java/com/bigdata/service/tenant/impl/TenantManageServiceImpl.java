@@ -82,13 +82,22 @@ public class TenantManageServiceImpl implements ITenantManageService {
 		//获取该记录的消费信息和规则
 		GoldDetail gd = tenantManageMapper.getGoldDetailInfo(id);
 		
+		String goldNum = String.valueOf(Math.floor(Double.parseDouble(gd.getConsumeMoney())  * gd.getRate()));
+		
 		//确认消费
 		GoldDetail goldDetail = new GoldDetail();
 		goldDetail.setId(id);
 		goldDetail.setRule(gd.getRule());
-		goldDetail.setGoldNum(String.valueOf(Math.floor(Double.parseDouble(gd.getConsumeMoney())  * gd.getRate())));
+		goldDetail.setGoldNum(goldNum);
 		
+		//更新金币流水表
 		tenantManageMapper.updateConsumer(goldDetail);
+		
+		//获取微信用户id
+		String wxUserId = tenantManageMapper.getWxUserId(id);
+		
+		//更新用户金币余额
+		tenantManageMapper.updateWxUserGold(wxUserId, goldNum);
 	}
 
 }

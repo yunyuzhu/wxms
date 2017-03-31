@@ -47,6 +47,11 @@ public class GoldDetail implements Serializable{
 	private double rate;
 	
 	/**
+	 * 金币类型
+	 */
+	private String goldType;
+	
+	/**
 	 * 消费标识
 	 */
 	private String flag;
@@ -115,6 +120,14 @@ public class GoldDetail implements Serializable{
 
 	public void setRate(double rate) {
 		this.rate = rate;
+	}
+
+	public String getGoldType() {
+		return goldType;
+	}
+
+	public void setGoldType(String goldType) {
+		this.goldType = goldType;
 	}
 
 	public String getFlag() {
