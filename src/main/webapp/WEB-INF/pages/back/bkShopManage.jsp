@@ -8,21 +8,17 @@
         <div class="box-body">
             <form class="form-horizontal" role="form">
                 <div class="row">
-                    <div class="col-xs-5">
+                    <div class="col-xs-4">
                         <div class="form-group">
-                            <label for="trade" class="col-sm-3 control-label">行业</label>
+                            <label for="trade" class="col-sm-2 control-label">行业</label>
                             <div class="col-sm-8">
                                 <div class="ct-input-frame">
-                                    <select id="trade" class="form-control">
-                                        <option value="">全部</option>
-                                        <option value="1">餐饮</option>
-                                        <option value="2">建筑</option>
-                                    </select>
+                                    <select id="trade" class="form-control"></select>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-6">
+                    <div class="col-xs-4">
                         <div class="form-group">
                             <label for="name" class="col-sm-3 control-label">商户名称</label>
                             <div class="col-sm-8">
@@ -58,13 +54,12 @@
                 <thead>
                     <tr>
                         <th class="col0"></th>
-                        <th class="col1">名称</th>
-                        <th class="col2">行业</th>
-                        <th class="col3">地址</th>
-                        <th class="col4">联系方式</th>
-                        <th class="col5">联系人</th>
-                        <th class="col6">联系人信息</th>
-                        <th class="col7">操作</th>
+                        <th class="col1">序号</th>
+                        <th class="col2">商户名称</th>
+                        <th class="col3">行业</th>
+                        <th class="col4">联系人</th>
+                        <th class="col5">联系人信息</th>
+                        <th class="col6">操作</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -80,11 +75,43 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="form-group mustfill">
-                                <label for="namePop" class="col-sm-2 control-label">名称</label>
+                                <label for="userPop" class="col-sm-2 control-label">用户名</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="userPop" value="" placeholder="输入用户名">
+                                </div>
+                                <span class="fillmark">*</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="rowPasswordPop">
+                        <div class="col-xs-12">
+                            <div class="form-group mustfill">
+                                <label for="passwordPop" class="col-sm-2 control-label">密码</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="passwordPop" value="" placeholder="输入密码">
+                                </div>
+                                <span class="fillmark">*</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group mustfill">
+                                <label for="useFlagPop" class="col-sm-2 control-label">启用状态</label>
+                                <div class="col-sm-9">
+                                    <select id="useFlagPop" class="form-control"></select>
+                                </div>
+                                <span class="fillmark">*</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group mustfill">
+                                <label for="namePop" class="col-sm-2 control-label">商户名称</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="namePop" value="" placeholder="输入商户名称">
                                 </div>
-                                <span class="fillmark">*</span>
                             </div>
                         </div>
                     </div>
@@ -93,33 +120,28 @@
                             <div class="form-group mustfill">
                                 <label for="tradePop" class="col-sm-2 control-label">行业</label>
                                 <div class="col-sm-9">
-                                    <select id="tradePop" class="form-control">
-                                        <option>全部</option>
-                                    </select>
+                                    <select id="tradePop" class="form-control"></select>
                                 </div>
-                                <span class="fillmark">*</span>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="form-group mustfill">
-                                <label for="addrPop" class="col-sm-2 control-label">地址</label>
+                                <label for="telPop" class="col-sm-2 control-label">商户电话</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="addrPop" value="" placeholder="输入地址">
+                                    <input type="text" class="form-control" id="telPop" value="" placeholder="输入商户电话">
                                 </div>
-                                <span class="fillmark">*</span>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="form-group mustfill">
-                                <label for="telPop" class="col-sm-2 control-label">联系方式</label>
+                                <label for="addrPop" class="col-sm-2 control-label">商户地址</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="telPop" value="" placeholder="输入联系方式">
+                                    <textarea class="form-control" id="addrPop" placeholder="输入地址"></textarea>
                                 </div>
-                                <span class="fillmark">*</span>
                             </div>
                         </div>
                     </div>
@@ -130,18 +152,26 @@
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="linkNamePop" value="" placeholder="输入联系人">
                                 </div>
-                                <span class="fillmark">*</span>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="form-group mustfill">
-                                <label for="linkTelPop" class="col-sm-2 control-label">联系人信息</label>
+                                <label for="linkTelPop" class="col-sm-2 control-label">联系人电话</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="linkTelPop" value="" placeholder="输入联系人信息">
+                                    <input type="text" class="form-control" id="linkTelPop" value="" placeholder="输入联系人电话">
                                 </div>
-                                <span class="fillmark">*</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group mustfill">
+                                <label for="remarkPop" class="col-sm-2 control-label">备注</label>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control" id="remarkPop" placeholder="输入备注信息"></textarea>
+                                </div>
                             </div>
                         </div>
                     </div>

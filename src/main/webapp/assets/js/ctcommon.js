@@ -48,17 +48,17 @@ var chartGridOpt = {
 
 //layer弹窗参数设置
 var layerPopOpt = {
-    type: 1,
-    title: ['',"padding-left:70px;font-size:16px;text-align:center;color:#FFF;background:#4376a7;"],
-    skin: 'layui-layer-rim', //加上边框
-    area: ['440px', 'auto'], //宽高
-    anim: 2,
-    shadeClose: false, //开启遮罩关闭
-    btn: ['保存', '取消'],
-    yes: function(){},
-    btn2: function(){layer.closeAll();},
-    btnAlign: 'c',
-    content: ''
+	type: 1,
+	title: ['',"padding-left:70px;font-size:16px;text-align:center;color:#FFF;background:#4376a7;"],
+	skin: 'demo-class',
+	area: ['440px', 'auto'], //宽高
+	anim: 2,
+	shadeClose: false, //开启遮罩关闭
+	btn: ['保存', '取消'],
+	yes: function(){},
+	btn2: function(){layer.closeAll();},
+	btnAlign: 'c',
+	content: ''
 };
 
 //小于10的数值前面增加0
@@ -215,6 +215,117 @@ function roleInit($role, setting){
 			console.log(error);
 		}
 	});
+}
+
+//行业列表
+function TradeList(options){
+	var defOption = {
+		id: "#trade",
+		hasAll: true,
+		tailAll: false,
+		defVal: "",
+		data: [],
+		allOpt: [{"id": "", "name": "全部"}]
+	};
+	if (options === undefined){options = {};}
+	if (typeof(options) === "object") {
+		var setting = $.extend(false, {}, defOption, options);
+		$.ajax({
+			type: "get",
+			url: "shop/trade",
+			dataType:"json",
+			data: "",
+			async: false,
+			jsonp: "callback",
+			success:function(data){
+				var jsonData = eval(data);
+				var $elem = $(setting.id);
+				$elem.empty();
+				var optionElem = document.createElement("option");
+				var dataArr = [];
+				//组合数据
+				if(setting.hasAll){
+					if(setting.tailAll){
+						dataArr = dataArr.concat(jsonData, setting.allOpt);
+					}
+					else{
+						dataArr = dataArr.concat(setting.allOpt, jsonData);
+					}
+				}else{
+					dataArr = jsonData;
+				}
+				//列表
+				for(var i=0,dataSize=dataArr.length; i<dataSize; i++){
+					var curData = dataArr[i];
+					var optionElemClone = optionElem.cloneNode(true);
+					optionElemClone.value = curData.id;
+					optionElemClone.innerHTML = curData.name;
+					$elem.append(optionElemClone);
+				}
+				//默认值
+				if((!setting.hasAll)&&(setting.defVal == "")){
+					setting.defVal = null;
+				}
+				if(setting.defVal != null){
+					$elem.val(setting.defVal);
+				}
+				// $elem.select2({minimumResultsForSearch: -1})
+			},
+			error:function(error){
+				console.log(error);
+			}
+		});
+	}
+}
+
+//启用状态
+function UseFlagList(options){
+	var defOption = {
+		id: "#useFlagPop",
+		hasAll: false,
+		tailAll: false,
+		defVal: "1",
+		data: [
+			{"id": "0", "name": "禁用"},
+			{"id": "1", "name": "启用"}
+		],
+		allOpt: [{"id": "", "name": "全部"}]
+	};
+	if (options === undefined){options = {};}
+	if (typeof(options) === "object") {
+		var setting = $.extend(false, {}, defOption, options);
+		var $elem = $(setting.id);
+		$elem.empty();
+		var optionElem = document.createElement("option");
+		var dataArr = [];
+		//组合数据
+		if(setting.hasAll){
+			if(setting.tailAll){
+				dataArr = dataArr.concat(setting.data, setting.allOpt);
+			}
+			else{
+				dataArr = dataArr.concat(setting.allOpt, setting.data);
+			}
+		}else{
+			dataArr = setting.data;
+		}
+		//列表
+		for(var i=0,dataSize=dataArr.length; i<dataSize; i++){
+			var curData = dataArr[i];
+			var optionElemClone = optionElem.cloneNode(true);
+			optionElemClone.value = curData.id;
+			optionElemClone.innerHTML = curData.name;
+			$elem.append(optionElemClone);
+		}
+		//默认值
+		if((!setting.hasAll)&&(setting.defVal == "")){
+			setting.defVal = null;
+		}
+		if(setting.defVal != null){
+			$elem.val(setting.defVal);
+		}
+		// $elem.select2({minimumResultsForSearch: -1})
+	}
 }
 
 /*
@@ -824,29 +935,48 @@ function setRadarEChart(echarts, options, jsonData){
 /*
 * 校验
 * */
-//提示框显示信息
-function tipShow($elem, msgStr){
-    $elem.tips({
-        side: 1,
-        msg: msgStr,
-        color: '#FFF',
-        bg: '#FF8231',
-        time: 3
-    });
-}
 //提示框关闭
 function tipHide(){
-    $(".jq_tips_box").hide().remove();
+	$(".jq_tips_box").hide().remove();
 }
-//校验函数
-function checkFun(){
-	//是否为空
-	this.isEmpty = function($elem, value, msg){
-        var res = true;
-        if(value == ''){
-            tipShow($elem, msg);
-            res = false;
-        }
-        return res;
-	};
+//提示框显示信息
+function tipShow($elem, msgStr){
+	tipHide();
+	$elem.tips({
+		side: 1,
+		msg: msgStr,
+		color: '#FFF',
+		bg: '#FF8231',
+		time: 3
+	});
 }
+
+/****  校验函数 ****/
+//校验是否为空
+function EmptyCheck($elem, value, msg){
+	var res = true;
+	if(value == ''){
+		tipShow($elem, msg);
+		res = false;
+	}
+	else{
+		tipHide();
+	}
+	return res;
+}
+//密码校验
+function PasswordCheck($elem, value){
+	var res = true;
+	if (value == "") {
+		tipShow($elem, "密码不能为空");
+		res = false;
+	} else if (value.length < 6) {
+		tipShow($elem, "密码长度不能小于6位");
+		res = false;
+	} else {
+		$elem.val(jQuery.trim(value));
+		tipHide();
+	}
+	return res;
+}
+

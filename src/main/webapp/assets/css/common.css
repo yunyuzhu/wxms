@@ -3,7 +3,7 @@
 .skin-green .main-sidebar, .skin-green .left-side{background:#2f4050;}
 .skin-green .wrapper,.content-wrapper, .right-side{background:#F2F2F2;}
 .wrapper{overflow:hidden !important;}
-.main-sidebar{position:fixed;z-index:9000;}
+.main-sidebar{position:fixed;z-index:200;}
 .main-sidebar, .left-side{padding-top:0;}
 .sidebar-menu .treeview{-webkit-transition:all 0.3s  ease-in-out;transition:all 0.3s  ease-in-out;}
 .sidebar-menu .treeview.active{border-left:4px solid #1BBC9B;}
@@ -16,7 +16,6 @@
 .sidebar-mini.sidebar-collapse .sidebar-menu > li:hover > a > span:not(.pull-right),
 .sidebar-mini.sidebar-collapse .sidebar-menu > li:hover > .treeview-menu {left:46px;}
 .box{border-radius:0;}
-.box.no-border{border:1px solid #DDD !important;}
 .info-box img{max-width:100%;}
 /*common*/
 .clearfix:after{clear:both;content:'.';display:block;height:0;visibility:hidden;line-height:0;}
@@ -68,7 +67,11 @@ form .row .form-group{margin-bottom:0;}
 .boxpop.box{margin-bottom:0;box-shadow:none;padding:5px 20px;}
 /*tips*/
 .jq_tips_box{z-index:21176523 !important;}
-/*图标高度设置*/
+.layui-layer-rim{z-index:1000!important;}
+.layui-layer-shade{z-index:999!important;opacity:0.5!important;}
+.layui-layer-content{max-height:560px!important;overflow-y:auto;}
+.layui-layer-content ~.layui-layer-btn{border-top:1px solid #D2D2D2;}
+	/*图标高度设置*/
 .ctview-h{height:380px;}
 .ctview-self-h{height:150px;}
 .ctchart-h{height:420px;}
