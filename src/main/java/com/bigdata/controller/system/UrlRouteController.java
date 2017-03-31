@@ -98,7 +98,19 @@ public class UrlRouteController {
 		return "/back/bkUserManage";
 	}
 
-/*********************** 商户 end *********************/
+	/* 金币流水 */
+	@RequestMapping(value = "bkGoldStream", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
+	public String BkGoldStream(HttpServletRequest request) {
+		return "/back/bkGoldStream";
+	}
+
+	/* 消费流水 */
+	@RequestMapping(value = "bkCostStream", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
+	public String BkCostStream(HttpServletRequest request) {
+		return "/back/bkCostStream";
+	}
+
+/*********************** 平台后台 end *********************/
 
 
 }

@@ -17,7 +17,7 @@ function loadhtml(){
     //窗口大小调整
     $(window).on('resize', function(){
         setTimeout(function(){
-            $("#costRecordTableDiv").bootstrapTable('resetView');
+            $("#listTable").bootstrapTable('resetView');
         }, 300);
     });
 }
@@ -46,7 +46,7 @@ function getInData(params){
 function costTableFun(){
     /************ 表格 **************/
     function drawTable(){
-        var $tableElem = $("#costRecordTableDiv");
+        var $tableElem = $("#listTable");
         var classes = 'table table-hover tableStyle';
         //返回数据
         function resHandler(res) {
@@ -60,10 +60,12 @@ function costTableFun(){
                 for (var i = 0; i < pageSize; i++) {
                     var curObj = dataRows[i];
                     var curArr = [];
-                    curArr[0] = curObj['name'];
-                    curArr[1] = curObj['consumeMoney'];
-                    curArr[2] = curObj['phone'];
-                    curArr[3] = curObj['confirmTime'];
+                    curArr[0] = curObj['orderId'];
+                    curArr[1] = curObj['tenantName'];
+                    curArr[2] = curObj['trade'];
+                    curArr[3] = curObj['consumeMoney'];
+                    curArr[4] = curObj['telephone'];
+                    curArr[5] = curObj['confirmTime'];
                     dataRows[i] = curArr;
                     //记录id
                     idArr[i] = curObj['id'];
@@ -81,7 +83,7 @@ function costTableFun(){
         $tableElem.bootstrapTable({
             method: 'get',
             contentType: "application/x-www-form-urlencoded",
-            url: "tenant/consumerList",
+            url: "stream/consume",
             cache: false,
             dataType : 'json',
             queryParams: inParams,  //参数
@@ -93,19 +95,21 @@ function costTableFun(){
             pageList: [10, 25, 50, 100, 200],
             search: false,
             showToggle : false,
-            singleSelect : true,
-            sidePagination:'server',    //设置为服务器端分页
+            singleSelect : false,
+            sidePagination: 'server',    //设置为服务器端分页
             showColumns: false, //设置为True可显示表格显示/隐藏列表
             showRefresh: false, //设置为True可显示刷新按钮
             minimumCountColumns: 2, //表格显示/隐藏列表时可设置最小隐藏的列数
             clickToSelect: true,    //设置为True时点击行即可选中单选/复选框
-            smartDisplay:true,  //设置为True智能显示分页或者Card View
+            smartDisplay: true,  //设置为True智能显示分页或者Card View
             responseHandler: resHandler,    //在加载数据前，可以对返回的数据进行处理，参数包含：res: 返回的数据。
             columns: [
-                { field: 0, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 1, width: "25%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 2, width: "25%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 3, width: "30%", align: 'center', valign: 'middle', halign: 'center', sortable: false }
+                { field: 0, width: "10%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
+                { field: 1, width: "15%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
+                { field: 2, width: "15%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
+                { field: 3, width: "15%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
+                { field: 4, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
+                { field: 5, width: "25%", align: 'center', valign: 'middle', halign: 'center', sortable: false }
             ]
         });
     }
