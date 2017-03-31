@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bigdata.dao.tenant.StreamManageMapper">
+	
+	<select id="getGoldStreamList" parameterType="com.bigdata.model.tenant.QueryBean" resultType="com.bigdata.model.tenant.GoldUserBean">
+	
+		select t1.id,
+		       t1.goldNum,
+		       case t1.goldType when 1 then '增加' else '减少' end as goldType,
+			   date_format(t1.confirmTime, '%Y-%m-%d %T') as confirmTime,
+		       t2.name,
+		       t2.phone
+		  from t_gold_detail t1,
+		       t_wx_user t2
+		 where t1.wxId = t2.id
+		   and t1.flag = 1
+		   <if test="startTime != null and startTime != ''">
+		   	<![CDATA[ and date_format(t1.confirmTime, '%Y-%m-%d') >= #{startTime} ]]>
+		   </if>
+		   <if test="endTime != null and endTime != ''">
+		   	<![CDATA[ and date_format(t1.confirmTime, '%Y-%m-%d') <= #{endTime} ]]>
+		   </if>
+	  order by t1.confirmTime desc
+	  
+	</select>
+	
+	<select id="getConsumeStreamList" parameterType="com.bigdata.model.tenant.QueryBean" resultType="com.bigdata.model.tenant.GoldUserBean">
+	
+		select t1.id,
+		       t1.consumeMoney,
+			   date_format(t1.confirmTime, '%Y-%m-%d %T') as confirmTime,
+		       t2.tenantName,
+		       t3.name as trade,
+		       t2.telephone
+		  from t_gold_detail t1,
+		       t_user t2,
+		       t_trade t3
+		 where t1.userId = t2.id
+		   and t1.flag = 1
+		   and t2.trade = t3.id
+		   <if test="startTime != null and startTime != ''">
+		   	<![CDATA[ and date_format(t1.confirmTime, '%Y-%m-%d') >= #{startTime} ]]>
+		   </if>
+		   <if test="endTime != null and endTime != ''">
+		   	<![CDATA[ and date_format(t1.confirmTime, '%Y-%m-%d') <= #{endTime} ]]>
+		   </if>
+	  order by t1.confirmTime desc
+	  
+	</select>
+	
+</mapper>

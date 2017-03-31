@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class GoldUserBean implements Serializable {
 	
 	/**
-	 * 主键
+	 * 序号
 	 */
 	private Integer orderId;
 	
@@ -28,6 +28,16 @@ public class GoldUserBean implements Serializable {
 	private String consumeMoney;
 	
 	/**
+	 * 金币
+	 */
+	private String goldNum;
+	
+	/**
+	 * 金币消费类型
+	 */
+	private String goldType;
+	
+	/**
 	 * 电话
 	 */
 	private String phone;
@@ -36,6 +46,21 @@ public class GoldUserBean implements Serializable {
 	 * 姓名
 	 */
 	private String name;
+	
+	/**
+	 * 商户名称
+	 */
+	private String tenantName;
+	
+	/**
+	 * 商户电话
+	 */
+	private String telephone;
+	
+	/**
+	 * 行业
+	 */
+	private String trade;
 	
 	/**
 	 * 消费时间
@@ -71,6 +96,22 @@ public class GoldUserBean implements Serializable {
 		this.consumeMoney = consumeMoney;
 	}
 
+	public String getGoldNum() {
+		return goldNum;
+	}
+
+	public void setGoldNum(String goldNum) {
+		this.goldNum = goldNum;
+	}
+
+	public String getGoldType() {
+		return goldType;
+	}
+
+	public void setGoldType(String goldType) {
+		this.goldType = goldType;
+	}
+
 	public String getPhone() {
 		return phone;
 	}
@@ -85,6 +126,30 @@ public class GoldUserBean implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getTenantName() {
+		return tenantName;
+	}
+
+	public void setTenantName(String tenantName) {
+		this.tenantName = tenantName;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
+	public String getTrade() {
+		return trade;
+	}
+
+	public void setTrade(String trade) {
+		this.trade = trade;
 	}
 
 	public String getConsumeTime() {
@@ -102,5 +167,5 @@ public class GoldUserBean implements Serializable {
 	public void setConfirmTime(String confirmTime) {
 		this.confirmTime = confirmTime;
 	}
-
+	
 }

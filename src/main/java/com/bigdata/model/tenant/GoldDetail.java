@@ -12,6 +12,11 @@ import java.io.Serializable;
 public class GoldDetail implements Serializable{
 	
 	/**
+	 * 序号
+	 */
+	private Integer orderId;
+	
+	/**
 	 * 主键
 	 */
 	private String id;
@@ -65,6 +70,14 @@ public class GoldDetail implements Serializable{
 	 * 确认时间
 	 */
 	private String confirmTime;
+
+	public Integer getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(Integer orderId) {
+		this.orderId = orderId;
+	}
 
 	public String getId() {
 		return id;
