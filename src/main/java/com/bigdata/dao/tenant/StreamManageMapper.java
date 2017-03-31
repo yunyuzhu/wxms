@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.bigdata.model.tenant.GoldUserBean;
 import com.bigdata.model.tenant.QueryBean;
+import com.bigdata.model.tenant.WxUser;
 
 /**   
 * @Title: StreamManageMapper.java
@@ -26,5 +27,24 @@ public interface StreamManageMapper {
 	 * @return
 	 */
 	List<GoldUserBean> getConsumeStreamList(QueryBean queryBean);
+
+	/**
+	 * 获取用户金币余额列表
+	 * @param queryBean
+	 * @return
+	 */
+	List<WxUser> getUserBalanceList(QueryBean queryBean);
+
+	/**
+	 * 修改用户金币余额
+	 * @param wxUser
+	 */
+	void updateUserChangeGold(WxUser wxUser);
+
+	/**
+	 * 增加金币流水信息
+	 * @param wxUser
+	 */
+	void updateGoldDetail(WxUser wxUser);
 
 }
