@@ -120,9 +120,26 @@
 	
 		update t_gold_detail
 		   set flag = '1',
+		   	   goldType = '1',
 		       goldNum = #{goldNum},
 		       rule = #{rule},
 		       confirmTime = now()
+		 where id = #{id}
+		 
+	</select>
+	
+	<select id="updateWxUserGold" parameterType="String">
+	
+		update t_wx_user
+		   set gold = gold + #{goldNum}
+		 where id = #{wxUserId}
+		 
+	</select>
+	
+	<select id="getWxUserId" parameterType="String" resultType="String">
+	
+		select wxId
+		  from t_gold_detail
 		 where id = #{id}
 		 
 	</select>
