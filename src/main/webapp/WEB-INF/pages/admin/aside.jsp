@@ -15,7 +15,7 @@
 				<div class="user-center dropdown">
 					<a href="javascript:void(0);" class="dropdown-toggle user-link" data-toggle="dropdown">
 						<img src="assets/img/appuserimg.jpg" class="user-image ctradius" alt="User Image"/>
-						<span class="user-name">${userFormMap.accountName}</span>
+						<span class="user-name">${userFormMap.userName}</span>
 						<i class="arrow-down"></i>
 					</a>
 					<ul class="dropdown-menu ctfadeInRight">

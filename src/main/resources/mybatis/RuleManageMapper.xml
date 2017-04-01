@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bigdata.dao.tenant.RuleManageMapper">
+	
+	<select id="getRuleList" parameterType="com.bigdata.model.tenant.QueryBean" resultType="com.bigdata.model.tenant.RuleBean">
+	
+		(select id,
+		       ruleName,
+		       rate,
+		       remark,
+		       '1' as flag,
+		       date_format(createTime, '%Y-%m-%d %T') as createTime
+		  from t_rule
+		 where id in (select distinct rule from t_gold_detail where rule is not null)
+		   <if test="startTime != null and startTime != ''">
+		   	<![CDATA[ and date_format(createTime, '%Y-%m-%d') >= #{startTime} ]]>
+		   </if>
+		   <if test="endTime != null and endTime != ''">
+		   	<![CDATA[ and date_format(createTime, '%Y-%m-%d') <= #{endTime} ]]>
+		   </if>
+		order by createTime desc)
+		union
+		(select id,
+		       ruleName,
+		       rate,
+		       remark,
+		       '0' as flag,
+		       date_format(createTime, '%Y-%m-%d %T') as createTime
+		  from t_rule
+		 where id not in (select distinct rule from t_gold_detail where rule is not null)
+		   <if test="startTime != null and startTime != ''">
+		   	<![CDATA[ and date_format(createTime, '%Y-%m-%d') >= #{startTime} ]]>
+		   </if>
+		   <if test="endTime != null and endTime != ''">
+		   	<![CDATA[ and date_format(createTime, '%Y-%m-%d') <= #{endTime} ]]>
+		   </if>
+		order by createTime desc)
+	  
+	</select>
+	
+	<insert id="saveRule" parameterType="com.bigdata.model.tenant.RuleBean">
+	
+		insert into t_rule(ruleName, rate, remark, createTime) values(#{ruleName}, #{rate}, #{remark}, now())
+		
+	</insert>
+	
+	<update id="updateRule" parameterType="com.bigdata.model.tenant.RuleBean">
+	
+		update t_rule
+		   set ruleName=#{ruleName},
+			   rate= #{rate},
+			   remark=#{remark}
+	     where id = #{id}
+	     
+	</update>
+	
+	<delete id="deleteRule">
+	
+		delete from t_rule where id in (${ids})
+			
+	</delete>
+	
+	<update id="updateUserRuleTrade">
+	
+		update t_user
+		   set rule=#{ruleId}
+	     where trade = #{ids}
+	     
+	</update>
+	
+	<update id="updateUserRule">
+	
+		update t_user
+		   set rule=#{ruleId}
+	     where id in (${ids})
+	     
+	</update>
+	
+</mapper>
