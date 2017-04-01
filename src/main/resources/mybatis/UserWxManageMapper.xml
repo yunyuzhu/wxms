@@ -13,7 +13,7 @@
 		WHERE
 			1 = 1
 			<if test="userName!=null and userName!=''">
-				AND userName like '%${userName}%'
+				AND name like '%${userName}%'
 			</if>
 		ORDER BY
 			createTime DESC
@@ -31,7 +31,7 @@
 		WHERE
 			1 = 1
 			<if test="userName!=null and userName!=''">
-				AND userName like '%${userName}%'
+				AND name like '%${userName}%'
 			</if>
 	</select>
 	
@@ -56,7 +56,7 @@
 		FROM
 			t_wx_user
 		WHERE
-			userName = #{userName}
+			name = #{userName}
 	</select>
 	
 	<update id="updateUser" parameterType="com.bigdata.model.tenant.WxUser">

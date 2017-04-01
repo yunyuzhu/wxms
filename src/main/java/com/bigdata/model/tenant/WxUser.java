@@ -67,6 +67,16 @@ public class WxUser implements Serializable {
 	private String remark;
 	
 	/**
+	 * 用户类型
+	 */
+	private String userType;
+	
+	/**
+	 * 用户类型（名称）
+	 */
+	private String userTypeName;
+	
+	/**
 	 * 创建时间
 	 */
 	private String createTime;
@@ -162,6 +172,22 @@ public class WxUser implements Serializable {
 
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+
+	public String getUserTypeName() {
+		return userTypeName;
+	}
+
+	public void setUserTypeName(String userTypeName) {
+		this.userTypeName = userTypeName;
 	}
 
 	public String getCreateTime() {

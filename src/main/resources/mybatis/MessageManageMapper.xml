@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bigdata.dao.tenant.MessageManageMapper">
+	
+	<select id="getMessageUserList" resultType="com.bigdata.model.tenant.WxUser">
+	
+		select id,name,phone,userType 
+		  from ((select id,tenantName as name,telephone as phone, '2' as userType from t_user where tenantName is not null)
+			     union
+			    (select id,name,phone,'1' as userType from t_wx_user)) as t
+		 where 1 = 1
+		   <if test="userType != null and userType != ''">
+		   	and userType = #{userType}
+		   </if>
+	  
+	</select>
+	
+	<select id="getMessageHistoryList" parameterType="com.bigdata.model.tenant.QueryBean" resultType="com.bigdata.model.tenant.MessageBean">
+	
+		select id,
+		       message,
+		       date_format(createTime, '%Y-%m-%d %T') as createTime
+		  from t_message
+		 where 1 = 1
+		   <if test="startTime != null and startTime != ''">
+		   	<![CDATA[ and date_format(createTime, '%Y-%m-%d') >= #{startTime} ]]>
+		   </if>
+		   <if test="endTime != null and endTime != ''">
+		   	<![CDATA[ and date_format(createTime, '%Y-%m-%d') <= #{endTime} ]]>
+		   </if>
+		order by createTime desc
+	  
+	</select>
+	
+	<insert id="saveMessageInfo" parameterType="com.bigdata.model.tenant.MessageBean" keyProperty="id" useGeneratedKeys="true">
+	
+		insert into t_message(message, userId, createTime) values(#{message}, #{userId}, now())
+		
+	</insert>
+	
+	<insert id="saveMessageDetailInfo" parameterType="com.bigdata.model.tenant.MessageDetailBean">
+	
+		insert into t_message_detail(messageId, userType, userId) values(#{messageId}, #{userType}, #{userId})
+		
+	</insert>
+	
+</mapper>
