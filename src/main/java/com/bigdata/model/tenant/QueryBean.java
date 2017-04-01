@@ -24,6 +24,11 @@ public class QueryBean {
 	private String phone;
 	
 	/**
+	 * 标题
+	 */
+	private String title;
+	
+	/**
 	 * 开始时间
 	 */
 	private String startTime;
@@ -65,6 +70,14 @@ public class QueryBean {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getStartTime() {
