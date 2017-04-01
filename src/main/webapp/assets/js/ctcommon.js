@@ -297,7 +297,7 @@ function TradeList(options){
 		data: [],
 		allOpt: [{"id": "", "name": "全部"}]
 	};
-	if (options === undefined){options = {};}
+	if (typeof(options) === 'undefined'){options = {};}
 	if (typeof(options) === "object") {
 		var setting = $.extend(false, {}, defOption, options);
 		$.ajax({

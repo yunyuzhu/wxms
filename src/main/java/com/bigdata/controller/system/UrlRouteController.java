@@ -92,6 +92,12 @@ public class UrlRouteController {
 		return "/back/bkRuleApply";
 	}
 
+	/* 活动管理 */
+	@RequestMapping(value = "bkActManage", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
+	public String BkActManage(HttpServletRequest request) {
+		return "/back/bkActManage";
+	}
+
 	/* 用户管理 */
 	@RequestMapping(value = "bkUserManage", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
 	public String BkUserManage(HttpServletRequest request) {
@@ -106,9 +112,19 @@ public class UrlRouteController {
 
 	/* 消费流水 */
 	@RequestMapping(value = "bkCostStream", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
-	public String BkCostStream(HttpServletRequest request) {
-		return "/back/bkCostStream";
-	}
+	public String BkCostStream(HttpServletRequest request) { return "/back/bkCostStream"; }
+
+	/* 用户余额 */
+	@RequestMapping(value = "bkUserMoney", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
+	public String BkUserMoney(HttpServletRequest request) { return "/back/bkUserMoney"; }
+
+	/* 发送短信 */
+	@RequestMapping(value = "bkMsgSend", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
+	public String BkMsgSend(HttpServletRequest request) { return "/back/bkMsgSend"; }
+
+	/* 历史短信 */
+	@RequestMapping(value = "bkMsgHistory", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
+	public String BkMsgHistory(HttpServletRequest request) { return "/back/bkMsgHistory"; }
 
 /*********************** 平台后台 end *********************/
 
