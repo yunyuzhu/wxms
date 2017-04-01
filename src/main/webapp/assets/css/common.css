@@ -65,6 +65,7 @@ form .row .form-group{margin-bottom:0;}
 .ct-nopadd{padding:0;}
 .boxpop label{padding-left:0;padding-right:0;}
 .boxpop.box{margin-bottom:0;box-shadow:none;padding:5px 20px;}
+.boxpop .form-control-static{display:inline-block;min-height:30px;padding:0;line-height:30px;}
 .pop-cutline{border-left:1px dashed #C2C2C2;padding-left:30px;}
 /*tips*/
 .jq_tips_box{z-index:21176523 !important;}

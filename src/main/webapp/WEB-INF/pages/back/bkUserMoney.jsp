@@ -62,15 +62,22 @@
         <div class="box no-border boxpop">
             <div class="box-body">
                 <form class="form-horizontal" role="form">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <p>当前金币数：&nbsp;&nbsp;<span id="goldNum" class="pop-goldnum"></span></p>
-                            <div class="form-group mustfill">
-                                <label for="goldPop" class="col-sm-3 control-label"><i>*</i>兑换金币数</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="goldPop" value="" placeholder="输入兑换金币数">
-                                </div>
-                            </div>
+                    <div class="form-group">
+                        <label for="namePop" class="col-sm-4 control-label">用户姓名：</label>
+                        <div class="col-sm-8">
+                            <span class="form-control-static marktxt" id="namePop"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="namePop" class="col-sm-4 control-label">当前金币数：</label>
+                        <div class="col-sm-8">
+                            <span class="form-control-static pop-goldnum" id="goldNum"></span>
+                        </div>
+                    </div>
+                    <div class="form-group mustfill">
+                        <label for="goldPop" class="col-sm-4 control-label"><i>*</i>兑换金币数</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" id="goldPop" value="" placeholder="输入兑换金币数">
                         </div>
                     </div>
                 </form>

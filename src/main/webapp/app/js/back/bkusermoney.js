@@ -44,7 +44,7 @@ function listTableFun(){
     // 表格点击事件
     window.clickEvents = {
         'click .like': function(e, value, row, index) {
-            listEditShow(tmpIdArr[index], row[3]);
+            listEditShow(tmpIdArr[index], row[1], row[3]);
         }
     };
     //格式化文本
@@ -130,6 +130,7 @@ function listTableFun(){
 //弹窗信息初始化加载
 function infoPopInit(options){
     var defOption = {
+        name: '',
         num: '',
         gold: ''
     };
@@ -138,6 +139,7 @@ function infoPopInit(options){
         var setting = $.extend(false, {}, defOption, options);
         defOption = setting;
     }
+    $("#namePop").text(defOption.name);
     $("#goldNum").text(defOption.num);
     $("#goldPop").val(defOption.gold);
 }
@@ -182,9 +184,12 @@ function listEditSave(id){
     }while(0);
 }
 //编辑显示
-function listEditShow(id, num){
+function listEditShow(id, name, num){
     //更新信息
-    infoPopInit({'num': num});
+    infoPopInit({
+        'name': name,
+        'num': num
+    });
     //弹窗
     layerPopShow({
         title: ["兑换金币"],
