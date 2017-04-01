@@ -46,20 +46,42 @@ var chartGridOpt = {
 	containLabel: true
 };
 
-//layer弹窗参数设置
-var layerPopOpt = {
-	type: 1,
-	title: ['',"padding-left:70px;font-size:16px;text-align:center;color:#FFF;background:#4376a7;"],
-	skin: 'demo-class',
-	area: ['440px', 'auto'], //宽高
-	anim: 2,
-	shadeClose: false, //开启遮罩关闭
-	btn: ['保存', '取消'],
-	yes: function(){},
-	btn2: function(){layer.closeAll();},
-	btnAlign: 'c',
-	content: ''
-};
+//判断是否为数组类型
+function isArray(obj){
+	return (typeof(obj) == 'object')&&(obj.constructor == Array);
+}
+//layer弹窗
+function layerPopShow(options){
+	var layerOpt = {
+		type: 1,
+		title: ['', "padding-left:70px;font-size:16px;text-align:center;color:#FFF;background:#4376a7;"],
+		skin: 'demo-class',
+		area: ['440px', 'auto'], //宽高
+		anim: 2,
+		shadeClose: false, //开启遮罩关闭
+		btn: ['保存', '取消'],
+		yes: function(){layer.close("page");},
+		btn2: function(){layer.closeAll();},
+		btnAlign: 'c',
+		content: $("#editPop")
+	};
+	if (typeof(options) === 'undefined'){options = {};}
+	if (typeof(options) === "object") {
+		for(var para in options){
+			var curVal = options[para];
+			if(isArray(curVal)){
+				for(var i=0,size=curVal.length; i<size; i++){
+					layerOpt[para][i] = curVal[i];
+				}
+			}
+			else{
+				layerOpt[para] = curVal;
+			}
+		}
+	}
+	//弹窗
+	layer.open(layerOpt);
+}
 
 //小于10的数值前面增加0
 function addZero(val){

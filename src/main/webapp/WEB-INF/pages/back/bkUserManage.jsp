@@ -61,39 +61,36 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="form-group mustfill">
-                                <label for="userPop" class="col-sm-2 control-label">用户名</label>
+                                <label for="userPop" class="col-sm-2 control-label"><i>*</i>用户名</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="userPop" value="" placeholder="输入用户名">
                                 </div>
-                                <span class="fillmark">*</span>
                             </div>
                         </div>
                     </div>
                     <div class="row" id="rowPasswordPop">
                         <div class="col-xs-12">
                             <div class="form-group mustfill">
-                                <label for="passwordPop" class="col-sm-2 control-label">密码</label>
+                                <label for="passwordPop" class="col-sm-2 control-label"><i>*</i>密码</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="passwordPop" value="" placeholder="输入密码">
                                 </div>
-                                <span class="fillmark">*</span>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="form-group mustfill">
-                                <label for="useFlagPop" class="col-sm-2 control-label">启用状态</label>
+                                <label for="useFlagPop" class="col-sm-2 control-label"><i>*</i>启用状态</label>
                                 <div class="col-sm-9">
                                     <select id="useFlagPop" class="form-control"></select>
                                 </div>
-                                <span class="fillmark">*</span>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                            <div class="form-group mustfill">
+                            <div class="form-group">
                                 <label for="namePop" class="col-sm-2 control-label">姓名</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="namePop" value="" placeholder="输入用户姓名">
@@ -103,7 +100,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                            <div class="form-group mustfill">
+                            <div class="form-group">
                                 <label for="sexPop" class="col-sm-2 control-label">性别</label>
                                 <div class="col-sm-9">
                                     <select id="sexPop" class="form-control"></select>
@@ -113,7 +110,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                            <div class="form-group mustfill">
+                            <div class="form-group">
                                 <label for="agePop" class="col-sm-2 control-label">年龄</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="agePop" value="" placeholder="输入用户年龄">
@@ -123,7 +120,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                            <div class="form-group mustfill">
+                            <div class="form-group">
                                 <label for="telPop" class="col-sm-2 control-label">电话</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="telPop" value="" placeholder="输入用户电话">
@@ -133,7 +130,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                            <div class="form-group mustfill">
+                            <div class="form-group">
                                 <label for="remarkPop" class="col-sm-2 control-label">备注</label>
                                 <div class="col-sm-9">
                                     <textarea class="form-control" id="remarkPop" placeholder="输入备注信息"></textarea>

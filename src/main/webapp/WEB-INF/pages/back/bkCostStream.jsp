@@ -47,11 +47,13 @@
                 <thead>
                 <tr>
                     <th class="col0">序号</th>
-                    <th class="col1">商户</th>
-                    <th class="col2">行业</th>
+                    <th class="col1">用户</th>
+                    <th class="col2">用户电话</th>
                     <th class="col3">消费金额(元)</th>
-                    <th class="col4">电话</th>
-                    <th class="col5">确认消费时间</th>
+                    <th class="col4">商户</th>
+                    <th class="col5">商户行业</th>
+                    <th class="col6">商户电话</th>
+                    <th class="col7">消费时间</th>
                 </tr>
                 </thead>
                 <tbody></tbody>

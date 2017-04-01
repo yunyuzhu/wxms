@@ -61,11 +61,13 @@ function costTableFun(){
                     var curObj = dataRows[i];
                     var curArr = [];
                     curArr[0] = curObj['orderId'];
-                    curArr[1] = curObj['tenantName'];
-                    curArr[2] = curObj['trade'];
+                    curArr[1] = curObj['name'];
+                    curArr[2] = curObj['phone'];
                     curArr[3] = curObj['consumeMoney'];
-                    curArr[4] = curObj['telephone'];
-                    curArr[5] = curObj['confirmTime'];
+                    curArr[4] = curObj['tenantName'];
+                    curArr[5] = curObj['trade'];
+                    curArr[6] = curObj['telephone'];
+                    curArr[7] = curObj['confirmTime'];
                     dataRows[i] = curArr;
                     //记录id
                     idArr[i] = curObj['id'];
@@ -104,12 +106,14 @@ function costTableFun(){
             smartDisplay: true,  //设置为True智能显示分页或者Card View
             responseHandler: resHandler,    //在加载数据前，可以对返回的数据进行处理，参数包含：res: 返回的数据。
             columns: [
-                { field: 0, width: "10%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 1, width: "15%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
+                { field: 0, width: "5%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
+                { field: 1, width: "10%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
                 { field: 2, width: "15%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 3, width: "15%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 4, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 5, width: "25%", align: 'center', valign: 'middle', halign: 'center', sortable: false }
+                { field: 3, width: "10%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
+                { field: 4, width: "10%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
+                { field: 5, width: "10%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
+                { field: 6, width: "15%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
+                { field: 7, width: "15%", align: 'center', valign: 'middle', halign: 'center', sortable: false }
             ]
         });
     }

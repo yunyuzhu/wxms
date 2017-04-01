@@ -65,13 +65,13 @@ form .row .form-group{margin-bottom:0;}
 .ct-nopadd{padding:0;}
 .boxpop label{padding-left:0;padding-right:0;}
 .boxpop.box{margin-bottom:0;box-shadow:none;padding:5px 20px;}
+.pop-cutline{border-left:1px dashed #C2C2C2;padding-left:30px;}
 /*tips*/
 .jq_tips_box{z-index:21176523 !important;}
 .layui-layer-rim{z-index:1000!important;}
 .layui-layer-shade{z-index:999!important;opacity:0.5!important;}
 .layui-layer-content{max-height:560px!important;overflow-y:auto;}
 .layui-layer-page .layui-layer-btn{border-top:1px solid #D2D2D2;}
-
 	/*图标高度设置*/
 .ctview-h{height:380px;}
 .ctview-self-h{height:150px;}
@@ -169,6 +169,7 @@ form .row .form-group{margin-bottom:0;}
 .form-group.ismark:after{content:'*';padding-top:7px;color:#F00;font-weight:bold;}
 .fillmark{display:none;position:relative;padding-top:7px;color:#F00;font-weight:bold;}
 .mustfill .fillmark{display:inline-block;}
+.mustfill label i{position:relative;left:-3px;font-style:normal;color:#F00;font-weight:bold;}
 /*Theme end*/
 /*动画*/
 @-webkit-keyframes fadeIn{

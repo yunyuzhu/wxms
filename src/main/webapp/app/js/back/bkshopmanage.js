@@ -2,6 +2,7 @@
  * Created by chun
  */
 var tmpIdArr;
+var shopAreaWH = ['800px', 'auto'];
 //加载页面
 function loadhtml(){
     //加载行业列表
@@ -142,12 +143,6 @@ function listTableFun(){
     //触发
     drawTable();
 }
-
-function layerPopSet(){
-    layerPopOpt.title[0] = "商户信息";
-    layerPopOpt.content = $("#editPop");
-}
-
 //弹窗信息初始化加载
 function infoPopInit(options){
     var defOption = {
@@ -267,17 +262,19 @@ function listEditShow(id){
                 linkPhone: jsonData["linkPhone"],
                 remark: jsonData["remark"]
             };
-            //弹窗
-            layerPopSet();
-            layerPopOpt.yes = function(){
-                listEditSave(id);
-            };
-            layer.open(layerPopOpt);
             //更新信息
             infoPopInit(popData);
             //禁止用户名，隐藏密码
             $("#userPop").attr('disabled', 'disabled');
             $("#rowPasswordPop").hide();
+            //弹窗
+            layerPopShow({
+                title: ["商户信息"],
+                area: shopAreaWH,
+                yes: function(){
+                    listEditSave(id);
+                }
+            });
         },
         error:function(error){
             console.log(error);
@@ -353,15 +350,17 @@ function listAddSave(){
 }
 //增加显示
 function listAddShow(){
+    //更新信息
     infoPopInit();
-    layerPopSet();
-    layerPopOpt.yes = function(){
-        //增加保存
-        listAddSave();
-    };
-    layer.open(layerPopOpt);
+    //弹窗
+    layerPopShow({
+        title: ["商户信息"],
+        area: shopAreaWH,
+        yes: function(){
+            listAddSave();
+        }
+    });
 }
-
 /*************  删除  ****************/
 //删除
 function listDelFun(){
