@@ -31,14 +31,18 @@
 		       t1.consumeMoney,
 			   date_format(t1.confirmTime, '%Y-%m-%d %T') as confirmTime,
 		       t2.tenantName,
+		       t2.telephone,
 		       t3.name as trade,
-		       t2.telephone
+		       t4.name,
+		       t4.phone
 		  from t_gold_detail t1,
 		       t_user t2,
-		       t_trade t3
+		       t_trade t3,
+		       t_wx_user t4
 		 where t1.userId = t2.id
 		   and t1.flag = 1
 		   and t2.trade = t3.id
+		   and t1.wxId = t4.id
 		   <if test="startTime != null and startTime != ''">
 		   	<![CDATA[ and date_format(t1.confirmTime, '%Y-%m-%d') >= #{startTime} ]]>
 		   </if>
