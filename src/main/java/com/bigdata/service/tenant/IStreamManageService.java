@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.bigdata.model.tenant.GoldUserBean;
 import com.bigdata.model.tenant.QueryBean;
+import com.bigdata.model.tenant.WxUser;
 
 /**   
 * @Title: IStreamManageService.java
@@ -26,5 +27,18 @@ public interface IStreamManageService {
 	 * @return
 	 */
 	List<GoldUserBean> getConsumeStreamList(QueryBean queryBean);
+
+	/**
+	 * 获取用户金币余额列表
+	 * @param queryBean
+	 * @return
+	 */
+	List<WxUser> getUserBalanceList(QueryBean queryBean);
+
+	/**
+	 * 兑换金币
+	 * @param wxUser
+	 */
+	void updateUserChangeGold(WxUser wxUser);
 
 }

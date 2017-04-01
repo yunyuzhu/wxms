@@ -49,4 +49,35 @@
 	  
 	</select>
 	
+	<select id="getUserBalanceList" parameterType="com.bigdata.model.tenant.QueryBean" resultType="com.bigdata.model.tenant.WxUser">
+	
+		select id,
+		       gold,
+		       name,
+		       phone
+		  from t_wx_user
+		 where useFlag = 1
+		   <if test="name != null and name != ''">
+		   	and name like '%${name}%'
+		   </if>
+		   <if test="phone != null and phone != ''">
+		   	and phone like '%${phone}%'
+		   </if>
+	  
+	</select>
+	
+	<update id="updateUserChangeGold" parameterType="com.bigdata.model.tenant.WxUser">
+		
+		update t_wx_user
+		   set gold = gold - #{gold}
+		 where id = #{id}
+	
+	</update>
+	
+	<insert id="updateGoldDetail" parameterType="com.bigdata.model.tenant.WxUser"> 
+		
+		insert into t_gold_detail(wxId, goldNum, goldType, flag, consumeTime, confirmTime) values(#{id}, #{gold}, '0', '1', now(), now())
+		
+	</insert>
+	
 </mapper>
