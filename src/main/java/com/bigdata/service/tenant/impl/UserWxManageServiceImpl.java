@@ -102,8 +102,15 @@ public class UserWxManageServiceImpl implements IUserWxManageService {
 
 	@Override
 	public Object delUserAndRole(String userIds) {
-		//删除用户
+		//删除用户表信息
 		userWxManageMapper.delUser(userIds);
+		
+		//删除微信用户关联信息
+		userWxManageMapper.delWxUser(userIds);
+		
+		//删除微信用户角色
+		userWxManageMapper.delWxUserRole(userIds);
+		
 		return HttpResult.build(true, "0000", "用户删除成功！");
 	}
 

@@ -45,4 +45,52 @@
 	  
 	</insert>
 	
+	<insert id="saveUser" parameterType="com.bigdata.model.tenant.WxUser" keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO t_user (
+			userName,
+			password,
+			credentialsSalt,
+			useFlag,
+			createTime,
+			updateTime
+		)
+		VALUES
+			(
+				#{userName},
+				#{password},
+				#{credentialsSalt},
+				'1',
+				NOW(),
+				NOW()
+			);
+	</insert>
+	
+	<insert id="saveWxUser" parameterType="com.bigdata.model.tenant.WxUser" >
+		INSERT INTO t_wx_user (
+			id,
+			useFlag,
+			name,
+			sex,
+			age,
+			phone,
+			gold,
+			remark,
+			createTime,
+			updateTime
+		)
+		VALUES
+			(
+				#{id},
+				'1',
+				#{name},
+				#{sex},
+				#{age},
+				#{phone},
+				0,
+				#{remark},
+				NOW(),
+				NOW()
+			);
+	</insert>
+	
 </mapper>

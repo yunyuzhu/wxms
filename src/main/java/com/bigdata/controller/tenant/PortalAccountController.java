@@ -9,6 +9,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.shiro.crypto.SecureRandomNumberGenerator;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bigdata.common.util.CommonTools;
+import com.bigdata.dao.tenant.ShopManageMapper;
 import com.bigdata.model.system.User;
 import com.bigdata.model.tenant.GoldUserBean;
 import com.bigdata.model.tenant.WxUser;
@@ -34,6 +37,9 @@ public class PortalAccountController {
 	
 	@Resource
 	private IPortalAccountService portalAccountServiceImpl;
+	
+	@Resource
+	private ShopManageMapper shopManageMapper;
 
 	/**
 	 * 获取我的账户信息
@@ -129,6 +135,59 @@ public class PortalAccountController {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
     	map.put("msg", "消费成功");
+    	return map;
+	}
+	
+	/**
+	 * 用户注册
+	 * @param userName
+	 * @param password
+	 * @param name
+	 * @param sex
+	 * @param age
+	 * @param phone
+	 * @param remark
+	 * @return
+	 */
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	@ResponseBody
+	public Object saveUser(
+			@ApiParam(required = true, name = "userName", value = "用户名") @RequestParam(value = "userName", required = true) String userName,
+			@ApiParam(required = true, name = "password", value = "密码明文") @RequestParam(value = "password", required = true) String password,
+			@ApiParam(required = false, name = "name", value = "姓名") @RequestParam(value = "name", required = false) String name,
+			@ApiParam(required = false, name = "sex", value = "性别") @RequestParam(value = "sex", required = false) String sex,
+			@ApiParam(required = false, name = "age", value = "年龄") @RequestParam(value = "age", required = false) String age,
+			@ApiParam(required = false, name = "phone", value = "电话") @RequestParam(value = "phone", required = false) String phone,
+			@ApiParam(required = false, name = "remark", value = "备注") @RequestParam(value = "remark", required = false) String remark) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		//账号重名检查
+        int count=shopManageMapper.getUserByUserName(userName);
+        if(count>0){
+        	map.put("msg", "用户名已存在");
+        	return map;
+        }
+        
+        SecureRandomNumberGenerator secureRandomNumberGenerator=new SecureRandomNumberGenerator(); 
+        String salt= secureRandomNumberGenerator.nextBytes().toHex(); 
+        //组合username,两次迭代，对密码进行加密 
+        String password_cipherText= new Md5Hash(password,userName+salt,2).toHex();
+        
+		WxUser user=new WxUser(); 
+        user.setUserName(userName); //用户名
+        user.setPassword(password_cipherText); //加密后密码
+        user.setCredentialsSalt(salt);
+        user.setName(name);
+		user.setSex(sex);
+		user.setAge(age);
+		user.setPhone(phone);
+		user.setRemark(remark);
+		
+		//用户注册
+		portalAccountServiceImpl.saveUser(user);
+		
+    	map.put("msg", "注册成功");
     	return map;
 	}
 	
