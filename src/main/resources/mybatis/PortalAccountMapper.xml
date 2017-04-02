@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bigdata.dao.tenant.PortalAccountMapper">
+	
+	<select id="getMyAccountInfo" resultType="com.bigdata.model.tenant.WxUser">
+	
+		select name,
+		       case sex when 1 then '男' else '女' end as sex,
+		       age,
+		       phone,
+		       gold
+		  from t_wx_user
+		  where id = #{id}
+	  
+	</select>
+	
+	<select id="getMyAccountGold" resultType="String">
+	
+		select gold
+		  from t_wx_user
+		  where id = #{id}
+	  
+	</select>
+	
+	<select id="getMyAccountGoldStream" resultType="com.bigdata.model.tenant.GoldUserBean">
+	
+		select t1.id,
+		       t1.goldNum,
+		       case t1.goldType when 1 then '增加' else '减少' end as goldType,
+			   date_format(t1.confirmTime, '%Y-%m-%d %T') as confirmTime
+		  from t_gold_detail t1,
+		       t_wx_user t2
+		 where t1.wxId = t2.id
+		   and t1.flag = 1
+		   and t2.id = #{id}
+	  order by t1.confirmTime desc
+	  
+	</select>
+	
+	<insert id="saveGoldDetail">
+	
+		insert into t_gold_detail(wxId, userId, consumeMoney, flag, consumeTime)
+		            values(#{id}, #{shopId}, #{consumeMoney}, '0', now());
+	  
+	</insert>
+	
+</mapper>
