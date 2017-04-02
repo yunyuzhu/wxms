@@ -72,9 +72,12 @@ function listTableFun(){
     function linkTableFat(value, row, index) {
         var resTemp = '';
         resTemp = value;
-        return [
-            '<a class="like btn handlebtn" '+ ' data-id='+tmpIdArr[index]+ ' data-flag='+tmpFlagArr[index]+ ' title="请点击">'+resTemp+'</a>'
-        ];
+        var htmlStr = '<a class="like btn handlebtn" '+ ' data-id='+tmpIdArr[index]+ ' data-flag='+tmpFlagArr[index]+ ' title="请点击">'+resTemp+'</a>';
+        var flag = tmpFlagArr[index];
+        if(flag == 1){
+            htmlStr = '<span style="color:#F00;">' + '规则正在使用，<br/>禁止删除和编辑' + '</span>';
+        }
+        return [ htmlStr ];
     }
     // 表格
     function drawTable(){
@@ -152,11 +155,11 @@ function listTableFun(){
             columns: [
                 { field: 0, width: "10%", align: 'center', valign: 'middle', halign: 'center', sortable: false, checkbox: true},
                 { field: 1, width: "5%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 2, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
+                { field: 2, width: "15%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
                 { field: 3, width: "15%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
                 { field: 4, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
                 { field: 5, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 6, width: "10%", align: 'center', valign: 'middle', halign: 'center', sortable: false,
+                { field: 6, width: "15%", align: 'center', valign: 'middle', halign: 'center', sortable: false,
                     events: clickEvents, formatter: linkTableFat}
             ]
         });

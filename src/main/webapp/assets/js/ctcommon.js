@@ -134,8 +134,8 @@ function startEndTimeInit($timeStart, $timeEnd, callback, defVal){
 		defTime.startTime = defVal.startTime;
 		defTime.endTime = defVal.endTime;
 	}
-	$timeStart.val(defTime.startTime);
-	$timeEnd.val(defTime.endTime);
+	$timeStart.val(defTime.startTime).attr('readonly', 'readonly');
+	$timeEnd.val(defTime.endTime).attr('readonly', 'readonly');
 
 	var startDPOpt = {}, endDPOpt = {};
 	var startTime, endTime;

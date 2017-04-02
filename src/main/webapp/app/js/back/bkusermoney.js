@@ -146,10 +146,10 @@ function infoPopInit(options){
 
 /*************  编辑  ****************/
 //编辑保存
-function listEditSave(id){
+function listEditSave(option){
     var $goldPop = $("#goldPop");
     var inData = {
-        id: id,
+        id: option.id,
         gold: $goldPop.val()
     };
     //删除前后的空白字符
@@ -161,6 +161,15 @@ function listEditSave(id){
         if(!EmptyCheck($goldPop, inData.gold, "金币数不能为空")){
             break;
         }
+        if(inData.gold < 0){
+            tipShow($goldPop, "输入金币数不能小于0");
+            break;
+        }
+        if(inData.gold > Math.abs(option.num)){
+            tipShow($goldPop, "输入金币数不能大于目前当前金币数");
+            break;
+        }
+        tipHide();
         //发送服务器
         $.ajax({
             type: "get",
@@ -194,7 +203,10 @@ function listEditShow(id, name, num){
     layerPopShow({
         title: ["兑换金币"],
         yes: function(){
-            listEditSave(id);
+            listEditSave({
+                'id': id,
+                'num': num
+            });
         }
     });
 }
