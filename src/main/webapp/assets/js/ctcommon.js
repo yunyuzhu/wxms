@@ -61,7 +61,7 @@ function layerPopShow(options){
 		shadeClose: false, //开启遮罩关闭
 		btn: ['保存', '取消'],
 		yes: function(){layer.close("page");},
-		btn2: function(){layer.closeAll();},
+		btn2: function(){layer.closeAll(); tipHide();},
 		btnAlign: 'c',
 		content: $("#editPop")
 	};
