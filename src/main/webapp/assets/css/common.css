@@ -17,6 +17,7 @@
 .sidebar-mini.sidebar-collapse .sidebar-menu > li:hover > .treeview-menu {left:46px;}
 .box{border-radius:0;}
 .info-box img{max-width:100%;}
+.box-footer{padding-top:0;}
 /*common*/
 .clearfix:after{clear:both;content:'.';display:block;height:0;visibility:hidden;line-height:0;}
 .clearfix{*zoom:1}
