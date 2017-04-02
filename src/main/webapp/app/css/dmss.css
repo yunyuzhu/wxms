@@ -7,3 +7,5 @@
 .pop-acth{min-height:150px;}
 .hidecheck input{display:none;}
 .hidecheck>td.col0:before{content:"禁止删除"; color:#F00;}
+.msgh{min-height:100px;}
+.listbody{max-height:1000px;}

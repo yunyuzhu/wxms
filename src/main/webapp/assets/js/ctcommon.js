@@ -339,6 +339,26 @@ function UseFlagList(options){
 	}
 }
 
+//用户类型
+function UserTypeList(options){
+    var defOption = {
+        id: "#userType",
+        hasAll: false,
+        tailAll: false,
+        defVal: "1",
+        data: [
+            {"id": "1", "name": "用户"},
+            {"id": "2", "name": "商户"}
+        ],
+        allOpt: [{"id": "", "name": "全部"}]
+    };
+    if (options === undefined){options = {};}
+    if (typeof(options) === "object") {
+        var setting = $.extend(false, {}, defOption, options);
+        new OptionList(setting);
+    }
+}
+
 //性别
 function SexList(options){
 	var defOption = {
