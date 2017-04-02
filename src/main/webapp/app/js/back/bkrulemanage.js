@@ -2,6 +2,7 @@
  * Created by chun
  */
 var tmpIdArr;
+var tmpFlagArr;
 var shopAreaWH = ['800px', 'auto'];
 //加载页面
 function loadhtml(){
@@ -63,7 +64,7 @@ function listTableFun(){
                 id: tmpIdArr[index],
                 ruleName: row[2],
                 rate: row[3],
-                remark: row[5]
+                remark: row[4]
             });
         }
     };
@@ -72,7 +73,7 @@ function listTableFun(){
         var resTemp = '';
         resTemp = value;
         return [
-            '<a class="like btn handlebtn" '+ ' data-id='+tmpIdArr[index]+ ' title="请点击">'+resTemp+'</a>'
+            '<a class="like btn handlebtn" '+ ' data-id='+tmpIdArr[index]+ ' data-flag='+tmpFlagArr[index]+ ' title="请点击">'+resTemp+'</a>'
         ];
     }
     // 表格
@@ -87,22 +88,25 @@ function listTableFun(){
             var dataTotal = jsonData['total'];
             if(dataTotal > 0) {
                 var idArr = [];
+                var flagArr = [];
                 var pageSize = dataRows.length;
                 for (var i = 0; i < pageSize; i++) {
                     var curObj = dataRows[i];
                     var curArr = [];
+                    curArr[0] = curObj['flag'];
                     curArr[1] = curObj['orderId'];
                     curArr[2] = curObj['ruleName'];
                     curArr[3] = curObj['rate'];
-                    curArr[4] = curObj['flag'];
-                    curArr[5] = curObj['remark'];
-                    curArr[6] = curObj['createTime'];
-                    curArr[7] = "编辑";
+                    curArr[4] = curObj['remark'];
+                    curArr[5] = curObj['createTime'];
+                    curArr[6] = "编辑";
                     dataRows[i] = curArr;
                     //记录id
                     idArr[i] = curObj['id'];
+                    flagArr[i] = curObj['flag'];
                 }
                 tmpIdArr = idArr;
+                tmpFlagArr = flagArr;
                 dataObj = {"rows": dataRows, "total": dataTotal};
             }
             return dataObj;
@@ -136,15 +140,23 @@ function listTableFun(){
             clickToSelect: false,    //设置为True时点击行即可选中单选/复选框
             smartDisplay: true,  //设置为True智能显示分页或者Card View
             responseHandler: resHandler,    //在加载数据前，可以对返回的数据进行处理，参数包含：res: 返回的数据。
+            checkboxHeader: false,
+            rowStyle: function(row, index){
+                var classStr = '';
+                var flag = row[0];
+                if(flag == 1){
+                    classStr = 'hidecheck';
+                }
+                return {classes: classStr};
+            },
             columns: [
-                { field: 0, width: "5%", align: 'center', valign: 'middle', halign: 'center', sortable: false, checkbox: true },
+                { field: 0, width: "10%", align: 'center', valign: 'middle', halign: 'center', sortable: false, checkbox: true},
                 { field: 1, width: "5%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 2, width: "15%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
+                { field: 2, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
                 { field: 3, width: "15%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 4, width: "15%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 5, width: "15%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 6, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 7, width: "10%", align: 'center', valign: 'middle', halign: 'center', sortable: false,
+                { field: 4, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
+                { field: 5, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
+                { field: 6, width: "10%", align: 'center', valign: 'middle', halign: 'center', sortable: false,
                     events: clickEvents, formatter: linkTableFat}
             ]
         });

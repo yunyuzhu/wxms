@@ -59,10 +59,9 @@
                         <th class="col1">序号</th>
                         <th class="col2">规则名称</th>
                         <th class="col3">兑换率</th>
-                        <th class="col4">FLAG</th>
-                        <th class="col5">备注</th>
-                        <th class="col6">创建时间</th>
-                        <th class="col7">操作</th>
+                        <th class="col4">备注</th>
+                        <th class="col5">创建时间</th>
+                        <th class="col6">操作</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
