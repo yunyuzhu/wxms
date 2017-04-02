@@ -52,14 +52,6 @@ function listTableFun(){
             listEditShow(tmpIdArr[index]);
         }
     };
-    //格式化文本
-    function linkTableFat(value, row, index) {
-        var resTemp = '';
-        resTemp = value;
-        return [
-            '<a class="like btn handlebtn" '+ ' data-id='+tmpIdArr[index]+ ' title="请点击">'+resTemp+'</a>'
-        ];
-    }
     // 表格
     function drawTable(){
         var $tableElem = $("#listTable");
@@ -120,6 +112,11 @@ function listTableFun(){
             clickToSelect: false,    //设置为True时点击行即可选中单选/复选框
             smartDisplay: true,  //设置为True智能显示分页或者Card View
             responseHandler: resHandler,    //在加载数据前，可以对返回的数据进行处理，参数包含：res: 返回的数据。
+            rowAttributes: function(row, index){
+                return {
+                    'data-id': tmpIdArr[index]
+                };
+            },
             columns: [
                 { field: 0, width: "5%", align: 'center', valign: 'middle', halign: 'center', sortable: false, checkbox: true },
                 { field: 1, width: "5%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
@@ -349,7 +346,8 @@ function listDelFun(){
         var $curRow = $rowList.eq(i);
         var $checkbox = $curRow.find('input[type="checkbox"]');
         if($checkbox.is(':checked')){
-            var curId = $curRow.find(".like").attr("data-id");
+            // var curId = $curRow.find(".sortid").attr("data-id");
+            var curId = $curRow.attr("data-id");
             idArr.push(curId);
         }
     }
