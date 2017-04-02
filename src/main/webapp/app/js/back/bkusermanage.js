@@ -376,7 +376,7 @@ function listDelFun(){
                 var jsonData = eval(data);
                 var res = jsonData['success'];
                 if(res){
-                    layer.msg('删除用户成功！', {icon: 1, time: 1000});
+                    layer.msg('删除成功！', {icon: 1, time: 1000});
                     //提交查询
                     inSubmit();
                 }

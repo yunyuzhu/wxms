@@ -377,10 +377,10 @@ function listDelFun(){
         }
     }
     if(idArr.length == 0){
-        layer.msg('请选择要删除的用户！', {icon:0,skin:'layui-layer-lan',title:'提示',time: 1500});
+        layer.msg('请选择要删除的商户！', {icon:0,skin:'layui-layer-lan',title:'提示',time: 1500});
         return ;
     }
-    layer.confirm('确定要删除选中的用户？', {
+    layer.confirm('确定要删除选中的商户？', {
         icon: 3,
         title: ['提示',"color:#FFF;background:#4376a7;"],
         btn: ['删除','取消']
@@ -399,7 +399,7 @@ function listDelFun(){
                 var jsonData = eval(data);
                 var res = jsonData['success'];
                 if(res){
-                    layer.msg('删除用户成功！', {icon: 1, time: 1000});
+                    layer.msg('删除成功！', {icon: 1, time: 1000});
                     //提交查询
                     inSubmit();
                 }

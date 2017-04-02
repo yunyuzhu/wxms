@@ -59,8 +59,6 @@ h3,h4,h5{font-family:"Microsoft Yahei", "微软雅黑";}
 .curdoc-tit{margin-bottom:10px;font-weight:bold;}
 .form-inline .form-control.input-limit{width:60px;margin:0 5px;text-align:center;}
 form{padding:0 15px;}
-form .row{margin-top:10px;padding-bottom:10px;}
-form .row .form-group{margin-bottom:0;}
 .cthide{display:none;}
 .ct-nopadd{padding:0;}
 .boxpop label{padding-left:0;padding-right:0;}
@@ -117,7 +115,8 @@ form .row .form-group{margin-bottom:0;}
 .ctbtn:hover{color:#FFF;background:#00A480;border-color:#00A480;}
 .ctbtn:focus,.ctbtn:active,.ctbtn:active.active{color:#FFF;background:#396;border-color:#396;}
 .ctbtn.invalid,.ctbtn.invalid:hover{color:#AAA;background:#E2E2E2;border-color:#E2E2E2;text-decoration:none;cursor:default;}
-/*bootstrap-table 样式自定义*/
+.ctbtn.btn-block{margin:0;}
+	/*bootstrap-table 样式自定义*/
 .bootstrap-table .table{width:100%!important;table-layout:fixed;white-space:normal;word-break:break-all;}
 .bootstrap-table tr th{color:#FFF;background:#1AB394;vertical-align:top!important;}
 .bootstrap-table tr td{border-left-color:#1AB394;border-right-color:#1AB394;}

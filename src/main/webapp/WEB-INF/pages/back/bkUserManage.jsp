@@ -42,7 +42,7 @@
                     <tr>
                         <th class="col0"></th>
                         <th class="col1">序号</th>
-                        <th class="col2">用户名</th>
+                        <th class="col2">用户</th>
                         <th class="col3">金额(元)</th>
                         <th class="col4">电话</th>
                         <th class="col5">创建时间</th>

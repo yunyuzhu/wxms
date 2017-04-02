@@ -2,6 +2,7 @@
  * Created by chun
  */
 var tmpIdArr;
+var tmpContentArr;
 var shopAreaWH = ['800px', 'auto'];
 //加载页面
 function loadhtml(){
@@ -60,7 +61,11 @@ function listTableFun(){
     // 表格点击事件
     window.clickEvents = {
         'click .like': function(e, value, row, index) {
-            listEditShow(tmpIdArr[index]);
+            listEditShow({
+                id: tmpIdArr[index],
+                title: row[2],
+                content: tmpContentArr[index]
+            });
         }
     };
     //格式化文本
@@ -83,21 +88,22 @@ function listTableFun(){
             var dataTotal = jsonData['total'];
             if(dataTotal > 0) {
                 var idArr = [];
+                var contentArr = [];
                 var pageSize = dataRows.length;
                 for (var i = 0; i < pageSize; i++) {
                     var curObj = dataRows[i];
                     var curArr = [];
                     curArr[1] = curObj['orderId'];
                     curArr[2] = curObj['title'];
-                    curArr[3] = curObj['trade'];
-                    curArr[4] = curObj['linkName'];
-                    curArr[5] = curObj['createTime'];
-                    curArr[6] = "编辑";
+                    curArr[3] = curObj['createTime'];
+                    curArr[4] = "查看";
                     dataRows[i] = curArr;
                     //记录id
                     idArr[i] = curObj['id'];
+                    contentArr[i] = curObj['content'];
                 }
                 tmpIdArr = idArr;
+                tmpContentArr = contentArr;
                 dataObj = {"rows": dataRows, "total": dataTotal};
             }
             return dataObj;
@@ -132,13 +138,11 @@ function listTableFun(){
             smartDisplay: true,  //设置为True智能显示分页或者Card View
             responseHandler: resHandler,    //在加载数据前，可以对返回的数据进行处理，参数包含：res: 返回的数据。
             columns: [
-                { field: 0, width: "5%", align: 'center', valign: 'middle', halign: 'center', sortable: false, checkbox: true },
-                { field: 1, width: "5%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 2, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 3, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 4, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 5, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 6, width: "10%", align: 'center', valign: 'middle', halign: 'center', sortable: false,
+                { field: 0, width: "10%", align: 'center', valign: 'middle', halign: 'center', sortable: false, checkbox: true },
+                { field: 1, width: "10%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
+                { field: 2, width: "30%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
+                { field: 3, width: "30%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
+                { field: 4, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false,
                     events: clickEvents, formatter: linkTableFat}
             ]
         });
@@ -149,62 +153,29 @@ function listTableFun(){
 //弹窗信息初始化加载
 function infoPopInit(options){
     var defOption = {
-        userName: '', password: '', useFlag: '1',
-        tenantName: '', trade: null, telephone: '', address: '', linkName: '',linkPhone: '', remark: ''
+        title: '', content: ''
     };
-    if (options === undefined){options = {};}
+    if (typeof(options) === 'undefined'){options = {};}
     if (typeof(options) === "object") {
         var setting = $.extend(false, {}, defOption, options);
         defOption = setting;
     }
-    var $userPop = $("#userPop");
-    var $passwordPop = $("#passwordPop");
-    var $useFlagPop = $("#useFlagPop");
-    var $namePop = $("#namePop");
-    var $tradePop = $("#tradePop");
-    var $telPop = $("#telPop");
-    var $addrPop = $("#addrPop");
-    var $linkNamePop = $("#linkNamePop");
-    var $linkTelPop = $("#linkTelPop");
-    var $remarkPop = $("#remarkPop");
-
-    $userPop.removeAttr('disabled').val(defOption.userName);
-    $("#rowPasswordPop").show();
-    $passwordPop.val(defOption.password);
-    UseFlagList({defVal:defOption.useFlag});
-    $namePop.val(defOption.tenantName);
-    TradeList({id:"#tradePop", hasAll:false, defVal:defOption.trade});
-    $telPop.val(defOption.telephone);
-    $addrPop.val(defOption.address);
-    $linkNamePop.val(defOption.linkName);
-    $linkTelPop.val(defOption.linkPhone);
-    $remarkPop.val(defOption.remark);
+    var $actTitlePop = $("#actTitlePop");
+    var $actContentPop = $("#actContentPop");
+    $actTitlePop.val(defOption.title);
+    $actContentPop.val(defOption.content);
 }
 
 /*************  编辑  ****************/
 
 //编辑保存
 function listEditSave(id){
-    var $userPop = $("#userPop");
-    var $passwordPop = $("#passwordPop");
-    var $useFlagPop = $("#useFlagPop");
-    var $namePop = $("#namePop");
-    var $tradePop = $("#tradePop");
-    var $telPop = $("#telPop");
-    var $addrPop = $("#addrPop");
-    var $linkNamePop = $("#linkNamePop");
-    var $linkTelPop = $("#linkTelPop");
-    var $remarkPop = $("#remarkPop");
+    var $actTitlePop = $("#actTitlePop");
+    var $actContentPop = $("#actContentPop");
     var inData = {
-        userId: id,
-        useFlag: $useFlagPop.val(),
-        tenantName: $namePop.val(),
-        trade: $tradePop.val(),
-        telephone: $telPop.val(),
-        address: $addrPop.val(),
-        linkName: $linkNamePop.val(),
-        linkPhone: $linkTelPop.val(),
-        remark: $remarkPop.val()
+        id: id,
+        title: $actTitlePop.val(),
+        content: $actContentPop.val()
     };
     //删除前后的空白字符
     for(var para in inData){
@@ -215,24 +186,17 @@ function listEditSave(id){
         //发送服务器
         $.ajax({
             type: "get",
-            url: "shop/updateUser",
+            url: "activity/update",
             dataType:"json",
             data: inData,
             async: false,
             jsonp: "callback",
             success:function(data){
                 var jsonData = eval(data);
-                var res = jsonData['success'];
-                if(res){
-                    layer.closeAll('page');
-                    layer.msg('保存成功！', {icon: 1, time: 1000});
-                    //提交查询
-                    inSubmit();
-                }
-                else{
-                    var msg = jsonData['message'];
-                    layer.msg(msg, {icon: 2, time: 1000});
-                }
+                layer.closeAll('page');
+                layer.msg('保存成功！', {icon: 1, time: 1000});
+                //提交查询
+                inSubmit();
             },
             error:function(error){
                 console.log(error);
@@ -242,45 +206,19 @@ function listEditSave(id){
     }while(0);
 }
 //编辑显示
-function listEditShow(id){
-    var inData = {userId: id};
-    //发送服务器
-    $.ajax({
-        type: "get",
-        url: "shop/viewUser",
-        dataType:"json",
-        data: inData,
-        async: false,
-        jsonp: "callback",
-        success:function(data){
-            var jsonData = eval(data);
-            var popData = {
-                userName: jsonData["userName"],
-                useFlag: jsonData["useFlag"],
-                tenantName: jsonData["tenantName"],
-                trade: jsonData["trade"],
-                telephone: jsonData["telephone"],
-                address: jsonData["address"],
-                linkName: jsonData["linkName"],
-                linkPhone: jsonData["linkPhone"],
-                remark: jsonData["remark"]
-            };
-            //更新信息
-            infoPopInit(popData);
-            //禁止用户名，隐藏密码
-            $("#userPop").attr('disabled', 'disabled');
-            $("#rowPasswordPop").hide();
-            //弹窗
-            layerPopShow({
-                title: ["商户信息"],
-                area: shopAreaWH,
-                yes: function(){
-                    listEditSave(id);
-                }
-            });
-        },
-        error:function(error){
-            console.log(error);
+function listEditShow(option){
+    var popData = {
+        title: option.title,
+        content: option.content
+    };
+    //更新信息
+    infoPopInit(popData);
+    //弹窗
+    layerPopShow({
+        title: ["活动查看"],
+        area: shopAreaWH,
+        yes: function(){
+            listEditSave(option.id);
         }
     });
 }
@@ -288,27 +226,11 @@ function listEditShow(id){
 /*************  增加  ****************/
 //增加保存
 function listAddSave(){
-    var $userPop = $("#userPop");
-    var $passwordPop = $("#passwordPop");
-    var $useFlagPop = $("#useFlagPop");
-    var $namePop = $("#namePop");
-    var $tradePop = $("#tradePop");
-    var $telPop = $("#telPop");
-    var $addrPop = $("#addrPop");
-    var $linkNamePop = $("#linkNamePop");
-    var $linkTelPop = $("#linkTelPop");
-    var $remarkPop = $("#remarkPop");
+    var $actTitlePop = $("#actTitlePop");
+    var $actContentPop = $("#actContentPop");
     var inData = {
-        userName: $userPop.val(),
-        password: $passwordPop.val(),
-        useFlag: $useFlagPop.val(),
-        tenantName: $namePop.val(),
-        trade: $tradePop.val(),
-        telephone: $telPop.val(),
-        address: $addrPop.val(),
-        linkName: $linkNamePop.val(),
-        linkPhone: $linkTelPop.val(),
-        remark: $remarkPop.val()
+        title: $actTitlePop.val(),
+        content: $actContentPop.val()
     };
     //删除前后的空白字符
     for(var para in inData){
@@ -316,37 +238,30 @@ function listAddSave(){
     }
     //输入校验
     do{
-        if(!EmptyCheck($userPop, inData.userName, "用户名不能为空")){
+        if(!EmptyCheck($actTitlePop, inData.title, "活动标题不能为空")){
             break;
         }
-        if(!PasswordCheck($passwordPop, inData.password)){
+        if(!EmptyCheck($actContentPop, inData.content, "活动内容不能为空")){
             break;
         }
         //发送服务器
         $.ajax({
             type: "get",
-            url: "shop/saveUser",
+            url: "activity/save",
             dataType:"json",
             data: inData,
             async: false,
             jsonp: "callback",
             success:function(data){
                 var jsonData = eval(data);
-                var res = jsonData['success'];
-                if(res){
-                    layer.closeAll('page');
-                    layer.msg('保存成功！', {icon: 1, time: 1000});
-                    //提交查询
-                    inSubmit();
-                }
-                else{
-                    var msg = jsonData['message'];
-                    layer.msg(msg, {icon: 2, time: 1000});
-                }
+                layer.closeAll('page');
+                layer.msg('发布成功！', {icon: 1, time: 1000});
+                //提交查询
+                inSubmit();
             },
             error:function(error){
                 console.log(error);
-                layer.msg('保存失败！', {icon: 2, time: 1000});
+                layer.msg('发布失败！', {icon: 2, time: 1000});
             }
         });
     }while(0);
@@ -357,7 +272,7 @@ function listAddShow(){
     infoPopInit();
     //弹窗
     layerPopShow({
-        title: ["商户信息"],
+        title: ["活动发布"],
         area: shopAreaWH,
         yes: function(){
             listAddSave();
@@ -380,36 +295,29 @@ function listDelFun(){
         }
     }
     if(idArr.length == 0){
-        layer.msg('请选择要删除的用户！', {icon:0,skin:'layui-layer-lan',title:'提示',time: 1500});
+        layer.msg('请选择要删除的活动！', {icon:0,skin:'layui-layer-lan',title:'提示',time: 1500});
         return ;
     }
-    layer.confirm('确定要删除选中的用户？', {
+    layer.confirm('确定要删除选中的活动？', {
         icon: 3,
         title: ['提示',"color:#FFF;background:#4376a7;"],
         btn: ['删除','取消']
     }, function(){
         //删除操作
-        var inData = {userIds: idArr.join(',')};
+        var inData = {ids: idArr.join(',')};
         //发送服务器
         $.ajax({
             type: "get",
-            url: "shop/delUser",
+            url: "activity/delete",
             dataType:"json",
             data: inData,
             async: false,
             jsonp: "callback",
             success:function(data){
                 var jsonData = eval(data);
-                var res = jsonData['success'];
-                if(res){
-                    layer.msg('删除用户成功！', {icon: 1, time: 1000});
-                    //提交查询
-                    inSubmit();
-                }
-                else{
-                    var msg = jsonData['message'];
-                    layer.msg(msg, {icon: 2, time: 1000});
-                }
+                layer.msg('删除成功！', {icon: 1, time: 1000});
+                //提交查询
+                inSubmit();
             },
             error:function(error){
                 console.log(error);

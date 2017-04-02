@@ -58,7 +58,7 @@
                         <th class="col2">商户名称</th>
                         <th class="col3">行业</th>
                         <th class="col4">联系人</th>
-                        <th class="col5">联系人信息</th>
+                        <th class="col5">联系人电话</th>
                         <th class="col6">操作</th>
                     </tr>
                 </thead>
