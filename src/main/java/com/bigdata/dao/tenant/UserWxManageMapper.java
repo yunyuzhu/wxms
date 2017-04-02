@@ -32,4 +32,8 @@ public interface UserWxManageMapper {
 
 	Map<String, Object> getUserById(@Param(value = "userId") Integer userId);
 
+	void delWxUser(@Param(value = "userIds") String userIds);
+
+	void delWxUserRole(@Param(value = "userIds") String userIds);
+
 }

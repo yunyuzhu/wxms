@@ -32,6 +32,11 @@ public class WxUser implements Serializable {
 	private String password;
 	
 	/**
+	 * 验证盐
+	 */
+	private String credentialsSalt;
+	
+	/**
 	 * 姓名
 	 */
 	private String name;
@@ -116,6 +121,14 @@ public class WxUser implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getCredentialsSalt() {
+		return credentialsSalt;
+	}
+
+	public void setCredentialsSalt(String credentialsSalt) {
+		this.credentialsSalt = credentialsSalt;
 	}
 
 	public String getName() {

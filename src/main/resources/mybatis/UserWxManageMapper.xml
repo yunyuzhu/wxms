@@ -7,7 +7,7 @@
 	<!-- 用户管理分页 -->
 	<select id="getUserPageList" resultType="com.bigdata.model.tenant.WxUser">
 		SELECT
-			id,userName,name,gold,phone,DATE_FORMAT(createTime,'%Y-%m-%d %T') createTime
+			id,name,gold,phone,DATE_FORMAT(createTime,'%Y-%m-%d %T') createTime
 		FROM
 			t_wx_user
 		WHERE
@@ -38,7 +38,6 @@
 	<!-- 根据userId查询用户 -->
 	<select id="getUserById" resultType="Map">
 		SELECT
-			userName,
 			name,
 			sex,
 			age,
@@ -62,7 +61,6 @@
 	<update id="updateUser" parameterType="com.bigdata.model.tenant.WxUser">
 		UPDATE t_wx_user
 		SET 
-			userName = #{userName},
 			name = #{name},
 			sex = #{sex},
 			age = #{age},
@@ -78,16 +76,32 @@
 	<delete id="delUser">
 		DELETE
 		FROM
+			t_user
+		WHERE
+			id in ${userIds}
+	</delete>
+	
+	<!-- 删除微信用户关联信息 -->
+	<delete id="delWxUser">
+		DELETE
+		FROM
 			t_wx_user
 		WHERE
 			id in ${userIds}
 	</delete>
 	
+	<!-- 删除微信用户角色 -->
+	<delete id="delWxUserRole">
+		DELETE
+		FROM
+			t_user_role
+		WHERE
+			userId in ${userIds}
+	</delete>
+	
 	<!-- 新增用户 -->
 	<insert id="saveUser" parameterType="com.bigdata.model.tenant.WxUser" keyProperty="id" useGeneratedKeys="true">
 		INSERT INTO t_wx_user (
-			userName,
-			password,
 			useFlag,
 			name,
 			sex,
@@ -99,8 +113,6 @@
 		)
 		VALUES
 			(
-				#{userName},
-				#{password},
 				#{useFlag},
 				#{name},
 				#{sex},

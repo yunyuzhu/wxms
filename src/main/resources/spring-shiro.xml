@@ -98,6 +98,7 @@
 				/login = anon
 				
 				/portalActivity/activityList = anon
+				/portalAccount/register = anon
 
                 <!-- 其他资源需要认证 -->
                 /** = authc

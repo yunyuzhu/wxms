@@ -43,4 +43,10 @@ public interface IPortalAccountService {
 	 */
 	void saveGoldDetail(String id, String shopId, String consumeMoney);
 
+	/**
+	 * 用户注册
+	 * @param user
+	 */
+	void saveUser(WxUser user);
+
 }

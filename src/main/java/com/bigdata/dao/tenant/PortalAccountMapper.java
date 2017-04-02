@@ -45,4 +45,16 @@ public interface PortalAccountMapper {
 	 */
 	void saveGoldDetail(@Param(value = "id") String id, @Param(value = "shopId") String shopId, @Param(value = "consumeMoney") String consumeMoney);
 
+	/**
+	 * 保存用户表
+	 * @param user
+	 */
+	void saveUser(WxUser user);
+
+	/**
+	 * 保存用户微信表
+	 * @param user
+	 */
+	void saveWxUser(WxUser user);
+
 }

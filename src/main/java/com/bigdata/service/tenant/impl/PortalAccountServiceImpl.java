@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.bigdata.dao.tenant.PortalAccountMapper;
+import com.bigdata.dao.tenant.ShopManageMapper;
 import com.bigdata.model.tenant.GoldUserBean;
 import com.bigdata.model.tenant.WxUser;
 import com.bigdata.service.tenant.IPortalAccountService;
@@ -23,6 +24,9 @@ public class PortalAccountServiceImpl implements IPortalAccountService {
 	
 	@Resource
 	private PortalAccountMapper portalAccountMapper;
+	
+	@Resource
+	private ShopManageMapper shopManageMapper;
 
 	/**
 	 * 获取我的账户信息
@@ -70,6 +74,22 @@ public class PortalAccountServiceImpl implements IPortalAccountService {
 	public void saveGoldDetail(String id, String shopId, String consumeMoney) {
 		//扫描消费金额
 		portalAccountMapper.saveGoldDetail(id, shopId, consumeMoney);
+	}
+
+	/**
+	 * 用户注册
+	 * @param user
+	 */
+	@Override
+	public void saveUser(WxUser user) {
+		//保存用户表
+		portalAccountMapper.saveUser(user);
+		
+		//保存用户微信表
+		portalAccountMapper.saveWxUser(user);
+		
+		//保存用户角色
+		shopManageMapper.saveUserRole(Integer.parseInt(user.getId()), 3);
 	}
 
 }
