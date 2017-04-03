@@ -147,4 +147,17 @@ public class ActivityManageController {
     	return map;
 	}
 	
+	/**
+	 * 根据活动ID获取活动内容
+	 * @return
+	 */
+	@RequestMapping(value = "/query", method = RequestMethod.GET)
+	@ResponseBody
+	public Object getActivityInfoById(@ApiParam(required = false, name = "id", value = "活动id") @RequestParam(value = "id", required = false) String id) {
+		
+		//根据活动ID获取活动内容
+		ActivityBean activityBean = activityManageServiceImpl.getActivityInfoById(id);
+    	return activityBean;
+	}
+	
 }

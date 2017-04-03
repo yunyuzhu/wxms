@@ -7,6 +7,7 @@
 	
 		select id,
 		       title,
+		       content,
 		       count,
 		       date_format(createTime, '%Y-%m-%d %T') as createTime
 		  from t_activity
@@ -46,5 +47,17 @@
 		delete from t_activity where id in (${ids})
 			
 	</delete>
+	
+	<select id="getActivityInfoById" resultType="com.bigdata.model.tenant.ActivityBean">
+	
+		select id,
+		       title,
+		       content,
+		       count,
+		       date_format(createTime, '%Y-%m-%d %T') as createTime
+		  from t_activity
+		 where id = #{id}
+	  
+	</select>
 	
 </mapper>

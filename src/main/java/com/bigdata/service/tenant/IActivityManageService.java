@@ -38,4 +38,11 @@ public interface IActivityManageService {
 	 */
 	void deleteActivity(String ids);
 
+	/**
+	 * 根据活动ID获取活动内容
+	 * @param id
+	 * @return
+	 */
+	ActivityBean getActivityInfoById(String id);
+
 }

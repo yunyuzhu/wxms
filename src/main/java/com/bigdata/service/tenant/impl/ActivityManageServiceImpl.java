@@ -65,4 +65,16 @@ public class ActivityManageServiceImpl implements IActivityManageService {
 		activityManageMapper.deleteActivity(ids);
 	}
 
+	/**
+	 * 根据活动ID获取活动内容
+	 * @param id
+	 * @return
+	 */
+	@Override
+	public ActivityBean getActivityInfoById(String id) {
+		//根据活动ID获取活动内容
+		ActivityBean activityBean = activityManageMapper.getActivityInfoById(id);
+		return activityBean;
+	}
+
 }

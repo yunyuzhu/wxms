@@ -29,6 +29,11 @@ public class ActivityBean {
 	private String content;
 	
 	/**
+	 * 阅读数
+	 */
+	private String count;
+	
+	/**
 	 * 发布人
 	 */
 	private String userId;
@@ -68,6 +73,14 @@ public class ActivityBean {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+	
+	public String getCount() {
+		return count;
+	}
+
+	public void setCount(String count) {
+		this.count = count;
 	}
 
 	public String getUserId() {
