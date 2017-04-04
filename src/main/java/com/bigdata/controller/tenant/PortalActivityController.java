@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bigdata.model.tenant.ActivityBean;
+import com.bigdata.service.tenant.IActivityManageService;
 import com.bigdata.service.tenant.IPortalActivityService;
 import com.wordnik.swagger.annotations.ApiParam;
 
@@ -31,6 +32,9 @@ public class PortalActivityController {
 	
 	@Resource
 	private IPortalActivityService portalActivityServiceImpl;
+	
+	@Resource
+	private IActivityManageService activityManageServiceImpl;
 	
 	/**
 	 * 获取门户活动列表
@@ -62,6 +66,19 @@ public class PortalActivityController {
     	map.put("total", list.size());
     	map.put("rows", listPage);
     	return map;
+	}
+	
+	/**
+	 * 根据活动ID获取活动内容
+	 * @return
+	 */
+	@RequestMapping(value = "/query", method = RequestMethod.GET)
+	@ResponseBody
+	public Object getActivityInfoById(@ApiParam(required = false, name = "id", value = "活动id") @RequestParam(value = "id", required = false) String id) {
+		
+		//根据活动ID获取活动内容
+		ActivityBean activityBean = activityManageServiceImpl.getActivityInfoById(id);
+    	return activityBean;
 	}
 
 }
