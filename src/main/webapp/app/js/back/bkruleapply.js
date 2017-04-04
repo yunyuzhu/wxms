@@ -9,7 +9,7 @@ var checkboxFlag = true;
 //加载页面
 function loadhtml(){
     //行业应用列表
-    TradeList({id: "#tradeTab"});
+    TradeList({id: "#tradeTab", hasAll: false});
     //加载行业列表
     TradeList();
     //时间输入
