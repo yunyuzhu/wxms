@@ -382,4 +382,39 @@ function GetRequest(){
     }
     return theRequest;
 }
-
+//判断是否为数组类型
+function isArray(obj){
+    return (typeof(obj) == 'object')&&(obj.constructor == Array);
+}
+//layer弹窗
+function layerPopShow(options){
+    var layerOpt = {
+        type: 1,
+        title: [''],
+        skin: 'demo-class',
+        area: ['240px', 'auto'], //宽高
+        anim: 0,
+        shadeClose: false, //开启遮罩关闭
+        btn: ['确定', '取消'],
+        yes: function(){layer.close("page");},
+        btn2: function(){layer.closeAll(); tipHide();},
+        btnAlign: 'c',
+        content: $("#editPop")
+    };
+    if (typeof(options) === 'undefined'){options = {};}
+    if (typeof(options) === "object") {
+        for(var para in options){
+            var curVal = options[para];
+            if(isArray(curVal)){
+                for(var i=0,size=curVal.length; i<size; i++){
+                    layerOpt[para][i] = curVal[i];
+                }
+            }
+            else{
+                layerOpt[para] = curVal;
+            }
+        }
+    }
+    //弹窗
+    layer.open(layerOpt);
+}

@@ -1,10 +1,10 @@
 /**
  * Created by chun
  */
-
 var appActList;
 //加载页面
 function loadhtml(){
+    mTabbarStyleGo(0);
     inSubmit();
 }
 $(document).ready(function(){
@@ -46,7 +46,6 @@ function inSubmit(){
         }
     });
 }
-
 //列表加载
 function listLoad(dataArr){
     var vueArr = [];
@@ -63,4 +62,3 @@ function listLoad(dataArr){
     }
     appActList.items = vueArr;
 }
-
