@@ -101,6 +101,9 @@
 				<!-- 用户登录允许访问 -->
 				/mlogin = anon
 				/mreg = anon
+				/mactivity = anon
+				/mcost = anon
+				/mcenter = anon
 
 				/portalActivity/activityList = anon
 				/portalAccount/register = anon

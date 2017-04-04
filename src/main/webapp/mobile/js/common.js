@@ -348,3 +348,22 @@ function Password2Check($elem, value, oldval){
     }
     return res;
 }
+//小于10的数值前面增加0
+function addZero(val){
+    var value = (val < 10)? ("0"+val) : val;
+    return value.toString();
+}
+//获取时间的 年、月、日
+function getDate(time){
+    var date;
+    if(time){
+        date = new Date(time);
+    }else{
+        date = new Date();
+    }
+    return {
+        year : date.getFullYear(),
+        month: addZero(date.getMonth()+1),
+        day: addZero(date.getDate())
+    };
+}

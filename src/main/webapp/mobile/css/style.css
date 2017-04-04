@@ -4,8 +4,8 @@ body,html{height:100%;background-color:#F8F8F8;}
 .tnwrap{position:relative;height:100%;}
 .tntab .weui-tabbar__item{padding:5px 0;}
 .tntab .weui-tabbar__label{font-size:18px;}
-.tnpage-tit{position:relative;z-index:10;padding:10px 0;font-size:22px;font-weight:normal;
-    text-align:center;color:#FFF;background:#54678c;box-shadow:0 3px 10px rgba(0,0,0,.2);}
+.tnpage-tit{position:relative;z-index:10;padding:6px 0;font-size:20px;font-weight:normal;
+    text-align:center;color:#FFF;background:#1AAD19;box-shadow:0 3px 10px rgba(0,0,0,.2);}
 .tnpad{padding:10px 15px;}
 .tndemo{display:none;}
 .alink{color:#1AAD19;cursor:pointer;}

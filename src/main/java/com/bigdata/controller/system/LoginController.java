@@ -86,6 +86,25 @@ public class LoginController extends BaseController {
 		return "mobile/mreg";
 	}
 
+	/*** 活动 ***/
+	@RequestMapping(value = "mactivity", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
+	public String mactivity(HttpServletRequest request) {
+		request.removeAttribute("error");
+		return "mobile/mactivity";
+	}
+	/*** 消费扫描 ***/
+	@RequestMapping(value = "mcost", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
+	public String mcost(HttpServletRequest request) {
+		request.removeAttribute("error");
+		return "mobile/mcost";
+	}
+	/*** 个人中心 ***/
+	@RequestMapping(value = "mcenter", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
+	public String mcenter(HttpServletRequest request) {
+		request.removeAttribute("error");
+		return "mobile/mcenter";
+	}
+
 /*********************** 用户 end *********************/
 	/**
 	 * 登录提交

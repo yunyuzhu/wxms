@@ -7,6 +7,8 @@
 <link rel="shortcut icon" href="${ctx}/assets/img/ctapp.ico" type="image/x-icon"/>
 <!-- weui -->
 <link rel="stylesheet" href="${ctx}/mobile/vendor/weui/css/weui.min.css" type="text/css"/>
+<!-- icomoon -->
+<link rel="stylesheet" href="${ctx}/mobile/vendor/icomoon/style.css" type="text/css"/>
 <!-- my style -->
 <link rel="stylesheet" href="${ctx}/mobile/css/bass.css" type="text/css"/>
 <link rel="stylesheet" href="${ctx}/mobile/css/style.css" type="text/css"/>
