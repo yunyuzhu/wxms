@@ -3,6 +3,26 @@
 <script src="app/js/back/bkmsgsend.js" type="text/javascript" charset="UTF-8"></script>
 
 <div class="ct-page">
+    <!--发送短信-->
+    <div class="box no-border">
+        <div class="box-body">
+            <form class="form-horizontal" role="form">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group mustfill">
+                            <label for="msgContent" class="col-sm-1 control-label"><i>*</i>短信内容</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control msgh" id="msgContent" placeholder="输入短信内容"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="box-footer no-border">
+            <a id="msgSend" class="btn btn-primary">发送短信</a>
+        </div>
+    </div>
     <!--列表-->
     <div class="box no-border">
         <div class="box-header with-border">
@@ -38,26 +58,6 @@
                 <tbody class="listbody"></tbody>
             </table>
 
-        </div>
-    </div>
-    <!--发送短信-->
-    <div class="box no-border">
-        <div class="box-body">
-            <form class="form-horizontal" role="form">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="form-group mustfill">
-                            <label for="msgContent" class="col-sm-1 control-label"><i>*</i>短信内容</label>
-                            <div class="col-sm-9">
-                                <textarea class="form-control msgh" id="msgContent" placeholder="输入短信内容"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="box-footer no-border">
-            <a id="msgSend" class="btn btn-primary">发送短信</a>
         </div>
     </div>
 </div>

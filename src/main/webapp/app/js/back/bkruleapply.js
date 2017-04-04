@@ -185,6 +185,7 @@ function listTableFun(flag){
             smartDisplay: true,  //设置为True智能显示分页或者Card View
             responseHandler: resHandler,    //在加载数据前，可以对返回的数据进行处理，参数包含：res: 返回的数据。
             rowAttributes: rowAttr,
+            selectItemName: "shopSelectItem",
             columns: listTableColumns(flag)
         });
     }
@@ -277,6 +278,7 @@ function ruleTableFun(){
             smartDisplay: true,  //设置为True智能显示分页或者Card View
             responseHandler: resHandler,    //在加载数据前，可以对返回的数据进行处理，参数包含：res: 返回的数据。
             rowAttributes: rowAttr,
+            selectItemName: "ruleSelectItem",
             columns: [
                 { field: 0, width: "10%", align: 'center', valign: 'middle', halign: 'center', sortable: false,
                     checkbox: false, radio: true },
@@ -302,7 +304,7 @@ function getSelectId($elem){
     var rowListSize = $rowList.size();
     for(var i=0;i<rowListSize; i++){
         var $curRow = $rowList.eq(i);
-        var $checkbox = $curRow.find('input[type="checkbox"]');
+        var $checkbox = $curRow.find('.bs-checkbox input');
         if($checkbox.is(':checked')){
             var curId = $curRow.attr("data-id");
             idArr.push(curId);

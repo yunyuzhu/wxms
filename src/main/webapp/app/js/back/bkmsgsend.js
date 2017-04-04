@@ -8,10 +8,7 @@ var shopAreaWH = ['800px', 'auto'];
 //加载页面
 function loadhtml(){
     //用户类型
-    UserTypeList({
-        hasAll: true,
-        tailAll: true
-    });
+    UserTypeList({hasAll: true, defVal: ""});
 
     //用户类型切换
     $("#userType").on('change', function(){
