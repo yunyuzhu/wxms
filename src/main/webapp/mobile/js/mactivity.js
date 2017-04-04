@@ -20,10 +20,7 @@ function inSubmit(){
             'items': []
         }
     });
-    var endTimeObj = getDate();
     var inData = {
-        startTime: '2010-01-01',
-        endTime: endTimeObj.year+'-'+endTimeObj.month+'-'+endTimeObj.day,
         pageSize: 100,
         pageStart: 0
     };
@@ -32,7 +29,7 @@ function inSubmit(){
     //发送服务器
     $.ajax({
         type: "get",
-        url: mUrlBase + "/activity/activityList",
+        url: mUrlBase + "/portalActivity/activityList",
         dataType: "json",
         data: inData,
         async: false,
