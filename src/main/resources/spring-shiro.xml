@@ -91,11 +91,15 @@
 				<!-- 静态资源允许访问 -->
                 <!--  /app/** = anon -->
                 /assets/** = anon
+                /mobile/** = anon
 
 				<!-- 登录允许访问 -->
                 /code = anon
 				/login_login = anon
 				/login = anon
+
+				<!-- 用户登录允许访问 -->
+				/mlogin = anon
 				
 				/portalActivity/activityList = anon
 				/portalAccount/register = anon
