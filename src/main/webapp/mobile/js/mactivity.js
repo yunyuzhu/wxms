@@ -24,8 +24,6 @@ function inSubmit(){
         pageSize: 100,
         pageStart: 0
     };
-    console.log("hello");
-    console.log(rootPath);
     //发送服务器
     $.ajax({
         type: "get",
