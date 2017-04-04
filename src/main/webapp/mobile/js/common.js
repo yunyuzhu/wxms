@@ -367,3 +367,19 @@ function getDate(time){
         day: addZero(date.getDate())
     };
 }
+
+//获取请求参数
+function GetRequest(){
+    var url = decodeURI(location.search);
+    var theRequest = new Object();
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        var strs = str.split("&");
+        for(var i = 0; i < strs.length; i ++) {
+            var paraItem = strs[i].split("=");
+            theRequest[paraItem[0]]=(paraItem[1]);
+        }
+    }
+    return theRequest;
+}
+

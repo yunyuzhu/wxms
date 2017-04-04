@@ -104,8 +104,10 @@
 				/mactivity = anon
 				/mcost = anon
 				/mcenter = anon
+				/mactinfo = anon
 
 				/portalActivity/activityList = anon
+				/portalActivity/query = anon
 				/portalAccount/register = anon
 
                 <!-- 其他资源需要认证 -->

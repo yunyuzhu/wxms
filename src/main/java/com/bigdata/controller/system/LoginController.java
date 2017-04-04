@@ -105,6 +105,13 @@ public class LoginController extends BaseController {
 		return "mobile/mcenter";
 	}
 
+	/*** 活动详情 ***/
+	@RequestMapping(value = "mactinfo", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
+	public String mactinfo(HttpServletRequest request) {
+		request.removeAttribute("error");
+		return "mobile/mactinfo";
+	}
+
 /*********************** 用户 end *********************/
 	/**
 	 * 登录提交
