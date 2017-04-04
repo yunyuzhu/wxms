@@ -72,13 +72,21 @@ public class LoginController extends BaseController {
 		return "/admin/login";
 	}
 
-	/*** 微信用户登录请求 ***/
+/*********************** 用户 start *********************/
+	/*** 微信用户登录 ***/
 	@RequestMapping(value = "mlogin", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
 	public String mlogin(HttpServletRequest request) {
 		request.removeAttribute("error");
 		return "mobile/mlogin";
 	}
-	
+	/*** 微信用户注册 ***/
+	@RequestMapping(value = "mreg", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
+	public String mreg(HttpServletRequest request) {
+		request.removeAttribute("error");
+		return "mobile/mreg";
+	}
+
+/*********************** 用户 end *********************/
 	/**
 	 * 登录提交
 	 * @param username
