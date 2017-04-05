@@ -129,6 +129,17 @@ public class UrlRouteController {
 /*********************** 平台后台 end *********************/
 
 /*********************** 用户 start *********************/
+	/* 账户信息 */
+	@RequestMapping(value = "maccount", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
+	public String Maccount(HttpServletRequest request) { return "/mobile/maccount"; }
+
+	/* 账户信息 */
+	@RequestMapping(value = "mmoney", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
+	public String Mmoney(HttpServletRequest request) { return "/mobile/mmoney"; }
+
+	/* 账户信息 */
+	@RequestMapping(value = "mstream", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
+	public String Mstream(HttpServletRequest request) { return "/mobile/mstream"; }
 
 /*********************** 平台后台 end *********************/
 }

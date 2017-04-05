@@ -75,7 +75,7 @@
 		</div>
 	</div>
 	<script type="text/javascript" charset="UTF-8">
-
+		mTabbarStyleGo(2);
 	</script>
 	</body>
 </html>

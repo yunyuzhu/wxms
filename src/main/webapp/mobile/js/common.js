@@ -100,7 +100,7 @@ function GetRequest(){
 //性别字符串转换
 function sexFat(sex){
     var sexStr = "男";
-    if(sex == "f"){
+    if(sex == "1"){
         sexStr = "女";
     }
     return sexStr;

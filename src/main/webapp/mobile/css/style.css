@@ -30,6 +30,13 @@ body,html{height:100%;background-color:#F8F8F8;}
 .page__bd{padding-bottom:20px;}
 .cthas .before, .after{display:none;}
 .cthas .after, .before{display:block;}
+.mpadd-lr{padding:5px 15px;}
+.mtab-hd{position:absolute;z-index:500;top:0;width:100%;height:50px;padding:0 15px;line-height:48px;
+    background:#FAFAFA;border-bottom:1px solid #D2D2D2;}
+.mtab-hd + .weui-tab__panel {padding-top:50px;}
+.mtab-hd .mhd-back{float:left;padding:5px 5px 0 0;height:100%;color:#666;}
+.mtab-hd .mhd-back i{font-size:24px;}
+.mtab-hd .mhd-title{margin-left:50px;margin-right:50px;text-align:center;}
 /*tips*/
 .jq_tips_box{z-index:21176523 !important;}
 .layui-layer-rim{z-index:1000!important;}
