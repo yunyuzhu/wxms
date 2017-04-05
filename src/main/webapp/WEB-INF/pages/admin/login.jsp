@@ -16,6 +16,28 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<title>首发创业平台</title>
     <base href="<%=basePath%>">
+	<script type="text/javascript">
+		/*设备检查*/
+		function DeviceCheck(){
+			var sUserAgent = navigator.userAgent.toLowerCase();
+			var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+			var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+			var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+			var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+			var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+			var bIsAndroid = sUserAgent.match(/android/i) == "android";
+			var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+			var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+			var curDevice = "pc";
+			if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+				curDevice = "phone";
+			}
+			return curDevice;
+		}
+		if(DeviceCheck() == 'phone'){
+			window.location.replace("${ctx}/mlogin");
+		}
+	</script>
     <%@ include file="../common.jsp"%>
 	<link rel="stylesheet" href="${ctx}/assets/css/ctlogin.css"  type="text/css"/>
     <script type="text/javascript">
