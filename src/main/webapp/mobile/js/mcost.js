@@ -9,7 +9,6 @@ function loadhtml(){
     $("#costScan").on('click', function(){
         scanTwoCode();
     });
-    scanTwoCode();
 }
 $(document).ready(function(){
     loadhtml();
@@ -23,15 +22,15 @@ function scanTwoCode(){
         yes: function(){
             var $costNum = $("#costNum");
             var inData = {
-                shopId: '1',
+                shopId: '29',
                 consumeMoney: $costNum.val()
             };
             do{
                 if(!EmptyCheck($costNum, inData.consumeMoney, "输入金额数不能为空")){
                     break;
                 }
-                if(inData.consumeMoney < 0){
-                    tipShow($costNum, "金额数不能小于0");
+                if(inData.consumeMoney <= 0){
+                    tipShow($costNum, "金额数必须大于0");
                     break;
                 }
                 tipHide();

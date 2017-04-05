@@ -140,3 +140,9 @@ body,html{height:100%;background-color:#F8F8F8;}
 .centerhd{text-align:center;}
 .centerhd-face i{font-size:46px;color:#666;}
 .centerbd .weui-cell__hd i{margin-right:5px;}
+.haslogin .centerhd-txt .before, .centerhd-txt .after,.centerbd .button-sp-area{display:none;}
+.centerhd-txt .before, .haslogin .centerhd-txt .after,.haslogin .centerbd .button-sp-area{display:block;}
+.centerhd-txt .after .name{display:inline-block;max-width:120px;white-space:nowrap;
+    text-overflow:ellipsis;overflow:hidden;}
+
+

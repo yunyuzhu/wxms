@@ -21,7 +21,7 @@
 	<div class="ls-wrap tnwrap">
 		<div class="weui-tab">
 			<div class="weui-tab__panel">
-				<div class="page">
+				<div class="page" id="centerPage">
 					<div class="page__hd centerhd">
 						<div class="centerhd-face">
 							<i class="icon-user"></i>
@@ -31,7 +31,7 @@
 								<a href="${ctx}/mlogin" class="alink weui-btn weui-btn_mini">登录/注册</a>
 							</div>
 							<div class="after">
-								<span class="name"></span>
+								<span class="name">aaldc</span>
 							</div>
 						</div>
 					</div>
@@ -66,6 +66,9 @@
 								</div>
 								<div class="weui-cell__ft"></div>
 							</a>
+						</div>
+						<div class="button-sp-area">
+							<a href="${ctx}/logout" class="weui-btn weui-btn_warn">退出登录</a>
 						</div>
 					</div>
 				</div>
