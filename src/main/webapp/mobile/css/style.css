@@ -14,7 +14,7 @@ body,html{height:100%;background-color:#F8F8F8;}
 .tn-explain{margin-top:10px;padding:10px 15px;}
 .tn-explain p{margin-bottom:5px;}
 .tn-handle{padding-top:15px;}
-.weui-label{width:85px;}
+.weui-label{width:auto;min-width:85px;}
 .weui-vcode-btn{font-size:15px;padding:0 5px;}
 /*.weui-btn_primary{background:#586c94;}*/
 /*.weui-btn_primary:not(.weui-btn_disabled):active{background-color:#506488}*/
