@@ -26,6 +26,10 @@ body,html{height:100%;background-color:#F8F8F8;}
 .fontblack{color:#333;}
 .weui-cell_vcode{padding-right:15px;}
 .button-sp-area{margin:20px auto;padding:15px 0;width:60%;}
+.page__hd{padding:20px;}
+.page__bd{padding-bottom:20px;}
+.cthas .before, .after{display:none;}
+.cthas .after, .before{display:block;}
 /*tips*/
 .jq_tips_box{z-index:21176523 !important;}
 .layui-layer-rim{z-index:1000!important;}
@@ -127,3 +131,7 @@ body,html{height:100%;background-color:#F8F8F8;}
 .mustfill label{position:relative;}
 .mustfill label:before{content:'*';position:absolute;left:-10px;color:#F00;}
 .costscan-btn{margin-top:80px;}
+/*center*/
+.centerhd{text-align:center;}
+.centerhd-face i{font-size:46px;color:#666;}
+.centerbd .weui-cell__hd i{margin-right:5px;}
