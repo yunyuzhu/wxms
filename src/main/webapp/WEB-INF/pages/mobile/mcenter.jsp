@@ -31,7 +31,7 @@
 								<a href="${ctx}/mlogin" class="alink weui-btn weui-btn_mini">登录/注册</a>
 							</div>
 							<div class="after">
-								<span class="name">aaldc</span>
+								<span class="name">yh</span>
 							</div>
 						</div>
 					</div>
@@ -79,6 +79,15 @@
 	</div>
 	<script type="text/javascript" charset="UTF-8">
 		mTabbarStyleGo(2);
+        var session_value = '<%=session.getAttribute("userSession")%>';
+        var $centerPage = $("#centerPage");
+        var flag = (session_value == null || session_value == "null");
+        if(!flag){
+            $centerPage.addClass("haslogin");
+		}
+		else{
+            $centerPage.removeClass("haslogin");
+		}
 	</script>
 	</body>
 </html>
