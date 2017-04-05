@@ -1,6 +1,9 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
-<script src="app/js/shop/shopaccount.js" type="text/javascript" charset="UTF-8"></script>
+<script type="text/javascript">
+    var rootPath = "${ctx}";
+</script>
+<script src="${ctx}/assets/plugin/qrcode/jquery.qrcode.min.js" type="text/javascript" charset="UTF-8"></script>
+<script src="${ctx}/app/js/shop/shopaccount.js" type="text/javascript" charset="UTF-8"></script>
 
 <div class="ct-page" id="shopAccount">
     <!--商户基本信息 -->
@@ -9,11 +12,21 @@
             <h3 class="boxhd-title">基本信息</h3>
         </div>
         <div class="box-body">
-            <div class="info-list">
-                <p><span class="tag">名称：</span><span class="value">{{baseinfo.name}}</span></p>
-                <p><span class="tag">行业：</span><span class="value">{{baseinfo.trade}}</span></p>
-                <p><span class="tag">地址：</span><span class="value">{{baseinfo.addr}}</span></p>
-                <p><span class="tag">联系方式：</span><span class="value">{{baseinfo.tel}}</span></p>
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="info-list">
+                        <p><span class="tag">名称：</span><span class="value">{{baseinfo.name}}</span></p>
+                        <p><span class="tag">行业：</span><span class="value">{{baseinfo.trade}}</span></p>
+                        <p><span class="tag">地址：</span><span class="value">{{baseinfo.addr}}</span></p>
+                        <p><span class="tag">联系方式：</span><span class="value">{{baseinfo.tel}}</span></p>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="shcode-box">
+                        <div id="twocode" class="shcode"></div>
+                        <p class="text-center">二维码</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -9,20 +9,30 @@ function loadhtml(){
     $("#costScan").on('click', function(){
         scanTwoCode();
     });
+
+    var hrefPara = GetRequest();
+    if(typeof(hrefPara.shopId)!='undefined'){
+        var shopId = hrefPara.shopId;
+        scanTwoCode(shopId);
+    }
 }
 $(document).ready(function(){
     loadhtml();
 });
 
 //扫描二维码
-function scanTwoCode(){
+function scanTwoCode(id){
     layerPopShow({
         title: ["提示"],
         offset: '160px',
         yes: function(){
             var $costNum = $("#costNum");
+            var shId = '29';
+            if(typeof(id) != 'undefined'){
+                shId = id;
+            }
             var inData = {
-                shopId: '29',
+                shopId: shId,
                 consumeMoney: $costNum.val()
             };
             do{
