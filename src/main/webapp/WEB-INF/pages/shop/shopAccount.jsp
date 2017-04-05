@@ -1,9 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<script type="text/javascript">
-    var rootPath = "${ctx}";
-</script>
-<script src="${ctx}/assets/plugin/qrcode/jquery.qrcode.min.js" type="text/javascript" charset="UTF-8"></script>
-<script src="${ctx}/app/js/shop/shopaccount.js" type="text/javascript" charset="UTF-8"></script>
+
+<script src="assets/plugin/qrcode/jquery.qrcode.min.js" type="text/javascript" charset="UTF-8"></script>
+<script src="app/js/shop/shopaccount.js" type="text/javascript" charset="UTF-8"></script>
 
 <div class="ct-page" id="shopAccount">
     <!--商户基本信息 -->
