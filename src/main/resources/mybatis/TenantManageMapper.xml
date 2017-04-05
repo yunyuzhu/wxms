@@ -36,7 +36,8 @@
 	
 	<select id="getTenantInfo" parameterType="Integer" resultMap="userMap">
 	
-		select t1.tenantName,
+		select t1.id,
+			   t1.tenantName,
 		       t2.name as trade,
 		       t1.address,
 		       t1.telephone,
