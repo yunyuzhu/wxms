@@ -28,6 +28,7 @@ body,html{height:100%;background-color:#F8F8F8;}
 .page__bd{padding-bottom:20px;}
 .cthas .before, .after{display:none;}
 .cthas .after, .before{display:block;}
+.cthide{display:none;}
 .mpadd-lr{padding:5px 15px;}
 .mtab-hd + .weui-tab__panel {padding-top:50px;}
 .mtab-hd{position:absolute;z-index:500;top:0;width:100%;height:50px;padding:0 15px;line-height:48px;
@@ -144,5 +145,3 @@ body,html{height:100%;background-color:#F8F8F8;}
 .centerhd-txt .before, .haslogin .centerhd-txt .after,.haslogin .centerbd .button-sp-area{display:block;}
 .centerhd-txt .after .name{display:inline-block;max-width:120px;white-space:nowrap;
     text-overflow:ellipsis;overflow:hidden;}
-
-

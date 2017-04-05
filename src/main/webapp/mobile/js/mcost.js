@@ -22,6 +22,11 @@ $(document).ready(function(){
 
 //扫描二维码
 function scanTwoCode(id){
+    if(isLogin){
+        layer.msg('未登录，请先登录', {icon:0, shade:0.5, time: 1000});
+        window.location.href = mUrlBase + "/mlogin";
+        return ;
+    }
     layerPopShow({
         title: ["提示"],
         offset: '160px',

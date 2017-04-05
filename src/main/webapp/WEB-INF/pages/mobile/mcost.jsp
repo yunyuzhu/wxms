@@ -45,6 +45,11 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript" charset="UTF-8">
+        //是否登陆判断
+        var session_value = '<%=session.getAttribute("userSession")%>';
+        var isLogin = (session_value == null || session_value == "null");
+	</script>
 	<script src="${ctx}/mobile/js/mcost.js" type="text/javascript" charset="UTF-8"></script>
 	</body>
 </html>
