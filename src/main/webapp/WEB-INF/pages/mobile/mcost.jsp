@@ -20,7 +20,10 @@
 	<body>
 	<div class="ls-wrap tnwrap">
 		<div class="weui-tab">
-			<div class="weui-tab__panel" id="mActInfoPanel">
+			<div class="weui-tab__panel">
+				<div class="button-sp-area">
+					<a href="javascript:void(0);" class="weui-btn weui-btn_primary costscan-btn" id="costScan">消费扫描</a>
+				</div>
 			</div>
 			<!--底部导航-->
 			<%@ include file="mtabbar.jsp"%>
@@ -34,7 +37,7 @@
 					<label for="costNum" class="weui-label">消费数</label>
 				</div>
 				<div class="weui-cell__bd">
-					<input class="weui-input" type="text" id="costNum" placeholder="输入消费数">
+					<input class="weui-input" type="text" id="costNum" placeholder="输入金额数">
 				</div>
 			</div>
 		</div>

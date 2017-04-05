@@ -25,6 +25,13 @@ body,html{height:100%;background-color:#F8F8F8;}
 .txtmark{color:#FF0000;}
 .fontblack{color:#333;}
 .weui-cell_vcode{padding-right:15px;}
+.button-sp-area{margin:20px auto;padding:15px 0;width:60%;}
+/*tips*/
+.jq_tips_box{z-index:21176523 !important;}
+.layui-layer-rim{z-index:1000!important;}
+.layui-layer-shade{z-index:999!important;opacity:0.5!important;}
+.layui-layer-content{max-height:560px!important;overflow-y:auto;}
+.layui-layer-page .layui-layer-btn{border-top:1px solid #D2D2D2;}
 /*验证码*/
 .vcode-no-btn{display:inline-block;padding:0 5px;font-size:15px;line-height:44px;color:#888;border-left:1px solid #e5e5e5;}
 .vcodebox .get,.vcodebox.invalid .no{display:inline-block;}
@@ -119,7 +126,4 @@ body,html{height:100%;background-color:#F8F8F8;}
 /*self*/
 .mustfill label{position:relative;}
 .mustfill label:before{content:'*';position:absolute;left:-10px;color:#F00;}
-
-
-
-
+.costscan-btn{margin-top:80px;}
