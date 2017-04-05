@@ -58,7 +58,7 @@
 						<a class="weui-btn weui-btn_primary" id="inSubmit">登录</a>
 						<div class="login-more clearfix">
 							<a href="${ctx}/mreg" class="alink fl">立即注册</a>
-							<a href="" class="alink fr">忘记密码？</a>
+							<%--<a href="" class="alink fr">忘记密码？</a>--%>
 						</div>
 					</div>
 				</div>

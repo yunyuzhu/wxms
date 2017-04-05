@@ -13,13 +13,17 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<title>活动详情-首发创业</title>
+	<title>活动内容-首发创业</title>
     <base href="<%=basePath%>">
     <%@ include file="base.jsp"%>
 </head>
 	<body>
 	<div class="ls-wrap tnwrap">
 		<div class="weui-tab">
+			<div class="mtab-hd">
+				<a href="javascript:history.go(-1);" class="mhd-back"><i class="icon-arrow-left2"></i></a>
+				<div class="mhd-title">活动内容</div>
+			</div>
 			<div class="weui-tab__panel" id="mActInfoPanel">
 				<article class="weui-article">
 					<h1 class="title">{{title}}</h1>

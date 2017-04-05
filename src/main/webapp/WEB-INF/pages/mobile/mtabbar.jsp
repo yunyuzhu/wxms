@@ -2,7 +2,7 @@
 <div class="weui-tabbar" id="mWxTabbar">
 	<a href="${ctx}/mactivity" class="weui-tabbar__item weui-bar__item_on">
 		<i class="weui-tabbar__icon icon-home"></i>
-		<p class="weui-tabbar__label">活动</p>
+		<p class="weui-tabbar__label">首页</p>
 	</a>
 	<a href="${ctx}/mcost" class="weui-tabbar__item">
 		<i class="weui-tabbar__icon icon-barcode"></i>

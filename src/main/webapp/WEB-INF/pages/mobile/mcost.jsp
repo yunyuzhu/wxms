@@ -20,6 +20,9 @@
 	<body>
 	<div class="ls-wrap tnwrap">
 		<div class="weui-tab">
+			<div class="mtab-hd">
+				<div class="mhd-title">消费</div>
+			</div>
 			<div class="weui-tab__panel">
 				<div class="button-sp-area">
 					<a href="javascript:void(0);" class="weui-btn weui-btn_primary costscan-btn" id="costScan">消费扫描</a>
