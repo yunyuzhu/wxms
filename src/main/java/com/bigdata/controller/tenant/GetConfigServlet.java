@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.baidu.ueditor.ActionEnter;
 
@@ -19,7 +20,7 @@ import com.baidu.ueditor.ActionEnter;
 * @date 2017年4月6日 下午2:06:45   
 */
 @Controller
-@RequestMapping(value="/GetConfigServlet")
+@RequestMapping(value="/GetConfigServlet", method = RequestMethod.GET)
 public class GetConfigServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
