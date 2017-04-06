@@ -22,7 +22,11 @@
                 <div class="col-xs-4">
                     <div class="shcode-box">
                         <div id="twocode" class="shcode"></div>
-                        <p class="text-center">二维码</p>
+                        <p class="text-center">消费二维码</p>
+                        <div class="twocode-dl nomarg">
+                            <div class="cthide" id="twocodeImg"></div>
+                            <a class="btn ctbtn btn-block" id="twocodeDl">下载二维码</a>
+                        </div>
                     </div>
                 </div>
             </div>

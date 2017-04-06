@@ -71,7 +71,7 @@ function drawTwocode(id){
         }
         return out;
     }
-    var costHref = "http://192.168.0.106:8280/mcost?shopId="+id;
+    var costHref = location.protocol + "//" + location.host + "/mcost?shopId=" + id;
     var $twocode = $("#twocode");
     $twocode.empty();
     costHref = toUtf8(costHref);
@@ -81,4 +81,59 @@ function drawTwocode(id){
         height: 120,
         text: costHref
     });
+    //下载链接
+    twocodeImgLink(costHref)
+}
+
+//二维码图片下载
+function twocodeImgLink(content){
+    var $twocodeImg = $("#twocodeImg");
+    $twocodeImg.qrcode({
+        render: "canvas",
+        width: 400,
+        height: 400,
+        text: content
+    });
+    dlCanvasImgInit({
+        canvasElem: $twocodeImg.find('canvas')[0],
+        dlElem: document.getElementById("twocodeDl"),
+        fileName: "消费扫描二维码图片",
+        imgType: 'png'
+    });
+}
+//图片下载
+function dlCanvasImgInit(option){
+    var setting = {
+        canvasElem: document.getElementsByTagName('canvas')[0],
+        dlElem: '',
+        fileName: (new Date().toLocaleDateString()),
+        imgType: 'png'
+    };
+    if(typeof(option) == 'undefined'){option={}}
+    if(typeof(option) == 'object'){
+        setting = extendOpt(setting , option);
+    }
+    var canvasElem = setting.canvasElem;
+    var dlElem = setting.dlElem;
+    //图片下载
+    function downloadImg(type, filename){
+        var fixType = function (type) {
+            type = type.toLocaleLowerCase().replace(/jpg/i, 'jpeg');
+            var res = type.match(/png|jpeg|bmp|gif/)[0];
+            return 'image/' + res;
+        };
+        var imgType = fixType(type);
+        var imgData = canvasElem.toDataURL(imgType).replace(imgType, 'image/octet-stream');
+        dlElem.href = imgData;
+        var imgName = filename + '.' + type;
+        dlElem.download = imgName;
+        //事件创建
+        var evt = document.createEvent("HTMLEvents");
+        evt.initEvent("click", false, false); //initEvent 不加后两个参数在FF下会报错
+        dlElem.dispatchEvent(evt);
+    }
+    //下载点击事件
+    dlElem.onclick = function(){
+        downloadImg('png', setting.fileName);
+    };
 }

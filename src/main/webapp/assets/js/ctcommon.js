@@ -46,6 +46,21 @@ var chartGridOpt = {
 	containLabel: true
 };
 
+//扩展输入 flag：true -> 深度拷贝
+function extendOpt(defOpt, inOpt, flag){
+	for(var para in inOpt){
+		var curOpt = inOpt[para];
+		if(isArray(curOpt) && (typeof(flag) != "undefined") && flag ){
+			for(var i=0,size=curOpt.length; i<size; i++){
+				defOpt[para][i] = curOpt[i];
+			}
+		}
+		else{
+			defOpt[para] = curOpt;
+		}
+	}
+	return defOpt;
+}
 //判断是否为数组类型
 function isArray(obj){
 	return (typeof(obj) == 'object')&&(obj.constructor == Array);

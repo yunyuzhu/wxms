@@ -117,6 +117,7 @@ form{padding:0 15px;}
 .ctbtn:focus,.ctbtn:active,.ctbtn:active.active{color:#FFF;background:#396;border-color:#396;}
 .ctbtn.invalid,.ctbtn.invalid:hover{color:#AAA;background:#E2E2E2;border-color:#E2E2E2;text-decoration:none;cursor:default;}
 .ctbtn.btn-block{margin:0;}
+.nomarg .ctbtn{margin:0;}
 	/*bootstrap-table 样式自定义*/
 .bootstrap-table .table{width:100%!important;table-layout:fixed;white-space:normal;word-break:break-all;}
 .bootstrap-table tr th{color:#FFF;background:#1AB394;vertical-align:top!important;}
