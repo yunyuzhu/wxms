@@ -1,14 +1,11 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<script src="app/js/back/bkactmanage.js" type="text/javascript" charset="UTF-8"></script>
-
 <div class="ct-page">
     <p>
         <a id="listAdd" class="btn btn-primary">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;发布活动
         </a>
     </p>
-    <%@ include file="../../../umeditor/umeditor.jsp"%>
     <!--输入部分-->
     <div class="box no-border">
         <div class="box-header with-border">
@@ -76,7 +73,8 @@
                         <th class="col1">序号</th>
                         <th class="col2">标题</th>
                         <th class="col3">发布时间</th>
-                        <th class="col4">操作</th>
+                        <th class="col4">阅读量</th>
+                        <th class="col5">操作</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -93,17 +91,18 @@
                         <div class="col-xs-12">
                             <div class="actinfo-hd">
                                 <div class="form-group">
-                                    <label for="actTitlePop" class="col-sm-2 control-label">活动标题</label>
-                                    <div class="col-sm-9">
+                                    <label for="actTitlePop" class="col-sm-1 control-label">活动标题</label>
+                                    <div class="col-sm-10">
                                         <input type="text" class="form-control" id="actTitlePop" value="" placeholder="输入活动标题">
                                     </div>
                                 </div>
                             </div>
                             <div class="actinfo-body">
                                 <div class="form-group">
-                                    <label for="actContentPop" class="col-sm-2 control-label">活动内容</label>
-                                    <div class="col-sm-9">
-                                        <textarea class="form-control pop-acth" id="actContentPop" placeholder="输入活动内容"></textarea>
+                                    <label for="actContentPop" class="col-sm-1 control-label">活动内容</label>
+                                    <div class="col-sm-10">
+                                        <%@ include file="../../../umeditor/umeditor.jsp"%>
+                                        <%--<textarea class="form-control pop-acth" id="actContentPop" placeholder="输入活动内容"></textarea>--%>
                                     </div>
                                 </div>
                             </div>
@@ -114,3 +113,4 @@
         </div>
     </div>
 </div>
+<script src="app/js/back/bkactmanage.js" type="text/javascript" charset="UTF-8"></script>

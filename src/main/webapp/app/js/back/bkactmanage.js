@@ -3,7 +3,7 @@
  */
 var tmpIdArr;
 var tmpContentArr;
-var shopAreaWH = ['800px', 'auto'];
+var shopAreaWH = ['960px', 'auto'];
 //加载页面
 function loadhtml(){
     //时间输入
@@ -62,9 +62,7 @@ function listTableFun(){
     window.clickEvents = {
         'click .like': function(e, value, row, index) {
             listEditShow({
-                id: tmpIdArr[index],
-                title: row[2],
-                content: tmpContentArr[index]
+                id: tmpIdArr[index]
             });
         }
     };
@@ -96,7 +94,8 @@ function listTableFun(){
                     curArr[1] = curObj['orderId'];
                     curArr[2] = curObj['title'];
                     curArr[3] = curObj['createTime'];
-                    curArr[4] = "查看";
+                    curArr[4] = curObj['count'];
+                    curArr[5] = "查看";
                     dataRows[i] = curArr;
                     //记录id
                     idArr[i] = curObj['id'];
@@ -140,9 +139,10 @@ function listTableFun(){
             columns: [
                 { field: 0, width: "10%", align: 'center', valign: 'middle', halign: 'center', sortable: false, checkbox: true },
                 { field: 1, width: "10%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 2, width: "30%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 3, width: "30%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 4, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false,
+                { field: 2, width: "25%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
+                { field: 3, width: "25%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
+                { field: 4, width: "15%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
+                { field: 5, width: "15%", align: 'center', valign: 'middle', halign: 'center', sortable: false,
                     events: clickEvents, formatter: linkTableFat}
             ]
         });
@@ -163,7 +163,7 @@ function infoPopInit(options){
     var $actTitlePop = $("#actTitlePop");
     var $actContentPop = $("#actContentPop");
     $actTitlePop.val(defOption.title);
-    $actContentPop.val(defOption.content);
+    UMSetContent(defOption.content);
 }
 
 /*************  编辑  ****************/
@@ -175,7 +175,7 @@ function listEditSave(id){
     var inData = {
         id: id,
         title: $actTitlePop.val(),
-        content: $actContentPop.val()
+        content: UMGetContent()
     };
     //删除前后的空白字符
     for(var para in inData){
@@ -207,18 +207,36 @@ function listEditSave(id){
 }
 //编辑显示
 function listEditShow(option){
-    var popData = {
-        title: option.title,
-        content: option.content
+    var inData = {
+        id: option.id
     };
-    //更新信息
-    infoPopInit(popData);
-    //弹窗
-    layerPopShow({
-        title: ["活动查看"],
-        area: shopAreaWH,
-        yes: function(){
-            listEditSave(option.id);
+    $.ajax({
+        type: "get",
+        url: "activity/query",
+        dataType:"json",
+        data: inData,
+        async: false,
+        jsonp: "callback",
+        success:function(data){
+            var jsonData = eval(data);
+            var popData = {
+                title: jsonData.title,
+                content: jsonData.content
+            };
+            //更新信息
+            infoPopInit(popData);
+            //弹窗
+            layerPopShow({
+                title: ["活动详情"],
+                area: shopAreaWH,
+                yes: function(){
+                    listEditSave(option.id);
+                }
+            });
+        },
+        error:function(error){
+            console.log(error);
+            layer.msg('获取失败！', {icon: 2, time: 1000});
         }
     });
 }
@@ -230,7 +248,7 @@ function listAddSave(){
     var $actContentPop = $("#actContentPop");
     var inData = {
         title: $actTitlePop.val(),
-        content: $actContentPop.val()
+        content: UMGetContent()
     };
     //删除前后的空白字符
     for(var para in inData){

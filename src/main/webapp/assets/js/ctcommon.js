@@ -97,7 +97,10 @@ function layerPopShow(options){
 	//弹窗
 	layer.open(layerOpt);
 }
-
+//判断是否为null
+function isNull(obj){
+    return (obj == null || obj == "null");
+}
 //小于10的数值前面增加0
 function addZero(val){
 	var value = (val < 10)? ("0"+val) : val;
