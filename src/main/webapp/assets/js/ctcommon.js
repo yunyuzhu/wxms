@@ -63,7 +63,7 @@ function extendOpt(defOpt, inOpt, flag){
 }
 //判断是否为数组类型
 function isArray(obj){
-	return (typeof(obj) == 'object')&&(obj.constructor == Array);
+	return Object.prototype.toString.call(obj) === '[object Array]';
 }
 //layer弹窗
 function layerPopShow(options){
