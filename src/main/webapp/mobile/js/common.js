@@ -4,23 +4,9 @@
 
 var mUrlBase = rootPath;
 //项目定义
-var ajaxUrlBase = "https://queue.dandgedu.com";
-if(window.location.href.indexOf("queuetest.dandgedu.com") != -1){
-    ajaxUrlBase = "https://queuetest.dandgedu.com";
-}
-//通信协议强制切换到https
-var curProtocol = window.location.protocol;
-var curHost = window.location.host;
-if((curHost == 'queue.dandgedu.com')&&(curProtocol == 'http:')){
-    var curHref = window.location.href;
-    window.location.href = curHref.replace(curProtocol, "https:");
-}
+var ajaxUrlBase = "";
 //网页地址
-var indexUrl = "tnstate.html";  //取号页面
 var loginUrl = "login.html";    //登录页面
-var stdListUrl = "studentlist.html";  //我的小朋友页面
-var mytnUrl = "mytn.html?v=1.0";  //我的取号信息页面
-var tngoUrl = "tngo.html";  //具体校区取号页面
 
 /* 取消事件的默认行为(兼容IE) */
 function stopDefault(e) {
@@ -32,8 +18,7 @@ function stopDefault(e) {
 }
 
 $(document).ready(function(){
-    //底部导航栏菜单
-    mainMenuInit();
+
 });
 
 //登录判断
@@ -108,62 +93,6 @@ function sexFat(sex){
 //出生日期字符串转换
 function birthFat(birth){
     return (birth.split('-')).join('.');
-}
-
-//菜单样式切换
-function weuiTabbarGo(elem){
-    var curElem = elem;
-    var myClass = "weui-bar__item_on";
-    var $tnTabbar = $("#tnTabbar");
-    var $navs = $tnTabbar.find(".weui-tabbar__item");
-    var index = $navs.index(curElem);
-    $navs.removeClass(myClass);
-    $(curElem).addClass(myClass);
-}
-// 底部导航栏菜单
-function mainMenuInit(){
-    var $actionSheetWrap = $("#actionSheetWrap");
-    var $tnActionsheet = $('#tnActionsheet');
-    var $iosActionsheet = $('#iosActionsheet');
-    var $informActionsheet = $('#informActionsheet');
-    var $iosMask = $('#iosMask');
-
-    function hideActionSheet() {
-        $actionSheetWrap.find(".weui-actionsheet").removeClass('weui-actionsheet_toggle');
-        $iosMask.fadeOut(200);
-    }
-
-    $iosMask.on('click', hideActionSheet);
-    //个人中心
-    $('#iosActionsheetCancel').on('click', hideActionSheet);
-    $("#centerMenuGo").on("click", function(ev){
-        stopDefault(ev);
-        weuiTabbarGo(this);
-        $actionSheetWrap.find(".weui-actionsheet").removeClass('weui-actionsheet_toggle');
-        $iosActionsheet.addClass('weui-actionsheet_toggle');
-        $iosMask.fadeIn(200);
-    });
-    //取号信息
-    $('#tnActionsheetCancel').on('click', hideActionSheet);
-    $("#takeNumGo").on("click", function(ev){
-        stopDefault(ev);
-        weuiTabbarGo(this);
-        $actionSheetWrap.find(".weui-actionsheet").removeClass('weui-actionsheet_toggle');
-        $tnActionsheet.addClass('weui-actionsheet_toggle');
-        $iosMask.fadeIn(200);
-    });
-    //通知
-    $('#informActionsheetCancel').on('click', hideActionSheet);
-    $("#informGo").on("click", function(ev){
-        stopDefault(ev);
-        weuiTabbarGo(this);
-        $actionSheetWrap.find(".weui-actionsheet").removeClass('weui-actionsheet_toggle');
-        $informActionsheet.addClass('weui-actionsheet_toggle');
-        $iosMask.fadeIn(200);
-    });
-
-    //退出登录注册
-    $("#loginOutObj").on("click", loginOut);
 }
 
 //校验相关函数
