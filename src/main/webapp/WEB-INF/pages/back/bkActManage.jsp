@@ -8,6 +8,7 @@
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;发布活动
         </a>
     </p>
+    <%@ include file="../../../umeditor/umeditor.jsp"%>
     <!--输入部分-->
     <div class="box no-border">
         <div class="box-header with-border">

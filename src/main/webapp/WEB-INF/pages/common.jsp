@@ -24,6 +24,8 @@
 <link rel="stylesheet" href="${ctx}/assets/vendor/adminLTE/css/skins/_all-skins.min.css" type="text/css"/>
 <!-- jsTree -->
 <link rel="stylesheet" href="${ctx}/assets/plugin/jstree/themes/default/style.min.css" type="text/css"/>
+<!-- umeditor -->
+<link rel="stylesheet" href="${ctx}/umeditor/themes/default/css/umeditor.css" type="text/css"/>
 <!-- my style -->
 <link rel="stylesheet" href="${ctx}/assets/css/common.css" type="text/css"/>
 <link rel="stylesheet" href="${ctx}/app/css/dmss.css" type="text/css"/>
