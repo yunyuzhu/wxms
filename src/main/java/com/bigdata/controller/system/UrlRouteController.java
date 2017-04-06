@@ -125,10 +125,6 @@ public class UrlRouteController {
 	/* 历史短信 */
 	@RequestMapping(value = "bkMsgHistory", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
 	public String BkMsgHistory(HttpServletRequest request) { return "/back/bkMsgHistory"; }
-	
-	/* 历史短信 */
-	@RequestMapping(value = "ueditor", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
-	public String Ueditor(HttpServletRequest request) { return "/shop/ueditor"; }
 
 /*********************** 平台后台 end *********************/
 
