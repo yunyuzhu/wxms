@@ -31,8 +31,8 @@
 					</div>
 				</article>
 				<div class="weui-cells__title">活动列表</div>
-				<div class="weui-cells" v-for="item in items">
-					<a class="weui-cell weui-cell_access" v-bind:href="item.href">
+				<div class="weui-cells">
+					<a class="weui-cell weui-cell_access" v-for="item in items" v-bind:href="item.href">
 						<div class="weui-cell__bd">
 							<p>{{item.title}}</p>
 						</div>

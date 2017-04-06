@@ -32,7 +32,7 @@
 						<span>创建时间：{{time}}</span>
 					</div>
 					<section>
-						<p>{{content}}</p>
+						<div v-html="content"></div>
 					</section>
 				</article>
 			</div>

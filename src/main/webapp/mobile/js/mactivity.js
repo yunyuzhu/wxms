@@ -52,7 +52,7 @@ function listLoad(dataArr){
     var arrSize = dataArr.length;
     for (var i = 0; i < arrSize; i++) {
         var curObj = dataArr[i];
-        var curHref = rootPath+"mactinfo?id="+curObj["id"];
+        var curHref = mUrlBase + "mactinfo?id="+curObj["id"];
         var tmpObj = {
             "id": curObj["id"],
             "title": curObj["title"],
