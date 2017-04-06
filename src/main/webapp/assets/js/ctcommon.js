@@ -123,8 +123,17 @@ function getDate(time){
 
 //起始、结束时间 初始化
 function startEndTimeInit($timeStart, $timeEnd, callback, defVal){
+	var callOpt = {
+		day: 30,
+		fun: function(){}
+	};
+    if (typeof(callback) == 'undefined'){callback = {};}
+    if (typeof(callback) === "object") {
+        var callObj = $.extend(false, {}, callOpt, callback);
+        callOpt = callObj;
+    }
 	var endDate = getDate();
-	var startData = getDate((new Date()).getTime() - 30*24*60*60*1000);
+	var startData = getDate((new Date()).getTime() - (callOpt.day)*24*60*60*1000);
 
 	//起始时间datapicker参数设置
 	var startTimeDPOpt = {
@@ -186,9 +195,7 @@ function startEndTimeInit($timeStart, $timeEnd, callback, defVal){
 		$timeEnd.datepicker('update', curDate.year+"-"+curDate.month+"-"+curDate.day);
 
 		//提交
-		if(callback){
-			callback();
-		}
+        callOpt.fun();
 	});
 
 	//日历小图标点击触发日历窗口

@@ -5,7 +5,7 @@ var userIdArr;
 //加载页面
 function loadhtml(){
     //时间输入
-    startEndTimeInit($("#startTime"), $("#endTime"));
+    startEndTimeInit($("#startTime"), $("#endTime"), {day:1});
 
     //注册提交按钮
     $("#inSubmit").on('click', function(){
