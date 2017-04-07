@@ -133,7 +133,7 @@ function dlCanvasImgInit(option){
         //事件创建
         var evt = document.createEvent("HTMLEvents");
         evt.initEvent("click", false, false); //initEvent 不加后两个参数在FF下会报错
-        dlElem.dispatchEvent(evt);
+        // dlElem.dispatchEvent(evt);
     }
     downloadImg(setting);
 }
