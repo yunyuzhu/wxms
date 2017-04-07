@@ -191,4 +191,42 @@ public class PortalAccountController {
     	return map;
 	}
 	
+	/**
+	 * 修改用户信息
+	 * @param name
+	 * @param sex
+	 * @param age
+	 * @param phone
+	 * @param remark
+	 * @return
+	 */
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	@ResponseBody
+	public Object updateUser(
+			@ApiParam(required = false, name = "name", value = "姓名") @RequestParam(value = "name", required = false) String name,
+			@ApiParam(required = false, name = "sex", value = "性别") @RequestParam(value = "sex", required = false) String sex,
+			@ApiParam(required = false, name = "age", value = "年龄") @RequestParam(value = "age", required = false) String age,
+			@ApiParam(required = false, name = "phone", value = "电话") @RequestParam(value = "phone", required = false) String phone,
+			@ApiParam(required = false, name = "remark", value = "备注") @RequestParam(value = "remark", required = false) String remark,
+			HttpServletRequest request, HttpServletResponse response) {
+		
+		//获取登录的用户信息
+		User userLogin = (User)CommonTools.findUserSession(request);
+		
+		WxUser user=new WxUser(); 
+		user.setId(userLogin.getId().toString());
+        user.setName(name);
+		user.setSex(sex);
+		user.setAge(age);
+		user.setPhone(phone);
+		user.setRemark(remark);
+		
+		//修改用户信息
+		portalAccountServiceImpl.updateUser(user);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+    	map.put("msg", "修改成功");
+    	return map;
+	}
+	
 }

@@ -93,4 +93,17 @@
 			);
 	</insert>
 	
+	<update id="updateUser" parameterType="com.bigdata.model.tenant.WxUser" >
+	
+		update t_wx_user
+		   set name = #{name},
+			   age = #{age},
+			   sex = #{sex},
+			   phone = #{phone},
+			   remark = #{remark},
+			   updateTime = NOW()
+		where id = #{id}
+			
+	</update>
+	
 </mapper>

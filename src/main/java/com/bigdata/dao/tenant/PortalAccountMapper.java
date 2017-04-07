@@ -57,4 +57,10 @@ public interface PortalAccountMapper {
 	 */
 	void saveWxUser(WxUser user);
 
+	/**
+	 * 修改用户信息
+	 * @param user
+	 */
+	void updateUser(WxUser user);
+
 }

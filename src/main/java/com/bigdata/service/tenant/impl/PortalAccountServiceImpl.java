@@ -92,4 +92,14 @@ public class PortalAccountServiceImpl implements IPortalAccountService {
 		shopManageMapper.saveUserRole(Integer.parseInt(user.getId()), 3);
 	}
 
+	/**
+	 * 修改用户信息
+	 * @param user
+	 */
+	@Override
+	public void updateUser(WxUser user) {
+		//修改用户表
+		portalAccountMapper.updateUser(user);
+	}
+
 }
