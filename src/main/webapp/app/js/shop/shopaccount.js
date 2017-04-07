@@ -71,7 +71,8 @@ function drawTwocode(id){
         }
         return out;
     }
-    var costHref = location.protocol + "//" + location.host + "/mcost?shopId=" + id;
+    // var costHref = location.protocol + "//" + location.host + rootPath + "/mcost?shopId=" + id;
+    var costHref = location.protocol + "//" + "192.168.0.109:8280" + rootPath + "/mcost?shopId=" + id;
     var $twocode = $("#twocode");
     $twocode.empty();
     costHref = toUtf8(costHref);
@@ -97,8 +98,8 @@ function twocodeImgLink(content){
     dlCanvasImgInit({
         canvasElem: $twocodeImg.find('canvas')[0],
         dlElem: document.getElementById("twocodeDl"),
-        fileName: "消费扫描二维码图片",
-        imgType: 'png'
+        fileName: "消费二维码",
+        imgType: 'jpg'
     });
 }
 //图片下载
@@ -113,15 +114,17 @@ function dlCanvasImgInit(option){
     if(typeof(option) == 'object'){
         setting = extendOpt(setting , option);
     }
-    var canvasElem = setting.canvasElem;
-    var dlElem = setting.dlElem;
     //图片下载
-    function downloadImg(type, filename){
+    function downloadImg(setting){
+        var type = setting.imgType;
+        var filename = setting.fileName;
         var fixType = function (type) {
             type = type.toLocaleLowerCase().replace(/jpg/i, 'jpeg');
             var res = type.match(/png|jpeg|bmp|gif/)[0];
             return 'image/' + res;
         };
+        var canvasElem = setting.canvasElem;
+        var dlElem = setting.dlElem;
         var imgType = fixType(type);
         var imgData = canvasElem.toDataURL(imgType).replace(imgType, 'image/octet-stream');
         dlElem.href = imgData;
@@ -132,8 +135,5 @@ function dlCanvasImgInit(option){
         evt.initEvent("click", false, false); //initEvent 不加后两个参数在FF下会报错
         dlElem.dispatchEvent(evt);
     }
-    //下载点击事件
-    dlElem.onclick = function(){
-        downloadImg('png', setting.fileName);
-    };
+    downloadImg(setting);
 }

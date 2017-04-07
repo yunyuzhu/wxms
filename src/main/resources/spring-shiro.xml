@@ -92,6 +92,7 @@
                 <!--  /app/** = anon -->
                 /assets/** = anon
                 /mobile/** = anon
+                /umeditor/** = anon
 
 				<!-- 登录允许访问 -->
                 /code = anon
