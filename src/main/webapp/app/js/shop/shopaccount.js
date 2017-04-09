@@ -50,6 +50,15 @@ $(document).ready(function(){
     loadhtml();
 });
 
+//canvas画边框
+function drawStroke(option){
+    var context = option.elem.getContext('2d');
+    context.beginPath();
+    context.rect(0, 0, option.width, option.height);
+    context.lineWidth = 2;
+    context.strokeStyle = '#FFF';
+    context.stroke();
+}
 //二维码生成
 function drawTwocode(id){
     function toUtf8(str) {
@@ -72,7 +81,8 @@ function drawTwocode(id){
         return out;
     }
     // var costHref = location.protocol + "//" + location.host + rootPath + "/mcost?shopId=" + id;
-    var costHref = location.protocol + "//" + "192.168.0.109:8280" + rootPath + "/mcost?shopId=" + id;
+    var costHref = location.protocol + "//" + "192.168.0.110:8280" + rootPath + "/mcost?shopId=" + id;
+
     var $twocode = $("#twocode");
     $twocode.empty();
     costHref = toUtf8(costHref);
@@ -80,7 +90,8 @@ function drawTwocode(id){
         render: "canvas",
         width: 120,
         height: 120,
-        text: costHref
+        text: costHref,
+        src: ''             //二维码中间的图片
     });
     //下载链接
     twocodeImgLink(costHref)
@@ -93,7 +104,15 @@ function twocodeImgLink(content){
         render: "canvas",
         width: 400,
         height: 400,
-        text: content
+        text: content,
+        src: ''             //二维码中间的图片
+    });
+    //画边框
+    var canvas = $twocodeImg.find('canvas').get(0);
+    drawStroke({
+        elem: canvas,
+        width: 400,
+        height: 400
     });
     dlCanvasImgInit({
         canvasElem: $twocodeImg.find('canvas')[0],

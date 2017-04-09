@@ -27,6 +27,7 @@ function scanTwoCode(id){
         window.location.href = mUrlBase + "/mlogin";
         return ;
     }
+    $("#costNum").val('');
     layerPopShow({
         title: ["提示"],
         offset: '160px',
