@@ -126,6 +126,18 @@ public class UrlRouteController {
 	@RequestMapping(value = "bkMsgHistory", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
 	public String BkMsgHistory(HttpServletRequest request) { return "/back/bkMsgHistory"; }
 
+	/* 商品管理 */
+	@RequestMapping(value = "bkGoodManage", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
+	public String BkGoodManage(HttpServletRequest request) {
+		return "/back/bkGoodManage";
+	}
+
+	/* 商品兑换 */
+	@RequestMapping(value = "bkGoodCheck", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
+	public String BkGoodCheck(HttpServletRequest request) {
+		return "/back/bkGoodCheck";
+	}
+
 /*********************** 平台后台 end *********************/
 
 /*********************** 用户 start *********************/

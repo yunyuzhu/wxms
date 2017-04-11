@@ -164,6 +164,7 @@ form{padding:0 15px;}
 .popbody{padding:15px 5px;}
 .poplabel{font-size:16px;margin-bottom:10px;}
 .pophandle{padding-top:10px;}
+.popcon{max-height:430px;overflow-y:auto;}
 .khpop.popsize1{width:500px;height:580px;margin:-290px 0 0 -250px;}
 .khpop.popsize2{width:500px;height:460px;margin:-230px 0 0 -250px;}
 .isedit .khpop.popsize1{width:500px;height:520px;margin:-260px 0 0 -250px;}
