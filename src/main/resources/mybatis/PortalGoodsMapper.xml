@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bigdata.dao.tenant.PortalGoodsMapper">
+	
+	<select id="getGoodsChangeList" resultType="com.bigdata.model.tenant.GoodsBean">
+	
+		select id,
+		       name,
+		       price,
+		       remark,
+		       date_format(createTime, '%Y-%m-%d %T') as createTime
+		  from t_goods
+	  order by createTime desc
+	  
+	</select>
+	
+	<insert id="updateChangeGoods">
+	
+		insert into t_gold_detail(wxId, goodsId, goldNum, goldType, flag, consumeTime) values(#{userId}, #{goodsId}, #{price}, '0', '0', now())
+		
+	</insert>
+	
+</mapper>

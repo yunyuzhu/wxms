@@ -85,13 +85,13 @@
 		   
 	</select>
 	
-	<select id="updateChangeGoods">
+	<update id="updateChangeGoods">
 	
 		update t_gold_detail
 		   set flag = '1',
 		       confirmTime = now()
 		 where id = #{id}
 		 
-	</select>
+	</update>
 	
 </mapper>
