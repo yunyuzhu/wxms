@@ -72,9 +72,10 @@
                         <th class="col0"></th>
                         <th class="col1">序号</th>
                         <th class="col2">标题</th>
-                        <th class="col3">发布时间</th>
-                        <th class="col4">阅读量</th>
-                        <th class="col5">操作</th>
+                        <th class="col3">内容摘要</th>
+                        <th class="col4">发布时间</th>
+                        <th class="col5">阅读量</th>
+                        <th class="col6">操作</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -90,16 +91,22 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="actinfo-hd">
-                                <div class="form-group">
-                                    <label for="actTitlePop" class="col-sm-1 control-label">活动标题</label>
+                                <div class="form-group mustfill">
+                                    <label for="actTitlePop" class="col-sm-1 control-label"><i>*</i>活动标题</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="actTitlePop" value="" placeholder="输入活动标题">
                                     </div>
                                 </div>
                             </div>
                             <div class="actinfo-body">
-                                <div class="form-group">
-                                    <label for="actContentPop" class="col-sm-1 control-label">活动内容</label>
+                                <div class="form-group mustfill">
+                                    <label for="abstractPop" class="col-sm-1 control-label"><i>*</i>内容摘要</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="abstractPop" value="" placeholder="输入内容摘要">
+                                    </div>
+                                </div>
+                                <div class="form-group mustfill">
+                                    <label for="actContentPop" class="col-sm-1 control-label"><i>*</i>活动内容</label>
                                     <div class="col-sm-10">
                                         <%@ include file="../../../umeditor/umeditor.jsp"%>
                                         <%--<textarea class="form-control pop-acth" id="actContentPop" placeholder="输入活动内容"></textarea>--%>

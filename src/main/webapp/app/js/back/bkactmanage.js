@@ -2,7 +2,6 @@
  * Created by chun
  */
 var tmpIdArr;
-var tmpContentArr;
 var shopAreaWH = ['960px', 'auto'];
 //加载页面
 function loadhtml(){
@@ -86,23 +85,21 @@ function listTableFun(){
             var dataTotal = jsonData['total'];
             if(dataTotal > 0) {
                 var idArr = [];
-                var contentArr = [];
                 var pageSize = dataRows.length;
                 for (var i = 0; i < pageSize; i++) {
                     var curObj = dataRows[i];
                     var curArr = [];
                     curArr[1] = curObj['orderId'];
                     curArr[2] = curObj['title'];
-                    curArr[3] = curObj['createTime'];
-                    curArr[4] = curObj['count'];
-                    curArr[5] = "查看";
+                    curArr[3] = curObj['activityAbstract'];
+                    curArr[4] = curObj['createTime'];
+                    curArr[5] = curObj['count'];
+                    curArr[6] = "查看";
                     dataRows[i] = curArr;
                     //记录id
                     idArr[i] = curObj['id'];
-                    contentArr[i] = curObj['content'];
                 }
                 tmpIdArr = idArr;
-                tmpContentArr = contentArr;
                 dataObj = {"rows": dataRows, "total": dataTotal};
             }
             return dataObj;
@@ -137,12 +134,13 @@ function listTableFun(){
             smartDisplay: true,  //设置为True智能显示分页或者Card View
             responseHandler: resHandler,    //在加载数据前，可以对返回的数据进行处理，参数包含：res: 返回的数据。
             columns: [
-                { field: 0, width: "10%", align: 'center', valign: 'middle', halign: 'center', sortable: false, checkbox: true },
-                { field: 1, width: "10%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
+                { field: 0, width: "5%", align: 'center', valign: 'middle', halign: 'center', sortable: false, checkbox: true },
+                { field: 1, width: "5%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
                 { field: 2, width: "25%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
                 { field: 3, width: "25%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 4, width: "15%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 5, width: "15%", align: 'center', valign: 'middle', halign: 'center', sortable: false,
+                { field: 4, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
+                { field: 5, width: "10%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
+                { field: 6, width: "10%", align: 'center', valign: 'middle', halign: 'center', sortable: false,
                     events: clickEvents, formatter: linkTableFat}
             ]
         });
@@ -153,7 +151,7 @@ function listTableFun(){
 //弹窗信息初始化加载
 function infoPopInit(options){
     var defOption = {
-        title: '', content: ''
+        title: '', activityAbstract: '',content: ''
     };
     if (typeof(options) === 'undefined'){options = {};}
     if (typeof(options) === "object") {
@@ -161,28 +159,36 @@ function infoPopInit(options){
         defOption = setting;
     }
     var $actTitlePop = $("#actTitlePop");
+    var $abstractPop = $("#abstractPop");
     var $actContentPop = $("#actContentPop");
     $actTitlePop.val(defOption.title);
+    $abstractPop.val(defOption.activityAbstract);
     UMSetContent(defOption.content);
 }
 
 /*************  编辑  ****************/
-
 //编辑保存
 function listEditSave(id){
     var $actTitlePop = $("#actTitlePop");
+    var $abstractPop = $("#abstractPop");
     var $actContentPop = $("#actContentPop");
     var inData = {
         id: id,
         title: $actTitlePop.val(),
+        activityAbstract: $abstractPop.val(),
         content: UMGetContent()
     };
-    //删除前后的空白字符
-    for(var para in inData){
-        inData[para] = jQuery.trim(inData[para]);
-    }
     // 输入校验
     do{
+        if(!EmptyCheck($actTitlePop, inData.title, "活动标题不能为空")){
+            break;
+        }
+        if(!EmptyCheck($abstractPop, inData.activityAbstract, "内容摘要不能为空")){
+            break;
+        }
+        if(!EmptyCheck($actContentPop, inData.content, "活动内容不能为空")){
+            break;
+        }
         //发送服务器
         $.ajax({
             type: "get",
@@ -221,6 +227,7 @@ function listEditShow(option){
             var jsonData = eval(data);
             var popData = {
                 title: jsonData.title,
+                activityAbstract: jsonData.activityAbstract,
                 content: jsonData.content
             };
             //更新信息
@@ -245,18 +252,19 @@ function listEditShow(option){
 //增加保存
 function listAddSave(){
     var $actTitlePop = $("#actTitlePop");
+    var $abstractPop = $("#abstractPop");
     var $actContentPop = $("#actContentPop");
     var inData = {
         title: $actTitlePop.val(),
+        activityAbstract: $abstractPop.val(),
         content: UMGetContent()
     };
-    //删除前后的空白字符
-    for(var para in inData){
-        inData[para] = jQuery.trim(inData[para]);
-    }
     //输入校验
     do{
         if(!EmptyCheck($actTitlePop, inData.title, "活动标题不能为空")){
+            break;
+        }
+        if(!EmptyCheck($abstractPop, inData.activityAbstract, "内容摘要不能为空")){
             break;
         }
         if(!EmptyCheck($actContentPop, inData.content, "活动内容不能为空")){
