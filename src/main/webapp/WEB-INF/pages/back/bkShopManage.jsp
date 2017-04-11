@@ -78,9 +78,9 @@
                             <div class="row">
                                 <div class="col-xs-12">
                                     <div class="form-group mustfill">
-                                        <label for="userPop" class="col-sm-2 control-label"><i>*</i>用户名</label>
+                                        <label for="userPop" class="col-sm-2 control-label"><i>*</i>账户名</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="userPop" value="" placeholder="输入用户名">
+                                            <input type="text" class="form-control" id="userPop" value="" placeholder="输入账户名">
                                         </div>
                                     </div>
                                 </div>

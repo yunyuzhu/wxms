@@ -264,7 +264,7 @@ function listEditShow(id){
             };
             //更新信息
             infoPopInit(popData);
-            //禁止用户名，隐藏密码
+            //禁止账户名，隐藏密码
             $("#userPop").attr('disabled', 'disabled');
             $("#rowPasswordPop").hide();
             //弹窗
@@ -313,7 +313,7 @@ function listAddSave(){
     }
     //输入校验
     do{
-        if(!EmptyCheck($userPop, inData.userName, "用户名不能为空")){
+        if(!EmptyCheck($userPop, inData.userName, "账户名不能为空")){
             break;
         }
         if(!PasswordCheck($passwordPop, inData.password)){
