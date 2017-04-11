@@ -40,8 +40,8 @@
 	
 	<insert id="saveGoldDetail">
 	
-		insert into t_gold_detail(wxId, userId, consumeMoney, flag, consumeTime)
-		            values(#{id}, #{shopId}, #{consumeMoney}, '0', now());
+		insert into t_gold_detail(wxId, userId, consumeMoney, goldType, flag, consumeTime)
+		            values(#{id}, #{shopId}, #{consumeMoney}, '1', '0', now());
 	  
 	</insert>
 	

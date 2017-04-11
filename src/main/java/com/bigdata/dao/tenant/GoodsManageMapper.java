@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.bigdata.model.tenant.GoldUserBean;
 import com.bigdata.model.tenant.GoodsBean;
 import com.bigdata.model.tenant.QueryBean;
 
@@ -46,5 +47,18 @@ public interface GoodsManageMapper {
 	 * @return
 	 */
 	GoodsBean getGoodsInfoById(@Param(value = "id") String id);
+
+	/**
+	 * 获取待确认兑换商品信息列表
+	 * @param queryBean
+	 * @return
+	 */
+	List<GoldUserBean> getConfirmList(QueryBean queryBean);
+
+	/**
+	 * 确认兑换商品
+	 * @param id
+	 */
+	void updateChangeGoods(@Param(value = "id") String id);
 
 }

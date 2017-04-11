@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bigdata.model.tenant.GoldUserBean;
 import com.bigdata.model.tenant.GoodsBean;
 import com.bigdata.model.tenant.QueryBean;
 import com.bigdata.service.tenant.IGoodsManageService;
@@ -154,4 +155,61 @@ public class GoodsManageController {
     	return goodsBean;
 	}
 
+	/**
+	 * 获取待确认兑换商品信息列表
+	 * @data 2016年3月31日 下午2:52:47
+	 * @param request
+	 * @param response
+	 * @throws Exception 
+	 */
+	@ResponseBody
+	@RequestMapping(value="/ConfirmList", method = RequestMethod.GET)
+	public Object getConfirmList(@ApiParam(required = false, name = "startTime", value = "开始时间") @RequestParam(required = false, value = "startTime") String startTime,
+			                     @ApiParam(required = false, name = "endTime", value = "结束时间") @RequestParam(required = false, value = "endTime") String endTime,
+			                     @ApiParam(required = true, name = "pageStart", value = "分页查询起始条数") @RequestParam(value = "pageStart", required = true) Integer pageStart,
+			         			 @ApiParam(required = true, name = "pageSize", value = "分页查询每页显示条数") @RequestParam(value = "pageSize", required = true) Integer pageSize,
+			HttpServletRequest request, HttpServletResponse response) throws Exception{
+		
+		QueryBean queryBean = new QueryBean();
+		queryBean.setStartTime(startTime);
+		queryBean.setEndTime(endTime);
+		
+		//获取待确认兑换商品信息列表
+		List<GoldUserBean> list = goodsManageServiceImpl.getConfirmList(queryBean);
+		
+		//分页
+		ArrayList<GoldUserBean> listPage = new ArrayList<GoldUserBean>();
+		for(int i=pageStart;i<pageStart + pageSize;i++){
+			if(i<list.size()){
+				GoldUserBean gub = list.get(i);
+				gub.setOrderId(i+1);
+				listPage.add(gub);
+			}
+		}
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+    	map.put("total", list.size());
+    	map.put("rows", listPage);
+    	return map;
+	}
+	
+	/**
+	 * 确认兑换商品
+	 * @data 2016年3月31日 下午2:52:47
+	 * @param request
+	 * @param response
+	 * @throws Exception 
+	 */
+	@ResponseBody
+	@RequestMapping(value="/change", method = RequestMethod.GET)
+	public Object updateChangeGoods(@ApiParam(required = false, name = "id", value = "主键") @RequestParam(required = false, value = "id") String id,
+			HttpServletRequest request, HttpServletResponse response) throws Exception{
+		
+		//确认兑换商品
+		goodsManageServiceImpl.updateChangeGoods(id);
+		Map<String, Object> map = new HashMap<String, Object>();
+    	map.put("msg", "确认兑换商品成功");
+    	return map;
+	}
+	
 }

@@ -71,6 +71,16 @@ public class GoldUserBean implements Serializable {
 	 * 确认消费消费时间
 	 */
 	private String confirmTime;
+	
+	/**
+	 * 商品名称
+	 */
+	private String goodsName;
+	
+	/**
+	 * 商品金币价格
+	 */
+	private String price;
 
 	public Integer getOrderId() {
 		return orderId;
@@ -166,6 +176,22 @@ public class GoldUserBean implements Serializable {
 
 	public void setConfirmTime(String confirmTime) {
 		this.confirmTime = confirmTime;
+	}
+
+	public String getGoodsName() {
+		return goodsName;
+	}
+
+	public void setGoodsName(String goodsName) {
+		this.goodsName = goodsName;
+	}
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
 	}
 	
 }

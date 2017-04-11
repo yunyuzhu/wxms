@@ -69,6 +69,7 @@
 		       t_wx_user t2
 		 where t1.userId = #{id}
 		   and t1.wxId = t2.id
+		   and t1.goldType = 1
 		   and t1.flag = 0
 		   <if test="startTime != null and startTime != ''">
 		   	<![CDATA[ and date_format(t1.consumeTime, '%Y-%m-%d') >= #{startTime} ]]>
@@ -91,6 +92,7 @@
 		       t_wx_user t2
 		 where t1.userId = #{id}
 		   and t1.wxId = t2.id
+		   and t1.goldType = 1
 		   and t1.flag = 1
 		   <if test="startTime != null and startTime != ''">
 		   	<![CDATA[ and date_format(t1.confirmTime, '%Y-%m-%d') >= #{startTime} ]]>
@@ -121,7 +123,6 @@
 	
 		update t_gold_detail
 		   set flag = '1',
-		   	   goldType = '1',
 		       goldNum = #{goldNum},
 		       rule = #{rule},
 		       confirmTime = now()

@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.bigdata.dao.tenant.GoodsManageMapper;
+import com.bigdata.model.tenant.GoldUserBean;
 import com.bigdata.model.tenant.GoodsBean;
 import com.bigdata.model.tenant.QueryBean;
 import com.bigdata.service.tenant.IGoodsManageService;
@@ -75,6 +76,30 @@ public class GoodsManageServiceImpl implements IGoodsManageService {
 		//根据ID获取商品内容
 		GoodsBean goodsBean = goodsManageMapper.getGoodsInfoById(id);
 		return goodsBean;
+	}
+
+	
+	/**
+	 * 确认兑换商品
+	 * @param id
+	 */
+	@Override
+	public void updateChangeGoods(String id) {
+		//确认兑换商品
+		goodsManageMapper.updateChangeGoods(id);
+	}
+	
+	/**
+	 * 获取待确认兑换商品信息列表
+	 * @param queryBean
+	 * @return
+	 */
+
+	@Override
+	public List<GoldUserBean> getConfirmList(QueryBean queryBean) {
+		//获取待确认兑换商品信息列表
+		List<GoldUserBean> list = goodsManageMapper.getConfirmList(queryBean);
+		return list;
 	}
 
 }

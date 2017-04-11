@@ -60,4 +60,38 @@
 	  
 	</select>
 	
+	<select id="getConfirmList" parameterType="com.bigdata.model.tenant.QueryBean" resultType="com.bigdata.model.tenant.GoldUserBean">
+	
+		select t1.id,
+			   t3.name as goodsName,
+			   t3.price,
+			   date_format(t1.consumeTime, '%Y-%m-%d %T') as consumeTime,
+		       t2.name,
+		       t2.phone
+		  from t_gold_detail t1,
+		       t_wx_user t2,
+		       t_goods t3
+		 where t1.wxId = t2.id
+		   and t1.goodsId = t3.id
+		   and t1.goldType = 0
+		   and t1.flag = 0
+		   <if test="startTime != null and startTime != ''">
+		   	<![CDATA[ and date_format(t1.consumeTime, '%Y-%m-%d') >= #{startTime} ]]>
+		   </if>
+		   <if test="endTime != null and endTime != ''">
+		   	<![CDATA[ and date_format(t1.consumeTime, '%Y-%m-%d') <= #{endTime} ]]>
+		   </if>
+		order by t1.consumeTime desc
+		   
+	</select>
+	
+	<select id="updateChangeGoods">
+	
+		update t_gold_detail
+		   set flag = '1',
+		       confirmTime = now()
+		 where id = #{id}
+		 
+	</select>
+	
 </mapper>
