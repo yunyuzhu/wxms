@@ -4,9 +4,12 @@
 //加载页面
 function loadhtml(){
     //加载初始数据
-    var appShConvertRule = new Vue({
+    var appRule = new Vue({
         el: '#shConvertRule',
-        data: { 'rate': "" }
+        data: {
+            rate: "",
+            remark: ""
+        }
     });
     $.ajax({
         type: "get",
@@ -17,7 +20,8 @@ function loadhtml(){
         jsonp: "callback",
         success:function(data){
             var jsonData = eval(data);
-            appShConvertRule.rate = jsonData;
+            appRule.rate = jsonData['rate'];
+            appRule.remark = jsonData['remark'];
         },
         error:function(error){
             console.log(error);
