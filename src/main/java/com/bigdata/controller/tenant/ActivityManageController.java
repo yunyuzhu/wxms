@@ -85,6 +85,7 @@ public class ActivityManageController {
 	@ResponseBody
 	public Object saveActivity(@ApiParam(required = false, name = "title", value = "标题") @RequestParam(value = "title", required = false) String title,
 			@ApiParam(required = false, name = "content", value = "活动内容") @RequestParam(value = "content", required = false) String content,
+			@ApiParam(required = false, name = "activityAbstract", value = "活动摘要") @RequestParam(value = "activityAbstract", required = false) String activityAbstract,
 			HttpServletRequest request, HttpServletResponse response) {
 		
 		//获取登录的用户信息
@@ -93,6 +94,7 @@ public class ActivityManageController {
 		ActivityBean activityBean = new ActivityBean();
 		activityBean.setTitle(title);
 		activityBean.setContent(content);
+		activityBean.setActivityAbstract(activityAbstract);
 		activityBean.setUserId(user.getId().toString());
 		
 		//发布活动
@@ -114,6 +116,7 @@ public class ActivityManageController {
 	public Object updateActivity(@ApiParam(required = false, name = "id", value = "活动id") @RequestParam(value = "id", required = false) String id,
 			@ApiParam(required = false, name = "title", value = "标题") @RequestParam(value = "title", required = false) String title,
 			@ApiParam(required = false, name = "content", value = "活动内容") @RequestParam(value = "content", required = false) String content,
+			@ApiParam(required = false, name = "activityAbstract", value = "活动摘要") @RequestParam(value = "activityAbstract", required = false) String activityAbstract,
 			HttpServletRequest request, HttpServletResponse response) {
 		
 		//获取登录的用户信息
@@ -123,6 +126,7 @@ public class ActivityManageController {
 		activityBean.setId(id);
 		activityBean.setTitle(title);
 		activityBean.setContent(content);
+		activityBean.setActivityAbstract(activityAbstract);
 		activityBean.setUserId(user.getId().toString());
 		
 		//修改活动

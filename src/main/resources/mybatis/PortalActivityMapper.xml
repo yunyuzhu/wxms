@@ -8,6 +8,7 @@
 		select id,
 		       title,
 		       count,
+		       activityAbstract,
 		       date_format(createTime, '%Y-%m-%d %T') as createTime
 		  from t_activity
 		order by createTime desc

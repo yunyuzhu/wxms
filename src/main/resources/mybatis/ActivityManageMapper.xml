@@ -8,6 +8,7 @@
 		select id,
 		       title,
 		       content,
+		       activityAbstract,
 		       count,
 		       date_format(createTime, '%Y-%m-%d %T') as createTime
 		  from t_activity
@@ -27,7 +28,7 @@
 	
 	<insert id="saveActivity" parameterType="com.bigdata.model.tenant.ActivityBean">
 	
-		insert into t_activity(title, content, count, userId, createTime) values(#{title}, #{content}, 0, #{userId}, now())
+		insert into t_activity(title, content, activityAbstract, count, userId, createTime) values(#{title}, #{content}, #{activityAbstract}, 0, #{userId}, now())
 		
 	</insert>
 	
@@ -36,6 +37,7 @@
 		update t_activity
 		   set title=#{title},
 			   content= #{content},
+			   activityAbstract= #{activityAbstract},
 			   userId=#{userId},
 			   createTime=now()
 	     where id = #{id}
@@ -53,6 +55,7 @@
 		select id,
 		       title,
 		       content,
+		       activityAbstract,
 		       count,
 		       date_format(createTime, '%Y-%m-%d %T') as createTime
 		  from t_activity

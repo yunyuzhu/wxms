@@ -29,6 +29,11 @@ public class ActivityBean {
 	private String content;
 	
 	/**
+	 * 活动摘要
+	 */
+	private String activityAbstract;
+	
+	/**
 	 * 阅读数
 	 */
 	private String count;
@@ -75,6 +80,14 @@ public class ActivityBean {
 		this.content = content;
 	}
 	
+	public String getActivityAbstract() {
+		return activityAbstract;
+	}
+
+	public void setActivityAbstract(String activityAbstract) {
+		this.activityAbstract = activityAbstract;
+	}
+
 	public String getCount() {
 		return count;
 	}
