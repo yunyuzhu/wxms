@@ -49,7 +49,7 @@
                         <th class="col1">用户姓名</th>
                         <th class="col2">用户电话</th>
                         <th class="col3">金币数</th>
-                        <th class="col4">操作</th>
+                        <%--<th class="col4">操作</th>--%>
                     </tr>
                 </thead>
                 <tbody></tbody>

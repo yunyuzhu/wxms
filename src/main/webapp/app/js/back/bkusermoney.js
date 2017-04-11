@@ -75,7 +75,7 @@ function listTableFun(){
                     curArr[1] = curObj['name'];
                     curArr[2] = curObj['phone'];
                     curArr[3] = curObj['gold'];
-                    curArr[4] = "兑换金币";
+                    // curArr[4] = "兑换金币";
                     dataRows[i] = curArr;
                     //记录id
                     idArr[i] = curObj['id'];
@@ -116,11 +116,11 @@ function listTableFun(){
             responseHandler: resHandler,    //在加载数据前，可以对返回的数据进行处理，参数包含：res: 返回的数据。
             columns: [
                 { field: 0, width: "10%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 1, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 2, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 3, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
-                { field: 4, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false,
-                    events: clickEvents, formatter: linkTableFat}
+                { field: 1, width: "30%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
+                { field: 2, width: "30%", align: 'center', valign: 'middle', halign: 'center', sortable: false },
+                { field: 3, width: "30%", align: 'center', valign: 'middle', halign: 'center', sortable: false }
+                /*{ field: 4, width: "20%", align: 'center', valign: 'middle', halign: 'center', sortable: false,
+                    events: clickEvents, formatter: linkTableFat}*/
             ]
         });
     }
