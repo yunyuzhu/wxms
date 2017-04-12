@@ -24,7 +24,7 @@
 				<div class="page" id="centerPage">
 					<div class="page__hd centerhd">
 						<div class="centerhd-face">
-							<i class="icon-user"></i>
+							<i class="icon-user3"></i>
 						</div>
 						<div class="centerhd-txt">
 							<div class="before">
@@ -39,7 +39,7 @@
 						<div class="weui-cells">
 							<a class="weui-cell weui-cell_access" href="${ctx}/maccount">
 								<div class="weui-cell__hd">
-									<i class="icon-user"></i>
+									<i class="icon-user3"></i>
 								</div>
 								<div class="weui-cell__bd">
 									<p>账户信息</p>
@@ -78,7 +78,7 @@
 		</div>
 	</div>
 	<script type="text/javascript" charset="UTF-8">
-		mTabbarStyleGo(2);
+		mTabbarStyleGo(3);
         var session_value = '<%=session.getAttribute("userSession")%>';
         var $centerPage = $("#centerPage");
         var flag = (session_value == null || session_value == "null");

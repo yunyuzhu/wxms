@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div class="weui-tabbar" id="mWxTabbar">
-	<a href="${ctx}/mhome" class="weui-tabbar__item weui-bar__item_on">
+	<a href="${ctx}/mhome" class="weui-tabbar__item">
 		<i class="weui-tabbar__icon icon-home"></i>
 		<p class="weui-tabbar__label">首页</p>
 	</a>
@@ -13,7 +13,7 @@
 		<p class="weui-tabbar__label">活动</p>
 	</a>
 	<a href="${ctx}/mcenter" class="weui-tabbar__item">
-		<i class="weui-tabbar__icon icon-user"></i>
+		<i class="weui-tabbar__icon icon-user3"></i>
 		<p class="weui-tabbar__label">账户</p>
 	</a>
 </div>

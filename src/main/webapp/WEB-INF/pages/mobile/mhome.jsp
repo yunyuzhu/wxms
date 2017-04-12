@@ -27,7 +27,7 @@
 							<div class="vert-cell before">
 								<a href="${ctx}/mlogin" class="alink">
 									<p class="facehd">
-										<i class="icon-user"></i>
+										<i class="icon-user3"></i>
 									</p>登录/注册
 								</a>
 							</div>
