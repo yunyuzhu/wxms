@@ -158,6 +158,7 @@ body,html{height:100%;background-color:#F8F8F8;}
 /*center*/
 .centerhd{text-align:center;}
 .centerhd-face i{font-size:46px;color:#666;}
+.centerbd .weui-cells{margin-top:10px;}
 .centerbd .weui-cell__hd i{margin-right:5px;}
 .haslogin .centerhd-txt .before, .centerhd-txt .after,.centerbd .button-sp-area{display:none;}
 .centerhd-txt .before, .haslogin .centerhd-txt .after,.haslogin .centerbd .button-sp-area{display:block;}

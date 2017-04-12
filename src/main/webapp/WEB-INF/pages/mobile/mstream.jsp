@@ -22,11 +22,19 @@
 		<div class="weui-tab">
 			<div class="mtab-hd">
 				<a href="javascript:history.go(-1);" class="mhd-back"><i class="icon-arrow-left2"></i></a>
-				<div class="mhd-title">金币明细</div>
+				<div class="mhd-title">消费记录</div>
 			</div>
-			<div class="weui-tab__panel"></div>
-			<!--底部导航-->
-			<%@ include file="mtabbar.jsp"%>
+			<div class="weui-tab__panel">
+				<div class="weui-cells__title">消费流水</div>
+				<div class="weui-cells" id="streamList" v-show="show">
+					<div class="weui-cell" v-for="item in items">
+						<div class="weui-cell__bd">
+							<p>{{item.goldType}} {{item.goldNum}}金币</p>
+						</div>
+						<div class="weui-cell__ft"><span class="home-price">{{item.time}}</span></div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<script src="${ctx}/mobile/js/mstream.js" type="text/javascript" charset="UTF-8"></script>

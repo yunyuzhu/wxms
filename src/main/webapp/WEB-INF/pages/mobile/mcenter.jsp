@@ -42,7 +42,7 @@
 									<i class="icon-user3"></i>
 								</div>
 								<div class="weui-cell__bd">
-									<p>账户信息</p>
+									<p>我的账户</p>
 								</div>
 								<div class="weui-cell__ft"></div>
 							</a>
@@ -53,16 +53,40 @@
 									<i class="icon-coin-yen"></i>
 								</div>
 								<div class="weui-cell__bd">
-									<p>金币余额</p>
+									<p>我的金币</p>
 								</div>
 								<div class="weui-cell__ft"></div>
 							</a>
+						</div>
+						<div class="weui-cells">
+							<a class="weui-cell weui-cell_access" href="${ctx}/mapplystream">
+								<div class="weui-cell__hd">
+									<i class="icon-th-list"></i>
+								</div>
+								<div class="weui-cell__bd">
+									<p>兑换申请</p>
+								</div>
+								<div class="weui-cell__ft"></div>
+							</a>
+						</div>
+						<div class="weui-cells">
 							<a class="weui-cell weui-cell_access" href="${ctx}/mstream">
 								<div class="weui-cell__hd">
 									<i class="icon-th-list"></i>
 								</div>
 								<div class="weui-cell__bd">
-									<p>金币明细</p>
+									<p>消费记录</p>
+								</div>
+								<div class="weui-cell__ft"></div>
+							</a>
+						</div>
+						<div class="weui-cells">
+							<a class="weui-cell weui-cell_access" href="${ctx}/mabout">
+								<div class="weui-cell__hd">
+									<i class="icon-th-list"></i>
+								</div>
+								<div class="weui-cell__bd">
+									<p>关于</p>
 								</div>
 								<div class="weui-cell__ft"></div>
 							</a>

@@ -1,22 +1,51 @@
 /**
  * Created by chun
  */
+var appList;
+//数据初始化
+function appDataInit(){
+    //列表
+    appList = new Vue({
+        el: '#streamList',
+        data: {
+            'items': [
+                {id: "", goldNum: "", goldType: "", time: ''}
+            ],
+            'show': true
+        }
+    });
+}
+appDataInit();
 //加载页面
 function loadhtml(){
     inSubmit();
 }
 $(document).ready(function(){
-    mTabbarStyleGo(3);
     loadhtml();
 });
 
+//输入参数
+function getInData(option){
+    var setting = {start: 0, size: 5};
+    if(typeof(option) == 'undefined'){var option={};}
+    if(typeof(option) == 'object'){
+        for(var key in option){
+            setting[key] = option[key];
+        }
+    }
+    var inData = {};
+    inData.pageStart = setting.start;
+    inData.pageSize  = setting.size;
+    return inData;
+}
 //提交
 function inSubmit(){
-    var inData = {
-        pageStart: 0,
-        pageSize: 200
-    };
-    //发送服务器
+    //列表
+    loadList();
+}
+//加载列表
+function loadList(){
+    var inData = new getInData();
     $.ajax({
         type: "get",
         url: mUrlBase + "/portalAccount/goldStream",
@@ -26,11 +55,30 @@ function inSubmit(){
         jsonp: "callback",
         success:function(data){
             var jsonData = eval(data);
-
+            var dataRows  = jsonData['rows'];
+            var dataTotal = jsonData['total'];
+            if(dataTotal > 0) {
+                var arrSize = dataRows.length;
+                for (var i = 0; i < arrSize; i++) {
+                    var curObj = dataRows[i];
+                    var tmpObj = {
+                        id: curObj["id"],
+                        goldNum: curObj["goldNum"],
+                        goldType: curObj["goldType"],
+                        time: curObj["confirmTime"]
+                    };
+                    dataRows[i] = tmpObj;
+                }
+                appList.items = dataRows;
+                appList.show = true;
+            }
+            else{
+                appList.show = false;
+            }
         },
         error:function(error){
             console.log(error);
-            layer.msg("金币明细加载失败");
+            appList.show = false;
         }
     });
 }
