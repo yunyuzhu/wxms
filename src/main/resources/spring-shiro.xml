@@ -99,9 +99,10 @@
 				/login_login = anon
 				/login = anon
 
-				<!-- 用户登录允许访问 -->
+				<!-- 用户允许访问 -->
 				/mlogin = anon
 				/mreg = anon
+				/mhome = anon
 				/mactivity = anon
 				/mcost = anon
 				/mcenter = anon
@@ -110,6 +111,7 @@
 				/portalActivity/activityList = anon
 				/portalActivity/query = anon
 				/portalAccount/register = anon
+				/portalGoods/changeList = anon
 
                 <!-- 其他资源需要认证 -->
                 /** = authc

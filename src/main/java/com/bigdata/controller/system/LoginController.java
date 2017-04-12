@@ -86,6 +86,12 @@ public class LoginController extends BaseController {
 		return "mobile/mreg";
 	}
 
+	/*** 首页 ***/
+	@RequestMapping(value = "mhome", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
+	public String mhome(HttpServletRequest request) {
+		request.removeAttribute("error");
+		return "mobile/mhome";
+	}
 	/*** 活动 ***/
 	@RequestMapping(value = "mactivity", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
 	public String mactivity(HttpServletRequest request) {

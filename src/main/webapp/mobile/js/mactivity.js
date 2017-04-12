@@ -4,10 +4,10 @@
 var appActList;
 //加载页面
 function loadhtml(){
-    mTabbarStyleGo(0);
     inSubmit();
 }
 $(document).ready(function(){
+    mTabbarStyleGo(2);
     loadhtml();
 });
 

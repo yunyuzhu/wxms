@@ -13,7 +13,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<title>首页-首发创业</title>
+	<title>活动</title>
     <base href="<%=basePath%>">
     <%@ include file="base.jsp"%>
 </head>
@@ -21,15 +21,9 @@
 	<div class="ls-wrap tnwrap">
 		<div class="weui-tab">
 			<div class="mtab-hd">
-				<div class="mhd-title">首页</div>
+				<div class="mhd-title">活动</div>
 			</div>
 			<div class="weui-tab__panel" id="mActivityPanel">
-				<article class="weui-article">
-					<div>
-						<h2 class="title">介绍</h2>
-						<p>首发创业是可提供给用户用于金币消费的互联网平台系统，操作简单方便。</p>
-					</div>
-				</article>
 				<div class="weui-cells__title">活动列表</div>
 				<div class="weui-cells">
 					<a class="weui-cell weui-cell_access" v-for="item in items" v-bind:href="item.href">

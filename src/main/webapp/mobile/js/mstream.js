@@ -3,10 +3,10 @@
  */
 //加载页面
 function loadhtml(){
-    mTabbarStyleGo(2);
     inSubmit();
 }
 $(document).ready(function(){
+    mTabbarStyleGo(3);
     loadhtml();
 });
 

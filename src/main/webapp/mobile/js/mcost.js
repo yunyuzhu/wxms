@@ -3,8 +3,6 @@
  */
 //加载页面
 function loadhtml(){
-    mTabbarStyleGo(1);
-
     //消费扫描
     $("#costScan").on('click', function(){
         scanTwoCode();
@@ -17,6 +15,7 @@ function loadhtml(){
     }
 }
 $(document).ready(function(){
+    mTabbarStyleGo(1);
     loadhtml();
 });
 

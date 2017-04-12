@@ -16,6 +16,12 @@
 <!------------ Javascript文件 ----------->
 <script type="text/javascript">
     var rootPath = "${ctx}";
+    //是否登录
+    function isLogin(){
+        var session_value = '<%=session.getAttribute("userSession")%>';
+        console.log("session="+session_value);
+        return !(session_value == null || session_value == "null");
+    }
 </script>
 <!-- jQuery -->
 <script src="${ctx}/mobile/vendor/plugin/jquery-1.9.1.min.js" type="text/javascript"></script>
