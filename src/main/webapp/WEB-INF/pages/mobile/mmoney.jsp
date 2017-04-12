@@ -13,7 +13,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<title>账户信息</title>
+	<title>我的金币</title>
     <base href="<%=basePath%>">
     <%@ include file="base.jsp"%>
 </head>
@@ -22,7 +22,7 @@
 		<div class="weui-tab">
 			<div class="mtab-hd">
 				<a href="javascript:history.go(-1);" class="mhd-back"><i class="icon-arrow-left2"></i></a>
-				<div class="mhd-title">金币余额</div>
+				<div class="mhd-title">我的金币</div>
 			</div>
 			<div class="weui-tab__panel">
 				<div class="weui-cells">
@@ -36,8 +36,6 @@
 					</div>
 				</div>
 			</div>
-			<!--底部导航-->
-			<%@ include file="mtabbar.jsp"%>
 		</div>
 	</div>
 	<script src="${ctx}/mobile/js/mmoney.js" type="text/javascript" charset="UTF-8"></script>

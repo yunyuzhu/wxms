@@ -6,7 +6,6 @@ function loadhtml(){
     inSubmit();
 }
 $(document).ready(function(){
-    mTabbarStyleGo(3);
     loadhtml();
 });
 

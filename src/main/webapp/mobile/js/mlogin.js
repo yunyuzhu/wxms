@@ -60,7 +60,7 @@ function inSubmit(){
                 switch(res){
                     case 'success' :
                         layer.msg('正在登录，请稍后...', {icon: 1, time: 1000});
-                        window.location.href = mUrlBase + "/mactivity";
+                        window.location.href = mUrlBase + "/mhome";
                         return ;
                         break;
                     case 'usererror' :

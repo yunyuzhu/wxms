@@ -125,6 +125,13 @@ public class LoginController extends BaseController {
 		return "mobile/mgoodapply";
 	}
 
+	/*** 关于 ***/
+	@RequestMapping(value = "mabout", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
+	public String mabout(HttpServletRequest request) {
+		request.removeAttribute("error");
+		return "mobile/mabout";
+	}
+
 /*********************** 用户 end *********************/
 	/**
 	 * 登录提交

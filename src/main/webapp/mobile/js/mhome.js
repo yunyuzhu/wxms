@@ -56,6 +56,7 @@ function inSubmit(){
     var $homehdBox = $("#homehdBox");
     if(isLogin()){
         $homehdBox.addClass("cthas");
+        setGold();
     }
     else{
         $homehdBox.removeClass("cthas");
@@ -64,6 +65,26 @@ function inSubmit(){
     goodsList();
     //最新活动
     actList();
+}
+
+//余额
+function setGold(){
+    //发送服务器
+    $.ajax({
+        type: "get",
+        url: mUrlBase + "/portalAccount/gold",
+        dataType: "json",
+        data: '',
+        async: false,
+        jsonp: "callback",
+        success:function(data){
+            var jsonData = eval(data);
+            document.getElementById('homeGold').innerHTML = jsonData;
+        },
+        error:function(error){
+            console.log(error);
+        }
+    });
 }
 //商品列表
 function goodsList(){

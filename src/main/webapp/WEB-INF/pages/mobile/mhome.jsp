@@ -33,7 +33,7 @@
 							</div>
 							<div class="vert-cell after">
 								<a href="${ctx}/mlogin" class="alink">
-									<p>余额：123</p>
+									<p>余额：<span id="homeGold"></span></p>
 								</a>
 							</div>
 						</div>

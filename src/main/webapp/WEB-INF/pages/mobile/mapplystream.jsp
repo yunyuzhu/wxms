@@ -13,7 +13,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<title>消费记录</title>
+	<title>兑换申请</title>
     <base href="<%=basePath%>">
     <%@ include file="base.jsp"%>
 </head>
@@ -22,14 +22,14 @@
 		<div class="weui-tab">
 			<div class="mtab-hd">
 				<a href="javascript:history.go(-1);" class="mhd-back"><i class="icon-arrow-left2"></i></a>
-				<div class="mhd-title">消费记录</div>
+				<div class="mhd-title">兑换申请</div>
 			</div>
 			<div class="weui-tab__panel">
-				<div class="weui-cells__title">消费流水</div>
+				<div class="weui-cells__title">申请流水</div>
 				<div class="weui-cells" id="streamList" v-show="show">
 					<div class="weui-cell" v-for="item in items">
 						<div class="weui-cell__bd">
-							<p>{{item.goldType}} {{item.goldNum}}金币</p>
+							<p>{{item.goodsName}}&nbsp;&nbsp;价格:{{item.price}}</p>
 						</div>
 						<div class="weui-cell__ft"><span class="home-price">{{item.time}}</span></div>
 					</div>
@@ -37,6 +37,6 @@
 			</div>
 		</div>
 	</div>
-	<script src="${ctx}/mobile/js/mstream.js" type="text/javascript" charset="UTF-8"></script>
+	<script src="${ctx}/mobile/js/mapplystream.js" type="text/javascript" charset="UTF-8"></script>
 	</body>
 </html>
