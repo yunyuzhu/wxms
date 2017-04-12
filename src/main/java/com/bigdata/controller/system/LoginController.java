@@ -118,6 +118,13 @@ public class LoginController extends BaseController {
 		return "mobile/mactinfo";
 	}
 
+	/*** 商品兑换申请 ***/
+	@RequestMapping(value = "mgoodapply", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
+	public String mgoodapply(HttpServletRequest request) {
+		request.removeAttribute("error");
+		return "mobile/mgoodapply";
+	}
+
 /*********************** 用户 end *********************/
 	/**
 	 * 登录提交

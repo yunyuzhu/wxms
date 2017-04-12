@@ -107,6 +107,7 @@
 				/mcost = anon
 				/mcenter = anon
 				/mactinfo = anon
+				/mgoodapply = anon
 
 				/portalActivity/activityList = anon
 				/portalActivity/query = anon

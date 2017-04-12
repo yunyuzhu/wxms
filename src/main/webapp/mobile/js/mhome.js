@@ -83,7 +83,7 @@ function goodsList(){
                 var arrSize = dataRows.length;
                 for (var i = 0; i < arrSize; i++) {
                     var curObj = dataRows[i];
-                    var curHref = mUrlBase + "/mgoodinfo?id="+curObj["id"];
+                    var curHref = mUrlBase + "/mgoodapply?id="+curObj["id"];
                     var tmpObj = {
                         id: curObj["id"],
                         href: curHref,
