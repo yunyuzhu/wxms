@@ -158,6 +158,8 @@ public class PortalAccountController {
 			@ApiParam(required = false, name = "sex", value = "性别") @RequestParam(value = "sex", required = false) String sex,
 			@ApiParam(required = false, name = "age", value = "年龄") @RequestParam(value = "age", required = false) String age,
 			@ApiParam(required = false, name = "phone", value = "电话") @RequestParam(value = "phone", required = false) String phone,
+			@ApiParam(required = false, name = "email", value = "邮箱") @RequestParam(value = "email", required = false) String email,
+			@ApiParam(required = false, name = "wx", value = "微信号") @RequestParam(value = "wx", required = false) String wx,
 			@ApiParam(required = false, name = "remark", value = "备注") @RequestParam(value = "remark", required = false) String remark) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -182,6 +184,8 @@ public class PortalAccountController {
 		user.setSex(sex);
 		user.setAge(age);
 		user.setPhone(phone);
+		user.setEmail(email);
+		user.setWx(wx);
 		user.setRemark(remark);
 		
 		//用户注册
@@ -207,6 +211,8 @@ public class PortalAccountController {
 			@ApiParam(required = false, name = "sex", value = "性别") @RequestParam(value = "sex", required = false) String sex,
 			@ApiParam(required = false, name = "age", value = "年龄") @RequestParam(value = "age", required = false) String age,
 			@ApiParam(required = false, name = "phone", value = "电话") @RequestParam(value = "phone", required = false) String phone,
+			@ApiParam(required = false, name = "email", value = "邮箱") @RequestParam(value = "email", required = false) String email,
+			@ApiParam(required = false, name = "wx", value = "微信号") @RequestParam(value = "wx", required = false) String wx,
 			@ApiParam(required = false, name = "remark", value = "备注") @RequestParam(value = "remark", required = false) String remark,
 			HttpServletRequest request, HttpServletResponse response) {
 		
@@ -219,6 +225,8 @@ public class PortalAccountController {
 		user.setSex(sex);
 		user.setAge(age);
 		user.setPhone(phone);
+		user.setEmail(email);
+		user.setWx(wx);
 		user.setRemark(remark);
 		
 		//修改用户信息

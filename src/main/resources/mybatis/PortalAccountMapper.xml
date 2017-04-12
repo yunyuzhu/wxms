@@ -73,6 +73,8 @@
 			sex,
 			age,
 			phone,
+			email,
+			wx,
 			gold,
 			remark,
 			createTime,
@@ -86,6 +88,8 @@
 				#{sex},
 				#{age},
 				#{phone},
+				#{email},
+				#{wx},
 				0,
 				#{remark},
 				NOW(),
@@ -100,6 +104,8 @@
 			   age = #{age},
 			   sex = #{sex},
 			   phone = #{phone},
+			   email = #{email},
+			   wx = #{wx},
 			   remark = #{remark},
 			   updateTime = NOW()
 		where id = #{id}

@@ -57,6 +57,16 @@ public class WxUser implements Serializable {
 	private String phone;
 	
 	/**
+	 * 邮箱
+	 */
+	private String email;
+	
+	/**
+	 * 微信号
+	 */
+	private String wx;
+	
+	/**
 	 * 金币余额
 	 */
 	private String gold;
@@ -161,6 +171,22 @@ public class WxUser implements Serializable {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getWx() {
+		return wx;
+	}
+
+	public void setWx(String wx) {
+		this.wx = wx;
 	}
 
 	public String getGold() {
