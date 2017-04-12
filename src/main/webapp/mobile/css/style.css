@@ -31,7 +31,7 @@ body,html{height:100%;background-color:#F8F8F8;}
 .cthide{display:none;}
 .mpadd-lr{padding:5px 15px;}
 .mtab-hd + .weui-tab__panel {padding-top:50px;}
-.mtab-hd{position:absolute;z-index:500;top:0;width:100%;height:50px;padding:0 15px;line-height:48px;
+.mtab-hd{position:absolute;z-index:500;top:0;width:100%;height:50px;padding:0 10px;line-height:48px;
     background:#FAFAFA;border-bottom:1px solid #E2E2E2;}
 .mtab-hd .mhd-back{position:absolute;padding:5px 5px 0 0;height:100%;color:#666;}
 .mtab-hd .mhd-back i{font-size:24px;}
@@ -41,6 +41,7 @@ body,html{height:100%;background-color:#F8F8F8;}
 .vert-cell{display:table-cell;vertical-align:middle;}
 .cthas .vert-cell.before, .vert-cell.after{display:none;}
 .cthas .vert-cell.after, .vert-cell.before{display:table-cell;}
+[class^="icon-"], [class*=" icon-"]{margin:0 5px;}
 /*tips*/
 .jq_tips_box{z-index:21176523 !important;}
 .layui-layer-rim{z-index:1000!important;}

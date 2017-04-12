@@ -23,15 +23,21 @@
 			<div class="mtab-hd">
 				<div class="mhd-title">活动</div>
 			</div>
-			<div class="weui-tab__panel" id="mActivityPanel">
+			<div class="weui-tab__panel">
 				<div class="weui-cells__title">活动列表</div>
-				<div class="weui-cells">
-					<a class="weui-cell weui-cell_access" v-for="item in items" v-bind:href="item.href">
-						<div class="weui-cell__bd">
-							<p>{{item.title}}</p>
-						</div>
-						<div class="weui-cell__ft"></div>
-					</a>
+				<div class="weui-panel">
+					<div class="weui-panel__bd" id="actList" v-show="show">
+						<a class="weui-media-box weui-media-box_appmsg" v-for="item in items" v-bind:href="item.href">
+							<div class="weui-media-box__bd">
+								<h4 class="weui-media-box__title">{{item.title}}</h4>
+								<p class="weui-media-box__desc">{{item.abstract}}</p>
+								<ul class="weui-media-box__info">
+									<li class="weui-media-box__info__meta">{{item.time}}</li>
+									<li class="weui-media-box__info__meta"><i class="icon-eye"></i><span>{{item.count}}</span></li>
+								</ul>
+							</div>
+						</a>
+					</div>
 				</div>
 			</div>
 			<!--底部导航-->

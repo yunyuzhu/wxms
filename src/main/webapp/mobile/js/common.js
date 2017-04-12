@@ -66,22 +66,6 @@ function loginOut(){
     });
 }
 
-//获取请求参数
-function GetRequest(){
-    // var url = location.search; //获取url中"?"符后的字串
-    var url = decodeURI(location.search);
-    var theRequest = new Object();
-    if (url.indexOf("?") != -1) {
-        var str = url.substr(1);
-        var strs = str.split("&");
-        for(var i = 0; i < strs.length; i ++) {
-            var paraItem = strs[i].split("=");
-            theRequest[paraItem[0]]=(paraItem[1]);
-        }
-    }
-    return theRequest;
-}
-
 //性别字符串转换
 function sexFat(sex){
     var sexStr = "男";
@@ -294,6 +278,45 @@ function getDate(time){
         year : date.getFullYear(),
         month: addZero(date.getMonth()+1),
         day: addZero(date.getDate())
+    };
+}
+
+//格式化时间
+function fatDate(option){
+    var setting = {time: null, fat: 'yymmdd'};
+    if(typeof(option) == 'undefined'){var option={};}
+    if(typeof(option) == 'object'){
+        for(var key in option){
+            setting[key] = option[key];
+        }
+    }
+    var date;
+    var time = setting.time;
+    if((time == null || time == "null")){
+        date = new Date(time);
+    }else{
+        date = new Date();
+    }
+    var dataObj =  {
+        year : date.getFullYear(),
+        month: addZero(date.getMonth()+1),
+        day: addZero(date.getDate())
+    };
+    var dataStr = '';
+    switch(setting.fat){
+        case 'yymmdd':
+            dataStr = dataObj.year+'-'+dataObj.month+'-'+dataObj.day;
+            break;
+        case 'yymm':
+            dataStr = dataObj.year+'-'+dataObj.month;
+            break;
+        case 'mmdd':
+            dataStr = dataObj.month+'-'+dataObj.day;
+            break;
+    }
+    return {
+        obj: dataObj,
+        str: dataStr
     };
 }
 

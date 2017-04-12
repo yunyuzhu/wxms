@@ -2,29 +2,51 @@
  * Created by chun
  */
 var appActList;
+//数据初始化
+function appDataInit(){
+    //活动列表
+    appActList = new Vue({
+        el: '#actList',
+        data: {
+            'items': [
+                {id: "", title: "", abstract: "", time: "", count: ""}
+            ],
+            'show': true
+        }
+    });
+}
+appDataInit();
 //加载页面
 function loadhtml(){
+    mTabbarStyleGo(2);
     inSubmit();
 }
 $(document).ready(function(){
-    mTabbarStyleGo(2);
     loadhtml();
 });
 
+//输入参数
+function getInData(option){
+    var setting = {start: 0, size: 5};
+    if(typeof(option) == 'undefined'){var option={};}
+    if(typeof(option) == 'object'){
+        for(var key in option){
+            setting[key] = option[key];
+        }
+    }
+    var inData = {};
+    inData.pageStart = setting.start;
+    inData.pageSize  = setting.size;
+    return inData;
+}
 //提交
 function inSubmit(){
-    //初始化
-    appActList = new Vue({
-        el: '#mActivityPanel',
-        data: {
-            'items': []
-        }
-    });
-    var inData = {
-        pageSize: 100,
-        pageStart: 0
-    };
-    //发送服务器
+    //活动
+    actList();
+}
+//活动列表
+function actList(){
+    var inData = new getInData({start: 0, size: 5});
     $.ajax({
         type: "get",
         url: mUrlBase + "/portalActivity/activityList",
@@ -37,28 +59,30 @@ function inSubmit(){
             var dataRows  = jsonData['rows'];
             var dataTotal = jsonData['total'];
             if(dataTotal > 0) {
-                listLoad(dataRows)
+                var arrSize = dataRows.length;
+                for (var i = 0; i < arrSize; i++) {
+                    var curObj = dataRows[i];
+                    var curHref = mUrlBase + "/mactinfo?id="+curObj["id"];
+                    var tmpObj = {
+                        id: curObj["id"],
+                        href: curHref,
+                        title: curObj["title"],
+                        abstract: curObj["activityAbstract"],
+                        time: fatDate({time:curObj["createTime"]}).str,
+                        count: curObj["count"]
+                    };
+                    dataRows[i] = tmpObj;
+                }
+                appActList.items = dataRows;
+                appActList.show = true;
+            }
+            else{
+                appActList.show = false;
             }
         },
         error:function(error){
             console.log(error);
-            layer.msg("获取活动列表失败");
+            appActList.show = false;
         }
     });
-}
-//列表加载
-function listLoad(dataArr){
-    var vueArr = [];
-    var arrSize = dataArr.length;
-    for (var i = 0; i < arrSize; i++) {
-        var curObj = dataArr[i];
-        var curHref = mUrlBase + "/mactinfo?id="+curObj["id"];
-        var tmpObj = {
-            "id": curObj["id"],
-            "title": curObj["title"],
-            "href": curHref
-        };
-        vueArr.push(tmpObj);
-    }
-    appActList.items = vueArr;
 }

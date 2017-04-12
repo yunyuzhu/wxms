@@ -57,7 +57,7 @@
 										<p class="weui-media-box__desc">{{item.abstract}}</p>
 										<ul class="weui-media-box__info">
 											<li class="weui-media-box__info__meta">{{item.time}}</li>
-											<li class="weui-media-box__info__meta weui-media-box__info__meta_extra">阅读量：<span>{{item.count}}</span></li>
+											<li class="weui-media-box__info__meta"><i class="icon-eye"></i><span>{{item.count}}</span></li>
 										</ul>
 									</div>
 								</a>

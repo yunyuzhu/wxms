@@ -129,7 +129,7 @@ function actList(){
                         href: curHref,
                         title: curObj["title"],
                         abstract: curObj["activityAbstract"],
-                        time: curObj["createTime"],
+                        time: fatDate({time:curObj["createTime"]}).str,
                         count: curObj["count"]
                     };
                     dataRows[i] = tmpObj;
