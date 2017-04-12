@@ -8,6 +8,7 @@ import com.bigdata.model.system.User;
 import com.bigdata.model.tenant.GoldDetail;
 import com.bigdata.model.tenant.GoldUserBean;
 import com.bigdata.model.tenant.QueryBean;
+import com.bigdata.model.tenant.RuleBean;
 
 /**   
 * @Title: TenantManageMapper.java
@@ -29,7 +30,7 @@ public interface TenantManageMapper {
 	 * @param id
 	 * @return
 	 */
-	String getTenantRule(Integer id);
+	RuleBean getTenantRule(Integer id);
 
 	/**
 	 * 获取待确认消费信息列表

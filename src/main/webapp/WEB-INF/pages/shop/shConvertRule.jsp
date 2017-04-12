@@ -10,8 +10,7 @@
         </div>
         <div class="box-body">
             <div class="info-list">
-                <p><span class="tag">当前兑换率：</span><span class="value">{{rate}}</span></p>
-                <p class="shrule-remark"><span>备注：</span><span class="value marktxt">{{remark}}</span></p>
+                <p><span class="tag">当前兑换率：</span><span class="value">{{rate}}</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="value marktxt">（注：{{remark}}）</span></p>
             </div>
         </div>
     </div>

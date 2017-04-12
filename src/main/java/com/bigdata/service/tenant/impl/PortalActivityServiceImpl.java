@@ -34,4 +34,14 @@ public class PortalActivityServiceImpl implements IPortalActivityService {
 		return list;
 	}
 
+	/**
+	 * 更新活动阅读量
+	 * @param id
+	 */
+	@Override
+	public void updateActivityCount(String id) {
+		//更新活动阅读量
+		portalActivityMapper.updateActivityCount(id);
+	}
+
 }

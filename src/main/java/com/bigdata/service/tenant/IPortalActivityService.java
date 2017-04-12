@@ -19,4 +19,10 @@ public interface IPortalActivityService {
 	 */
 	List<ActivityBean> getActivityList();
 
+	/**
+	 * 更新活动阅读量
+	 * @param id
+	 */
+	void updateActivityCount(String id);
+
 }

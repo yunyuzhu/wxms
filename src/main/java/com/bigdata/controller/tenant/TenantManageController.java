@@ -19,6 +19,7 @@ import com.bigdata.common.util.CommonTools;
 import com.bigdata.model.system.User;
 import com.bigdata.model.tenant.GoldUserBean;
 import com.bigdata.model.tenant.QueryBean;
+import com.bigdata.model.tenant.RuleBean;
 import com.bigdata.service.tenant.ITenantManageService;
 import com.wordnik.swagger.annotations.ApiParam;
 
@@ -70,9 +71,9 @@ public class TenantManageController {
 		User user = (User)CommonTools.findUserSession(request);
 		
 		//获取商户当前兑换规则
-		String rule = tenantManageServiceImpl.getTenantRule(user.getId());
+		RuleBean ruleBean = tenantManageServiceImpl.getTenantRule(user.getId());
 		
-		return rule;
+		return ruleBean;
 	}
 	
 	/**

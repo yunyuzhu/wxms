@@ -80,5 +80,21 @@ public class PortalActivityController {
 		ActivityBean activityBean = activityManageServiceImpl.getActivityInfoById(id);
     	return activityBean;
 	}
+	
+	/**
+	 * 更新活动阅读量
+	 * @return
+	 */
+	@RequestMapping(value = "/updateCount", method = RequestMethod.GET)
+	@ResponseBody
+	public Object updateActivityCount(@ApiParam(required = false, name = "id", value = "活动id") @RequestParam(value = "id", required = false) String id) {
+		
+		//更新活动阅读量
+		portalActivityServiceImpl.updateActivityCount(id);
+    	
+		Map<String, Object> map = new HashMap<String, Object>();
+    	map.put("msg", "更新活动阅读量成功");
+    	return map;
+	}
 
 }

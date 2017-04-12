@@ -49,9 +49,10 @@
 		   and t1.trade = t2.id
 	</select>
 	
-	<select id="getTenantRule" parameterType="Integer" resultType="String">
+	<select id="getTenantRule" parameterType="Integer" resultType="com.bigdata.model.tenant.RuleBean">
 	
-		select t2.rate
+		select t2.rate,
+		       t2.remark
 		  from t_user t1,
 		       t_rule t2
 		 where t1.id = #{id}

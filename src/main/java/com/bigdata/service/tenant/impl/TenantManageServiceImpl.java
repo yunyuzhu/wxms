@@ -11,6 +11,7 @@ import com.bigdata.model.system.User;
 import com.bigdata.model.tenant.GoldDetail;
 import com.bigdata.model.tenant.GoldUserBean;
 import com.bigdata.model.tenant.QueryBean;
+import com.bigdata.model.tenant.RuleBean;
 import com.bigdata.service.tenant.ITenantManageService;
 
 /**   
@@ -43,10 +44,10 @@ public class TenantManageServiceImpl implements ITenantManageService {
 	 * @return
 	 */
 	@Override
-	public String getTenantRule(Integer id) {
+	public RuleBean getTenantRule(Integer id) {
 		// 获取商户当前兑换规则
-		String rule = tenantManageMapper.getTenantRule(id);
-		return rule;
+		RuleBean ruleBean = tenantManageMapper.getTenantRule(id);
+		return ruleBean;
 	}
 
 	/**
