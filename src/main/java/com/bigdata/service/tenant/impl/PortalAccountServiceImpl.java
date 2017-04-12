@@ -102,4 +102,28 @@ public class PortalAccountServiceImpl implements IPortalAccountService {
 		portalAccountMapper.updateUser(user);
 	}
 
+	/**
+	 * 获取我的账户消费流水
+	 * @param id
+	 * @return
+	 */
+	@Override
+	public List<GoldUserBean> getMyAccountConsumeStream(String id) {
+		//获取我的账户消费流水
+		List<GoldUserBean> list = portalAccountMapper.getMyAccountConsumeStream(id);
+		return list;
+	}
+
+	/**
+	 * 获取我的账户金币兑换申请流水
+	 * @param string
+	 * @return
+	 */
+	@Override
+	public List<GoldUserBean> getMyAccountChangeStream(String id) {
+		//获取我的账户金币兑换申请流水
+		List<GoldUserBean> list = portalAccountMapper.getMyAccountChangeStream(id);
+		return list;
+	}
+
 }

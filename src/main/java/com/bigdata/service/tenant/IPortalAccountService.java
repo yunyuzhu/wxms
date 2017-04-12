@@ -33,7 +33,7 @@ public interface IPortalAccountService {
 	 * @param id
 	 * @return
 	 */
-	List<GoldUserBean> getMyAccountGoldStream(String string);
+	List<GoldUserBean> getMyAccountGoldStream(String id);
 
 	/**
 	 * 扫描消费金额
@@ -54,5 +54,19 @@ public interface IPortalAccountService {
 	 * @param user
 	 */
 	void updateUser(WxUser user);
+
+	/**
+	 * 获取我的账户消费流水
+	 * @param id
+	 * @return
+	 */
+	List<GoldUserBean> getMyAccountConsumeStream(String id);
+
+	/**
+	 * 获取我的账户金币兑换申请流水
+	 * @param string
+	 * @return
+	 */
+	List<GoldUserBean> getMyAccountChangeStream(String id);
 
 }

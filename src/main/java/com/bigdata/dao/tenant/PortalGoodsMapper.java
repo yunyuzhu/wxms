@@ -28,4 +28,11 @@ public interface PortalGoodsMapper {
 	 */
 	void updateChangeGoods(@Param(value = "userId") String userId, @Param(value = "goodsId") String goodsId, @Param(value = "price") String price);
 
+	/**
+	 * 更新用户金币余额
+	 * @param userId
+	 * @param count
+	 */
+	void updateUserGold(@Param(value = "userId") String userId, @Param(value = "count") Integer count);
+
 }

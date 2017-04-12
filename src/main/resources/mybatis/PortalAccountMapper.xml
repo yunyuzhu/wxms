@@ -9,6 +9,8 @@
 		       case sex when 1 then '男' else '女' end as sex,
 		       age,
 		       phone,
+		       email,
+		       wx,
 		       gold
 		  from t_wx_user
 		  where id = #{id}
@@ -35,6 +37,42 @@
 		   and t1.flag = 1
 		   and t2.id = #{id}
 	  order by t1.confirmTime desc
+	  
+	</select>
+	
+	<select id="getMyAccountConsumeStream" resultType="com.bigdata.model.tenant.GoldUserBean">
+	
+		select t1.id,
+		       t1.consumeMoney,
+		       case t1.flag when 1 then '已确认' else '未确认' end as flag,
+			   date_format(t1.consumeTime, '%Y-%m-%d %T') as consumeTime,
+			   t3.tenantName
+		  from t_gold_detail t1,
+		       t_wx_user t2,
+		       t_user t3
+		 where t1.wxId = t2.id
+		   and t1.userId = t3.id
+		   and t1.goldType = 1
+		   and t2.id = #{id}
+	  order by t1.consumeTime desc
+	  
+	</select>
+	
+	<select id="getMyAccountChangeStream" resultType="com.bigdata.model.tenant.GoldUserBean">
+	
+		select t1.id,
+		       t1.goldNum,
+		       case t1.flag when 1 then '已确认' else '未确认' end as flag,
+			   date_format(t1.consumeTime, '%Y-%m-%d %T') as consumeTime,
+			   t3.name
+		  from t_gold_detail t1,
+		       t_wx_user t2,
+		       t_goods t3
+		 where t1.wxId = t2.id
+		   and t1.goodsId = t3.id
+		   and t1.goldType = 0
+		   and t2.id = #{id}
+	  order by t1.consumeTime desc
 	  
 	</select>
 	

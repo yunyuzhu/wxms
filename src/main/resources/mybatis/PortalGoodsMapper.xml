@@ -21,4 +21,12 @@
 		
 	</insert>
 	
+	<update id="updateUserGold">
+	
+		update t_wx_user
+		   set gold = gold - #{count}
+		 where id = #{userId}
+		
+	</update>
+	
 </mapper>

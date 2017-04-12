@@ -63,4 +63,18 @@ public interface PortalAccountMapper {
 	 */
 	void updateUser(WxUser user);
 
+	/**
+	 * 获取我的账户消费流水
+	 * @param id
+	 * @return
+	 */
+	List<GoldUserBean> getMyAccountConsumeStream(@Param(value = "id") String id);
+
+	/**
+	 * 获取我的账户金币兑换申请流水
+	 * @param id
+	 * @return
+	 */
+	List<GoldUserBean> getMyAccountChangeStream(@Param(value = "id") String id);
+
 }

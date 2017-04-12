@@ -38,6 +38,11 @@ public class GoldUserBean implements Serializable {
 	private String goldType;
 	
 	/**
+	 * 是否确认
+	 */
+	private String flag;
+	
+	/**
 	 * 电话
 	 */
 	private String phone;
@@ -120,6 +125,14 @@ public class GoldUserBean implements Serializable {
 
 	public void setGoldType(String goldType) {
 		this.goldType = goldType;
+	}
+
+	public String getFlag() {
+		return flag;
+	}
+
+	public void setFlag(String flag) {
+		this.flag = flag;
 	}
 
 	public String getPhone() {

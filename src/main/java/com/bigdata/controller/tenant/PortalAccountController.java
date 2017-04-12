@@ -115,6 +115,76 @@ public class PortalAccountController {
 	}
 	
 	/**
+	 * 获取我的账户消费流水
+	 * @data 2016年3月31日 下午2:52:47
+	 * @param request
+	 * @param response
+	 * @throws Exception 
+	 */
+	@ResponseBody
+	@RequestMapping(value="/consumeStream", method = RequestMethod.GET)
+	public Object getMyAccountConsumeStream(@ApiParam(required = true, name = "pageStart", value = "分页查询起始条数") @RequestParam(value = "pageStart", required = true) Integer pageStart,
+			  @ApiParam(required = true, name = "pageSize", value = "分页查询每页显示条数") @RequestParam(value = "pageSize", required = true) Integer pageSize,
+			  HttpServletRequest request, HttpServletResponse response) throws Exception{
+		
+		//获取登录的用户信息
+		User user = (User)CommonTools.findUserSession(request);
+		
+		//获取我的账户消费流水
+		List<GoldUserBean> list = portalAccountServiceImpl.getMyAccountConsumeStream(user.getId().toString());
+
+		//分页
+		ArrayList<GoldUserBean> listPage = new ArrayList<GoldUserBean>();
+		for(int i=pageStart;i<pageStart + pageSize;i++){
+			if(i<list.size()){
+				GoldUserBean gub = list.get(i);
+				gub.setOrderId(i+1);
+				listPage.add(gub);
+			}
+		}
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+    	map.put("total", list.size());
+    	map.put("rows", listPage);
+    	return map;
+	}
+	
+	/**
+	 * 获取我的账户金币兑换申请流水
+	 * @data 2016年3月31日 下午2:52:47
+	 * @param request
+	 * @param response
+	 * @throws Exception 
+	 */
+	@ResponseBody
+	@RequestMapping(value="/changeStream", method = RequestMethod.GET)
+	public Object getMyAccountChangeStream(@ApiParam(required = true, name = "pageStart", value = "分页查询起始条数") @RequestParam(value = "pageStart", required = true) Integer pageStart,
+			  @ApiParam(required = true, name = "pageSize", value = "分页查询每页显示条数") @RequestParam(value = "pageSize", required = true) Integer pageSize,
+			  HttpServletRequest request, HttpServletResponse response) throws Exception{
+		
+		//获取登录的用户信息
+		User user = (User)CommonTools.findUserSession(request);
+		
+		//获取我的账户金币兑换申请流水
+		List<GoldUserBean> list = portalAccountServiceImpl.getMyAccountChangeStream(user.getId().toString());
+
+		//分页
+		ArrayList<GoldUserBean> listPage = new ArrayList<GoldUserBean>();
+		for(int i=pageStart;i<pageStart + pageSize;i++){
+			if(i<list.size()){
+				GoldUserBean gub = list.get(i);
+				gub.setOrderId(i+1);
+				listPage.add(gub);
+			}
+		}
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+    	map.put("total", list.size());
+    	map.put("rows", listPage);
+    	return map;
+	}
+	
+	/**
 	 * 扫描消费金额
 	 * @data 2016年3月31日 下午2:52:47
 	 * @param request

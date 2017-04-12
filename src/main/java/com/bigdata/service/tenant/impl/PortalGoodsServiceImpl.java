@@ -42,11 +42,16 @@ public class PortalGoodsServiceImpl implements IPortalGoodsService {
 	@Override
 	public void updateChangeGoods(String userId, String ids, String prices) {
 		//提交兑换商品申请
+		int count = 0;
 		String[] arrId = ids.split(",");
 		String[] arrPrice = prices.split(",");
 		for(int i=0;i<arrId.length;i++){
 			portalGoodsMapper.updateChangeGoods(userId, arrId[i], arrPrice[i]);
+			count += Integer.parseInt(arrPrice[i]);
 		}
+		
+		//更新用户金币余额
+		portalGoodsMapper.updateUserGold(userId, count);
 	}
 
 }
