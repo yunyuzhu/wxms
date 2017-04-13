@@ -205,12 +205,21 @@ function listEditSave(id){
     }
     // 输入校验
     do{
-        if(!EmptyCheck($namePop, inData.userName, "规则名称不能为空")){
+        if(!EmptyCheck($namePop, inData.ruleName, "规则名称不能为空")){
             break;
         }
-        if(!EmptyCheck($ratePop, inData.userName, "规则内容不能为空")){
+        if(!EmptyCheck($ratePop, inData.rate, "规则内容不能为空")){
             break;
         }
+        if(typeof(inData.rate) != 'number'){
+            tipShow($ratePop, "兑换率必须为数字");
+            break;
+        }
+        if(parseFloat(inData.rate) <= 0){
+            tipShow($ratePop, "兑换率必须大于0");
+            break;
+        }
+        tipHide();
         //发送服务器
         $.ajax({
             type: "get",
@@ -272,12 +281,21 @@ function listAddSave(){
     }
     //输入校验
     do{
-        if(!EmptyCheck($namePop, inData.userName, "规则名称不能为空")){
+        if(!EmptyCheck($namePop, inData.ruleName, "规则名称不能为空")){
             break;
         }
-        if(!EmptyCheck($ratePop, inData.userName, "规则内容不能为空")){
+        if(!EmptyCheck($ratePop, inData.rate, "规则内容不能为空")){
             break;
         }
+        if(typeof(inData.rate) != 'number'){
+            tipShow($ratePop, "兑换率必须为数字");
+            break;
+        }
+        if(parseFloat(inData.rate) <= 0){
+            tipShow($ratePop, "兑换率必须大于0");
+            break;
+        }
+        tipHide();
         //发送服务器
         $.ajax({
             type: "get",

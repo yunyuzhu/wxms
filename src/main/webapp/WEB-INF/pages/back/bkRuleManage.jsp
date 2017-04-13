@@ -86,7 +86,7 @@
                                 <label for="ratePop" class="col-sm-2 control-label"><i>*</i>规则内容</label>
                                 <div class="col-sm-9">
                                     <span class="form-control-static">兑换率为</span>
-                                    <input type="text" class="form-control" id="ratePop" value="" placeholder="输入规则内容">
+                                    <input type="number" class="form-control" id="ratePop" value="" placeholder="输入规则内容">
                                 </div>
                             </div>
                             <div class="form-group">
