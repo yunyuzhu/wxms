@@ -26,9 +26,8 @@
 			</div>
 			<div class="weui-tab__panel">
 				<article class="weui-article">
-					<h1 class="title">首发创业平台</h1>
-					<section>
-						首发创业平台首发创业平台首发创业平台首发创业平台首发创业平台
+					<section class="about-con">
+						首发创业平台致力于打造最全面最优质的创业服务平台，为中小商户和用户消费提供积分和积分兑换服务，欢迎广大商户入驻平台。
 					</section>
 				</article>
 			</div>

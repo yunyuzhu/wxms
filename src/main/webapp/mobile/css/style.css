@@ -180,6 +180,8 @@ body,html{height:100%;background-color:#F8F8F8;}
     border:1px solid #D2D2D2;background:#FFF;}
 .apply-total{font-size:20px;color:#F16A13;vertical-align:top;}
 /*center*/
+.hdinfo-face{background:#F8F8F8;}
+.faceimg{width:100px;height:100px;overflow:hidden;border-radius:100%;}
 .centerhd{text-align:center;}
 .centerhd-face i{font-size:46px;color:#666;}
 .centerbd .weui-cells{margin-top:10px;}
@@ -191,3 +193,5 @@ body,html{height:100%;background-color:#F8F8F8;}
 .text-state{font-size:14px; color:#868686;}
 .flag-state{color:#09bb07;}
 .mygold{font-size:24px;}
+/*about*/
+.about-con{text-indent:2em;}
