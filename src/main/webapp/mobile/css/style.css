@@ -52,6 +52,7 @@ body,html{height:100%;background-color:#F8F8F8;}
 .weui-cells:after, .weui-cells:before{height:2px;}
 .weui-cell:before{height:2px;border-top-color:#CCC;}
 .weui-media-box:before{height:2px;border-top-color:#CCC;}
+.weui-media-box{padding:10px 15px;}
 /*tips*/
 .jq_tips_box{z-index:21176523 !important;}
 .layui-layer-rim{z-index:1000!important;}

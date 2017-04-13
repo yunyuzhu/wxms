@@ -43,7 +43,7 @@ function setGold(){
         jsonp: "callback",
         success:function(data){
             var jsonData = eval(data);
-            document.getElementById("num").innerHTML = jsonData;
+            document.getElementById("myGold").innerHTML = jsonData;
         },
         error:function(error){
             console.log(error);
@@ -53,7 +53,7 @@ function setGold(){
 }
 //输入参数
 function getInData(option){
-    var setting = {start: 0, size: 5};
+    var setting = {start: 0, size: 10};
     if(typeof(option) == 'undefined'){var option={};}
     if(typeof(option) == 'object'){
         for(var key in option){
