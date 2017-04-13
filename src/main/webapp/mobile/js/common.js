@@ -334,6 +334,10 @@ function GetRequest(){
     }
     return theRequest;
 }
+//判断是否为null
+function isNull(obj){
+    return (obj == null || obj == "null");
+}
 //判断是否为数组类型
 function isArray(obj){
     return Object.prototype.toString.call(obj) === '[object Array]';

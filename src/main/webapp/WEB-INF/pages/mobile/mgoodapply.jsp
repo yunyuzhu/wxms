@@ -42,7 +42,7 @@
 			</div>
 		</div>
 		<%--操作成功--%>
-		<div class="page cthide pop-apply" id="applyPop">
+		<div class="page msg cthide pop-apply" id="applyPop">
 			<div class="weui-msg">
 				<div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
 				<div class="weui-msg__text-area">

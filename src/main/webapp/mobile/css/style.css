@@ -24,6 +24,8 @@ body,html{height:100%;background-color:#F8F8F8;}
 .fontblack{color:#333;}
 .weui-cell_vcode{padding-right:15px;}
 .button-sp-area{margin:20px auto;padding:15px 0;width:60%;}
+.page{position:absolute;top:0;left:0;width:100%;height:100%;background:#F8F8F8;}
+.page.msg{background:#FFF;}
 .page__hd{padding:20px;}
 .page__bd{padding-bottom:20px;}
 .cthas .before, .after{display:none;}
@@ -39,13 +41,13 @@ body,html{height:100%;background-color:#F8F8F8;}
 .mtab-ft{position:absolute;z-index:500;left:0;bottom:0;width:100%;height:50px;padding:0 10px;line-height:48px;
     background:#FAFAFA;border-top:1px solid #E2E2E2;overflow: hidden;}
 .mhd-btnr{position:absolute;right:15px;margin-top:10px;}
-
 .text-center{text-align:center;}
 .vert-center{display:table;}
 .vert-cell{display:table-cell;vertical-align:middle;}
 .cthas .vert-cell.before, .vert-cell.after{display:none;}
 .cthas .vert-cell.after, .vert-cell.before{display:table-cell;}
 [class^="icon-"], [class*=" icon-"]{margin:0 5px;}
+.text-des{font-size:14px;color:#666;}
 /*tips*/
 .jq_tips_box{z-index:21176523 !important;}
 .layui-layer-rim{z-index:1000!important;}
@@ -154,7 +156,17 @@ body,html{height:100%;background-color:#F8F8F8;}
 .body-googapply .layui-layer-shade{opacity:1!important;background-color:#FFF!important;}
 .body-googapply .layui-layer{box-shadow:none;}
 .body-googapply .layui-layer-setwin{display:none;}
-.weui-msg{padding-top:0;}
+.pop-apply .weui-msg{padding-top:0;}
+/*cost*/
+.scan-box{width:242px;min-height:160px;margin:10px auto;}
+.scan-bd{width:242px;margin:30px auto;border:1px solid #D2D2D2;background:#FFF;}
+.scan-screen{height:322px;}
+.scan-form{width:242px;margin:30px auto;}
+.scaninfo .weui-cells{font-size:14px;margin-top:0;}
+.scaninfo .weui-cells:before,.scaninfo .weui-cells:after{border:0 none;}
+.scaninfo .weui-label{min-width:50px;}
+.scan-in{display:block;width:160px;margin:10px auto;padding:5px 10px;height:34px;font-size:16px;border-radius:2px;
+    border:1px solid #D2D2D2;background:#FFF;}
 /*center*/
 .centerhd{text-align:center;}
 .centerhd-face i{font-size:46px;color:#666;}
