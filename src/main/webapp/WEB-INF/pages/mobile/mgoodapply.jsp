@@ -19,14 +19,14 @@
 </head>
 	<body class="body-googapply">
 	<div class="ls-wrap tnwrap">
-		<div class="weui-tab">
+		<div class="weui-tab" id="tabPage">
 			<div class="mtab-hd">
 				<a href="javascript:history.go(-1);" class="mhd-back"><i class="icon-arrow-left2"></i></a>
 				<div class="mhd-title">商品兑换</div>
 			</div>
-			<div class="weui-tab__panel">
+			<div class="weui-tab__panel" id="goodsList">
 				<div class="weui-cells__title">兑换列表</div>
-				<div class="weui-cells weui-cells_checkbox" id="goodsList" v-show="show">
+				<div class="weui-cells weui-cells_checkbox" v-show="show">
 					<label class="weui-cell weui-check__label" v-bind:for="item.id"  v-for="item in items">
 						<div class="weui-cell__hd">
 							<input type="checkbox" class="weui-check" name="goodsapply" v-bind:id="item.id" v-bind:data-price="item.price">
@@ -38,11 +38,12 @@
 				</div>
 			</div>
 			<div class="mtab-ft clearfix">
+				<span>总计：<span id="totalGold" class="apply-total">250</span></span>
 				<a class="weui-btn weui-btn_mini weui-btn_primary mhd-btnr" id="inSubmit">提交申请</a>
 			</div>
 		</div>
 		<%--操作成功--%>
-		<div class="page msg cthide pop-apply" id="applyPop">
+		<div class="page msg cthide" id="successPage">
 			<div class="weui-msg">
 				<div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
 				<div class="weui-msg__text-area">
@@ -52,7 +53,7 @@
 				<div class="weui-msg__opr-area">
 					<p class="weui-btn-area">
 						<a href="${ctx}/mhome" class="weui-btn weui-btn_primary">完成，返回首页</a>
-						<a href="${ctx}/mapplystream" class="weui-btn weui-btn_default">查看申请</a>
+						<a href="${ctx}/mapplystream" class="weui-btn weui-btn_default">查看申请流水</a>
 					</p>
 				</div>
 			</div>

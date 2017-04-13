@@ -9,7 +9,7 @@ function appDataInit(){
         el: '#streamList',
         data: {
             'items': [
-                {id: "", goldNum: "", goldType: "", time: ''}
+                {id: "",name: "", goldNum: "",time: '' ,flag: ''}
             ],
             'show': true
         }
@@ -48,7 +48,7 @@ function loadList(){
     var inData = new getInData();
     $.ajax({
         type: "get",
-        url: mUrlBase + "/goods/ConfirmList",
+        url: mUrlBase + "/portalAccount/changeStream",
         dataType: "json",
         data: inData,
         async: false,
@@ -63,9 +63,10 @@ function loadList(){
                     var curObj = dataRows[i];
                     var tmpObj = {
                         id: curObj["id"],
-                        goodsName: curObj["goodsName"],
-                        price: curObj["price"],
-                        time: curObj["consumeTime"]
+                        name: curObj["name"],
+                        goldNum: curObj["goldNum"],
+                        time: curObj["consumeTime"],
+                        flag: curObj["flag"]
                     };
                     dataRows[i] = tmpObj;
                 }

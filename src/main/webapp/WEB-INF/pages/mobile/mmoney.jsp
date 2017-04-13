@@ -35,6 +35,15 @@
 						</div>
 					</div>
 				</div>
+				<div class="weui-cells__title">金币流水</div>
+				<div class="weui-cells" id="streamList" v-show="show">
+					<div class="weui-cell" v-for="item in items">
+						<div class="weui-cell__bd">
+							<p>{{item.goldType}} {{item.goldNum}}金币</p>
+						</div>
+						<div class="weui-cell__ft"><span class="home-price">{{item.time}}</span></div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

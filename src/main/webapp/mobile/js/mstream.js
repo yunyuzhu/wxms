@@ -9,7 +9,7 @@ function appDataInit(){
         el: '#streamList',
         data: {
             'items': [
-                {id: "", goldNum: "", goldType: "", time: ''}
+                {id: "", name: "", money: "", flag: "",time: ''}
             ],
             'show': true
         }
@@ -48,7 +48,7 @@ function loadList(){
     var inData = new getInData();
     $.ajax({
         type: "get",
-        url: mUrlBase + "/portalAccount/goldStream",
+        url: mUrlBase + "/portalAccount/consumeStream",
         dataType: "json",
         data: inData,
         async: false,
@@ -63,9 +63,10 @@ function loadList(){
                     var curObj = dataRows[i];
                     var tmpObj = {
                         id: curObj["id"],
-                        goldNum: curObj["goldNum"],
-                        goldType: curObj["goldType"],
-                        time: curObj["confirmTime"]
+                        name: curObj["tenantName"],
+                        money: curObj["consumeMoney"],
+                        time: curObj["consumeTime"],
+                        flag: curObj["flag"]
                     };
                     dataRows[i] = tmpObj;
                 }

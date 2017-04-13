@@ -21,7 +21,7 @@
 	<div class="ls-wrap tnwrap">
 		<div class="weui-tab">
 			<div class="mtab-hd">
-				<a href="javascript:history.go(-1);" class="mhd-back"><i class="icon-arrow-left2"></i></a>
+				<a href="javascript:history.go(-1);location.reload();" class="mhd-back"><i class="icon-arrow-left2"></i></a>
 				<div class="mhd-title">活动内容</div>
 			</div>
 			<div class="weui-tab__panel" id="mActInfoPanel">

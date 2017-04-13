@@ -3,6 +3,25 @@
  */
 var appGoodsList;
 var myGold = 0;
+//扫描页面跳转
+function applyPageGo(index){
+    var $tabPage = $("#tabPage");
+    var $successPage = $("#successPage");
+    var pageIndex = 0;
+    if((typeof(index) != 'undefined')&&(index < 2)){
+        pageIndex = index;
+    }
+    switch(pageIndex){
+        case 0:
+            $successPage.hide();
+            $tabPage.show();
+            break;
+        case 1: //提交成功
+            $tabPage.hide();
+            $successPage.show();
+            break;
+    }
+}
 //数据初始化
 function appDataInit(){
     //活动列表
@@ -19,6 +38,9 @@ function appDataInit(){
 appDataInit();
 //加载页面
 function loadhtml(){
+    $("#goodsList").on('click', "input[type=checkbox]",function(){
+        calTotalGold();
+    });
     //活动
     goodsList();
     //提交申请
@@ -37,9 +59,23 @@ function loadhtml(){
     getGold();
 }
 $(document).ready(function(){
+    applyPageGo(0);
     loadhtml();
 });
-
+//计算总额
+function calTotalGold(){
+    var $totalGold = $("#totalGold");
+    var $List = $("#goodsList");
+    var $checkItems = $List.find('input[name=goodsapply]:checked');
+    var priceArr= [];
+    var total = 0;
+    var checkSize = $checkItems.size();
+    for(var i=0; i<checkSize; i++){
+        var $item = $checkItems.eq(i);
+        total += parseInt($item.attr('data-price'));
+    }
+    $totalGold.text(total);
+}
 //获取余额
 function getGold(){
     //发送服务器
@@ -136,6 +172,7 @@ function applyChecked(ids){
     for(var i=0, arrSize = idArr.length; i<arrSize; i++){
         var $checkbox = $List.find('input[id='+idArr[i]+']');
         $checkbox.attr("checked", "checked");
+        $checkbox.trigger('click');
     }
 }
 //提交申请
@@ -166,7 +203,7 @@ function inSubmit(){
         }
         var inData = {
             ids: idArr.join(','),
-            prices: idArr.join(',')
+            prices: priceArr.join(',')
         };
         $.ajax({
             type: "get",
@@ -178,14 +215,8 @@ function inSubmit(){
             success:function(data){
                 var jsonData = eval(data);
                 var msg = jsonData['msg'];
-                //弹窗
-                layer.open({
-                    type: 1,
-                    offset: '100px',
-                    shade: true,
-                    title: false,
-                    content: $('#applyPop')
-                });
+                //成功提示
+                applyPageGo(1);
             },
             error:function(error){
                 console.log(error);
