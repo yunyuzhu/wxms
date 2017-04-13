@@ -166,6 +166,7 @@ body,html{height:100%;background-color:#F8F8F8;}
 .accinfo-btn .before,.accinfo-btn.ismodify .after{display:block;}
 .accinfo-btn.ismodify .before,.accinfo-btn .after{display:none;}
 .btn-save + .btn-cancle{margin-left:20px;}
+.weui-btn+.weui-btn{margin-top:0;}
 /*cost*/
 .scan-box{width:242px;min-height:160px;margin:10px auto;}
 .scan-bd{width:242px;margin:30px auto;border:1px solid #D2D2D2;background:#FFF;}

@@ -77,14 +77,14 @@
 							<input class="weui-input" type="text" id="wx">
 						</div>
 					</div>
-					<div class="weui-cell">
+					<%--<div class="weui-cell">
 						<div class="weui-cell__hd">
 							<label class="weui-label">备注：</label>
 						</div>
 						<div class="weui-cell__bd">
 							<textarea class="weui-textarea" id="remark" rows="2"></textarea>
 						</div>
-					</div>
+					</div>--%>
 				</div>
 				<div class="accinfo-btn" id="accinfoBtn">
 					<div class="weui-btn-area text-center before">

@@ -21,7 +21,7 @@ function inSubmit(){
     var $phone = $("#phone");
     var $email = $("#email");
     var $wx = $("#wx");
-    var $remark = $("#remark");
+    // var $remark = $("#remark");
     var inData = {
         userName: $userAccount.val(),
         password: $userPassword.val(),
@@ -30,8 +30,7 @@ function inSubmit(){
         age: $age.val(),
         phone: $phone.val(),
         email: $email.val(),
-        wx: $wx.val(),
-        remark: $remark.val()
+        wx: $wx.val()
     };
     //删除前后的空白字符
     /*for(var para in inData){

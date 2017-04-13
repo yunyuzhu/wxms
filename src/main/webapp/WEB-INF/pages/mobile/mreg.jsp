@@ -94,14 +94,14 @@
 								<input class="weui-input" type="text" id="wx" placeholder="请输入微信号">
 							</div>
 						</div>
-						<div class="weui-cell">
+						<%--<div class="weui-cell">
 							<div class="weui-cell__hd">
 								<label for="remark" class="weui-label">备注：</label>
 							</div>
 							<div class="weui-cell__bd">
 								<textarea class="weui-textarea" id="remark" placeholder="备注" rows="2"></textarea>
 							</div>
-						</div>
+						</div>--%>
 					</div>
 					<div class="weui-btn-area">
 						<a class="weui-btn weui-btn_primary" id="inSubmit">注册</a>

@@ -71,7 +71,6 @@ function accLoad(){
             document.getElementById("phone").value = jsonData["phone"];
             document.getElementById("email").value = jsonData["email"];
             document.getElementById("wx").value = jsonData["wx"];
-            document.getElementById("remark").value = jsonData["remark"];
         },
         error:function(error){
             console.log(error);
@@ -92,15 +91,13 @@ function accSave(){
     var $phone = $("#phone");
     var $email = $("#email");
     var $wx = $("#wx");
-    var $remark = $("#remark");
     var inData = {
         name: $name.val(),
         sex: $sex.val(),
         age: $age.val(),
         phone: $phone.val(),
         email: $email.val(),
-        wx: $wx.val(),
-        remark: $remark.val()
+        wx: $wx.val()
     };
     //输入校验
     do{
