@@ -73,11 +73,6 @@ function calTotalGold(){
     }
     $totalGold.text(total);
 }
-//获取余额
-function getGold(){
-
-}
-
 //输入参数
 function getInData(option){
     var setting = {start: 0, size: 10};
@@ -150,7 +145,6 @@ function applyChecked(ids){
     var $List = $("#goodsList");
     for(var i=0, arrSize = idArr.length; i<arrSize; i++){
         var $checkbox = $List.find('input[id='+idArr[i]+']');
-        // $checkbox.attr("checked", "checked");
         $checkbox.trigger('click');
     }
 }
