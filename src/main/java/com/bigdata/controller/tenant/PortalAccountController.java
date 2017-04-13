@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -16,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bigdata.common.util.CommonTools;
+import com.bigdata.common.util.FileUpload;
 import com.bigdata.dao.tenant.ShopManageMapper;
 import com.bigdata.model.system.User;
 import com.bigdata.model.tenant.GoldUserBean;
@@ -306,5 +309,40 @@ public class PortalAccountController {
     	map.put("msg", "修改成功");
     	return map;
 	}
+	
+	/**
+	 * 修改用户头像
+	 * @param photoInfo
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping(value = "/updatePhoto", method = RequestMethod.GET)
+	@ResponseBody
+	public Object updateUserPhoto(@ApiParam(required = false, name = "photoInfo", value = "头像信息") @RequestParam(value = "photoInfo", required = false) MultipartFile photoInfo,
+			HttpServletRequest request, HttpServletResponse response) {
+		
+		//获取登录的用户信息
+		User userLogin = (User)CommonTools.findUserSession(request);
+		
+		//图片路径
+        String photoUrl = FileUpload.uploadFile(photoInfo, getImagePath());
+		
+		//修改用户头像
+		portalAccountServiceImpl.updateUserPhoto(userLogin.getId().toString(), photoUrl);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+    	map.put("msg", "修改头像成功");
+    	return map;
+	}
+	
+	/**
+	 * 生成图片名称
+	 * @return
+	 */
+    private String getImagePath() {
+        String path = UUID.randomUUID().toString();
+        return path;
+    }
 	
 }

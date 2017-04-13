@@ -77,4 +77,11 @@ public interface PortalAccountMapper {
 	 */
 	List<GoldUserBean> getMyAccountChangeStream(@Param(value = "id") String id);
 
+	/**
+	 * 修改用户头像
+	 * @param id
+	 * @param photoUrl
+	 */
+	void updateUserPhoto(@Param(value = "id") String id, @Param(value = "photoUrl") String photoUrl);
+
 }
