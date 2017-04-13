@@ -10,6 +10,7 @@
 		       age,
 		       phone,
 		       email,
+		       photoUrl,
 		       wx,
 		       gold
 		  from t_wx_user
@@ -146,6 +147,14 @@
 			   wx = #{wx},
 			   remark = #{remark},
 			   updateTime = NOW()
+		where id = #{id}
+			
+	</update>
+	
+	<update id="updateUserPhoto" >
+	
+		update t_wx_user
+		   set photoUrl = #{photoUrl}
 		where id = #{id}
 			
 	</update>

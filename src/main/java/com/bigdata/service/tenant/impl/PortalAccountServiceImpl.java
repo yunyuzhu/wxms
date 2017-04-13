@@ -126,4 +126,15 @@ public class PortalAccountServiceImpl implements IPortalAccountService {
 		return list;
 	}
 
+	/**
+	 * 修改用户头像
+	 * @param string
+	 * @param photoUrl
+	 */
+	@Override
+	public void updateUserPhoto(String id, String photoUrl) {
+		//修改用户头像
+		portalAccountMapper.updateUserPhoto(id, photoUrl);
+	}
+
 }

@@ -69,4 +69,11 @@ public interface IPortalAccountService {
 	 */
 	List<GoldUserBean> getMyAccountChangeStream(String id);
 
+	/**
+	 * 修改用户头像
+	 * @param id
+	 * @param photoUrl
+	 */
+	void updateUserPhoto(String id, String photoUrl);
+
 }
