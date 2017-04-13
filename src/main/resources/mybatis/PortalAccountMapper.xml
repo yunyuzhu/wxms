@@ -29,7 +29,7 @@
 	
 		select t1.id,
 		       t1.goldNum,
-		       case t1.goldType when 1 then '增加' else '减少' end as goldType,
+		       case t1.goldType when 1 then '消费增加' else '兑换减少' end as goldType,
 			   date_format(t1.confirmTime, '%Y-%m-%d %T') as confirmTime
 		  from t_gold_detail t1,
 		       t_wx_user t2
