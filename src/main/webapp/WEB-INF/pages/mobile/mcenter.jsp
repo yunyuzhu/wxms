@@ -22,7 +22,7 @@
 		<div class="weui-tab">
 			<div class="weui-tab__panel">
 				<div class="page" id="centerPage">
-					<div class="page__hd text-center centerhd">
+					<div class="page__hd text-center centerhd page_hd-info">
 						<div class="mhd-info vert-center">
 							<a href="${ctx}/mlogin" class="info-item vert-cell before">
 								<p class="hdface"><i class="icon-user3"></i></p>

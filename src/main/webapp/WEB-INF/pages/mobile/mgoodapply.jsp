@@ -33,12 +33,12 @@
 							<i class="weui-icon-checked"></i>
 						</div>
 						<div class="weui-cell__bd"><p>{{item.name}}</p></div>
-						<div class="weui-cell__ft"><span class="home-price">价格：{{item.price}}</span></div>
+						<div class="weui-cell__ft"><span class="home-price">{{item.price}} 金币</span></div>
 					</label>
 				</div>
 			</div>
 			<div class="mtab-ft clearfix">
-				<span>总计：<span id="totalGold" class="apply-total">250</span></span>
+				<span>总计：<span id="totalGold" class="apply-total">250</span>&nbsp;金币</span>
 				<a class="weui-btn weui-btn_mini weui-btn_primary mhd-btnr" id="inSubmit">提交申请</a>
 			</div>
 		</div>

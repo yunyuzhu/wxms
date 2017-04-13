@@ -22,7 +22,7 @@
 		<div class="weui-tab">
 			<div class="weui-tab__panel">
 				<div class="page">
-					<div class="page__hd text-center">
+					<div class="page__hd text-center page_hd-info">
 						<div class="mhd-info vert-center" id="homehdBox">
 							<a href="${ctx}/mlogin" class="info-item vert-cell before">
 								<p class="hdface"><i class="icon-user3"></i></p>
@@ -41,7 +41,7 @@
 								<div class="weui-cell__bd">
 									<p>{{item.name}}</p>
 								</div>
-								<div class="weui-cell__ft"><span class="home-price">价格：{{item.price}}</span></div>
+								<div class="weui-cell__ft"><span class="home-price">{{item.price}} 金币</span></div>
 							</a>
 						</div>
 						<div class="weui-cells__title">最新活动</div>

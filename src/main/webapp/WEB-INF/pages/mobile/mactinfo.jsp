@@ -26,10 +26,9 @@
 			</div>
 			<div class="weui-tab__panel" id="mActInfoPanel">
 				<article class="weui-article">
-					<h1 class="title">{{title}}</h1>
+					<h1 class="title text-center">{{title}}</h1>
 					<div class="weui-footer__text">
-						<span>阅读量：{{count}}</span><br/>
-						<span>创建时间：{{time}}</span>
+						<span>发布时间：{{time}}</span>&nbsp;&nbsp;<span>阅读量：{{count}}</span>
 					</div>
 					<section>
 						<div v-html="content"></div>

@@ -155,6 +155,7 @@ body,html{height:100%;background-color:#F8F8F8;}
 .mustfill label:before{content:'*';position:absolute;left:-10px;color:#F00;}
 .costscan-btn{margin-top:80px;}
 /*home*/
+.page_hd-info{padding-bottom:10px;}
 .mhd-info{width:110px;height:110px;margin:0 auto;border-radius:100%;background:#FFF;}
 .info-item{color:#09bb07;font-size:18px;}
 .hdface i{font-size:46px;color:#666;}

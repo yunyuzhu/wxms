@@ -88,7 +88,7 @@ function setGold(){
 }
 //商品列表
 function goodsList(){
-    var inData = new getInData();
+    var inData = new getInData({size:3});
     $.ajax({
         type: "get",
         url: mUrlBase + "/portalGoods/changeList",
@@ -128,7 +128,7 @@ function goodsList(){
 }
 //活动列表
 function actList(){
-    var inData = new getInData({size: 3});
+    var inData = new getInData({size:3});
     $.ajax({
         type: "get",
         url: mUrlBase + "/portalActivity/activityList",
@@ -150,7 +150,7 @@ function actList(){
                         href: curHref,
                         title: curObj["title"],
                         abstract: curObj["activityAbstract"],
-                        time: fatDate({time:curObj["createTime"]}).str,
+                        time: curObj["createTime"],
                         count: curObj["count"]
                     };
                     dataRows[i] = tmpObj;

@@ -25,7 +25,7 @@
 				<div class="mhd-title">我的金币</div>
 			</div>
 			<div class="weui-tab__panel">
-				<div class="page__hd text-center">
+				<div class="page__hd text-center page_hd-info">
 					<div class="mhd-info vert-center">
 						<div class="info-item vert-cell">
 							<p><i class="icon-coin-yen"></i>余额</p>
