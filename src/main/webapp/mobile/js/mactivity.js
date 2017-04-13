@@ -46,7 +46,7 @@ function inSubmit(){
 }
 //活动列表
 function actList(){
-    var inData = new getInData({start: 0, size: 5});
+    var inData = new getInData({start: 0, size: 10});
     $.ajax({
         type: "get",
         url: mUrlBase + "/portalActivity/activityList",
