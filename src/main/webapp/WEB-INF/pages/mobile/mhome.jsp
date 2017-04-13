@@ -23,20 +23,15 @@
 			<div class="weui-tab__panel">
 				<div class="page">
 					<div class="page__hd text-center">
-						<div class="homehd-box vert-center" id="homehdBox">
-							<div class="vert-cell before">
-								<a href="${ctx}/mlogin" class="alink">
-									<p class="facehd">
-										<i class="icon-user3"></i>
-									</p>登录/注册
-								</a>
-							</div>
-							<div class="vert-cell after">
-								<a href="${ctx}/mlogin" class="alink">
-									<p class="text-center"><i class="icon-coin-yen"></i>余额</p>
-									<p class="text-center">¥ <span id="homeGold"></span></p>
-								</a>
-							</div>
+						<div class="mhd-info vert-center" id="homehdBox">
+							<a href="${ctx}/mlogin" class="info-item vert-cell before">
+								<p class="hdface"><i class="icon-user3"></i></p>
+								<span>登录/注册</span>
+							</a>
+							<a href="${ctx}/mmoney" class="info-item vert-cell after">
+								<p><i class="icon-coin-yen"></i>余额</p>
+								<p class="mygold">¥ <span id="homeGold"></span></p>
+							</a>
 						</div>
 					</div>
 					<div class="page__bd">

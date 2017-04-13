@@ -154,8 +154,9 @@ body,html{height:100%;background-color:#F8F8F8;}
 .mustfill label:before{content:'*';position:absolute;left:-10px;color:#F00;}
 .costscan-btn{margin-top:80px;}
 /*home*/
-.homehd-box{width:100px;height:100px;margin:0 auto;border-radius:100%;background:#FFF;}
-.facehd i{font-size:46px;color:#666;}
+.mhd-info{width:110px;height:110px;margin:0 auto;border-radius:100%;background:#FFF;}
+.info-item{color:#09bb07;font-size:18px;}
+.hdface i{font-size:46px;color:#666;}
 .home-price{margin-right:10px;font-size:15px;}
 .body-googapply .layui-layer-shade{opacity:1!important;background-color:#FFF!important;}
 .body-googapply .layui-layer{box-shadow:none;}
@@ -176,9 +177,10 @@ body,html{height:100%;background-color:#F8F8F8;}
 .centerhd-face i{font-size:46px;color:#666;}
 .centerbd .weui-cells{margin-top:10px;}
 .centerbd .weui-cell__hd i{margin-right:5px;}
-.haslogin .centerhd-txt .before, .centerhd-txt .after,.centerbd .button-sp-area{display:none;}
-.centerhd-txt .before, .haslogin .centerhd-txt .after,.haslogin .centerbd .button-sp-area{display:block;}
-.centerhd-txt .after .name{display:inline-block;max-width:120px;white-space:nowrap;
+.centerbd .button-sp-area{display:none;}
+.cthas .centerbd .button-sp-area{display:block;}
+.centerhd-info .after .name{display:inline-block;max-width:120px;white-space:nowrap;
     text-overflow:ellipsis;overflow:hidden;}
 .text-state{font-size:14px; color:#868686;}
-.flag-state{color:#3e97eb;}
+.flag-state{color:#09bb07;}
+.mygold{font-size:24px;}

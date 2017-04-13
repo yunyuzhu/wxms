@@ -22,15 +22,14 @@
 		<div class="weui-tab">
 			<div class="weui-tab__panel">
 				<div class="page" id="centerPage">
-					<div class="page__hd centerhd">
-						<div class="centerhd-face">
-							<i class="icon-user3"></i>
-						</div>
-						<div class="centerhd-txt">
-							<div class="before">
-								<a href="${ctx}/mlogin" class="alink weui-btn weui-btn_mini">登录/注册</a>
-							</div>
-							<div class="after">
+					<div class="page__hd text-center centerhd">
+						<div class="mhd-info vert-center">
+							<a href="${ctx}/mlogin" class="info-item vert-cell before">
+								<p class="hdface"><i class="icon-user3"></i></p>
+								<span>登录/注册</span>
+							</a>
+							<div class="info-item vert-cell after">
+								<p class="hdface"><i class="icon-user3"></i></p>
 								<span class="name">yh</span>
 							</div>
 						</div>
@@ -103,14 +102,12 @@
 	</div>
 	<script type="text/javascript" charset="UTF-8">
 		mTabbarStyleGo(3);
-        var session_value = '<%=session.getAttribute("userSession")%>';
         var $centerPage = $("#centerPage");
-        var flag = (session_value == null || session_value == "null");
-        if(!flag){
-            $centerPage.addClass("haslogin");
+        if(isLogin()){
+            $centerPage.addClass("cthas");
 		}
 		else{
-            $centerPage.removeClass("haslogin");
+            $centerPage.removeClass("cthas");
 		}
 	</script>
 	</body>
