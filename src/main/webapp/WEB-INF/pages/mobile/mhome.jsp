@@ -33,7 +33,8 @@
 							</div>
 							<div class="vert-cell after">
 								<a href="${ctx}/mlogin" class="alink">
-									<p>余额：<span id="homeGold"></span></p>
+									<p class="text-center"><i class="icon-coin-yen"></i>余额</p>
+									<p class="text-center">¥ <span id="homeGold"></span></p>
 								</a>
 							</div>
 						</div>
