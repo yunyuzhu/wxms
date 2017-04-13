@@ -90,14 +90,15 @@ function decodeQR(){
                 if(res.indexOf('http') != -1){
                     clearInterval(decoderTimer);
                     $('#screenDiv').empty();
-                    layer.msg('扫描成功', {icon:0, shade:0.5, time: 1000});
-                    window.location.href = res;
+                    layer.msg('扫描成功');
+                    setTimeout(function(){
+                        window.location.href = res;
+                    }, 500);
                 }
             });
         });
     }
 }
-
 //商户信息
 function setShopInfo(id){
     var scanInfoInit= function(option){
