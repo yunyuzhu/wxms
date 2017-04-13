@@ -29,7 +29,6 @@
 								<span>登录/注册</span>
 							</a>
 							<div class="info-item vert-cell after hdinfo-face">
-								<%--<p class="hdface"><i class="icon-user3"></i></p>--%>
 								<p><img class="faceimg" src="${ctx}/mobile/img/face.jpg" alt="头像"></p>
 								<span class="name">yh</span>
 							</div>
@@ -92,7 +91,7 @@
 							</a>
 						</div>
 						<div class="button-sp-area">
-							<a href="${ctx}/logout" class="weui-btn weui-btn_warn">退出登录</a>
+							<a href="${ctx}/mlogout" class="weui-btn weui-btn_warn">退出登录</a>
 						</div>
 					</div>
 				</div>
@@ -102,14 +101,18 @@
 		</div>
 	</div>
 	<script type="text/javascript" charset="UTF-8">
-		mTabbarStyleGo(3);
-        var $centerPage = $("#centerPage");
-        if(isLogin()){
-            $centerPage.addClass("cthas");
-		}
-		else{
-            $centerPage.removeClass("cthas");
-		}
+        //加载页面
+        function loadhtml(){
+            var $centerPage = $("#centerPage");
+            if(isLogin()){
+                $centerPage.addClass("cthas");
+            }
+            else{
+                $centerPage.removeClass("cthas");
+            }
+        }
+        mTabbarStyleGo(3);
+        loadhtml();
 	</script>
 	</body>
 </html>

@@ -250,5 +250,17 @@ public class LoginController extends BaseController {
 		//会销毁，在SessionListener监听session销毁，清理权限缓存
 		return "redirect:login";
 	}
-	
+
+	/**
+	 * 用户注销
+	 * @return
+	 */
+	@RequestMapping(value = "mlogout", method = RequestMethod.GET)
+	public String mlogout() {
+		//使用权限管理工具进行用户的退出，注销登录
+		SecurityUtils.getSubject().logout();
+
+		//会销毁，在SessionListener监听session销毁，清理权限缓存
+		return "redirect:mhome";
+	}
 }
