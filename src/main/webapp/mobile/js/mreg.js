@@ -19,6 +19,8 @@ function inSubmit(){
     var $sex = $("#sex");
     var $age = $("#age");
     var $phone = $("#phone");
+    var $email = $("#email");
+    var $wx = $("#wx");
     var $remark = $("#remark");
     var inData = {
         userName: $userAccount.val(),
@@ -27,12 +29,14 @@ function inSubmit(){
         sex: $sex.val(),
         age: $age.val(),
         phone: $phone.val(),
+        email: $email.val(),
+        wx: $wx.val(),
         remark: $remark.val()
     };
     //删除前后的空白字符
-    for(var para in inData){
+    /*for(var para in inData){
         inData[para] = jQuery.trim(inData[para]);
-    }
+    }*/
     //输入校验
     do{
         if(!EmptyCheck($userAccount, inData.username, "账户不能为空")){

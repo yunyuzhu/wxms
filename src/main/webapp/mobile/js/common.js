@@ -74,6 +74,15 @@ function sexFat(sex){
     }
     return sexStr;
 }
+//性别值转换
+function sexVal(sex){
+    var sexVal = 0;
+    if(sex == "男"){
+        sexVal = 1;
+    }
+    return sexVal;
+}
+
 //出生日期字符串转换
 function birthFat(birth){
     return (birth.split('-')).join('.');

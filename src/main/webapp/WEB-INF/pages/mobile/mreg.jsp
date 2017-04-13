@@ -45,10 +45,10 @@
 						</div>
 						<div class="weui-cell">
 							<div class="weui-cell__hd">
-								<label for="name" class="weui-label">姓名：</label>
+								<label for="name" class="weui-label">昵称：</label>
 							</div>
 							<div class="weui-cell__bd">
-								<input class="weui-input" type="text" id="name" placeholder="请输入姓名">
+								<input class="weui-input" type="text" id="name" placeholder="请输入昵称">
 							</div>
 						</div>
 						<div class="weui-cell weui-cell_select weui-cell_select-after">
@@ -57,8 +57,8 @@
 							</div>
 							<div class="weui-cell__bd">
 								<select class="weui-select" name="sex" id="sex">
-									<option value="0">男</option>
-									<option value="1">女</option>
+									<option value="1">男</option>
+									<option value="0">女</option>
 								</select>
 							</div>
 						</div>
@@ -67,7 +67,7 @@
 								<label for="age" class="weui-label">年龄：</label>
 							</div>
 							<div class="weui-cell__bd">
-								<input class="weui-input" type="text" id="age" placeholder="请输入年龄">
+								<input class="weui-input" type="number" id="age" placeholder="请输入年龄">
 							</div>
 						</div>
 						<div class="weui-cell">
@@ -80,6 +80,22 @@
 						</div>
 						<div class="weui-cell">
 							<div class="weui-cell__hd">
+								<label for="age" class="weui-label">邮箱：</label>
+							</div>
+							<div class="weui-cell__bd">
+								<input class="weui-input" type="email" id="email" placeholder="请输入邮箱">
+							</div>
+						</div>
+						<div class="weui-cell">
+							<div class="weui-cell__hd">
+								<label for="wx" class="weui-label">微信：</label>
+							</div>
+							<div class="weui-cell__bd">
+								<input class="weui-input" type="text" id="wx" placeholder="请输入微信号">
+							</div>
+						</div>
+						<div class="weui-cell">
+							<div class="weui-cell__hd">
 								<label for="remark" class="weui-label">备注：</label>
 							</div>
 							<div class="weui-cell__bd">
@@ -87,7 +103,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="weui-btn-area tn-handle">
+					<div class="weui-btn-area">
 						<a class="weui-btn weui-btn_primary" id="inSubmit">注册</a>
 						<div class="login-more clearfix">
 							<a href="${ctx}/mlogin" class="alink fl">立即登录</a>
