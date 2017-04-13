@@ -81,7 +81,7 @@ function drawTwocode(id){
         return out;
     }
     // var costHref = location.protocol + "//" + location.host + rootPath + "/mcost?shopId=" + id;
-    var costHref = location.protocol + "//" + "192.168.0.110:8280" + rootPath + "/mcost?shopId=" + id;
+    var costHref = "http://35.160.177.181:8080/wxms/mcost?shopId=" + id;
 
     var $twocode = $("#twocode");
     $twocode.empty();
@@ -114,10 +114,11 @@ function twocodeImgLink(content){
         width: 400,
         height: 400
     });
+    var dlName = encodeURI("消费二维码"); //encodeURI 编码
     dlCanvasImgInit({
         canvasElem: $twocodeImg.find('canvas')[0],
         dlElem: document.getElementById("twocodeDl"),
-        fileName: "消费二维码",
+        fileName: dlName,
         imgType: 'jpg'
     });
 }

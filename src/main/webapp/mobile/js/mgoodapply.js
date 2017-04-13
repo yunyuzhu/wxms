@@ -2,7 +2,6 @@
  * Created by chun
  */
 var appGoodsList;
-var myGold = 0;
 //扫描页面跳转
 function applyPageGo(index){
     var $tabPage = $("#tabPage");
@@ -55,8 +54,6 @@ function loadhtml(){
             }, 500);
         }
     });
-    //获取余额
-    getGold();
 }
 $(document).ready(function(){
     applyPageGo(0);
@@ -78,22 +75,7 @@ function calTotalGold(){
 }
 //获取余额
 function getGold(){
-    //发送服务器
-    $.ajax({
-        type: "get",
-        url: mUrlBase + "/portalAccount/gold",
-        dataType: "json",
-        data: '',
-        async: false,
-        jsonp: "callback",
-        success:function(data){
-            var jsonData = eval(data);
-            myGold = parseInt(jsonData);
-        },
-        error:function(error){
-            console.log(error);
-        }
-    });
+
 }
 
 //输入参数
@@ -137,9 +119,6 @@ function goodsList(){
                 }
                 appGoodsList.items = dataRows;
                 appGoodsList.show = true;
-                setTimeout(function(){
-                    applyAddDef();
-                },100);
             }
             else{
                 appGoodsList.show = false;
@@ -171,7 +150,7 @@ function applyChecked(ids){
     var $List = $("#goodsList");
     for(var i=0, arrSize = idArr.length; i<arrSize; i++){
         var $checkbox = $List.find('input[id='+idArr[i]+']');
-        $checkbox.attr("checked", "checked");
+        // $checkbox.attr("checked", "checked");
         $checkbox.trigger('click');
     }
 }
@@ -197,29 +176,47 @@ function inSubmit(){
         for(var m=0,size=priceArr.length; m<size; m++){
             total += parseInt(priceArr[m]);
         }
-        if(total > myGold){
-            layer.msg("所选商品价格总额不能大于余额");
-            break;
-        }
-        var inData = {
-            ids: idArr.join(','),
-            prices: priceArr.join(',')
-        };
+        //获取余额
         $.ajax({
             type: "get",
-            url: mUrlBase + "/portalGoods/changeGoods",
+            url: mUrlBase + "/portalAccount/gold",
             dataType: "json",
-            data: inData,
+            data: '',
             async: false,
             jsonp: "callback",
             success:function(data){
                 var jsonData = eval(data);
-                var msg = jsonData['msg'];
-                //成功提示
-                applyPageGo(1);
+                var myGold = 0;
+                myGold = parseInt(jsonData);
+                if(total > myGold){
+                    layer.msg("所选商品总计金币总额不能大于金币余额");
+                    return;
+                }
+                var inData = {
+                    ids: idArr.join(','),
+                    prices: priceArr.join(',')
+                };
+                $.ajax({
+                    type: "get",
+                    url: mUrlBase + "/portalGoods/changeGoods",
+                    dataType: "json",
+                    data: inData,
+                    async: false,
+                    jsonp: "callback",
+                    success:function(data){
+                        var jsonData = eval(data);
+                        var msg = jsonData['msg'];
+                        //成功提示
+                        applyPageGo(1);
+                    },
+                    error:function(error){
+                        console.log(error);
+                    }
+                });
             },
             error:function(error){
                 console.log(error);
+                layer.msg("请重新提交申请");
             }
         });
     }while(0);

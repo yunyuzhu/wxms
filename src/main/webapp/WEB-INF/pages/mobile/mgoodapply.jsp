@@ -38,7 +38,7 @@
 				</div>
 			</div>
 			<div class="mtab-ft clearfix">
-				<span>总计：<span id="totalGold" class="apply-total">250</span>&nbsp;金币</span>
+				<span>总计：<span id="totalGold" class="apply-total"></span>&nbsp;金币</span>
 				<a class="weui-btn weui-btn_mini weui-btn_primary mhd-btnr" id="inSubmit">提交申请</a>
 			</div>
 		</div>
