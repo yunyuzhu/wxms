@@ -67,6 +67,7 @@ function scanStart(){
                 exArray.push(sourceInfo.id);
             }
         }
+        //camera on
         Webcam.reset();
         Webcam.attach('#screenDiv', exArray);
         setTimeout(function(){
@@ -87,10 +88,12 @@ function decodeQR(){
         Webcam.snap(function(data_uri) {
             qr.decodeFromImage(data_uri, function(er, res){
                 // console.log(res);
-                if(res.indexOf('http') != -1){
+                if((res.indexOf('http') != -1)||(res.indexOf('www') != -1)){
                     clearInterval(decoderTimer);
+                    layer.msg('识别成功');
+                    //camera off
+                    Webcam.reset();
                     $('#screenDiv').empty();
-                    layer.msg('扫描成功');
                     setTimeout(function(){
                         window.location.href = res;
                     }, 500);

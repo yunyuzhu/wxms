@@ -183,7 +183,7 @@ function inSubmit(){
                 var myGold = 0;
                 myGold = parseInt(jsonData);
                 if(total > myGold){
-                    layer.msg("所选商品总计金币总额不能大于金币余额");
+                    layer.msg("所选总计金币不能大于余额金币");
                     return;
                 }
                 var inData = {

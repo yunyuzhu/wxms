@@ -28,7 +28,7 @@
 				<!--扫描框-->
 				<div class="scan-box">
 					<div class="scan-bd scan-screen" id="screenDiv"></div>
-					<p class="text-des">将摄像头对准二维码，系统会自动识别</p>
+					<p class="text-des text-center">对准二维码扫描，系统会自动识别</p>
 				</div>
 			</div>
 			<!--底部导航-->
