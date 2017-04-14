@@ -28,7 +28,7 @@
 				<article class="weui-article">
 					<h1 class="title text-center">{{title}}</h1>
 					<div class="weui-footer__text">
-						<span>发布时间：{{time}}</span>&nbsp;&nbsp;<span>阅读量：{{count}}</span>
+						<span>发布时间：{{time}}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>阅读量：{{count}}</span>
 					</div>
 					<section>
 						<div v-html="content"></div>
