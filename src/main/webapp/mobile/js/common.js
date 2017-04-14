@@ -347,6 +347,11 @@ function GetRequest(){
 function isNull(obj){
     return (obj == null || obj == "null");
 }
+//判断是否为数字类型
+function isNumber(obj){
+    var val = Number(obj);
+    return (!isNaN(val));
+}
 //判断是否为数组类型
 function isArray(obj){
     return Object.prototype.toString.call(obj) === '[object Array]';
