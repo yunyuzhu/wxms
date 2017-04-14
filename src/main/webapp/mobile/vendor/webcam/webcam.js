@@ -222,7 +222,7 @@ var Webcam = {
 		img.src = origObjURL;
 	},
 	
-	attach: function(elem, exArray) {
+	attach: function(elem, cameraId) {
 		// create webcam preview and attach to DOM element
 		// pass in actual DOM reference, ID, or CSS selector
 		if (typeof(elem) == 'string') {
@@ -301,7 +301,7 @@ var Webcam = {
 						minHeight: this.params.dest_height
 					},
 					optional: [{
-						sourceId: exArray[1]  //0为前置摄像头，1为后置
+						sourceId: (typeof(cameraId) != 'undefined') ? cameraId : null
 					}]
 				}
 			})

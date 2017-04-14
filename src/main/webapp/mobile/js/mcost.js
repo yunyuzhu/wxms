@@ -58,22 +58,44 @@ function scanStart(){
         image_format: 'jpeg',
         jpeg_quality: 90
     });
-    var exArray = []; //存储设备源ID
-    MediaStreamTrack.getSources(function (sourceInfos) {
-        for (var i = 0; i != sourceInfos.length; ++i) {
-            var sourceInfo = sourceInfos[i];
-            //这里会遍历audio,video，所以要加以区分
-            if (sourceInfo.kind === 'video') {
-                exArray.push(sourceInfo.id);
+    //获取camera设备
+    if(MediaStreamTrack.getSources){
+        MediaStreamTrack.getSources(function (sourceInfos) {
+            var exArray = []; //存储设备源ID
+            for (var i = 0; i != sourceInfos.length; ++i) {
+                var sourceInfo = sourceInfos[i];
+                //这里会遍历audio,video，所以要加以区分
+                if (sourceInfo.kind === 'video') {
+                    exArray.push(sourceInfo.id);
+                }
             }
-        }
+            //camera on
+            Webcam.reset();
+            var exNum = exArray.length;
+            //0为前置摄像头，1为后置
+            switch(exNum){
+                case 1:
+                    Webcam.attach('#screenDiv', exArray[0]);
+                    break;
+                case 2:
+                    Webcam.attach('#screenDiv', exArray[1]);
+                    break;
+                default:
+                    Webcam.attach('#screenDiv');
+            }
+            setTimeout(function(){
+                decodeQR();
+            },2000);
+        });
+    }
+    else{
         //camera on
         Webcam.reset();
-        Webcam.attach('#screenDiv', exArray);
+        Webcam.attach('#screenDiv');
         setTimeout(function(){
             decodeQR();
         },2000);
-    });
+    }
 }
 //解码
 function decodeQR(){
