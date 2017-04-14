@@ -55,7 +55,7 @@ function drawStroke(option){
     var context = option.elem.getContext('2d');
     context.beginPath();
     context.rect(0, 0, option.width, option.height);
-    context.lineWidth = 2;
+    context.lineWidth = 6;
     context.strokeStyle = '#FFF';
     context.stroke();
 }

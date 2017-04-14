@@ -59,8 +59,8 @@ function scanStart(){
         jpeg_quality: 90
     });
     //获取camera设备
-    if(MediaStreamTrack.getSources){
-        MediaStreamTrack.getSources(function (sourceInfos) {
+    if(window.MediaStreamTrack.getSources){
+        window.MediaStreamTrack.getSources(function (sourceInfos) {
             var exArray = []; //存储设备源ID
             for (var i = 0; i != sourceInfos.length; ++i) {
                 var sourceInfo = sourceInfos[i];
@@ -109,8 +109,7 @@ function decodeQR(){
     function webcamSnap(){
         Webcam.snap(function(data_uri) {
             qr.decodeFromImage(data_uri, function(er, res){
-                // console.log(res);
-                if((res.indexOf('http') != -1)||(res.indexOf('www') != -1)){
+                if(isString(res)&&((res.indexOf('http') != -1)||(res.indexOf('www') != -1))){
                     clearInterval(decoderTimer);
                     layer.msg('识别成功');
                     //camera off

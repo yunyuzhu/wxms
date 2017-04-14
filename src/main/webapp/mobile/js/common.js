@@ -352,6 +352,10 @@ function isNumber(obj){
     var val = Number(obj);
     return (!isNaN(val));
 }
+//判断是否为字符串
+function isString(obj){
+    return Object.prototype.toString.call(obj) === "[object String]";
+}
 //判断是否为数组类型
 function isArray(obj){
     return Object.prototype.toString.call(obj) === '[object Array]';
