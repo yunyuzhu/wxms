@@ -171,12 +171,12 @@ body,html{height:100%;background-color:#F8F8F8;}
 .scan-box{width:242px;min-height:160px;margin:10px auto;}
 .scan-bd{width:242px;margin:30px auto;border:1px solid #D2D2D2;background:#FFF;}
 .scan-screen{height:322px;}
-.scan-form{width:242px;margin:30px auto;}
+.scan-form{width:242px;margin:10px auto;}
 .scaninfo .weui-cells{font-size:14px;margin-top:0;}
 .scaninfo .weui-cells:before,.scaninfo .weui-cells:after{border:0 none;}
 .scaninfo .weui-label{min-width:50px;}
-.scan-in{display:block;width:160px;margin:10px auto;padding:5px 10px;height:36px;line-height:24px;font-size:18px;
-    border-radius:2px;border:1px solid #D2D2D2;background:#FFF;}
+.scan-in{display:block;width:180px;margin:10px auto;padding:5px 10px;height:40px;line-height:28px;font-size:18px;
+    text-align:center;border-radius:5px;border:1px solid #09bb07;background:#FFF;}
 .apply-total{font-size:20px;color:#F16A13;vertical-align:top;}
 /*center*/
 .hdinfo-face{background:#F8F8F8;}

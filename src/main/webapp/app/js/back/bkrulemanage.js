@@ -211,11 +211,12 @@ function listEditSave(id){
         if(!EmptyCheck($ratePop, inData.rate, "规则内容不能为空")){
             break;
         }
-        if(typeof(inData.rate) != 'number'){
+        var inVal = Number(inData.rate);
+        if(isNaN(inVal)){
             tipShow($ratePop, "兑换率必须为数字");
             break;
         }
-        if(parseFloat(inData.rate) <= 0){
+        if(inVal <= 0){
             tipShow($ratePop, "兑换率必须大于0");
             break;
         }

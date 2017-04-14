@@ -162,14 +162,19 @@ function costSubmit(){
         consumeMoney: $costNum.val()
     };
     do{
-        if(!EmptyCheck($costNum, inData.consumeMoney, "输入金额数不能为空")){
+        if(inData.consumeMoney == ''){
+            layer.msg('金额数不能为空');
             break;
         }
-        if(inData.consumeMoney <= 0){
-            tipShow($costNum, "金额数必须大于0");
+        var inVal = Number(inData.consumeMoney);
+        if(isNaN(inVal)){
+            layer.msg('金额数必须为数字');
             break;
         }
-        tipHide();
+        if(inVal <= 0){
+            layer.msg('金额数必须大于0');
+            break;
+        }
         if(isNull(inData.shopId)){
             break;
         }
