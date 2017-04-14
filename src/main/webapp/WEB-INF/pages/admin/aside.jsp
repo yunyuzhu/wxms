@@ -72,6 +72,15 @@
 						<c:if test="${s.index==7}">
 							<i class="fa fa-dashboard"></i>
 						</c:if>
+						<c:if test="${s.index==8}">
+							<i class="fa fa-dashboard"></i>
+						</c:if>
+						<c:if test="${s.index==9}">
+							<i class="fa fa-dashboard"></i>
+						</c:if>
+						<c:if test="${s.index==10}">
+							<i class="fa fa-dashboard"></i>
+						</c:if>
 
 						<span>${key.name}</span>
 						<c:if test="${key.children.size() > 0}">
