@@ -60,7 +60,14 @@ function inSubmit(){
                 switch(res){
                     case 'success' :
                         layer.msg('正在登录，请稍后...', {icon: 1, time: 1000});
-                        window.location.href = mUrlBase + "/mhome";
+                        //首页
+                        var linkHref = mUrlBase + "/mhome";
+                        //有商户id则跳转到消费
+                        var hrefPara = GetRequest();
+                        if(typeof(hrefPara.shopId)!='undefined'){
+                            linkHref = mUrlBase + "/mcost?shopId="+hrefPara.shopId;
+                        }
+                        window.location.href = linkHref;
                         return ;
                         break;
                     case 'usererror' :

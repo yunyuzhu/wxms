@@ -146,7 +146,7 @@ function scanInfo(id){
     shopId = id;
     if(!isLogin()){
         layer.msg('未登录，请先登录', {icon:0, shade:0.5, time: 1000});
-        window.location.href = mUrlBase + "/mlogin";
+        window.location.href = mUrlBase + "/mlogin?shopId="+id;
         return ;
     }
     //设置商户信息

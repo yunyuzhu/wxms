@@ -169,7 +169,7 @@ body,html{height:100%;background-color:#F8F8F8;}
 .btn-save + .btn-cancle{margin-left:20px;margin-top:0;}
 /*cost*/
 .scan-box{width:242px;min-height:160px;margin:10px auto;}
-.scan-bd{width:242px;margin:30px auto;border:1px solid #D2D2D2;background:#FFF;}
+.scan-bd{width:242px;margin:20px auto;border:1px solid #D2D2D2;background:#FFF;}
 .scan-screen{height:322px;}
 .scan-form{width:242px;margin:10px auto;}
 .scaninfo .weui-cells{font-size:14px;margin-top:0;}
