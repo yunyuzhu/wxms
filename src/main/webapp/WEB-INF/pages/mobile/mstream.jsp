@@ -26,7 +26,7 @@
 			</div>
 			<div class="weui-tab__panel nopadb">
 				<div class="dropwrap" id="dropWrap">
-					<div class="weui-cells__title">消费流水</div>
+					<div class="weui-cells__title"><i class="icon-ct-cost"></i>消费流水</div>
 					<div class="weui-panel">
 						<div class="weui-panel__bd" id="streamList">
 							<div class="weui-media-box weui-media-box_text" v-for="item in items">

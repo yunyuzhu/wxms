@@ -27,14 +27,14 @@
 			<div class="weui-tab__panel nopadb">
 				<div class="dropwrap" id="dropWrap">
 					<div class="page__hd text-center page_hd-info">
-						<div class="mhd-info vert-center">
+						<div class="mhd-info vert-center cthd-info">
 							<div class="info-item vert-cell">
-								<p><i class="icon-coin-yen"></i>余额</p>
+								<p class="mygold-tit"><i class="icon-ct-mygold"></i></p>
 								<p class="mygold">¥ <span id="myGold"></span></p>
 							</div>
 						</div>
 					</div>
-					<div class="weui-cells__title">金币流水</div>
+					<div class="weui-cells__title"><i class="icon-ct-gold"></i>金币流水</div>
 					<div class="weui-panel">
 						<div class="weui-panel__bd" id="streamList">
 							<div class="weui-media-box weui-media-box_text" v-for="item in items">

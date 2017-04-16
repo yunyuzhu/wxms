@@ -22,20 +22,62 @@
 		<div class="weui-tab">
 			<div class="weui-tab__panel">
 				<div class="page" id="centerPage">
-					<div class="page__hd text-center centerhd page_hd-info">
-						<div class="mhd-info vert-center">
-							<a href="${ctx}/mlogin" class="info-item vert-cell before">
-								<p class="hdface"><i class="icon-user3"></i></p>
-								<span>登录/注册</span>
-							</a>
-							<div class="info-item vert-cell after hdinfo-face">
-								<p><img class="faceimg" src="${ctx}/mobile/img/face.jpg" alt="头像"></p>
-								<span class="name">yh</span>
+					<div class="page__hd text-center centerhd">
+						<div class="centerhd-info">
+							<div class="mhd-info vert-center">
+								<a href="${ctx}/mlogin" class="info-item vert-cell before">
+									<p class="hdface"><i class="icon-ct-myacc2"></i></p>
+									<span>登录/注册</span>
+								</a>
+								<div class="info-item vert-cell after hdinfo-face">
+									<p><img class="faceimg" src="${ctx}/mobile/img/face.jpg" alt="头像"></p>
+									<span class="name">yh</span>
+								</div>
 							</div>
 						</div>
 					</div>
 					<div class="page__bd centerbd">
-						<div class="weui-cells">
+						<div class="center-nav">
+							<div class="weui-grids">
+								<a href="${ctx}/mmoney" class="weui-grid">
+									<div class="weui-grid__icon">
+										<i class="icon-ct-gold"></i>
+									</div>
+									<p class="weui-grid__label">我的金币</p>
+								</a>
+								<a href="${ctx}/mapplystream" class="weui-grid">
+									<div class="weui-grid__icon">
+										<i class="icon-ct-duihuan"></i>
+									</div>
+									<p class="weui-grid__label">兑换申请</p>
+								</a>
+								<a href="${ctx}/mstream" class="weui-grid">
+									<div class="weui-grid__icon">
+										<i class="icon-ct-cost"></i>
+									</div>
+									<p class="weui-grid__label">消费记录</p>
+								</a>
+								<a href="${ctx}/maccount" class="weui-grid">
+									<div class="weui-grid__icon">
+										<i class="icon-ct-myacc1"></i>
+									</div>
+									<p class="weui-grid__label">我的账户</p>
+								</a>
+								<a href="${ctx}/maccount?isedit=true" class="weui-grid">
+									<div class="weui-grid__icon">
+										<i class="icon-ct-myaccmod"></i>
+									</div>
+									<p class="weui-grid__label">修改资料</p>
+								</a>
+								<a href="${ctx}/mabout" class="weui-grid">
+									<div class="weui-grid__icon">
+										<i class="icon-ct-about"></i>
+									</div>
+									<p class="weui-grid__label">关于</p>
+								</a>
+							</div>
+						</div>
+						<%--<div class="weui-cells">
 							<a class="weui-cell weui-cell_access" href="${ctx}/maccount">
 								<div class="weui-cell__hd">
 									<i class="icon-user3"></i>
@@ -89,7 +131,7 @@
 								</div>
 								<div class="weui-cell__ft"></div>
 							</a>
-						</div>
+						</div>--%>
 						<div class="button-sp-area">
 							<a href="${ctx}/mlogout" class="weui-btn weui-btn_warn">退出登录</a>
 						</div>

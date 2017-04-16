@@ -23,28 +23,28 @@
 			<div class="weui-tab__panel">
 				<div class="page">
 					<div class="page__hd text-center page_hd-info">
-						<div class="mhd-info vert-center" id="homehdBox">
+						<div class="mhd-info vert-center cthd-info" id="homehdBox">
 							<a href="${ctx}/mlogin" class="info-item vert-cell before">
-								<p class="hdface"><i class="icon-user3"></i></p>
+								<p class="hdface"><i class="icon-ct-myacc2"></i></p>
 								<span>登录/注册</span>
 							</a>
 							<a href="${ctx}/mmoney" class="info-item vert-cell after">
-								<p><i class="icon-coin-yen"></i>余额</p>
+								<p class="mygold-tit"><i class="icon-ct-mygold"></i></p>
 								<p class="mygold">¥ <span id="homeGold"></span></p>
 							</a>
 						</div>
 					</div>
 					<div class="page__bd">
-						<div class="weui-cells__title">商品列表</div>
+						<div class="weui-cells__title"><i class="icon-ct-good"></i>商品列表</div>
 						<div class="weui-cells" id="goodsList" v-show="show">
 							<a class="weui-cell weui-cell_access" v-for="item in items" v-bind:href="item.href">
 								<div class="weui-cell__bd">
 									<p>{{item.name}}</p>
 								</div>
-								<div class="weui-cell__ft"><span class="home-price">{{item.price}} 金币</span></div>
+								<div class="weui-cell__ft"><span class="home-price">{{item.price}}<i class="icon-ct-gold3"></i></span></div>
 							</a>
 						</div>
-						<div class="weui-cells__title">最新活动</div>
+						<div class="weui-cells__title"><i class="icon-ct-act1"></i>最新活动</div>
 						<div class="weui-panel">
 							<div class="weui-panel__bd" id="actList" v-show="show">
 								<a class="weui-media-box weui-media-box_appmsg" v-for="item in items" v-bind:href="item.href">

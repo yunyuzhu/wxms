@@ -26,7 +26,7 @@
 			</div>
 			<div class="weui-tab__panel" id="goodsList">
 				<div class="dropwrap" id="dropWrap">
-					<div class="weui-cells__title">兑换列表</div>
+					<div class="weui-cells__title"><i class="icon-ct-good"></i>商品列表</div>
 					<div class="weui-cells weui-cells_checkbox">
 						<label class="weui-cell weui-check__label" v-bind:for="item.id"  v-for="item in items">
 							<div class="weui-cell__hd">
@@ -34,13 +34,13 @@
 								<i class="weui-icon-checked"></i>
 							</div>
 							<div class="weui-cell__bd"><p>{{item.name}}</p></div>
-							<div class="weui-cell__ft"><span class="home-price">{{item.price}} 金币</span></div>
+							<div class="weui-cell__ft"><span class="home-price">{{item.price}}<i class="icon-ct-gold3"></i></span></div>
 						</label>
 					</div>
 				</div>
 			</div>
 			<div class="mtab-ft clearfix">
-				<span>总计：<span id="totalGold" class="apply-total"></span> 金币</span>
+				<span>总计：<span id="totalGold" class="apply-total"></span><span class="home-price"><i class="icon-ct-gold3"></i></span>
 				<a class="weui-btn weui-btn_mini weui-btn_primary mhd-btnr" id="inSubmit">提交申请</a>
 			</div>
 		</div>

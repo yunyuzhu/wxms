@@ -24,7 +24,7 @@
 				<a href="javascript:history.go(-1);location.reload();" class="mhd-back"><i class="icon-arrow-left2"></i></a>
 				<div class="mhd-title">活动内容</div>
 			</div>
-			<div class="weui-tab__panel" id="mActInfoPanel">
+			<div class="weui-tab__panel nopadb" id="mActInfoPanel">
 				<article class="weui-article">
 					<h1 class="title text-center">{{title}}</h1>
 					<div class="weui-footer__text">
@@ -35,8 +35,6 @@
 					</section>
 				</article>
 			</div>
-			<!--底部导航-->
-			<%@ include file="mtabbar.jsp"%>
 		</div>
 	</div>
 	<script src="${ctx}/mobile/js/mactinfo.js" type="text/javascript" charset="UTF-8"></script>

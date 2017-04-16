@@ -35,6 +35,13 @@ function inSubmit(){
     $("#accCancle").on('click', function(){
         accLoad();
     });
+
+    //识别从修改资料进入
+    var hrefPara = GetRequest();
+    if((typeof(hrefPara.isedit)!='undefined')&&(hrefPara.isedit)){
+        //进入修改
+        accModify();
+    }
 }
 //文本显示,阻止修改
 function accTextShow(flag){

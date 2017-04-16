@@ -9,7 +9,6 @@ function loadhtml(){
 $(document).ready(function(){
     //增加阅读量
     addReadCount();
-    mTabbarStyleGo(2);
     loadhtml();
 });
 //增加阅读量

@@ -25,7 +25,7 @@
 			</div>
 			<div class="weui-tab__panel">
 				<div class="dropwrap" id="dropWrap">
-					<div class="weui-cells__title">活动列表</div>
+					<div class="weui-cells__title"><i class="icon-ct-act1"></i>活动列表</div>
 					<div class="weui-panel" id="actPanel">
 						<div class="weui-panel__bd" id="actList">
 							<a class="weui-media-box weui-media-box_appmsg" v-for="item in items" v-bind:href="item.href">

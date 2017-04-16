@@ -70,7 +70,7 @@
 				<div class="scan-form">
 					<div>
 						<input type="text" class="scan-in" id="costNum" placeholder="输入消费金额">
-						<p class="text-center">输入消费金额</p>
+						<p class="text-center">消费金额</p>
 						<div class="weui-btn-area tn-handle text-center">
 							<a class="weui-btn weui-btn_primary" id="costSubmit">完成</a>
 						</div>

@@ -5,15 +5,15 @@
 		<p class="weui-tabbar__label">首页</p>
 	</a>
 	<a href="${ctx}/mcost" class="weui-tabbar__item">
-		<i class="weui-tabbar__icon icon-qrcode"></i>
+		<i class="weui-tabbar__icon icon-qrcode2"></i>
 		<p class="weui-tabbar__label">扫描</p>
 	</a>
 	<a href="${ctx}/mactivity" class="weui-tabbar__item">
-		<i class="weui-tabbar__icon icon-th-list"></i>
+		<i class="weui-tabbar__icon icon-ct-act2"></i>
 		<p class="weui-tabbar__label">活动</p>
 	</a>
 	<a href="${ctx}/mcenter" class="weui-tabbar__item">
-		<i class="weui-tabbar__icon icon-user3"></i>
+		<i class="weui-tabbar__icon icon-ct-myacc2"></i>
 		<p class="weui-tabbar__label">账户</p>
 	</a>
 </div>
