@@ -33,5 +33,7 @@
 <script src="${ctx}/assets/plugin/layer/layer.js" type="text/javascript"></script>
 <!-- Vue.js -->
 <script src="${ctx}/assets/vendor/vue/vue.min.js" type="text/javascript"></script>
+<!-- dropload.js -->
+<script src="${ctx}/mobile/vendor/dropload/dropload.js" type="text/javascript" charset="UTF-8"></script>
 <!-- my js -->
 <script src="${ctx}/mobile/js/common.js" type="text/javascript"></script>

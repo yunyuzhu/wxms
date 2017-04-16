@@ -25,16 +25,18 @@
 				<div class="mhd-title">商品兑换</div>
 			</div>
 			<div class="weui-tab__panel" id="goodsList">
-				<div class="weui-cells__title">兑换列表</div>
-				<div class="weui-cells weui-cells_checkbox" v-show="show">
-					<label class="weui-cell weui-check__label" v-bind:for="item.id"  v-for="item in items">
-						<div class="weui-cell__hd">
-							<input type="checkbox" class="weui-check" name="goodsapply" v-bind:id="item.id" v-bind:data-price="item.price">
-							<i class="weui-icon-checked"></i>
-						</div>
-						<div class="weui-cell__bd"><p>{{item.name}}</p></div>
-						<div class="weui-cell__ft"><span class="home-price">{{item.price}} 金币</span></div>
-					</label>
+				<div class="dropwrap" id="dropWrap">
+					<div class="weui-cells__title">兑换列表</div>
+					<div class="weui-cells weui-cells_checkbox">
+						<label class="weui-cell weui-check__label" v-bind:for="item.id"  v-for="item in items">
+							<div class="weui-cell__hd">
+								<input type="checkbox" class="weui-check" name="goodsapply" v-bind:id="item.id" v-bind:data-price="item.price">
+								<i class="weui-icon-checked"></i>
+							</div>
+							<div class="weui-cell__bd"><p>{{item.name}}</p></div>
+							<div class="weui-cell__ft"><span class="home-price">{{item.price}} 金币</span></div>
+						</label>
+					</div>
 				</div>
 			</div>
 			<div class="mtab-ft clearfix">

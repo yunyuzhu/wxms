@@ -24,19 +24,21 @@
 				<div class="mhd-title">活动</div>
 			</div>
 			<div class="weui-tab__panel">
-				<div class="weui-cells__title">活动列表</div>
-				<div class="weui-panel">
-					<div class="weui-panel__bd" id="actList" v-show="show">
-						<a class="weui-media-box weui-media-box_appmsg" v-for="item in items" v-bind:href="item.href">
-							<div class="weui-media-box__bd">
-								<h4 class="weui-media-box__title">{{item.title}}</h4>
-								<p class="weui-media-box__desc">{{item.abstract}}</p>
-								<ul class="weui-media-box__info">
-									<li class="weui-media-box__info__meta">{{item.time}}</li>
-									<li class="weui-media-box__info__meta"><i class="icon-eye"></i><span>{{item.count}}</span></li>
-								</ul>
-							</div>
-						</a>
+				<div class="dropwrap" id="dropWrap">
+					<div class="weui-cells__title">活动列表</div>
+					<div class="weui-panel" id="actPanel">
+						<div class="weui-panel__bd" id="actList">
+							<a class="weui-media-box weui-media-box_appmsg" v-for="item in items" v-bind:href="item.href">
+								<div class="weui-media-box__bd">
+									<h4 class="weui-media-box__title">{{item.title}}</h4>
+									<p class="weui-media-box__desc">{{item.abstract}}</p>
+									<ul class="weui-media-box__info">
+										<li class="weui-media-box__info__meta">{{item.time}}</li>
+										<li class="weui-media-box__info__meta"><i class="icon-eye"></i><span>{{item.count}}</span></li>
+									</ul>
+								</div>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>

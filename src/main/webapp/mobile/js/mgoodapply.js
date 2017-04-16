@@ -2,6 +2,7 @@
  * Created by chun
  */
 var appGoodsList;
+var pageNum = 0;
 //扫描页面跳转
 function applyPageGo(index){
     var $tabPage = $("#tabPage");
@@ -29,19 +30,21 @@ function appDataInit(){
         data: {
             'items': [
                 {id: "", name: "", price: ""}
-            ],
-            'show': true
+            ]
         }
     });
+    //默认清空
+    appGoodsList.items = [];
 }
 appDataInit();
 //加载页面
 function loadhtml(){
+    //活动
+    dropLoadAuto();
+    //计算总计
     $("#goodsList").on('click', "input[type=checkbox]",function(){
         calTotalGold();
     });
-    //活动
-    goodsList();
     //提交申请
     $("#inSubmit").on('click', function(){
         if(isLogin()){
@@ -87,6 +90,58 @@ function getInData(option){
     inData.pageSize  = setting.size;
     return inData;
 }
+//底部自动加载
+function dropLoadAuto(){
+    $('#dropWrap').dropload({
+        scrollArea : $('#dropWrap'),
+        threshold  : 30,
+        autoLoad : true,
+        loadDownFn : function(me){
+            var inData = new getInData({start: (pageNum++)*5 , size:5});
+            $.ajax({
+                type: "get",
+                url: mUrlBase + "/portalGoods/changeList",
+                dataType: "json",
+                data: inData,
+                async: false,
+                jsonp: "callback",
+                success:function(data){
+                    var jsonData = eval(data);
+                    var dataRows  = jsonData['rows'];
+                    var dataTotal = dataRows.length;
+                    if(dataTotal > 0) {
+                        var arrSize = dataRows.length;
+                        for (var i = 0; i < arrSize; i++) {
+                            var curObj = dataRows[i];
+                            var tmpObj = {
+                                id: curObj["id"],
+                                name: curObj["name"],
+                                price: curObj["price"]
+                            };
+                            dataRows[i] = tmpObj;
+                        }
+                        appGoodsList.items = appGoodsList.items.concat(dataRows);
+                    }
+                    else{
+                        // 无数据
+                        me.lock();
+                        me.noData();
+                    }
+                    setTimeout(function(){
+                        me.resetload();
+                    }, 100);
+                },
+                error:function(error){
+                    console.log(error);
+                    me.noData();
+                    setTimeout(function(){
+                        me.resetload();
+                    }, 1000);
+                }
+            });
+        }
+    });
+}
 //商品列表
 function goodsList(){
     var inData = new getInData();
@@ -112,16 +167,11 @@ function goodsList(){
                     };
                     dataRows[i] = tmpObj;
                 }
-                appGoodsList.items = dataRows;
-                appGoodsList.show = true;
-            }
-            else{
-                appGoodsList.show = false;
+                appGoodsList.items = appGoodsList.items.concat(dataRows);
             }
         },
         error:function(error){
             console.log(error);
-            appGoodsList.show = false;
         }
     });
 }
