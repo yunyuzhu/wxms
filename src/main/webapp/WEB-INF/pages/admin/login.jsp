@@ -73,14 +73,6 @@
 								<input type="password" class="form-control" id="password" name="password" placeholder="输入密码" autocomplete="off">
 							</div>
 						</div>
-						<div class="input-row">
-							<div class="input-group">
-								<input type="text" class="form-control" id="code" name="code" placeholder="输入验证码">
-								<span class="input-group-addon ct-nopadd">
-									<img src="" class="code-img" id="codeImg" alt="点击更换" title="点击更换">
-								</span>
-							</div>
-						</div>
 					</div>
 				</div>
 				<div class="input-handle login-handle">
@@ -104,9 +96,6 @@
 		var nameVal = $loginname.val();
 		var $password = $("#password");
 		var passwdVal = $password.val();
-		var $code = $("#code");
-		var codeVal = $code.val();
-
 		//用户名判断
 		if(nameVal == ""){
 			$loginname.tips({
@@ -131,17 +120,6 @@
 			$password.focus();
 			return false;
 		}
-		//验证码判断
-		if (codeVal == "") {
-			$code.tips({
-				side : 1,
-				msg : '验证码不得为空',
-				bg : '#AE81FF',
-				time : 3
-			});
-			$code.focus();
-			return false;
-		}
 		tipHide();
 		return true;
 	}
@@ -152,14 +130,12 @@
 			var nameVal = $loginname.val();
 			var $password = $("#password");
 			var passwdVal = $password.val();
-			var $code = $("#code");
-			var codeVal = $code.val();
 			var $loginbox = $("#loginbox");
 
 			$.ajax({
 				type: "POST",
 				url: '${ctx}/login',
-		    	data: {username:nameVal, password:passwdVal, code:codeVal},
+		    	data: {username:nameVal, password:passwdVal},
 				dataType:'json',
 				cache: false,
 				success: function(data){
@@ -180,16 +156,8 @@
 							time : 15
 						});
 						$loginname.focus();
-					}else if("codeerror" == data.result){
-						$code.tips({
-							side : 1,
-							msg : "验证码输入有误",
-							bg : '#FF5080',
-							time : 15
-						});
-						$code.focus();
 					}else if("locked" == data.result){
-						$code.tips({
+                        $loginbox.tips({
 							side : 1,
 							msg : "用户已经被锁定不能登录，请与管理员联系！",
 							bg : '#FF5080',
@@ -197,7 +165,7 @@
 						});
 						$loginname.focus();
 					}else if("userwarning" == data.result){
-						$code.tips({
+                        $loginbox.tips({
 							side : 1,
 							msg : "登录失败次数过多,锁定10分钟!",
 							bg : '#FF5080',
@@ -229,23 +197,15 @@
 		var time = new Date();
 		return time.getTime();
 	}
-	//点击验证码图片
-	function changeCode() {
-		$("#codeImg").attr("src", "code?t=" + genTimestamp());
-	}
     //重置输入信息
 	function cancel() {
 		$("#loginname").val('');
 		$("#password").val('');
-		$("#code").val('');
 	}
 
 	$(document).ready(function() {
 		var nowYear = (new Date()).getFullYear();
 		$("#copyToYear").text(nowYear);
-
-		changeCode();
-		$("#codeImg").bind("click", changeCode);
 	});
     </script>
   </body>

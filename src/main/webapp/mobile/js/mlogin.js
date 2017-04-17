@@ -3,11 +3,6 @@
  */
 //加载页面
 function loadhtml(){
-    //验证码点击
-    $("#verCodeImg").on('click', function(){
-        getVerCodeImg();
-    });
-    getVerCodeImg();
     //注册提交按钮
     $("#inSubmit").on('click', function(){
         inSubmit();
@@ -16,19 +11,13 @@ function loadhtml(){
 $(document).ready(function(){
     loadhtml();
 });
-//获取验证码图片
-function getVerCodeImg(){
-    $("#verCodeImg").attr("src", "code?t=" + (new Date()).getTime());
-}
 //提交
 function inSubmit(){
     var $userAccount = $("#userAccount");
     var $userPassword = $("#userPassword");
-    var $verCode = $("#verCode");
     var inData = {
         username: $userAccount.val(),
-        password: $userPassword.val(),
-        code: $verCode.val()
+        password: $userPassword.val()
     };
     //删除前后的空白字符
     for(var para in inData){
@@ -40,9 +29,6 @@ function inSubmit(){
             break;
         }
         if(!PasswordCheck($userPassword, inData.password)){
-            break;
-        }
-        if(!EmptyCheck($verCode, inData.code, "验证码不能为空")){
             break;
         }
         //发送服务器
@@ -74,16 +60,12 @@ function inSubmit(){
                         msg = "用户名或密码有误";
                         $userAccount.focus();
                         break;
-                    case 'codeerror' :
-                        msg = "验证码输入有误";
-                        $verCode.focus();
-                        break;
                     case 'userwarning' :
                         msg = "登录失败次数过多,锁定10分钟!";
                         $userAccount.focus();
                         break;
                     default:
-                        msg = "登录异常，请联系管理员！";
+                        msg = "登录异常，请联系我们！";
                         $userAccount.focus();
                 }
                 layer.msg(msg);
