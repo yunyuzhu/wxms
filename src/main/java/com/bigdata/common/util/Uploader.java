@@ -25,7 +25,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 public class Uploader {
 	
 	//图片服务器地址
-	public static String uploadPath = "../img";
+	public static String uploadPath = "../img/";
 	
 	// 输出文件地址
 	private String url = "";
