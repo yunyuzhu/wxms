@@ -160,7 +160,28 @@ public class LoginController extends BaseController {
 			UsernamePasswordToken token = new UsernamePasswordToken(username, password);
 			
 			Session session = user.getSession();
-			String sessionCode = (String)session.getAttribute(Const.SESSION_SECURITY_CODE);//获取session中的验证码
+			try {
+				user.login(token);
+				
+				UserLogin userLogin = new UserLogin();
+				userLogin.setUserId(((User)request.getSession().getAttribute("userSession")).getId());
+				userLogin.setUserName(username);
+				userLogin.setLoginIp(session.getHost());
+				loginService.addUserLogin(userLogin);
+				errInfo = "success";
+				
+			} catch (LockedAccountException lae) {
+				token.clear();
+				errInfo = "locked";//用户被锁定
+			} catch (ExcessiveAttemptsException e) {
+				token.clear();
+				errInfo = "userwarning";//登录失败次数过多,锁定10分钟!
+			} catch (AuthenticationException e) {
+				token.clear();
+				errInfo = "usererror";//用户名或密码有误
+			}
+			
+			/*String sessionCode = (String)session.getAttribute(Const.SESSION_SECURITY_CODE);//获取session中的验证码
 			
 			if(CommonTools.notEmpty(sessionCode) && sessionCode.equalsIgnoreCase(code)){
 				
@@ -186,7 +207,7 @@ public class LoginController extends BaseController {
 				}
 			}else{
 				errInfo = "codeerror";//验证码输入有误
-			}
+			}*/
 		} catch (Exception e) {
 			e.printStackTrace();
 			errInfo = "unknown";
