@@ -23,6 +23,10 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 */
 @SuppressWarnings("restriction")
 public class Uploader {
+	
+	//图片服务器地址
+	public static String uploadPath = "../img";
+	
 	// 输出文件地址
 	private String url = "";
 	// 上传文件名
@@ -216,10 +220,13 @@ public class Uploader {
 	 * @return
 	 */
 	private String getPhysicalPath(String path) {
-		String servletPath = this.request.getServletPath();
+		
+		return uploadPath +path;
+		
+		/*String servletPath = this.request.getServletPath();
 		String realPath = this.request.getSession().getServletContext()
 				.getRealPath(servletPath);
-		return new File(realPath).getParent() +"/" +path;
+		return new File(realPath).getParent() +"/" +path;*/
 	}
 
 	public void setSavePath(String savePath) {
