@@ -157,5 +157,9 @@ public class UrlRouteController {
 	@RequestMapping(value = "mapplystream", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
 	public String Mapplystream(HttpServletRequest request) { return "/mobile/mapplystream"; }
 
+	/* 修改头像 */
+	@RequestMapping(value = "mfacepic", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
+	public String Mfacepic(HttpServletRequest request) { return "/mobile/mfacepic"; }
+
 /*********************** 平台后台 end *********************/
 }
