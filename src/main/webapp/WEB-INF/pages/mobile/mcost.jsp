@@ -94,6 +94,14 @@
 				</div>
 			</div>
 		</div>
+		<%--加载提示--%>
+		<div id="loadingToast" class="cthide" style="display:none;">
+			<div class="weui-mask_transparent"></div>
+			<div class="weui-toast">
+				<i class="weui-loading weui-icon_toast"></i>
+				<p class="weui-toast__content">正在提交</p>
+			</div>
+		</div>
 	</div>
 	<script src="${ctx}/mobile/vendor/qcode-decoder/qcode-decoder.min.js" type="text/javascript" charset="UTF-8"></script>
 	<script src="${ctx}/mobile/js/mcost.js" type="text/javascript" charset="UTF-8"></script>

@@ -200,6 +200,7 @@ function applyChecked(ids){
 }
 //提交申请
 function inSubmit(){
+    var $loadingToast = $('#loadingToast');
     var $List = $("#goodsList");
     var $checkItems = $List.find('input[name=goodsapply]:checked');
     var idArr= [];
@@ -215,11 +216,8 @@ function inSubmit(){
             layer.msg("未选中任何商品");
             break;
         }
-        //总额与余额比较
-        var total = 0;
-        for(var m=0,size=priceArr.length; m<size; m++){
-            total += parseInt(priceArr[m]);
-        }
+        //加载提示
+        $loadingToast.fadeIn(100);
         //获取余额
         $.ajax({
             type: "get",
@@ -232,7 +230,13 @@ function inSubmit(){
                 var jsonData = eval(data);
                 var myGold = 0;
                 myGold = parseInt(jsonData);
+                //总额与余额比较
+                var total = 0;
+                for(var m=0,size=priceArr.length; m<size; m++){
+                    total += parseInt(priceArr[m]);
+                }
                 if(total > myGold){
+                    $loadingToast.hide();
                     layer.msg("所选总计金币不能大于余额金币");
                     return;
                 }
@@ -250,6 +254,8 @@ function inSubmit(){
                     success:function(data){
                         var jsonData = eval(data);
                         var msg = jsonData['msg'];
+                        layer.closeAll();
+                        $loadingToast.fadeOut(100);
                         //成功提示
                         applyPageGo(1);
                     },
