@@ -81,9 +81,10 @@ function drawTwocode(id){
         return out;
     }
     
+    var costHref = location.protocol + "//" + location.host + rootPath + "/mcost?shopId=" + id;
     //var costHref = location.protocol + "//" + "192.168.0.110:8280" + rootPath + "/mcost?shopId=" + id;
     //var costHref = location.protocol + "//" + "10.111.123.5:8980" + rootPath + "/mcost?shopId=" + id;
-    var costHref = "http://35.160.177.181:8080/wxms/mcost?shopId=" + id;
+    //var costHref = "http://35.160.177.181:8080/wxms/mcost?shopId=" + id;
 
     var $twocode = $("#twocode");
     $twocode.empty();
