@@ -36,13 +36,13 @@
 				</div>
 				<div class="page__bd">
 					<div class="button-sp-area text-center">
-						<div class="weui-btn-area cthide" id="facePrev">
+						<label class="face-up">
+							<a class="weui-btn weui-btn_mini weui-btn_primary">选择图片</a>
+							<input id="faceInput" name="photoInfo" class="cthide" type="file" accept="image/*" multiple="multiple"/>
+						</label>
+						<div class="cthide" id="facePrev">
 							<img id="facePrevImg" class="faceimg-prev" src="" alt="图片预览">
 						</div>
-						<label class="face-up">
-							<a class="weui-btn weui-btn_primary">选择图片</a>
-							<input id="faceInput" class="cthide" type="file" accept="image/*" multiple="multiple"/>
-						</label>
 					</div>
 					<div class="accinfo-btn cthide" id="faceHandle">
 						<div class="weui-btn-area text-center">
@@ -54,6 +54,7 @@
 			</div>
 		</div>
 	</div>
+	<script src="${ctx}/mobile/vendor/plugin/ajaxfileupload.js" type="text/javascript" charset="UTF-8"></script>
 	<script src="${ctx}/mobile/js/mfacepic.js" type="text/javascript" charset="UTF-8"></script>
 	</body>
 </html>

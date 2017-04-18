@@ -317,7 +317,7 @@ public class PortalAccountController {
 	 * @param response
 	 * @return
 	 */
-	@RequestMapping(value = "/updatePhoto", method = RequestMethod.GET)
+	@RequestMapping(value = "/updatePhoto", method = RequestMethod.POST)
 	@ResponseBody
 	public Object updateUserPhoto(@ApiParam(required = false, name = "photoInfo", value = "头像信息") @RequestParam(value = "photoInfo", required = false) MultipartFile photoInfo,
 			HttpServletRequest request, HttpServletResponse response) {
