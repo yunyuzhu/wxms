@@ -21,7 +21,7 @@ function facePrev(imgSrc){
     else{
         $facePrev.hide();
         $img.attr('src', '');
-	    $("#faceInput").val('');
+        $("#faceInput").val('');
     }
 }
 function getObjectURL(file) {
@@ -54,7 +54,6 @@ function loadhtml(){
     //选择图片
     $("#faceInput").on('change', function(e){
         var fileVal = $(this).val();
-        console.log(fileVal);
         var files = e.target.files;
         var file = files[0];
         var imgSrc = getObjectURL(file);
