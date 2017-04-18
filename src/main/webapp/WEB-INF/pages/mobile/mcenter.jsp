@@ -30,7 +30,7 @@
 									<span>登录/注册</span>
 								</a>
 								<div class="info-item vert-cell after hdinfo-face">
-									<p><img class="faceimg" src="${ctx}/mobile/img/face.jpg" alt="头像"></p>
+									<a href="${ctx}/mfacepic"><img class="faceimg" src="${ctx}/mobile/img/face.jpg" alt="头像"></a><br/>
 									<span class="name">yh</span>
 								</div>
 							</div>

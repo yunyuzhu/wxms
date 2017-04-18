@@ -42,17 +42,6 @@
 								<input class="weui-input" type="password" id="userPassword" placeholder="请输入密码">
 							</div>
 						</div>
-						<div class="weui-cell weui-cell_vcode">
-							<div class="weui-cell__hd">
-								<label for="verCode" class="weui-label">验证码：</label>
-							</div>
-							<div class="weui-cell__bd">
-								<input class="weui-input" type="text" id="verCode" placeholder="请输入验证码"/>
-							</div>
-							<div class="weui-cell__ft">
-								<img class="weui-vcode-img" id="verCodeImg" src="">
-							</div>
-						</div>
 					</div>
 					<div class="weui-btn-area tn-handle">
 						<a class="weui-btn weui-btn_primary" id="inSubmit">登录</a>
