@@ -72,6 +72,11 @@ public class WxUser implements Serializable {
 	private String gold;
 	
 	/**
+	 * 头像地址
+	 */
+	private String photoUrl;
+	
+	/**
 	 * 启用标识
 	 */
 	private String useFlag;
@@ -195,6 +200,14 @@ public class WxUser implements Serializable {
 
 	public void setGold(String gold) {
 		this.gold = gold;
+	}
+
+	public String getPhotoUrl() {
+		return photoUrl;
+	}
+
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
 	}
 
 	public String getUseFlag() {
