@@ -28,24 +28,27 @@
 				<div class="page__hd text-center">
 					<div class="mhd-info vert-center">
 						<div class="info-item vert-cell hdinfo-face">
-							<p><img class="faceimg" src="${ctx}/mobile/img/face.jpg" alt="头像"></p>
+							<p>
+								<img id="faceImg" class="faceimg" src="${ctx}/mobile/img/face.jpg" alt="头像">
+							</p>
 						</div>
 					</div>
 				</div>
 				<div class="page__bd">
-					<div class="button-sp-area">
+					<div class="button-sp-area text-center">
+						<div class="weui-btn-area cthide" id="facePrev">
+							<img id="facePrevImg" class="faceimg-prev" src="" alt="图片预览">
+						</div>
 						<label class="face-up">
-							<a class="weui-btn weui-btn_primary">上传图像</a>
-							<input id="upFacePic" class="cthide" type="file" accept="image/*"/>
+							<a class="weui-btn weui-btn_primary">选择图片</a>
+							<input id="faceInput" class="cthide" type="file" accept="image/*" multiple="multiple"/>
 						</label>
 					</div>
-				</div>
-				<div class="accinfo-btn" id="faceHandle">
-					<div class="weui-btn-area text-center before">
-						<a id="faceModify" class="weui-btn weui-btn_mini weui-btn_primary">修改</a>
-					</div>
-					<div class="weui-btn-area text-center after">
-						<a id="faceSave" class="weui-btn weui-btn_mini weui-btn_primary btn-save">保存</a>
+					<div class="accinfo-btn cthide" id="faceHandle">
+						<div class="weui-btn-area text-center">
+							<a id="faceSave" class="weui-btn weui-btn_mini weui-btn_primary btn-save">保存</a>
+							<a id="faceCancle" class="weui-btn weui-btn_mini weui-btn_primary btn-cancle">取消</a>
+						</div>
 					</div>
 				</div>
 			</div>
