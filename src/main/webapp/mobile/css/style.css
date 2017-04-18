@@ -193,9 +193,6 @@ body,html{height:100%;background-color:#F8F8F8;}
 .hdface i{font-size:46px;color:#63B458;}
 .home-price{margin-right:5px;font-size:16px;}
 .home-price i{margin:0 0 0 3px;font-size:20px;color:#F16A13;vertical-align:middle;}
-.body-googapply .layui-layer-shade{opacity:1!important;background-color:#FFF!important;}
-.body-googapply .layui-layer{box-shadow:none;}
-.body-googapply .layui-layer-setwin{display:none;}
 /*reg*/
 .accinfo-btn .before,.accinfo-btn.ismodify .after{display:block;}
 .accinfo-btn.ismodify .before,.accinfo-btn .after{display:none;}
@@ -232,5 +229,6 @@ body,html{height:100%;background-color:#F8F8F8;}
 .mygold-tit{line-height:1;margin-top:-5px;}
 .mygold{font-size:24px;}
 .cthd-info .mygold{color:#FFF;}
+.faceimg-prev{max-height:120px;}
 /*about*/
 .about-con{text-indent:2em;}

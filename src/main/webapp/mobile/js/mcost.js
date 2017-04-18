@@ -180,6 +180,7 @@ function scanInfo(id){
 }
 //消费提交
 function costSubmit(){
+    var $loadingToast = $('#loadingToast');
     var $costNum = $("#costNum");
     var inData = {
         shopId: shopId,
@@ -202,6 +203,8 @@ function costSubmit(){
         if(isNull(inData.shopId)){
             break;
         }
+        //加载提示
+        $loadingToast.fadeIn(100);
         //发送服务器
         $.ajax({
             type: "get",
@@ -213,11 +216,14 @@ function costSubmit(){
             success:function(data){
                 var jsonData = eval(data);
                 var msg = jsonData['msg'];
+                layer.closeAll();
+                $loadingToast.fadeOut(100);
                 //提交完成
                 costPageGo(2);
             },
             error:function(error){
                 console.log(error);
+                $loadingToast.fadeOut(100);
                 layer.msg('消费失败！', {icon: 2, shade:0.5, time: 1000});
             }
         });
