@@ -223,6 +223,7 @@ function costSubmit(){
             },
             error:function(error){
                 console.log(error);
+                $loadingToast.fadeOut(100);
                 layer.msg('消费失败！', {icon: 2, shade:0.5, time: 1000});
             }
         });

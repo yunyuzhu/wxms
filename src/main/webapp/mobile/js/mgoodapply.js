@@ -261,6 +261,8 @@ function inSubmit(){
                     },
                     error:function(error){
                         console.log(error);
+                        $loadingToast.fadeOut(100);
+                        layer.msg("提交失败");
                     }
                 });
             },
