@@ -21,9 +21,8 @@ function facePrev(imgSrc){
     else{
         $facePrev.hide();
         $img.attr('src', '');
-	$("#faceInput").val('');
+	    $("#faceInput").val('');
     }
-    $("#faceInput").val("");
 }
 function getObjectURL(file) {
     var url = null;
@@ -32,12 +31,30 @@ function getObjectURL(file) {
     // URL.revokeObjectURL(url);
     return url;
 }
+
+function imgCheck(fileVal){
+    var imgVal = fileVal;
+    do{
+        if(imgVal == ''){
+            layer.msg("上传图片不能为空");
+            break;
+        }
+        if(!/\.(gif|jpg|jpeg|png|GIF|JPG|PNG)$/.test(imgVal))
+        {
+            layer.msg("图片格式必须为.gif,jpeg,jpg,png中的一种");
+            break;
+        }
+        return true;
+    }while(0);
+    return false;
+}
 //加载页面
 function loadhtml(){
     inSubmit();
     //选择图片
     $("#faceInput").on('change', function(e){
         var fileVal = $(this).val();
+        console.log(fileVal);
         var files = e.target.files;
         var file = files[0];
         var imgSrc = getObjectURL(file);
@@ -76,12 +93,13 @@ function faceLoad(){
         type: "get",
         url: "portalAccount/myAccount",
         dataType:"json",
-        data: {},
+        data: '',
         async: false,
         jsonp: "callback",
         success:function(data){
             var jsonData = eval(data);
             var imgSrc = jsonData['photoUrl'];
+            imgSrc = location.protocol + "//" + location.host + "/img/" + imgSrc;
             //图像是否存在
             if(!isNull(imgSrc)){
                 $faceImg.attr('src', imgSrc);
@@ -101,14 +119,15 @@ function faceSave(){
         secureuri: false,
         fileElementId: 'faceInput', //file标签的id
         dataType: 'text', //返回数据的类型
-        data: {name: 'photoInfo'},//一同上传的数据
+        data: {photoInfo: document.getElementById('faceInput').files[0]},//一同上传的数据
         success: function (data, status) {
-            layer.msg('头像上传成功');
+            layer.msg('头像上传成功', {icon: 1});
             //把图片替换
             inSubmit();
         },
         error: function (data, status, e) {
-            console.log(result);
+            console.log(data);
+            layer.msg('头像上传失败', {icon: 0});
         }
     });
 }

@@ -38,7 +38,7 @@
 					<div class="button-sp-area text-center">
 						<label class="face-up">
 							<a class="weui-btn weui-btn_mini weui-btn_primary">选择图片</a>
-							<input id="faceInput" name="photoInfo" class="cthide" type="file" accept="image/*" multiple="multiple"/>
+							<input id="faceInput" name="photoInfo" class="cthide" type="file" accept="image/*"/>
 						</label>
 						<div class="cthide" id="facePrev">
 							<img id="facePrevImg" class="faceimg-prev" src="" alt="图片预览">

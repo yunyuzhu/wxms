@@ -31,9 +31,9 @@
 								</a>
 								<div class="info-item vert-cell after hdinfo-face">
 									<a href="${ctx}/mfacepic">
-										<img class="faceimg" src="${ctx}/mobile/img/face.jpg" alt="头像">
+										<img id="userFaceImg" class="faceimg" src="${ctx}/mobile/img/face.jpg" alt="头像">
 									</a><br/>
-									<span class="name">yh</span>
+									<span class="name" id="userName"></span>
 								</div>
 							</div>
 						</div>
@@ -79,61 +79,6 @@
 								</a>
 							</div>
 						</div>
-						<%--<div class="weui-cells">
-							<a class="weui-cell weui-cell_access" href="${ctx}/maccount">
-								<div class="weui-cell__hd">
-									<i class="icon-user3"></i>
-								</div>
-								<div class="weui-cell__bd">
-									<p>我的账户</p>
-								</div>
-								<div class="weui-cell__ft"></div>
-							</a>
-						</div>
-						<div class="weui-cells">
-							<a class="weui-cell weui-cell_access" href="${ctx}/mmoney">
-								<div class="weui-cell__hd">
-									<i class="icon-coin-yen"></i>
-								</div>
-								<div class="weui-cell__bd">
-									<p>我的金币</p>
-								</div>
-								<div class="weui-cell__ft"></div>
-							</a>
-						</div>
-						<div class="weui-cells">
-							<a class="weui-cell weui-cell_access" href="${ctx}/mapplystream">
-								<div class="weui-cell__hd">
-									<i class="icon-th-list"></i>
-								</div>
-								<div class="weui-cell__bd">
-									<p>兑换申请</p>
-								</div>
-								<div class="weui-cell__ft"></div>
-							</a>
-						</div>
-						<div class="weui-cells">
-							<a class="weui-cell weui-cell_access" href="${ctx}/mstream">
-								<div class="weui-cell__hd">
-									<i class="icon-th-list"></i>
-								</div>
-								<div class="weui-cell__bd">
-									<p>消费记录</p>
-								</div>
-								<div class="weui-cell__ft"></div>
-							</a>
-						</div>
-						<div class="weui-cells">
-							<a class="weui-cell weui-cell_access" href="${ctx}/mabout">
-								<div class="weui-cell__hd">
-									<i class="icon-th-list"></i>
-								</div>
-								<div class="weui-cell__bd">
-									<p>关于</p>
-								</div>
-								<div class="weui-cell__ft"></div>
-							</a>
-						</div>--%>
 						<div class="button-sp-area">
 							<a href="${ctx}/mlogout" class="weui-btn weui-btn_warn">退出登录</a>
 						</div>
@@ -154,6 +99,35 @@
             else{
                 $centerPage.removeClass("cthas");
             }
+            //加载个人信息
+            function userInfoLoad(){
+                var $faceImg = $("#userFaceImg");
+                $faceImg.attr('src', mUrlBase+'/mobile/img/face.jpg');
+                $.ajax({
+                    type: "get",
+                    url: "portalAccount/myAccount",
+                    dataType:"json",
+                    data: {},
+                    async: false,
+                    jsonp: "callback",
+                    success:function(data){
+                        var jsonData = eval(data);
+                        var imgSrc = jsonData['photoUrl'];
+                        imgSrc = location.protocol + "//" + location.host + "/img/" + imgSrc;
+                        //头像是否存在
+                        if(!isNull(imgSrc)){
+                            $faceImg.attr('src', imgSrc);
+                        }
+                        //名称
+                        $("#userName").text(jsonData['name']);
+                    },
+                    error:function(error){
+                        console.log(error);
+                        layer.msg('头像加载失败');
+                    }
+                });
+            }
+            userInfoLoad();
         }
         mTabbarStyleGo(3);
         loadhtml();
