@@ -24,8 +24,10 @@
                         <div id="twocode" class="shcode"></div>
                         <p class="text-center">消费二维码</p>
                         <div class="twocode-dl nomarg">
-                            <div class="cthide" id="twocodeImg"></div>
-                            <a class="btn ctbtn btn-block" id="twocodeDl">下载二维码</a>
+                            <div class="cthide">
+                                <div id="dlQR"></div>
+                            </div>
+                            <a class="btn ctbtn btn-block" id="dlQRLink">下载二维码</a>
                         </div>
                     </div>
                 </div>

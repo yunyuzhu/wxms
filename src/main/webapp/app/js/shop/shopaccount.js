@@ -49,16 +49,6 @@ function loadhtml(){
 $(document).ready(function(){
     loadhtml();
 });
-
-//canvas画边框
-function drawStroke(option){
-    var context = option.elem.getContext('2d');
-    context.beginPath();
-    context.rect(0, 0, option.width, option.height);
-    context.lineWidth = 6;
-    context.strokeStyle = '#FFF';
-    context.stroke();
-}
 //二维码生成
 function drawTwocode(id){
     function toUtf8(str) {
@@ -96,29 +86,42 @@ function drawTwocode(id){
         src: ''             //二维码中间的图片
     });
     //下载链接
-    twocodeImgLink(costHref)
+    dlQRImgLink(costHref)
 }
 
 //二维码图片下载
-function twocodeImgLink(content){
-    var $twocodeImg = $("#twocodeImg");
-    $twocodeImg.qrcode({
+function dlQRImgLink(content){
+    var dlQRW = 400, dlQRH = 400, dlImgW = 450, dlImgH = 450;
+    var $dlQR = $("#dlQR");
+    $dlQR.qrcode({
         render: "canvas",
-        width: 400,
-        height: 400,
+        width: dlQRW,
+        height: dlQRH,
         text: content,
         src: ''             //二维码中间的图片
     });
-    //画边框
-    var canvas = $twocodeImg.find('canvas').get(0);
-    drawStroke({
-        elem: canvas,
-        width: 400,
-        height: 400
-    });
+    var dlQRCanvas = $dlQR.find('canvas').get(0);
+    var dlCtx = dlQRCanvas.getContext("2d");
+    //保存二维码信息到图片
+    var image = new Image();
+    image.width = dlQRW;
+    image.height = dlQRH;
+    image.src = dlQRCanvas.toDataURL("image/png");
+    //清空画布并设置新的画布
+    dlCtx.clearRect(0, 0, dlQRW, dlQRH);
+    //生成带白色边框的下载图片
+    dlQRCanvas.width = dlImgW;
+    dlQRCanvas.height = dlImgH;
+    dlCtx = dlQRCanvas.getContext("2d");
+    //画白底画布
+    dlCtx.clearRect(0, 0, dlImgW, dlImgH);
+    dlCtx.fillStyle = '#FFF';
+    dlCtx.fillRect(0, 0, dlImgW, dlImgH);
+    //画二维码图片
+    dlCtx.drawImage(image, 0, 0, image.width, image.height, 25, 25, image.width, image.height);
     dlCanvasImgInit({
-        canvasElem: $twocodeImg.find('canvas')[0],
-        dlElem: document.getElementById("twocodeDl"),
+        canvasElem: dlQRCanvas,
+        dlElem: document.getElementById("dlQRLink"),
         fileName: "qr",
         imgType: 'jpg'
     });
@@ -148,8 +151,8 @@ function dlCanvasImgInit(option){
         var dlElem = setting.dlElem;
         var imgType = fixType(type);
         var imgData = canvasElem.toDataURL(imgType).replace(imgType, 'image/octet-stream');
-        dlElem.href = imgData;
         var imgName = filename + '.' + type;
+        dlElem.href = imgData;
         dlElem.download = imgName;
         //事件创建
         var evt = document.createEvent("HTMLEvents");
