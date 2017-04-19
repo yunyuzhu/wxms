@@ -71,8 +71,8 @@ function drawTwocode(id){
         return out;
     }
     
-    var pathURL = (rootPath == '') ? rootPath : ("/"+rootPath);
-    var costHref = location.protocol + "//" + location.host + pathURL + "/mcost?shopId=" + id;
+    //var pathURL = (rootPath == '') ? rootPath : ("/"+rootPath);
+    var costHref = location.protocol + "//" + location.host + rootPath + "/mcost?shopId=" + id;
     //var costHref = "http://35.160.177.181:8080/wxms/mcost?shopId=" + id;
 
     var $twocode = $("#twocode");

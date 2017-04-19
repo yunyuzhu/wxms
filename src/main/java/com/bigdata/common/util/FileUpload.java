@@ -18,8 +18,8 @@ public class FileUpload {
     /**
      * 长传路径
      */
-    public static String uploadPath = "D:\\upload";
-//    public static String uploadPath = "../img";
+    //public static String uploadPath = "D:\\upload";
+    public static String uploadPath = "../img";
 
     /**
      * 文件上传
