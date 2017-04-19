@@ -231,6 +231,7 @@ body,html{height:100%;background-color:#F8F8F8;}
 .mygold-tit{line-height:1;margin-top:-5px;}
 .mygold{font-size:24px;}
 .cthd-info .mygold{color:#FFF;}
-.faceimg-prev{max-height:120px;}
+.face-prev{margin-top:10px;}
+.faceimg-prev{max-height:150px;}
 /*about*/
 .about-con{text-indent:2em;}

@@ -40,11 +40,11 @@
 							<a class="weui-btn weui-btn_mini weui-btn_primary">选择图片</a>
 							<input id="faceInput" name="photoInfo" class="cthide" type="file" accept="image/*"/>
 						</label>
-						<div class="cthide" id="facePrev">
+						<div class="cthide face-prev" id="facePrev">
 							<img id="facePrevImg" class="faceimg-prev" src="" alt="图片预览">
 						</div>
 					</div>
-					<div class="accinfo-btn cthide" id="faceHandle">
+					<div class="cthide" id="faceHandle">
 						<div class="weui-btn-area text-center">
 							<a id="faceSave" class="weui-btn weui-btn_mini weui-btn_primary btn-save">保存</a>
 							<a id="faceCancle" class="weui-btn weui-btn_mini weui-btn_primary btn-cancle">取消</a>
