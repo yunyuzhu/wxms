@@ -31,22 +31,28 @@ function getObjectURL(file) {
     // URL.revokeObjectURL(url);
     return url;
 }
-
-function imgCheck(fileVal){
-    var imgVal = fileVal;
+//图片检查
+function imgCheck(file){
+    var res = false;
+    var imgName = file.name;
+    var imgSize = file.size;
     do{
-        if(imgVal == ''){
+        if(imgName == ''){
             layer.msg("上传图片不能为空");
             break;
         }
-        if(!/\.(gif|jpg|jpeg|png|GIF|JPG|PNG)$/.test(imgVal))
+        if(!/\.(gif|jpg|jpeg|png|bmp|GIF|JPG|JPEG|PNG|BMP)$/.test(imgName))
         {
-            layer.msg("图片格式必须为.gif,jpeg,jpg,png中的一种");
+            layer.msg("图片格式必须为.gif,jpg,png,bmp中的一种");
             break;
         }
-        return true;
+        if(imgSize > 1024*1024*5){
+            layer.msg("图片大小不能超过5M",{time:1000});
+            break;
+        }
+        res = true;
     }while(0);
-    return false;
+    return res;
 }
 //加载页面
 function loadhtml(){
@@ -59,6 +65,10 @@ function loadhtml(){
         var imgSrc = getObjectURL(file);
         if (isNull(imgSrc)) {
             imgSrc = e.target.result;
+        }
+        //图片校验
+        if(!imgCheck(file)){
+            return false;
         }
         facePrev(imgSrc);
         faceHandleShow(true);
@@ -98,9 +108,9 @@ function faceLoad(){
         success:function(data){
             var jsonData = eval(data);
             var imgSrc = jsonData['photoUrl'];
-            imgSrc = location.protocol + "//" + location.host + "/img/" + imgSrc;
             //图像是否存在
             if(!isNull(imgSrc)){
+                imgSrc = location.protocol + "//" + location.host + "/img/" + imgSrc;
                 $faceImg.attr('src', imgSrc);
             }
         },
@@ -112,6 +122,13 @@ function faceLoad(){
 }
 //保存头像
 function faceSave(){
+    var file = document.getElementById('faceInput').files[0];
+    if(!imgCheck(file)){
+        return false;
+    }
+    var $loadingToast = $('#loadingToast');
+    //加载提示
+    $loadingToast.fadeIn(100);
     $.ajaxFileUpload({
         type: 'POST',
         url: mUrlBase + "/portalAccount/updatePhoto",
@@ -120,12 +137,17 @@ function faceSave(){
         dataType: 'text', //返回数据的类型
         data: {photoInfo: document.getElementById('faceInput').files[0]},//一同上传的数据
         success: function (data, status) {
-            layer.msg('头像上传成功', {icon: 1});
+            $loadingToast.fadeOut(100);
+            layer.msg('头像上传成功', {icon: 1, time: 1000});
             //把图片替换
             inSubmit();
+            setTimeout(function(){
+                window.location.href = mUrlBase+"/mcenter";
+            }, 1000);
         },
         error: function (data, status, e) {
             console.log(data);
+            $loadingToast.fadeOut(100);
             layer.msg('头像上传失败', {icon: 0});
         }
     });

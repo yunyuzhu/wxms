@@ -211,7 +211,9 @@ body,html{height:100%;background-color:#F8F8F8;}
 /*center*/
 .center-nav{margin:10px 0;background:#FFF;}
 .center-nav .weui-grid__icon i{margin:0;font-size:28px;color:#63b458;}
-.faceimg{width:100px;height:100px;overflow:hidden;border-radius:100%;}
+.facebox{display:inline-block;width:100px;height:100px;line-height:100px;text-align:center;overflow:hidden;border-radius:100%;}
+/*.faceimg{width:100px;height:100px;overflow:hidden;border-radius:100%;}*/
+.facebox img{width:100%;}
 .centerhd{background:#FFF;border-bottom:1px solid #DDD;}
 .centerhd-info{padding:10px;color:#FFF;background:#63B458;border-radius:10px;}
 .centerhd-info .mhd-info{background:transparent;}

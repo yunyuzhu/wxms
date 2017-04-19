@@ -30,7 +30,7 @@
 									<span>登录/注册</span>
 								</a>
 								<div class="info-item vert-cell after hdinfo-face">
-									<a href="${ctx}/mfacepic">
+									<a href="${ctx}/mfacepic" class="facebox">
 										<img id="userFaceImg" class="faceimg" src="${ctx}/mobile/img/face.jpg" alt="头像">
 									</a><br/>
 									<span class="name" id="userName"></span>
@@ -113,9 +113,9 @@
                     success:function(data){
                         var jsonData = eval(data);
                         var imgSrc = jsonData['photoUrl'];
-                        imgSrc = location.protocol + "//" + location.host + "/img/" + imgSrc;
                         //头像是否存在
                         if(!isNull(imgSrc)){
+							imgSrc = location.protocol + "//" + location.host + "/img/" + imgSrc;
                             $faceImg.attr('src', imgSrc);
                         }
                         //名称
@@ -123,7 +123,6 @@
                     },
                     error:function(error){
                         console.log(error);
-                        layer.msg('头像加载失败');
                     }
                 });
             }

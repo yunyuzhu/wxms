@@ -28,7 +28,7 @@
 				<div class="page__hd text-center">
 					<div class="mhd-info vert-center">
 						<div class="info-item vert-cell hdinfo-face">
-							<p>
+							<p class="facebox">
 								<img id="faceImg" class="faceimg" src="${ctx}/mobile/img/face.jpg" alt="头像">
 							</p>
 						</div>
@@ -51,6 +51,14 @@
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
+		<%--加载提示--%>
+		<div id="loadingToast" class="cthide" style="display:none;">
+			<div class="weui-mask_transparent"></div>
+			<div class="weui-toast">
+				<i class="weui-loading weui-icon_toast"></i>
+				<p class="weui-toast__content">正在上传</p>
 			</div>
 		</div>
 	</div>
