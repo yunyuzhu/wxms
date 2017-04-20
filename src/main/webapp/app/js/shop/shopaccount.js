@@ -88,7 +88,6 @@ function drawTwocode(id){
     //下载链接
     dlQRImgLink(costHref)
 }
-
 //二维码图片下载
 function dlQRImgLink(content){
     var dlQRW = 400, dlQRH = 400, dlImgW = 450, dlImgH = 450;
@@ -100,31 +99,35 @@ function dlQRImgLink(content){
         text: content,
         src: ''             //二维码中间的图片
     });
-    var dlQRCanvas = $dlQR.find('canvas').get(0);
-    var dlCtx = dlQRCanvas.getContext("2d");
-    //保存二维码信息到图片
-    var image = new Image();
-    image.width = dlQRW;
-    image.height = dlQRH;
-    image.src = dlQRCanvas.toDataURL("image/png");
-    //清空画布并设置新的画布
-    dlCtx.clearRect(0, 0, dlQRW, dlQRH);
-    //生成带白色边框的下载图片
-    dlQRCanvas.width = dlImgW;
-    dlQRCanvas.height = dlImgH;
-    dlCtx = dlQRCanvas.getContext("2d");
-    //画白底画布
-    dlCtx.clearRect(0, 0, dlImgW, dlImgH);
-    dlCtx.fillStyle = '#FFF';
-    dlCtx.fillRect(0, 0, dlImgW, dlImgH);
-    //画二维码图片
-    dlCtx.drawImage(image, 0, 0, image.width, image.height, 25, 25, image.width, image.height);
-    dlCanvasImgInit({
-        canvasElem: dlQRCanvas,
-        dlElem: document.getElementById("dlQRLink"),
-        fileName: "qr",
-        imgType: 'jpg'
-    });
+    setTimeout(function(){
+        var dlQRCanvas = $dlQR.find('canvas').get(0);
+        var dlCtx = dlQRCanvas.getContext("2d");
+        //保存二维码信息到图片
+        var image = new Image();
+        image.width = dlQRW;
+        image.height = dlQRH;
+        image.src = dlQRCanvas.toDataURL("image/png");
+        //清空画布并设置新的画布
+        dlCtx.clearRect(0, 0, dlQRW, dlQRH);
+        //生成带白色边框的下载图片
+        dlQRCanvas.width = dlImgW;
+        dlQRCanvas.height = dlImgH;
+        dlCtx = dlQRCanvas.getContext("2d");
+        //画白底画布
+        dlCtx.clearRect(0, 0, dlImgW, dlImgH);
+        dlCtx.fillStyle = '#FFF';
+        dlCtx.fillRect(0, 0, dlImgW, dlImgH);
+        //画二维码图片
+        dlCtx.drawImage(image, 0, 0, image.width, image.height, 25, 25, image.width, image.height);
+        setTimeout(function(){
+            dlCanvasImgInit({
+                canvasElem: dlQRCanvas,
+                dlElem: document.getElementById("dlQRLink"),
+                fileName: "qr",
+                imgType: 'jpg'
+            });
+        }, 1000);
+    }, 1000);
 }
 //图片下载
 function dlCanvasImgInit(option){
