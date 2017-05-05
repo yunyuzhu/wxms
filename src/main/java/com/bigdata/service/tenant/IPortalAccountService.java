@@ -76,4 +76,31 @@ public interface IPortalAccountService {
 	 */
 	void updateUserPhoto(String id, String photoUrl);
 
+	/**
+	 * 验证该手机号是否已注册
+	 * @param phone
+	 * @return
+	 */
+	String getIdByPhone(String phone);
+
+	/**
+	 * 保存验证码信息
+	 * @param id
+	 * @param randomCode
+	 */
+	void saveVerifyCode(String id, StringBuffer randomCode);
+
+	/**
+	 * 修改密码
+	 * @param user
+	 */
+	void modifyPassword(WxUser user);
+
+	/**
+	 * 获取验证信息
+	 * @param id
+	 * @return
+	 */
+	WxUser getVerifyInfo(String id);
+
 }
