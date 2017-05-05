@@ -91,7 +91,6 @@ function inSubmit(){
                 var jsonData = eval(data);
                 var msg = jsonData['msg'];
                 layer.msg(msg);
-                jsonData.success = true;
                 if(typeof(jsonData['success'] != 'undefined') && jsonData['success']){
                     window.location.href = mUrlBase + "/mlogin";
                 }
