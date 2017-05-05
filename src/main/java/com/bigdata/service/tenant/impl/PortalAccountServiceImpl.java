@@ -156,7 +156,7 @@ public class PortalAccountServiceImpl implements IPortalAccountService {
 	@Override
 	public void saveVerifyCode(String id, StringBuffer randomCode) {
 		//保存验证码信息
-		portalAccountMapper.saveVerifyCode(id, randomCode);
+		portalAccountMapper.saveVerifyCode(id, randomCode.toString());
 	}
 
 	/**

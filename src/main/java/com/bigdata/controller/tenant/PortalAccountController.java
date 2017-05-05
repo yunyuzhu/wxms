@@ -360,13 +360,13 @@ public class PortalAccountController {
 		
 		StringBuffer randomCode=new StringBuffer();
         Random random=new Random();
-        //随机产生6位数字的验证码。
-        for (int i=0;i<6;i++)
+        //随机产生4位数字的验证码。
+        for (int i=0;i<4;i++)
         {
             //得到随机产生的验证码数字。
             String strRand=String.valueOf(random.nextInt(10));
             
-            //将产生的六个随机数组合在一起。
+            //将产生的四个随机数组合在一起。
             randomCode.append(strRand);
         }
         
@@ -376,6 +376,7 @@ public class PortalAccountController {
         portalAccountServiceImpl.saveVerifyCode(id, randomCode);
 		
     	map.put("msg", "获取验证码成功");
+    	map.put("success", "true");
     	return map;
 	}
 	
@@ -432,6 +433,7 @@ public class PortalAccountController {
         portalAccountServiceImpl.modifyPassword(user);
 		
     	map.put("msg", "修改密码成功");
+    	map.put("success", "true");
     	return map;
 	}
 	

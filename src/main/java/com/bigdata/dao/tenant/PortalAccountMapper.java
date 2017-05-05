@@ -96,7 +96,7 @@ public interface PortalAccountMapper {
 	 * @param id
 	 * @param randomCode
 	 */
-	void saveVerifyCode(@Param(value = "id") String id, @Param(value = "randomCode") StringBuffer randomCode);
+	void saveVerifyCode(@Param(value = "id") String id, @Param(value = "randomCode") String randomCode);
 
 	/**
 	 * 修改密码

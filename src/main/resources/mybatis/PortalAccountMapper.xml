@@ -5,16 +5,19 @@
 	
 	<select id="getMyAccountInfo" resultType="com.bigdata.model.tenant.WxUser">
 	
-		select name,
-		       case sex when 1 then '男' else '女' end as sex,
-		       age,
-		       phone,
-		       email,
-		       photoUrl,
-		       wx,
-		       gold
-		  from t_wx_user
-		  where id = #{id}
+		select t1.name,
+		       case t1.sex when 1 then '男' else '女' end as sex,
+		       t1.age,
+		       t1.phone,
+		       t1.email,
+		       t1.photoUrl,
+		       t1.wx,
+		       t1.gold,
+		       t2.userName
+		  from t_wx_user t1,
+		       t_user t2
+		 where t1.id = t2.id
+		   and t1.id = #{id}
 	  
 	</select>
 	
@@ -159,7 +162,7 @@
 			
 	</update>
 	
-	<select id="getIdByPhone" >
+	<select id="getIdByPhone" resultType="String">
 	
 		select id
 		  from t_user
@@ -181,7 +184,6 @@
 		update t_user
 		   set password = #{password},
 			   credentialsSalt = #{credentialsSalt}
-			   sex = #{sex},
 		where id = #{id}
 		
 	</update>
