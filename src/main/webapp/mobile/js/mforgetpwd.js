@@ -29,8 +29,6 @@ function getVcode(){
         if(!telCheck($phone, inData.phone)){
             break;
         }
-        //禁止频繁获取验证码，显示倒计时
-        allowGetVcode(false);
         //发送服务器
         $.ajax({
             type: "get",
@@ -42,6 +40,10 @@ function getVcode(){
                 var jsonData = eval(data);
                 var msg = jsonData['msg'];
                 layer.msg(msg);
+                if(typeof(jsonData['success'] != 'undefined') && jsonData['success']){
+                    //禁止频繁获取验证码，显示倒计时
+                    allowGetVcode(false);
+                }
             },
             error:function(error){
                 console.log(error);
