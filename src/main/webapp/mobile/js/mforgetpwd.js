@@ -77,7 +77,7 @@ function inSubmit(){
         if(!PasswordCheck($password, inData.password)){
             break;
         }
-        if(!Password2Check($password2, password2,inData.password)){
+        if(!Password2Check($password2, password2, inData.password)){
             break;
         }
         //发送服务器
@@ -91,7 +91,8 @@ function inSubmit(){
                 var jsonData = eval(data);
                 var msg = jsonData['msg'];
                 layer.msg(msg);
-                if(msg == "修改密码成功"){
+                jsonData.success = true;
+                if(typeof(jsonData['success'] != 'undefined') && jsonData['success']){
                     window.location.href = mUrlBase + "/mlogin";
                 }
             },

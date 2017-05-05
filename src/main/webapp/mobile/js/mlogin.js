@@ -25,7 +25,7 @@ function inSubmit(){
     }
     //输入校验
     do{
-        if(!EmptyCheck($userAccount, inData.username, "用户账户不能为空")){
+        if(!EmptyCheck($userAccount, inData.username, "手机号不能为空")){
             break;
         }
         if(!PasswordCheck($userPassword, inData.password)){

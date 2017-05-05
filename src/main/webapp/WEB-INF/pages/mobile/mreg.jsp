@@ -29,10 +29,10 @@
 					<div class="weui-cells weui-cells_form">
 						<div class="weui-cell mustfill">
 							<div class="weui-cell__hd">
-								<label for="userAccount" class="weui-label">账户：</label>
+								<label for="userAccount" class="weui-label">手机号：</label>
 							</div>
 							<div class="weui-cell__bd">
-								<input class="weui-input" type="text" id="userAccount" placeholder="请输入账户">
+								<input class="weui-input" type="tel" id="userAccount" placeholder="请输入手机号">
 							</div>
 						</div>
 						<div class="weui-cell mustfill">
@@ -51,6 +51,7 @@
 								<input class="weui-input" type="text" id="name" placeholder="请输入昵称">
 							</div>
 						</div>
+						<%--
 						<div class="weui-cell weui-cell_select weui-cell_select-after">
 							<div class="weui-cell__hd">
 								<label for="sex" class="weui-label">性别：</label>
@@ -94,7 +95,7 @@
 								<input class="weui-input" type="text" id="wx" placeholder="请输入微信号">
 							</div>
 						</div>
-						<%--<div class="weui-cell">
+						<div class="weui-cell">
 							<div class="weui-cell__hd">
 								<label for="remark" class="weui-label">备注：</label>
 							</div>

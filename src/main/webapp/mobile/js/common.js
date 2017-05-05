@@ -76,9 +76,9 @@ function sexFat(sex){
 }
 //性别值转换
 function sexVal(sex){
-    var sexVal = 0;
-    if(sex == "男"){
-        sexVal = 1;
+    var sexVal = 1;
+    if(sex == "女"){
+        sexVal = 0;
     }
     return sexVal;
 }
@@ -90,21 +90,6 @@ function birthFat(birth){
 
 //校验相关函数
 
-//手机号码校验
-function telCheck($elem){
-    var curVal = $elem.val();
-    if (curVal == "") {
-        tipShow($elem, "手机号不能为空");
-        return false;
-    } else if (curVal.length != 11) {
-        tipShow($elem, "请输入有效手机号");
-        return false;
-    } else {
-        $elem.val(jQuery.trim(curVal));
-        tipHide();
-        return true;
-    }
-}
 //密码校验
 function passwdCheck($elem){
     var curVal = $elem.val();
@@ -234,8 +219,24 @@ function telCheck($elem, value){
     if (value == "") {
         tipShow($elem, "手机号不能为空");
         res = false;
-    } else if (value.length != 11) {
+    } else if (value.toString().length != 11) {
         tipShow($elem, "请输入有效手机号");
+        res = false;
+    } else {
+        $elem.val(jQuery.trim(value));
+        tipHide();
+    }
+    if(!res){
+        $elem.focus();
+    }
+    return res;
+}
+//邮箱格式校验
+function EmailCheck($elem, value){
+    var emailFat = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
+    var res = true;
+    if (!emailFat.test(value)) {
+        tipShow($elem, "邮箱格式不正确");
         res = false;
     } else {
         $elem.val(jQuery.trim(value));

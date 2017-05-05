@@ -46,7 +46,6 @@ function inSubmit(){
 //文本显示,阻止修改
 function accTextShow(flag){
     var $accountInfo = $("#accountInfo");
-    var $wx = $("#wx");
     if(flag){
         $accountInfo.find('input').attr('disabled', 'disabled');
         $accountInfo.find('select').attr('disabled', 'disabled');
@@ -56,7 +55,6 @@ function accTextShow(flag){
         $accountInfo.find('input').removeAttr('disabled');
         $accountInfo.find('select').removeAttr('disabled');
         $accountInfo.find('textarea').removeAttr('disabled');
-        $wx.attr('disabled', 'disabled');
     }
 }
 //加载个人信息
@@ -72,10 +70,10 @@ function accLoad(){
         jsonp: "callback",
         success:function(data){
             var jsonData = eval(data);
+            document.getElementById("userAccount").innerText = jsonData["userName"];
             document.getElementById("name").value = jsonData["name"];
             document.getElementById("sex").value = sexVal(jsonData["sex"]);
             document.getElementById("age").value = jsonData["age"];
-            document.getElementById("phone").value = jsonData["phone"];
             document.getElementById("email").value = jsonData["email"];
             document.getElementById("wx").value = jsonData["wx"];
         },
@@ -95,19 +93,22 @@ function accSave(){
     var $name = $("#name");
     var $sex = $("#sex");
     var $age = $("#age");
-    var $phone = $("#phone");
     var $email = $("#email");
     var $wx = $("#wx");
     var inData = {
         name: $name.val(),
         sex: $sex.val(),
         age: $age.val(),
-        phone: $phone.val(),
         email: $email.val(),
         wx: $wx.val()
     };
     //输入校验
     do{
+        if(inData.email != ""){
+            if(!EmailCheck($email, inData.email)){
+                break;
+            }
+        }
         //发送服务器
         $.ajax({
             type: "get",

@@ -16,21 +16,23 @@ function inSubmit(){
     var $userAccount = $("#userAccount");
     var $userPassword = $("#userPassword");
     var $name = $("#name");
+    /*
     var $sex = $("#sex");
     var $age = $("#age");
     var $phone = $("#phone");
     var $email = $("#email");
     var $wx = $("#wx");
-    // var $remark = $("#remark");
+    var $remark = $("#remark");
+    */
     var inData = {
         userName: $userAccount.val(),
         password: $userPassword.val(),
-        name: $name.val(),
-        sex: $sex.val(),
+        name: $name.val()
+        /*sex: $sex.val(),
         age: $age.val(),
         phone: $phone.val(),
         email: $email.val(),
-        wx: $wx.val()
+        wx: $wx.val()*/
     };
     //删除前后的空白字符
     /*for(var para in inData){
@@ -38,7 +40,7 @@ function inSubmit(){
     }*/
     //输入校验
     do{
-        if(!EmptyCheck($userAccount, inData.username, "账户不能为空")){
+        if(!telCheck($userAccount, inData.userName)){
             break;
         }
         if(!PasswordCheck($userPassword, inData.password)){

@@ -28,6 +28,14 @@
 				<div class="weui-cells account-info" id="accountInfo">
 					<div class="weui-cell">
 						<div class="weui-cell__hd">
+							<label class="weui-label">手机号：</label>
+						</div>
+						<div class="weui-cell__bd text-invalid">
+							<span id="userAccount"></span>
+						</div>
+					</div>
+					<div class="weui-cell">
+						<div class="weui-cell__hd">
 							<label class="weui-label">昵称：</label>
 						</div>
 						<div class="weui-cell__bd">
@@ -51,14 +59,6 @@
 						</div>
 						<div class="weui-cell__bd">
 							<input class="weui-input" type="number" id="age">
-						</div>
-					</div>
-					<div class="weui-cell">
-						<div class="weui-cell__hd">
-							<label class="weui-label">电话：</label>
-						</div>
-						<div class="weui-cell__bd">
-							<input class="weui-input" type="tel" id="phone">
 						</div>
 					</div>
 					<div class="weui-cell">

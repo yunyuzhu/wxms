@@ -28,10 +28,10 @@
 					<div class="weui-cells weui-cells_form">
 						<div class="weui-cell">
 							<div class="weui-cell__hd">
-								<label for="userAccount" class="weui-label">账户：</label>
+								<label for="userAccount" class="weui-label">手机号：</label>
 							</div>
 							<div class="weui-cell__bd">
-								<input class="weui-input" type="text" id="userAccount" placeholder="请输入用户账户">
+								<input class="weui-input" type="tel" id="userAccount" placeholder="请输入手机号">
 							</div>
 						</div>
 						<div class="weui-cell">
