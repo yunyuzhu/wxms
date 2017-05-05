@@ -209,11 +209,7 @@ function tipHide(){
 function tipShow($elem, msgStr){
     tipHide();
     $elem.tips({
-        side: 1,
-        msg: msgStr,
-        color: '#FFF',
-        bg: '#307FC1',
-        time: 3
+        side: 1, msg: msgStr, color: '#FFF', bg: '#307FC1', time: 3
     });
 }
 /****  校验函数 ****/
@@ -225,6 +221,24 @@ function EmptyCheck($elem, value, msg){
         res = false;
     }
     else{
+        tipHide();
+    }
+    if(!res){
+        $elem.focus();
+    }
+    return res;
+}
+//手机号校验
+function telCheck($elem, value){
+    var res = true;
+    if (value == "") {
+        tipShow($elem, "手机号不能为空");
+        res = false;
+    } else if (value.length != 11) {
+        tipShow($elem, "请输入有效手机号");
+        res = false;
+    } else {
+        $elem.val(jQuery.trim(value));
         tipHide();
     }
     if(!res){
@@ -250,7 +264,6 @@ function PasswordCheck($elem, value){
     }
     return res;
 }
-
 //确认密码校验
 function Password2Check($elem, value, oldval){
     var res = true;

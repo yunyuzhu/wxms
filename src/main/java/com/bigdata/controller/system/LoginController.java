@@ -85,6 +85,12 @@ public class LoginController extends BaseController {
 		request.removeAttribute("error");
 		return "mobile/mreg";
 	}
+	/*** 微信用户忘记密码 ***/
+	@RequestMapping(value = "mforgetpwd", method = RequestMethod.GET, produces = "text/html; charset=utf-8")
+	public String mforgetpwd(HttpServletRequest request) {
+		request.removeAttribute("error");
+		return "mobile/mforgetpwd";
+	}
 
 	/*** 首页 ***/
 	@RequestMapping(value = "mhome", method = RequestMethod.GET, produces = "text/html; charset=utf-8")

@@ -102,6 +102,7 @@
 				<!-- 用户允许访问 -->
 				/mlogin = anon
 				/mreg = anon
+				/mforgetpwd = anon
 				/mhome = anon
 				/mactivity = anon
 				/mcost = anon
@@ -114,6 +115,8 @@
 				/portalActivity/query = anon
 				/portalAccount/register = anon
 				/portalGoods/changeList = anon
+				/portalAccount/verifyCode = anon
+				/portalAccount/modifyPassword = anon
 
                 <!-- 其他资源需要认证 -->
                 /** = authc

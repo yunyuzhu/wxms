@@ -107,6 +107,7 @@
 						<a class="weui-btn weui-btn_primary" id="inSubmit">注册</a>
 						<div class="login-more clearfix">
 							<a href="${ctx}/mlogin" class="alink fl">立即登录</a>
+							<a href="${ctx}/mforgetpwd" class="alink fr">忘记密码？</a>
 						</div>
 					</div>
 				</div>
