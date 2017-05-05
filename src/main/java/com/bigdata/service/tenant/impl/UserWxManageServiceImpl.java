@@ -40,7 +40,7 @@ public class UserWxManageServiceImpl implements IUserWxManageService {
 		if (total > 0) {
 			rows = userWxManageMapper.getUserPageList(userName,pageStart,pageSize);
 			if(!rows.isEmpty()){
-				int i=1;
+				int i=pageStart+1;
 				for(WxUser user: rows){
 					user.setOrderId(i);
 					i++;
