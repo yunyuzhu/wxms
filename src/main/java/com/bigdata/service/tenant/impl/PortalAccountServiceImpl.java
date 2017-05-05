@@ -137,4 +137,48 @@ public class PortalAccountServiceImpl implements IPortalAccountService {
 		portalAccountMapper.updateUserPhoto(id, photoUrl);
 	}
 
+	/**
+	 * 验证该手机号是否已注册
+	 * @param phone
+	 * @return
+	 */
+	@Override
+	public String getIdByPhone(String phone) {
+		//修改用户头像
+		return portalAccountMapper.getIdByPhone(phone);
+	}
+
+	/**
+	 * 保存验证码信息
+	 * @param id
+	 * @param randomCode
+	 */
+	@Override
+	public void saveVerifyCode(String id, StringBuffer randomCode) {
+		//保存验证码信息
+		portalAccountMapper.saveVerifyCode(id, randomCode);
+	}
+
+	/**
+	 * 修改密码
+	 * @param user
+	 */
+	@Override
+	public void modifyPassword(WxUser user) {
+		//修改密码
+		portalAccountMapper.modifyPassword(user);
+	}
+
+	/**
+	 * 获取验证信息
+	 * @param id
+	 * @return
+	 */
+	@Override
+	public WxUser getVerifyInfo(String id) {
+		//获取验证信息
+		WxUser wxUser = portalAccountMapper.getVerifyInfo(id);
+		return wxUser;
+	}
+
 }

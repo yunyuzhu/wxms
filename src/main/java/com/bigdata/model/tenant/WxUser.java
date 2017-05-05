@@ -105,6 +105,16 @@ public class WxUser implements Serializable {
 	 * 修改时间
 	 */
 	private String updateTime;
+	
+	/**
+	 * 验证码
+	 */
+	private String verifyCode;
+	
+	/**
+	 * 验证时间
+	 */
+	private String verifyTime;
 
 	public Integer getOrderId() {
 		return orderId;
@@ -256,6 +266,22 @@ public class WxUser implements Serializable {
 
 	public void setUpdateTime(String updateTime) {
 		this.updateTime = updateTime;
+	}
+
+	public String getVerifyCode() {
+		return verifyCode;
+	}
+
+	public void setVerifyCode(String verifyCode) {
+		this.verifyCode = verifyCode;
+	}
+
+	public String getVerifyTime() {
+		return verifyTime;
+	}
+
+	public void setVerifyTime(String verifyTime) {
+		this.verifyTime = verifyTime;
 	}
 
 }

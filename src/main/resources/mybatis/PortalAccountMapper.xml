@@ -159,4 +159,40 @@
 			
 	</update>
 	
+	<select id="getIdByPhone" >
+	
+		select id
+		  from t_user
+		 where userName = #{phone}
+			
+	</select>
+	
+	<update id="saveVerifyCode" >
+	
+		update t_wx_user
+		   set verifyCode = #{randomCode},
+		       verifyTime = now()
+		where id = #{id}
+			
+	</update>
+	
+	<update id="modifyPassword" parameterType="com.bigdata.model.tenant.WxUser">
+	
+		update t_user
+		   set password = #{password},
+			   credentialsSalt = #{credentialsSalt}
+			   sex = #{sex},
+		where id = #{id}
+		
+	</update>
+	
+	<select id="getVerifyInfo" resultType="com.bigdata.model.tenant.WxUser">
+	
+		select verifyCode,
+		       now() - verifyTime AS verifyTime
+		  from t_wx_user
+		 where id = #{id}
+			
+	</select>
+	
 </mapper>

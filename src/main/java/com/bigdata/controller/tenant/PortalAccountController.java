@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -333,6 +334,104 @@ public class PortalAccountController {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
     	map.put("msg", "修改头像成功");
+    	return map;
+	}
+	
+	/**
+	 * 获取验证码
+	 * @param phone 手机号
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping(value = "/verifyCode", method = RequestMethod.GET)
+	@ResponseBody
+	public Object saveVerifyCode(@ApiParam(required = false, name = "phone", value = "手机号") @RequestParam(value = "phone", required = false) String phone,
+			HttpServletRequest request, HttpServletResponse response) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		//验证该手机号是否已注册
+		String id = portalAccountServiceImpl.getIdByPhone(phone);
+		if(id == null){
+			map.put("msg", "该手机号尚未注册，请确认是否输入正确");
+	    	return map;
+		}
+		
+		StringBuffer randomCode=new StringBuffer();
+        Random random=new Random();
+        //随机产生6位数字的验证码。
+        for (int i=0;i<6;i++)
+        {
+            //得到随机产生的验证码数字。
+            String strRand=String.valueOf(random.nextInt(10));
+            
+            //将产生的六个随机数组合在一起。
+            randomCode.append(strRand);
+        }
+        
+        //发送验证码到手机
+        
+        //保存验证码信息
+        portalAccountServiceImpl.saveVerifyCode(id, randomCode);
+		
+    	map.put("msg", "获取验证码成功");
+    	return map;
+	}
+	
+	/**
+	 * 修改密码
+	 * @param phone
+	 * @param verifyCode
+	 * @param password
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping(value = "/modifyPassword", method = RequestMethod.GET)
+	@ResponseBody
+	public Object modifyPassword(@ApiParam(required = false, name = "phone", value = "手机号") @RequestParam(value = "phone", required = false) String phone,
+								 @ApiParam(required = false, name = "verifyCode", value = "验证码") @RequestParam(value = "verifyCode", required = false) String verifyCode,
+								 @ApiParam(required = false, name = "password", value = "新密码") @RequestParam(value = "password", required = false) String password,
+			HttpServletRequest request, HttpServletResponse response) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		//获取用户id
+		String id = portalAccountServiceImpl.getIdByPhone(phone);
+		if(id == null){
+			map.put("msg", "该手机号尚未注册，请确认是否输入正确");
+	    	return map;
+		}
+		
+		//获取验证信息
+		WxUser wxUser = portalAccountServiceImpl.getVerifyInfo(id);
+		
+		//验证验证码是否正确
+		if(!wxUser.getVerifyCode().equals(verifyCode)){
+			map.put("msg", "您输入的验证码不正确，请重新输入");
+	    	return map;
+		}
+		
+		//验证验证码是否超时
+		if(Integer.parseInt(wxUser.getVerifyTime()) > 900000){
+			map.put("msg", "您的验证码已超时，请重新获取");
+	    	return map;
+		}
+        
+        //修改密码
+		SecureRandomNumberGenerator secureRandomNumberGenerator=new SecureRandomNumberGenerator(); 
+        String salt= secureRandomNumberGenerator.nextBytes().toHex(); 
+        //组合username,两次迭代，对密码进行加密 
+        String password_cipherText= new Md5Hash(password,phone+salt,2).toHex();
+        
+		WxUser user=new WxUser(); 
+		user.setId(id);
+        user.setPassword(password_cipherText); //加密后密码
+        user.setCredentialsSalt(salt);
+        portalAccountServiceImpl.modifyPassword(user);
+		
+    	map.put("msg", "修改密码成功");
     	return map;
 	}
 	
